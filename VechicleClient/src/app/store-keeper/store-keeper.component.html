@@ -1,0 +1,35 @@
+<h1> Store Keppers</h1>
+<p *ngIf="!storeKeeper"><em>Loading...</em></p>
+
+<button mat-flat-button color="primary" class="btn-add" *ngIf="storeKeeper" [routerLink]="['/storeKeeper']"> Add a new StoreKeeper</button>
+
+<table mat-table [dataSource]="storeKeeper" class="mat-elevation-z8" [hidden]="!storeKeeper">
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="storeKeeperId">
+    <th mat-header-cell *matHeaderCellDef >ID</th>
+    <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.storeKeeperId}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef >Name</th>
+    <td mat-cell *matCellDef="let storeKeppers">  <a [routerLink]="['/storeKeeper' ,storeKeppers.storeKeeperId ]">{{storeKeppers.name}}</a>  </td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">   
+    <th mat-header-cell *matHeaderCellDef >Email</th>
+    <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.email}}</td>
+  </ng-container>
+
+  <!-- StoreName Column -->
+  <ng-container matColumnDef="storeName">
+    <th mat-header-cell *matHeaderCellDef >StoreAddress</th>
+    <td mat-cell *matCellDef="let storeKepper">{{storeKepper.storeName}}</td>
+  </ng-container>
+
+    
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
