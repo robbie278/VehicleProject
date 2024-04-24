@@ -1,6 +1,6 @@
 ﻿namespace VehicleServer.Entities
 {
-    public class Item
+    public class ItemDto
     {
         public int ItemId { get; set; }
         public string? Name { get; set; }

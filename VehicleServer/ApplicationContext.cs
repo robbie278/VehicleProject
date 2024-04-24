@@ -17,7 +17,7 @@ namespace VehicleServer
         }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Item> Items { get; set; }
+        public DbSet<ItemDto> Items { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<StoreKeeper> StoreKeepers { get; set; }
 

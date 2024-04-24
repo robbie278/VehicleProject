@@ -5,9 +5,9 @@ using VehicleServer.Entities;
 
 namespace VehicleServer.Configuration
 {
-    public class ItemConfiguration : IEntityTypeConfiguration<Item>
+    public class ItemConfiguration : IEntityTypeConfiguration<ItemDto>
     {
-        void IEntityTypeConfiguration<Item>.Configure(EntityTypeBuilder<Item> builder)
+        void IEntityTypeConfiguration<ItemDto>.Configure(EntityTypeBuilder<ItemDto> builder)
         {
             builder.HasKey(p => p.ItemId);
             builder.Property(p => p.Name).HasMaxLength(15).IsRequired();
