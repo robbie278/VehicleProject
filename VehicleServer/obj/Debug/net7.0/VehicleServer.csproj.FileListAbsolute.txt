@@ -153,3 +153,9 @@ C:\Users\Rgat\world\VehicleProject\VehicleServer\obj\Debug\net7.0\VehicleServer.
 C:\Users\Rgat\world\VehicleProject\VehicleServer\obj\Debug\net7.0\VehicleServer.genruntimeconfig.cache
 C:\Users\Rgat\world\VehicleProject\VehicleServer\obj\Debug\net7.0\ref\VehicleServer.dll
 C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll
+C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\DocumentFormat.OpenXml.dll
+C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\DocumentFormat.OpenXml.Framework.dll
+C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\System.IO.Packaging.dll
+C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\AutoMapper.Extensions.ExpressionMapping.dll
+C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\ReHackt.Queryable.AutoMapperExtensions.dll
+C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\ReHackt.Queryable.Extensions.dll

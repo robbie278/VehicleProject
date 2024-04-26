@@ -1,9 +1,9 @@
 export interface Item{
-    id:number;
+    itemId:number;
     name:string;
     description:string;
     quantity:number;
     availability:boolean;
     categoryName:string;
-
+    categoryId:number;
 }

@@ -4,7 +4,6 @@ import { ItemComponent } from './item/item.component';
 
 const routes: Routes = [
   { path: 'items', component: ItemComponent }
-
 ];
 
 @NgModule({
@@ -12,3 +11,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

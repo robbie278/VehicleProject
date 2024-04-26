@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using VehicleServer.DTOs;
 using VehicleServer.Entities;
 
 namespace VehicleServer.Controllers
@@ -8,28 +11,22 @@ namespace VehicleServer.Controllers
     [ApiController]
     public class CategoryController: ControllerBase
     {
+
         private readonly ApplicationContext _context;
-        public CategoryController(ApplicationContext context)
+        private readonly IMapper _mapper;
+
+        public CategoryController(ApplicationContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
+
         [HttpGet]
-        public async Task<ActionResult<ApiResult<Category>>> GetCategory(
-            int pageIndex = 0,
-            int pageSize = 10,
-            string? sortColumn = null,
-            string? sortOrder = null,
-            string? filterColumn = null,
-            string? filterQuery = null)
+        public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
         {
-            return await ApiResult<Category>.CreateAsync(
-             _context.Categories.AsNoTracking(),
-             pageIndex,
-             pageSize,
-             sortColumn,
-             sortOrder,
-             filterColumn,
-             filterQuery);
+            return await _context.Categories.
+                ProjectTo<CategoryDTO>(_mapper.ConfigurationProvider).ToListAsync();
         }
+
     }
 }
