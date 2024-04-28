@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { ItemService } from '../Service/item.service';
-import { Item } from '../Model/Item';
+import { Item } from '../Model/item';
 
 @Component({
   selector: 'app-item',

@@ -3,7 +3,8 @@ import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../Model/Category';
-import { Item } from '../Model/Item';
+import { Item } from '../Model/item';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,7 +39,7 @@ export class ItemService extends BaseService<Item> {
     return this.http.delete<Item>(url)
   }
   
-  getStores(): Observable<Category[]>{
+  getCategories(): Observable<Category[]>{
     var url = this.getUrl('api/Category')
     return this.http.get<Category[]>(url)
   }

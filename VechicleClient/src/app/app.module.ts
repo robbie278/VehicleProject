@@ -9,12 +9,15 @@ import { AngularMaterialModule } from './angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItemComponent } from './item/item.component';
+import { ItemEditComponent } from './item/item-edit.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     ItemComponent,
+    ItemEditComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +25,8 @@ import { ItemComponent } from './item/item.component';
     AngularMaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    // ToastrModule.forRoot()
-
-  ],
+     ToastrModule.forRoot()
+    ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync()

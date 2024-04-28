@@ -159,3 +159,6 @@ C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\System.IO.Pack
 C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\AutoMapper.Extensions.ExpressionMapping.dll
 C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\ReHackt.Queryable.AutoMapperExtensions.dll
 C:\Users\Rgat\world\VehicleProject\VehicleServer\bin\Debug\net7.0\ReHackt.Queryable.Extensions.dll
+C:\Users\PreQueen\World\VehicleProject\VehicleServer\obj\Debug\net7.0\VehicleServer.dll
+C:\Users\PreQueen\World\VehicleProject\VehicleServer\obj\Debug\net7.0\refint\VehicleServer.dll
+C:\Users\PreQueen\World\VehicleProject\VehicleServer\obj\Debug\net7.0\VehicleServer.pdb
