@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
     AngularMaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-     ToastrModule.forRoot()
+    ToastrModule.forRoot()
     ],
   providers: [
     provideClientHydration(),
