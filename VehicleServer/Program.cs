@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using VehicleServer;
+using VehicleServer.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +11,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
         )
 );
+
+
+// new shit
+builder.Services.AddAutoMapper(typeof(GeneralProfile));
 
 var app = builder.Build();
 
