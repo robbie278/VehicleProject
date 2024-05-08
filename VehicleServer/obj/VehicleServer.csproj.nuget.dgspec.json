@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {}
+    "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {}
   },
   "projects": {
-    "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {
+    "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+        "projectUniqueName": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
         "projectName": "VehicleServer",
-        "projectPath": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
-        "packagesPath": "C:\\Users\\rbnas\\.nuget\\packages\\",
-        "outputPath": "C:\\VehicleProject\\VehicleServer\\obj\\",
+        "projectPath": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+        "packagesPath": "C:\\Users\\KALAB\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rbnas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\KALAB\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -41,17 +41,16 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.16, )"
@@ -69,6 +68,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.12, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -94,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

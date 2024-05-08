@@ -4,20 +4,18 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export abstract class BaseService<T> {
+  constructor(protected http: HttpClient) {}
 
-  constructor(protected http: HttpClient) { }
-
-  abstract getData(): Observable<T>;
+  abstract getData(): Observable<T[]>;
   abstract get(id: number): Observable<T>;
   abstract put(item: T): Observable<T>;
   abstract post(item: T): Observable<T>;
-  abstract delete(id: number):Observable<T>;
-  
+  abstract delete(id: number): Observable<T>;
+
   protected getUrl(url: string) {
-    return environment.baseUrl + url; 
+    return environment.baseUrl + url;
   }
-  
 }
