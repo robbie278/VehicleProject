@@ -7,7 +7,7 @@ using VehicleServer;
 
 [ApiController]
 [Route("api/[controller]")]
-    [ApiController]
+ 
 public class StoreController : ControllerBase
 {
     private readonly ApplicationContext _context;
