@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "q+noJNIqKqi/6sWprGDzu7nL0I2qbovbh8wVrYZYwQnaIFEIBl5vHtVKRJUrTGHYw1qWLirmiijCOdvSgVHAqg==",
+  "dgSpecHash": "9iHpUFPAkXX196xk16zGcBseXpZMr3MbaHGPOwbdcRjbaie2P9onSdi6krSa5Uom4L/QNMbwcZdmr/B6qc9qyQ==",
   "success": true,
   "projectFilePath": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rbnas\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
-    "C:\\Users\\rbnas\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\rbnas\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\rbnas\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\rbnas\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
@@ -237,22 +236,5 @@
     "C:\\Users\\rbnas\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\rbnas\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\VehicleProject\\VehicleServer\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
-    {
-      "code": "NU1608",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 13.0.1 was resolved.",
-      "libraryId": "AutoMapper",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }

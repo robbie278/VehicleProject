@@ -8,11 +8,11 @@ namespace VehicleServer.Profiles
     {
         public AutoMapperProfile()
         {
-            CreateMap<StoreKeeper, StoreKeeperDTO>();
-            CreateMap<StoreKeeperDTO, StoreKeeper>();
+            CreateMap<StoreKeeper, StoreKeeperDto>();
+            CreateMap<StoreKeeperDto, StoreKeeper>();
 
-               CreateMap<Store, StoreDTO>();
-               CreateMap<StoreDTO, Store>();
+               CreateMap<Store, StoreDto>();
+               CreateMap<StoreDto, Store>();
         }
     }
 }

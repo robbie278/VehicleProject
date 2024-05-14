@@ -21,9 +21,6 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
 );
 
 
-// new shit
-builder.Services.AddAutoMapper(typeof(GeneralProfile));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

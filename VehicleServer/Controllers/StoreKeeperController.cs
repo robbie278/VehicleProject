@@ -10,7 +10,7 @@ namespace VehicleServer.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [ApiController]
+    
     public class StoreKeepersController : ControllerBase
     {
         private readonly ApplicationContext _context;
@@ -24,10 +24,10 @@ namespace VehicleServer.Controllers
 
         // GET: api/StoreKeepers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StoreKeeperDTO>>> GetStoreKeepers()
+        public async Task<ActionResult<IEnumerable<StoreKeeperDto>>> GetStoreKeepers()
         {
             return await _context.StoreKeepers.
-                ProjectTo<StoreKeeperDTO>(_mapper.ConfigurationProvider).ToListAsync();
+                ProjectTo<StoreKeeperDto>(_mapper.ConfigurationProvider).ToListAsync();
         }
 
         // GET: api/StoreKeepers/5
@@ -54,8 +54,8 @@ namespace VehicleServer.Controllers
                 return BadRequest();
             }
 
-            var storeKeeper = _mapper.Map<StoreKeeper>(storeKeeperDto);
-            _context.Entry(storeKeeper).State = EntityState.Modified;
+            var StoreKeeper = _mapper.Map<StoreKeeper>(storeKeeperDto);
+            _context.Entry(StoreKeeper).State = EntityState.Modified;
 
             try
             {
@@ -79,7 +79,7 @@ namespace VehicleServer.Controllers
         // POST: api/StoreKeepers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<StoreKeeperDTO>> PostStoreKeeper(StoreKeeperDTO storeKeeperDTO)
+        public async Task<ActionResult<StoreKeeperDto>> PostStoreKeeper(StoreKeeperDto storeKeeperDTO)
         {
             var storeKeeper = _mapper.Map<StoreKeeper>(storeKeeperDTO);
 
