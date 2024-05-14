@@ -1,86 +1,50 @@
 {
   "Version": 1,
-<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\VehicleProject\\VehicleServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\entities\\storekeeper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\storekeeper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\Entities\\Storekeeper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Entities\\Storekeeper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\entities\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\Configuration\\StoreKeeperConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Configuration\\StoreKeeperConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\configuration\\storekeeperconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:configuration\\storekeeperconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\DTOs\\StoreDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DTOs\\StoreDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\StoreKeeperController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\profiles\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:profiles\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\Profiles\\AutoMapperProfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Profiles\\AutoMapperProfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\dtos\\storedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\storedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\Entities\\Store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Entities\\Store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\dtos\\storekeeperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\storekeeperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\ApplicationContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ApplicationContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\DTOs\\StorekeeperDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DTOs\\StorekeeperDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\seeding\\module3sedding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:seeding\\module3sedding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\Seeding\\Module3Sedding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Seeding\\Module3Sedding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-  "WorkspaceRootPath": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\vehicleproject\\vehicleserver\\controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\storecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\vehicleproject\\vehicleserver\\dtos\\storekeeperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\storekeeperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\vehicleproject\\vehicleserver\\dtos\\storedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\storedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\vehicleproject\\vehicleserver\\controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\vehicleproject\\vehicleserver\\entities\\storekeeper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\storekeeper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\vehicleproject\\vehicleserver\\profiles\\generalprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:profiles\\generalprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\vehicleproject\\vehicleserver\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\vehicleproject\\vehicleserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> e15ba02556cca09c2a6041227d5677b2827013b1
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\VehicleProject\\VehicleServer\\Controllers\\StoreController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\StoreController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,10 +58,6 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
@@ -105,29 +65,20 @@
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 2,
-              "Title": "StoreKeeperConfiguration.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Configuration\\StoreKeeperConfiguration.cs",
-              "RelativeDocumentMoniker": "Configuration\\StoreKeeperConfiguration.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Configuration\\StoreKeeperConfiguration.cs",
-              "RelativeToolTip": "Configuration\\StoreKeeperConfiguration.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T10:37:45.761Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "StoreDTO.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreDTO.cs",
-              "RelativeDocumentMoniker": "DTOs\\StoreDTO.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreDTO.cs",
-              "RelativeToolTip": "DTOs\\StoreDTO.cs",
+              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\StoreDto.cs",
+              "ToolTip": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreDto.cs",
+              "RelativeToolTip": "DTOs\\StoreDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T07:59:46.083Z"
+              "WhenOpened": "2024-05-14T07:42:30.013Z"
             },
             {
               "$type": "Document",
@@ -139,23 +90,11 @@
               "RelativeToolTip": "Controllers\\StoreKeeperController.cs",
               "ViewState": "AQIAAEQAAAAAAAAAAAAUwFEAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T07:07:50.335Z"
-=======
-              "DocumentIndex": 3,
-              "Title": "StoreKeeperController.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StoreKeeperController.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs",
-              "RelativeToolTip": "Controllers\\StoreKeeperController.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAowC8AAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T08:15:34.561Z"
->>>>>>> e15ba02556cca09c2a6041227d5677b2827013b1
+              "WhenOpened": "2024-05-14T07:42:30.013Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-<<<<<<< HEAD
               "Title": "AutoMapperProfile.cs",
               "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Profiles\\AutoMapperProfile.cs",
               "RelativeDocumentMoniker": "Profiles\\AutoMapperProfile.cs",
@@ -163,22 +102,11 @@
               "RelativeToolTip": "Profiles\\AutoMapperProfile.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T07:15:43.501Z"
-=======
-              "Title": "Storekeeper.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Entities\\Storekeeper.cs",
-              "RelativeDocumentMoniker": "Entities\\Storekeeper.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Entities\\Storekeeper.cs",
-              "RelativeToolTip": "Entities\\Storekeeper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T16:28:25.675Z"
->>>>>>> e15ba02556cca09c2a6041227d5677b2827013b1
+              "WhenOpened": "2024-05-14T07:42:30.029Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-<<<<<<< HEAD
+              "DocumentIndex": 5,
               "Title": "Store.cs",
               "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Entities\\Store.cs",
               "RelativeDocumentMoniker": "Entities\\Store.cs",
@@ -186,7 +114,7 @@
               "RelativeToolTip": "Entities\\Store.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T07:59:48.103Z"
+              "WhenOpened": "2024-05-14T07:42:30.029Z"
             },
             {
               "$type": "Document",
@@ -196,14 +124,26 @@
               "RelativeDocumentMoniker": "Entities\\Storekeeper.cs",
               "ToolTip": "C:\\VehicleProject\\VehicleServer\\Entities\\Storekeeper.cs",
               "RelativeToolTip": "Entities\\Storekeeper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAbAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T13:18:17.11Z",
+              "WhenOpened": "2024-05-14T07:42:30.029Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
+              "Title": "StoreKeeperConfiguration.cs",
+              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Configuration\\StoreKeeperConfiguration.cs",
+              "RelativeDocumentMoniker": "Configuration\\StoreKeeperConfiguration.cs",
+              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Configuration\\StoreKeeperConfiguration.cs",
+              "RelativeToolTip": "Configuration\\StoreKeeperConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T07:42:29.982Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -211,7 +151,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-20T14:16:12.474Z"
+              "WhenOpened": "2024-05-14T07:42:30.029Z"
             },
             {
               "$type": "Document",
@@ -223,30 +163,19 @@
               "RelativeToolTip": "ApplicationContext.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAYwBgAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:45:01.476Z"
-=======
-              "Title": "StoreKeeperDto.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\DTOs\\StoreKeeperDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\StoreKeeperDto.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\DTOs\\StoreKeeperDto.cs",
-              "RelativeToolTip": "DTOs\\StoreKeeperDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T16:17:34.367Z"
->>>>>>> e15ba02556cca09c2a6041227d5677b2827013b1
+              "WhenOpened": "2024-05-14T07:42:30.029Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-<<<<<<< HEAD
+              "DocumentIndex": 8,
               "Title": "StorekeeperDTO.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\DTOs\\StorekeeperDTO.cs",
-              "RelativeDocumentMoniker": "DTOs\\StorekeeperDTO.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\DTOs\\StorekeeperDTO.cs",
-              "RelativeToolTip": "DTOs\\StorekeeperDTO.cs",
+              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreKeeperDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\StoreKeeperDto.cs",
+              "ToolTip": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreKeeperDto.cs",
+              "RelativeToolTip": "DTOs\\StoreKeeperDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T19:49:32.544Z"
+              "WhenOpened": "2024-05-14T07:42:30.029Z"
             },
             {
               "$type": "Document",
@@ -258,7 +187,7 @@
               "RelativeToolTip": "Seeding\\Module3Sedding.cs",
               "ViewState": "AQIAAFsAAAAAAAAAAAAuwEAAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T07:10:28.127Z"
+              "WhenOpened": "2024-05-14T07:42:30.029Z"
             },
             {
               "$type": "Document",
@@ -270,66 +199,7 @@
               "RelativeToolTip": "Controllers\\StoreController.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T07:58:17.08Z"
-=======
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-23T16:22:51.767Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StoreController.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Controllers\\StoreController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StoreController.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Controllers\\StoreController.cs",
-              "RelativeToolTip": "Controllers\\StoreController.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAQwGIAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T12:32:15.32Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T12:26:27.333Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GeneralProfile.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Profiles\\GeneralProfile.cs",
-              "RelativeDocumentMoniker": "Profiles\\GeneralProfile.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\Profiles\\GeneralProfile.cs",
-              "RelativeToolTip": "Profiles\\GeneralProfile.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T12:23:11.913Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StoreDto.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\DTOs\\StoreDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\StoreDto.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\DTOs\\StoreDto.cs",
-              "RelativeToolTip": "DTOs\\StoreDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T11:29:48.536Z"
->>>>>>> e15ba02556cca09c2a6041227d5677b2827013b1
+              "WhenOpened": "2024-05-14T07:42:30.029Z"
             }
           ]
         }
