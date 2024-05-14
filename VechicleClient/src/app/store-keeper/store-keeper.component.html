@@ -3,33 +3,47 @@
 
 <button mat-flat-button color="primary" class="btn-add" *ngIf="storeKeeper" [routerLink]="['/storeKeeper']"> Add a new StoreKeeper</button>
 
-<table mat-table [dataSource]="storeKeeper" class="mat-elevation-z8" [hidden]="!storeKeeper">
+<table mat-table [dataSource]="storeKeeper" class="mat-elevation-z8" [hidden]="!storeKeeper" matSort>
 
   <!-- Id Column -->
-  <ng-container matColumnDef="storeKeeperId">
-    <th mat-header-cell *matHeaderCellDef >ID</th>
-    <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.storeKeeperId}}</td>
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef  >No</th>
+    <td mat-cell *matCellDef="let storeKeppers; let i = index;">{{i+1}}</td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef >Name</th>
-    <td mat-cell *matCellDef="let storeKeppers">  <a [routerLink]="['/storeKeeper' ,storeKeppers.storeKeeperId ]">{{storeKeppers.name}}</a>  </td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header >Name</th>
+    <td mat-cell *matCellDef="let storeKeppers"> {{storeKeppers.name}} </td>
   </ng-container>
 
   <!-- Email Column -->
   <ng-container matColumnDef="email">   
-    <th mat-header-cell *matHeaderCellDef >Email</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
     <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.email}}</td>
   </ng-container>
 
   <!-- StoreName Column -->
   <ng-container matColumnDef="storeName">
-    <th mat-header-cell *matHeaderCellDef >StoreAddress</th>
-    <td mat-cell *matCellDef="let storeKepper">{{storeKepper.storeName}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header >StoreAddress</th>
+    <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.storeName}}</td>
   </ng-container>
-
+  
+  <!-- Action Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let storeKeppers">
+      <button mat-icon-button color="primary" aria-label="Edit" [routerLink]="['/storeKeeper', storeKeppers.storeKeeperId]">
+        <mat-icon> edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Delete" (click)="onDelete(storeKeppers.storeKeeperId)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
     
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
 </table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

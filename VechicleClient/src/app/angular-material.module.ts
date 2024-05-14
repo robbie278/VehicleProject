@@ -6,6 +6,8 @@ import {  MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table'; 
 import { MatSelectModule } from '@angular/material/select';
 import {  MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -18,6 +20,8 @@ import {  MatInputModule } from '@angular/material/input';
     MatTableModule,
     MatInputModule,
     MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule
   
   ],
   exports: [
@@ -26,7 +30,9 @@ import {  MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     MatTableModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class AngularMaterialModule { }

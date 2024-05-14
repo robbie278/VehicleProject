@@ -1,6 +1,6 @@
+<h1>{{title}}</h1>
+<p *ngIf="id && !storeKeeper"> <em>Loading...</em></p> 
 <div class="storekeepre-Edit">
-    <h1>{{title}}</h1>
-    <p *ngIf="id && !storeKeeper"> <em>Loading...</em></p> 
 
     <form [formGroup]="form"  (ngSubmit)="onSubmit()">
         
@@ -40,7 +40,7 @@
 
         <div>
             <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid">{{this.id ? "Save" : "Create"}}</button>
-            <button mat-flat-button [hidden]="!id" (click)="onDelete()" color="warn">Delete</button>
+            <!-- <button mat-flat-button [hidden]="!id" (click)="onDelete()" color="warn">Delete</button> -->
             <button mat-stroked-button type="submit" color="secondary" [routerLink]="['/storekeppers']">Cancel</button>        </div>
     </form>
 </div>
