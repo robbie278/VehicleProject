@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {}
+    "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {
+    "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+        "projectUniqueName": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
         "projectName": "VehicleServer",
-        "projectPath": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
-        "packagesPath": "C:\\Users\\yeabsira\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yeabsira\\Documents\\world1\\VehicleProject\\VehicleServer\\obj\\",
+        "projectPath": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+        "packagesPath": "C:\\Users\\rbnas\\.nuget\\packages\\",
+        "outputPath": "C:\\VehicleProject\\VehicleServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
         ],
         "configFilePaths": [
-          "C:\\Users\\yeabsira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rbnas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -52,15 +52,13 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-<<<<<<< HEAD
             "AutoMapper": {
               "target": "Package",
               "version": "[13.0.1, )"
-=======
+            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.1, )"
->>>>>>> e15ba02556cca09c2a6041227d5677b2827013b1
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -114,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
