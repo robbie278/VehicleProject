@@ -70,7 +70,7 @@ namespace VehicleServer.Migrations
                         {
                             ItemsItemId = 4,
                             StoresStoreId = 2
-                        });
+                });
                 });
 
             modelBuilder.Entity("VehicleServer.Entities.Category", b =>
@@ -114,7 +114,7 @@ namespace VehicleServer.Migrations
                         {
                             CategoryId = 4,
                             Name = "Licence"
-                        });
+                });
                 });
 
             modelBuilder.Entity("VehicleServer.Entities.Item", b =>
@@ -200,6 +200,9 @@ namespace VehicleServer.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
+                    b.Property<string>("address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("StoreId");
 
                     b.ToTable("Stores");
@@ -234,6 +237,7 @@ namespace VehicleServer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StoreKeeperId"));
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

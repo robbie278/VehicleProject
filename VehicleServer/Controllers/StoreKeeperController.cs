@@ -8,6 +8,7 @@ using VehicleServer.Entities;
 
 namespace VehicleServer.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
     [ApiController]
     public class StoreKeepersController : ControllerBase
@@ -53,6 +54,7 @@ namespace VehicleServer.Controllers
                 return BadRequest();
             }
 
+            var storeKeeper = _mapper.Map<StoreKeeper>(storeKeeperDto);
             _context.Entry(storeKeeper).State = EntityState.Modified;
 
             try
