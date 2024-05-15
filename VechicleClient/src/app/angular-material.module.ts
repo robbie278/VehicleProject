@@ -4,8 +4,10 @@ import { MatIconModule } from '@angular/material/icon';
 import {  MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSortModule } from '@angular/material/sort';
+import { MatSortHeader, MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {  MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [],
@@ -14,16 +16,23 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatToolbarModule,
     MatTableModule,
-    MatIconModule,
     MatSelectModule,
+    MatInputModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSortHeader
   
   ],
   exports: [
     MatButtonModule,
     MatIconModule,
-    MatButtonModule
+    MatToolbarModule,
+    MatTableModule,
+    MatInputModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSortHeader
   ],
  
 })

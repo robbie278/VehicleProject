@@ -13,13 +13,13 @@
 
     <!-- Id Column -->
     <ng-container matColumnDef="storeId">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <th mat-header-cell *matHeaderCellDef >ID</th>
         <td mat-cell *matCellDef="let store">{{store.storeId}}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <th mat-header-cell *matHeaderCellDef >Name</th>
         <td mat-cell *matCellDef="let store">
             <a [routerLink]="['/storeEdit', store.storeId]">{{store.name}}</a>
         </td>
@@ -27,13 +27,13 @@
 
     <!-- Lat Column -->
     <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+        <th mat-header-cell *matHeaderCellDef >Address</th>
         <td mat-cell *matCellDef="let store">{{store.address}}</td>
     </ng-container>
 
     <!-- Lon Column -->
     <ng-container matColumnDef="Store Keeper">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Store keeper</th>
+        <th mat-header-cell *matHeaderCellDef >Actions</th>
         <td mat-cell *matCellDef="let store">
             <button mat-button>
                 

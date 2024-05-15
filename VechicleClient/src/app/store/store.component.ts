@@ -4,7 +4,6 @@ import { Store } from './Store';
 import { MatPaginator } from '@angular/material/paginator';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { error } from 'console';
 
 
 @Component({
@@ -33,7 +32,7 @@ export class StoreComponent implements OnInit {
   deleteStore(store: Store){
     const url = 'http://localhost:40080/api/Store/'+ store.storeId
     this.http.delete(url).subscribe({
-      next: (result: any) => {
+      next: () => {
        this.toastr.success('yay! deleted')
       }
     })

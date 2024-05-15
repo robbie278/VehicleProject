@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { StoreKeeperService } from '../Service/store-keeper.service';
-import {  Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';

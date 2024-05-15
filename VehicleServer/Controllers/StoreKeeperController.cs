@@ -54,8 +54,7 @@ namespace VehicleServer.Controllers
                 return BadRequest();
             }
 
-            var StoreKeeper = _mapper.Map<StoreKeeper>(storeKeeperDto);
-            _context.Entry(StoreKeeper).State = EntityState.Modified;
+            _context.Entry(storeKeeper).State = EntityState.Modified;
 
             try
             {

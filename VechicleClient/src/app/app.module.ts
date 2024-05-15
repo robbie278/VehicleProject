@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditStoreComponent } from './store/edit-store.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIcon } from '@angular/material/icon'
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 
 @NgModule({
   declarations: [
@@ -36,11 +38,8 @@ import { MatIcon } from '@angular/material/icon'
   ],
   providers: [
     provideClientHydration(),
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatIcon,
-   // ToastrModule.forRoot()
+    provideAnimationsAsync(),
+
 
   ],
 
