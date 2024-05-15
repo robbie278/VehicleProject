@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using VehicleServer.DTOs;
 using VehicleServer.Entities;
 using VehicleServer.Seeding;
 

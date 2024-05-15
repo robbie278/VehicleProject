@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Reflection.Emit;
+using VehicleServer.DTOs;
 using VehicleServer.Entities;
 
 namespace VehicleServer.Configuration
@@ -11,7 +12,9 @@ namespace VehicleServer.Configuration
         {
             builder.HasKey(p => p.ItemId);
             builder.Property(p => p.Name).HasMaxLength(15).IsRequired();
+            builder.Property(p => p.Availability).HasMaxLength(200);
             builder.Property(p => p.Description).HasMaxLength(200);
+            builder.Property(p => p.Quantity).HasMaxLength(200);
             builder.HasOne(y => y.Category)
             .WithMany(y => y.Items)
             .HasForeignKey(y => y.CategoryId);

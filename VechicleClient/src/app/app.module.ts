@@ -8,6 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AngularMaterialModule } from './angular-material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ItemComponent } from './item/item.component';
+import { ItemEditComponent } from './item/item-edit.component';
+import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesEditComponent } from './categories/categories-edit.component';
@@ -29,6 +34,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   declarations: [
     AppComponent,
     NavMenuComponent,
+    ItemComponent,
+    ItemEditComponent
     CategoriesComponent,
     CategoriesEditComponent,
     StoreKeeperComponent,

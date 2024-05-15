@@ -2,16 +2,12 @@
 
 namespace VehicleServer.DTOs
 {
-    public class StoreDto
+    public class StoreDTO
     {
         public int StoreId { get; set; }
         public string? Name { get; set; }
-        public string? address { get; set; }
-        //public int StoreKeeperId { get; set; }
-        //public string? StoreKeeperName { get; set; }
-
-
-        //public ICollection<StoreKeeper>? StoreKeepers { get; set; }
-        //public ICollection<Item>? Items { get; set; }
+        public string? Address { get; set; }
+        public ICollection<StoreKeeper>? StoreKeepers { get; set; }
+        public ICollection<Item>? Items { get; set; }
     }
 }

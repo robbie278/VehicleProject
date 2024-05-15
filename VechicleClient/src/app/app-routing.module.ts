@@ -17,7 +17,10 @@ const routes: Routes = [
   {path:'navMenu',component: NavMenuComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'category/:id', component: CategoriesEditComponent },
-  { path: 'category', component: CategoriesEditComponent }
+  { path: 'category', component: CategoriesEditComponent },
+  { path: 'items', component: ItemComponent },
+  {path:'item/:id', component: ItemEditComponent},
+  {path:'item', component: ItemEditComponent}
 
   
 ]
@@ -28,3 +31,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
