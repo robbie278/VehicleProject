@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {  MatButtonModule } from '@angular/material/button';
@@ -7,6 +6,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import {  MatInputModule } from '@angular/material/input';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import {  MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,19 +19,22 @@ import {  MatInputModule } from '@angular/material/input';
   imports: [
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule,
+    MatButtonModule,
     MatTableModule,
+    MatPaginatorModule,
     MatInputModule,
-    MatSelectModule,
-  
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   exports: [
-    MatButtonModule,
-    MatIconModule,
     MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
     MatTableModule,
+    MatPaginatorModule,
     MatInputModule,
-    MatSelectModule
-  ]
+    MatFormFieldModule,
+    ReactiveFormsModule
+  ],
 })
-export class AngularMaterialModule { }
+export class AngularMaterialModule {}

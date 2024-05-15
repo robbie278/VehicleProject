@@ -2,6 +2,7 @@
 using System.Reflection;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
+using VehicleServer.Seeding;
 
 namespace VehicleServer
 {
@@ -15,6 +16,9 @@ namespace VehicleServer
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            Module3Sedding.Seed(modelBuilder);
+
         }
 
         public DbSet<Category> Categories { get; set; }

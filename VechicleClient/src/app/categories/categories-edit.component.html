@@ -1,0 +1,56 @@
+<div class="storekeepre-Edit">
+  <h1>{{ title }}</h1>
+  <p *ngIf="id && !category"><em>Loading...</em></p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name:</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        required
+        placeholder="Type a name"
+      />
+
+      <mat-error *ngIf=" form.controls['name'].errors?.['required']">
+        Name is Required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description:</mat-label>
+      <input
+        matInput
+        formControlName="description"
+        required
+        placeholder="Type a Description"
+      />
+
+      <mat-error *ngIf="form.controls['description'].errors?.['required']">
+        Description is Required
+      </mat-error>
+    </mat-form-field>
+
+    <div>
+      <button class="button"
+        mat-flat-button
+        type="submit"
+        color="primary"
+        [disabled]="!form.valid"
+      >
+        {{ this.id ? "Update" : "Create" }}
+      </button>
+      <button class="button" mat-flat-button [hidden]="!id" (click)="onDelete()" color="warn">
+        Delete
+      </button>
+      <button
+        mat-stroked-button
+        type="button"
+        color="secondary"
+        [routerLink]="['/categories']"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

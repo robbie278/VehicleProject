@@ -1,0 +1,57 @@
+<!-- <mat-form-field [hidden]="!stores">
+    <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
+           placeholder="Filter by name (or part of it)...">
+</mat-form-field> -->
+
+<div class="py-5">
+
+    <button mat-button>
+        <a [routerLink]="['/storeEdit','0']"><mat-icon>add</mat-icon></a>
+    </button>
+    
+<table mat-table [dataSource]="stores" class="mat-elevation-z8" [hidden]="!stores">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="storeId">
+        <th mat-header-cell *matHeaderCellDef >ID</th>
+        <td mat-cell *matCellDef="let store">{{store.storeId}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef >Name</th>
+        <td mat-cell *matCellDef="let store">
+            <a [routerLink]="['/storeEdit', store.storeId]">{{store.name}}</a>
+        </td>
+    </ng-container>
+
+    <!-- Lat Column -->
+    <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef >Address</th>
+        <td mat-cell *matCellDef="let store">{{store.address}}</td>
+    </ng-container>
+
+    <!-- Lon Column -->
+    <ng-container matColumnDef="Store Keeper">
+        <th mat-header-cell *matHeaderCellDef >Actions</th>
+        <td mat-cell *matCellDef="let store">
+            <button mat-button>
+                
+                <a [routerLink]="['/storeEdit', store.storeId]"><mat-icon>edit</mat-icon></a>
+            </button>
+            <button (click)="deleteStore(store)" mat-button>
+               
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
+<!-- Pagination directive -->
+<mat-paginator [hidden]="!stores" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>

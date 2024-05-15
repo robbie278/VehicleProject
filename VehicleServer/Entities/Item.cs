@@ -1,6 +1,4 @@
-﻿using VehicleServer.DTOs;
-
-namespace VehicleServer.Entities
+﻿namespace VehicleServer.Entities
 {
     public class Item
     {
@@ -11,7 +9,7 @@ namespace VehicleServer.Entities
         public bool Availability { get; set; }
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
-        public ICollection<Store> ? Stores { get; set; }
+        public ICollection<Store> Stores { get; set; } = new List<Store>();
 
     }
 

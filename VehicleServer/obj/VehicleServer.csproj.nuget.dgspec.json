@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rgat\\world\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {}
+    "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rgat\\world\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {
+    "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rgat\\world\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+        "projectUniqueName": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
         "projectName": "VehicleServer",
-        "projectPath": "C:\\Users\\Rgat\\world\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
-        "packagesPath": "C:\\Users\\Rgat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rgat\\world\\VehicleProject\\VehicleServer\\obj\\",
+        "projectPath": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+        "packagesPath": "C:\\Users\\KALAB\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Rgat\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Users\\KALAB\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,11 +40,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -54,15 +50,17 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "DocumentFormat.OpenXml": {
-              "target": "Package",
-              "version": "[3.0.2, )"
-            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.16, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.0, )"
             },
@@ -76,9 +74,9 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
-            "ReHackt.Queryable.AutoMapperExtensions": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[1.8.2, )"
+              "version": "[7.0.12, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -112,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
