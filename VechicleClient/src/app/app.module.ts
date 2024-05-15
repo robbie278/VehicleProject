@@ -1,9 +1,17 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AngularMaterialModule } from './angular-material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoriesEditComponent } from './categories/categories-edit.component';
+import { ToastrModule } from 'ngx-toastr';
 import { StoreKeeperComponent } from './store-keeper/store-keeper.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +29,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   declarations: [
     AppComponent,
     NavMenuComponent,
+    CategoriesComponent,
+    CategoriesEditComponent,
     StoreKeeperComponent,
     StoreKeeperEditComponent,
     StoreComponent,
@@ -34,15 +44,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot()
-
   ],
-  providers: [
-    provideClientHydration(),
-    provideAnimationsAsync(),
-
-
-  ],
-
-  bootstrap: [AppComponent]
+  providers: [provideClientHydration(), provideAnimationsAsync()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
+
+
