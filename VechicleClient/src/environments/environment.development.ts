@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrl: "https://localhost:40443/"
+    baseUrl: "http://localhost:40080/"
 };
