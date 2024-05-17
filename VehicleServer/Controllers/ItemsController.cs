@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Metrics;
 using System.Linq;
-using System.Linq.Dynamic.Core;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
 
@@ -24,10 +23,10 @@ namespace VehicleServer.Controllers
         }      
         
             [HttpGet]
-            public async Task<ActionResult<IEnumerable<ItemDTO>>> GetItems()
+            public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems()
             {
                 return await _context.Items.
-                    ProjectTo<ItemDTO>(_mapper.ConfigurationProvider).ToListAsync();
+                    ProjectTo<ItemDto>(_mapper.ConfigurationProvider).ToListAsync();
             }
         
         [HttpGet("{id}")]
@@ -77,9 +76,9 @@ namespace VehicleServer.Controllers
         // POST: api/Countries
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ItemDTO>> PostItem(ItemDTO itemDTO)
+        public async Task<ActionResult<ItemDto>> PostItem(ItemDto itemDto)
         {
-            var item = _mapper.Map<Item>(itemDTO);
+            var item = _mapper.Map<Item>(itemDto);
 
             _context.Items.Add(item);
             await _context.SaveChangesAsync();

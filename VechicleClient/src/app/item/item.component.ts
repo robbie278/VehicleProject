@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { ItemService } from '../Service/item.service';
-import { Item } from '../Model/item';
+import { Item } from '../Models/item';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './item.component.scss'
 })
 export class ItemComponent implements OnInit {
-  public displayedColumns: string[] = [ 'name', 'description', 'quantity','availability','categoryName', 'option'];
+  public displayedColumns: string[] = ['index', 'name', 'description', 'quantity','availability','categoryName', 'action'];
  public items!:Item[];
 constructor(private itemService:ItemService,private http: HttpClient,
   private activatedRoute: ActivatedRoute,  

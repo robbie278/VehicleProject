@@ -15,6 +15,14 @@ namespace VehicleServer.Profiles
                CreateMap<StoreDto, Store>();
 
                 CreateMap<Category, CategoryDto>().ReverseMap();
+
+            CreateMap<Item, ItemDto>();
+            CreateMap<ItemDto, Item>();
+
+            CreateMap<CategoryDto, Category>();
+            CreateMap<Category, CategoryDto>();
+            CreateMap<StoreDto, Store>();
+            CreateMap<Store, StoreDto>();
         }
     }
 }

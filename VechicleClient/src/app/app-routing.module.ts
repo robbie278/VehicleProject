@@ -7,12 +7,14 @@ import { StoreKeeperEditComponent } from './store-keeper/store-keeper-edit.compo
 import { StoreComponent } from './store/store.component';
 import { EditStoreComponent } from './store/edit-store.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { ItemComponent } from './item/item.component';
+import { ItemEditComponent } from './item/item-edit.component';
 
 const routes: Routes = [
   { path: 'storekeppers', component: StoreKeeperComponent },
   {path:'storeKeeper/:id', component: StoreKeeperEditComponent},
   {path:'storeKeeper', component: StoreKeeperEditComponent},
-  {path: 'store', component: StoreComponent, pathMatch:'full'},
+  {path: 'store', component: StoreComponent},
   { path: 'storeEdit/:id', component: EditStoreComponent },
   {path:'navMenu',component: NavMenuComponent },
   { path: 'categories', component: CategoriesComponent },

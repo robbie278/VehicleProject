@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../Model/Category';
-import { Item } from '../Model/item';
+import { ICategory } from '../Models/Category';
+import { Item } from '../Models/item';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from '../Service/item.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class ItemEditComponent implements OnInit{
 title?: string
 item?: Item
 id?: number
-categories?: Category[]
+categories?: ICategory[]
 form!: FormGroup
 constructor(private itemService: ItemService,
   private activatedRoute: ActivatedRoute,  
@@ -36,11 +36,13 @@ ngOnInit() {
 }
 
   loadData(){
+    
     this.loadCategories()
    
  //get id from Id from id parameter
  var idParam = this.activatedRoute.snapshot.paramMap.get('id')
   this.id = idParam ? +idParam : 0
+  console.log(this.id);
   if(this.id){
     //Edit Mode
   
@@ -63,7 +65,7 @@ ngOnInit() {
        }
       }
       loadCategories(){
-        //fetch all stores from server
+        //fetch all categories from server
         this.itemService.getCategories().subscribe({
           next:(result) =>{
             this.categories = result

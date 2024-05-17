@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {}
+    "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {
+    "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+        "projectUniqueName": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
         "projectName": "VehicleServer",
-        "projectPath": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
-        "packagesPath": "C:\\Users\\KALAB\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\VehicleProject\\VehicleProject\\VehicleServer\\obj\\",
+        "projectPath": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+        "packagesPath": "C:\\Users\\rbnas\\.nuget\\packages\\",
+        "outputPath": "C:\\VehicleProject\\VehicleServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages"
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
         ],
         "configFilePaths": [
-          "C:\\Users\\KALAB\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rbnas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -26,8 +26,9 @@
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,6 +41,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -81,14 +87,6 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
-            },
-            "System.Linq.Dynamic.Core": {
-              "target": "Package",
-              "version": "[1.3.12, )"
-            },
-            "System.Reflection.Emit": {
-              "target": "Package",
-              "version": "[4.7.0, )"
             }
           },
           "imports": [
@@ -110,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
