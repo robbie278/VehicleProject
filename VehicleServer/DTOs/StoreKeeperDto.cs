@@ -7,5 +7,6 @@
         public string? Email { get; set; }
         public int StoreId { get; set; }
         public string? StoreName { get; set; }
+
     }
 }

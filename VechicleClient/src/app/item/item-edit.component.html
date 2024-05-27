@@ -23,25 +23,7 @@
             </mat-error>
 
         </mat-form-field>
-        <mat-form-field>
-            <mat-label>Quantity:</mat-label>
-            <input matInput formControlName="quantity" required placeholder="Type a description">
-
-            <mat-error *ngIf=" form.controls['quantity'].errors?.['required']">
-                Quantity is Required
-            </mat-error>
-
-        </mat-form-field>  
-        
-        <mat-form-field>
-            <mat-label>Availability:</mat-label>
-            <input matInput formControlName="availability" required placeholder="Type a description">
-
-            <mat-error *ngIf=" form.controls['availability'].errors?.['required']">
-                Availability is Required
-            </mat-error>
-
-        </mat-form-field>  
+   
         
         <mat-form-field *ngIf="categories">
             <mat-label>Select a Category :</mat-label>

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VehicleServer.Entities;
 using VehicleServer.DTOs;
+using VehicleServer.Repository;
 
 namespace VehicleServer.Controllers
 {
@@ -11,101 +12,64 @@ namespace VehicleServer.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly ApplicationContext _context;
-        private readonly IMapper _mapper;
+       
+        private readonly CategoryRepo categoryRepo;
 
-        public CategoriesController(ApplicationContext context, IMapper mapper)
+        public CategoriesController(CategoryRepo categoryRepo)
         {
-            _context = context;
-            _mapper = mapper;
+            this.categoryRepo = categoryRepo;
         }
 
         // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCatagories()
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
         {
-            
-                var category = await _context.Categories.ToListAsync();
-                return Ok(_mapper.Map<IEnumerable<CategoryDto>>(category));
-            
 
+            return await categoryRepo.GetCategories();
         }
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Category>> GetCategory(int id)
         {
-            var Category = await _context.Categories.FindAsync(id);
 
-            if (Category == null)
-            {
-                return NotFound();
-            }
-
-            return Category;
+            return await categoryRepo.GetCategory(id);
         }
 
         // PUT: api/Categories/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id,  CategoryDto categoryDto)
+        public async Task<ActionResult> PutCategory(int id, CategoryDto categoryDto)
         {
-            if (id != categoryDto.CategoryId)
+            var result = await categoryRepo.PutCategory(id, categoryDto);
+            if (result == null)
             {
                 return BadRequest();
             }
 
-            try
-            {
-                var category = _mapper.Map<Category>(categoryDto);
-                _context.Entry(category).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            return Ok(result);
+            
 
-            return NoContent();
+            //return await categoryRepo.PutCategory(id, categoryDto);
         }
 
         // POST: api/Catagories
         [HttpPost]
         public async Task<ActionResult<CategoryDto>> PostCategory(CategoryDto categoryDto)
         {
-            var category = _mapper.Map<Category>(categoryDto);
-
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
+            return await categoryRepo.PostCategory(categoryDto);
         }
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
+            var result = await categoryRepo.DeleteCategory(id);
+            if (result == null) { 
+                return BadRequest();
             }
-
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(result);
         }
 
-        private bool CategoryExists(int id)
-        {
-            return _context.Categories.Any(e => e.CategoryId == id);
-        }
+
     }
 }

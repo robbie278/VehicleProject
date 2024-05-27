@@ -2,7 +2,7 @@
 using System.Reflection;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
-using VehicleServer.Seeding;
+//using VehicleServer.Seeding;
 
 namespace VehicleServer
 {
@@ -17,7 +17,7 @@ namespace VehicleServer
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            Module3Sedding.Seed(modelBuilder);
+            //Module3Sedding.Seed(modelBuilder);
 
         }
 
@@ -25,6 +25,12 @@ namespace VehicleServer
         public DbSet<Item> Items { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<StoreKeeper> StoreKeepers { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<StockTransaction> StockTransactions { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        
+
 
     }
 }

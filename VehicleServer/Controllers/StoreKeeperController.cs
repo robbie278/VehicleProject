@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
+using VehicleServer.Repository;
 
 namespace VehicleServer.Controllers
 {
@@ -15,33 +16,27 @@ namespace VehicleServer.Controllers
     {
         private readonly ApplicationContext _context;
         private readonly IMapper _mapper;
+        private readonly StoreKeeperRepo _storeKeeperRepo;
 
-        public StoreKeepersController(ApplicationContext context, IMapper mapper)
+        public StoreKeepersController(ApplicationContext context, IMapper mapper, StoreKeeperRepo storeKeeperRepo)
         {
             _context = context;
             _mapper = mapper;
+            this._storeKeeperRepo = storeKeeperRepo;
         }
 
         // GET: api/StoreKeepers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<StoreKeeperDto>>> GetStoreKeepers()
         {
-            return await _context.StoreKeepers.
-                ProjectTo<StoreKeeperDto>(_mapper.ConfigurationProvider).ToListAsync();
+            return await _storeKeeperRepo.GetStoreKeepers();
         }
 
         // GET: api/StoreKeepers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<StoreKeeper>> GetStoreKeeper(int id)
         {
-            var storeKeeper = await _context.StoreKeepers.FindAsync(id);
-
-            if (storeKeeper == null)
-            {
-                return NotFound();
-            }
-
-            return storeKeeper;
+            return await _storeKeeperRepo.GetStoreKeeper(id);
         }
 
         // PUT: api/StoreKeepers/5
@@ -49,30 +44,8 @@ namespace VehicleServer.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeper storeKeeper)
         {
-            if (id != storeKeeper.StoreKeeperId)
-            {
-                return BadRequest();
-            }
+            return await _storeKeeperRepo.PutStoreKeeper(id,storeKeeper);
 
-            _context.Entry(storeKeeper).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StoreKeeperExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/StoreKeepers
@@ -80,33 +53,8 @@ namespace VehicleServer.Controllers
         [HttpPost]
         public async Task<ActionResult<StoreKeeperDto>> PostStoreKeeper(StoreKeeperDto storeKeeperDTO)
         {
-            var storeKeeper = _mapper.Map<StoreKeeper>(storeKeeperDTO);
-
-            _context.StoreKeepers.Add(storeKeeper);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetStoreKeeper", new { id = storeKeeper.StoreKeeperId }, storeKeeper);
+            return await _storeKeeperRepo.PostStoreKeeper(storeKeeperDTO);
         }
-
-        // DELETE: api/StoreKeepers/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStoreKeeper(int id)
-        {
-            var storeKeeper = await _context.StoreKeepers.FindAsync(id);
-            if (storeKeeper == null)
-            {
-                return NotFound();
-            }
-
-            _context.StoreKeepers.Remove(storeKeeper);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool StoreKeeperExists(int id)
-        {
-            return _context.StoreKeepers.Any(e => e.StoreKeeperId == id);
-        }
+       
     }
 }

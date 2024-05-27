@@ -9,6 +9,9 @@ import { EditStoreComponent } from './store/edit-store.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ItemComponent } from './item/item.component';
 import { ItemEditComponent } from './item/item-edit.component';
+import { IssueComponent } from './issue/issue.component';
+import { ReceiptComponent } from './receipt/receipt.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 const routes: Routes = [
   { path: 'storekeppers', component: StoreKeeperComponent },
@@ -22,9 +25,12 @@ const routes: Routes = [
   { path: 'category', component: CategoriesEditComponent },
   { path: 'items', component: ItemComponent },
   {path:'item/:id', component: ItemEditComponent},
-  {path:'item', component: ItemEditComponent}
+  {path:'item', component: ItemEditComponent},
+  // newly created route
+  {path:'issue', component: IssueComponent},
+  {path:'receipt', component: ReceiptComponent},
+  {path:'transaction', component: TransactionComponent},
 
-  
 ]
 
 

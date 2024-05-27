@@ -6,6 +6,7 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
+using VehicleServer.Repository;
 
 namespace VehicleServer.Controllers
 {
@@ -13,63 +14,32 @@ namespace VehicleServer.Controllers
     [ApiController]
     public class ItemsController : ControllerBase
     {
-        private readonly ApplicationContext _context;
-        private readonly IMapper _mapper;
+       
+        private readonly ItemRepo itemRepo;
 
-        public ItemsController(ApplicationContext context, IMapper mapper)
+        public ItemsController( ItemRepo itemRepo)
         {
-            _context = context;
-            _mapper = mapper;
+            
+            this.itemRepo = itemRepo;
         }      
         
             [HttpGet]
             public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems()
             {
-                return await _context.Items.
-                    ProjectTo<ItemDto>(_mapper.ConfigurationProvider).ToListAsync();
+                return await itemRepo.GetItems();
             }
-        
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {
-            var item = await _context.Items.FindAsync(id);
-
-            if (item == null)
-            {
-                return NotFound();
-            }
-
-            return item;
+            return await itemRepo.GetItem(id);
         }
         // PUT: api/Countries/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutItem(int id, Item item)
         {
-            if (id != item.ItemId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(item).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return await itemRepo.PutItem(id, item);
         }
 
 
@@ -78,31 +48,14 @@ namespace VehicleServer.Controllers
         [HttpPost]
         public async Task<ActionResult<ItemDto>> PostItem(ItemDto itemDto)
         {
-            var item = _mapper.Map<Item>(itemDto);
-
-            _context.Items.Add(item);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetItem", new { id = item.ItemId }, item);
+            return await itemRepo.PostItem(itemDto);
         }
         // DELETE: api/Countries/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
         {
-            var item = await _context.Items.FindAsync(id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-
-            _context.Items.Remove(item);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return await itemRepo.DeleteItem(id);
         }
-        private bool ItemExists(int id)
-        {
-            return _context.Items.Any(e => e.ItemId == id);
-        }
+
     }
 }

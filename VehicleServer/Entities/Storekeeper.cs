@@ -7,5 +7,8 @@
         public string? Email { get; set; }
         public int StoreId { get; set; }
         public Store? Store { get; set; }
+
+        public ICollection<StockTransaction> StockTransactions { get; set; }
+
     }
 }

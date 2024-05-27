@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './item.component.scss'
 })
 export class ItemComponent implements OnInit {
-  public displayedColumns: string[] = ['index', 'name', 'description', 'quantity','availability','categoryName', 'action'];
+  public displayedColumns: string[] = ['index', 'name', 'description','categoryName', 'action'];
  public items!:Item[];
 constructor(private itemService:ItemService,private http: HttpClient,
   private activatedRoute: ActivatedRoute,  

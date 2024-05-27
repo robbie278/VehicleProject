@@ -28,8 +28,6 @@ ngOnInit() {
   this.form = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    quantity: new FormControl('', Validators.required),
-    availability: new FormControl('', Validators.required),
     categoryId: new FormControl('', Validators.required)
   })
   this.loadData()
@@ -79,8 +77,6 @@ ngOnInit() {
         if(item){
           item.name = this.form.controls['name'].value
           item.description = this.form.controls['description'].value
-          item.quantity = this.form.controls['quantity'].value
-          item.availability = this.form.controls['availability'].value
           item.categoryId = this.form.controls['categoryId'].value
     
           if(this.id){

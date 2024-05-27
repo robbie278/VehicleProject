@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using VehicleServer;
+using VehicleServer.Entities;
 using VehicleServer.Profiles;
+using VehicleServer.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<ItemRepo>();
+builder.Services.AddScoped<CategoryRepo>();
+builder.Services.AddScoped<StockRepo>();
+builder.Services.AddScoped<TransactionRepo>();
+builder.Services.AddScoped<StoreRepo>();
+builder.Services.AddScoped<StoreKeeperRepo>();
+builder.Services.AddScoped<UserRepo>();
+
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(
