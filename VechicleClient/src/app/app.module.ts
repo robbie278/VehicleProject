@@ -25,6 +25,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { IssueComponent } from './issue/issue.component';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ItemModule } from './item-component/item.module';
+import { EndpointFactoryService } from './endpoint-factory/endpoint-factory.service';
 
 
 @NgModule({
@@ -42,7 +45,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     IssueComponent,
     ReceiptComponent,
     TransactionComponent,
-    
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +53,10 @@ import { TransactionComponent } from './transaction/transaction.component';
     AngularMaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ItemModule,
     ToastrModule.forRoot()
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [provideClientHydration(), provideAnimationsAsync(), EndpointFactoryService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

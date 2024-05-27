@@ -12,6 +12,7 @@ import { ItemEditComponent } from './item/item-edit.component';
 import { IssueComponent } from './issue/issue.component';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { ItemManagerComponent } from './item-component/item-manager/item-manager.component';
 
 const routes: Routes = [
   { path: 'storekeppers', component: StoreKeeperComponent },
@@ -24,13 +25,14 @@ const routes: Routes = [
   { path: 'category/:id', component: CategoriesEditComponent },
   { path: 'category', component: CategoriesEditComponent },
   { path: 'items', component: ItemComponent },
+  { path: 'items-2', component: ItemManagerComponent },
   {path:'item/:id', component: ItemEditComponent},
   {path:'item', component: ItemEditComponent},
   // newly created route
   {path:'issue', component: IssueComponent},
   {path:'receipt', component: ReceiptComponent},
   {path:'transaction', component: TransactionComponent},
-
+  
 ]
 
 

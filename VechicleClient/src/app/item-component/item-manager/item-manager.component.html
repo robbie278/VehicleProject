@@ -1,0 +1,4 @@
+<div class="item-management-container">
+  <button mat-raised-button color="primary" (click)="openEditDialog()">Add New Item</button>
+  <app-item-list [items]="items" (edit)="openEditDialog($event)" (delete)="deleteItem($event)"></app-item-list>
+</div>
