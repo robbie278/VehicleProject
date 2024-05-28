@@ -11,6 +11,10 @@ namespace VehicleServer.DTOs
         public int StoreKeeperId { get; set; }
         public string TransactionType { get; set; } // Issue or Receipt
         public int Quantity { get; set; }
+        public string? StoreName { get; set; }
+        public string? StoreKeeperName { get; set; }
+        public string? UserName { get; set; }
+        public string? ItemName { get; set; }
 
     }
 }

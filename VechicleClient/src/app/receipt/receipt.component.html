@@ -1,1 +1,74 @@
-<p>receipt works!</p>
+<div class="receipting">
+    <h1>{{title}}</h1>
+
+    <form [formGroup]="form"  (ngSubmit)="onSubmit()">
+        
+        <mat-form-field *ngIf="store">
+            <mat-label>Select a Store :</mat-label>
+            <mat-select id="storeId" formControlName="storeId">
+                <mat-option *ngFor="let store of store" [value]="store.storeId">
+                    {{store.name}}
+                </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf=" form.controls['storeId'].errors?.['required']">
+               Store is Required
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field *ngIf="item">
+            <mat-label>Select a item :</mat-label>
+            <mat-select id="itemId" formControlName="itemId">
+                <mat-option *ngFor="let item of item" [value]="item.itemId">
+                    {{item.name}}
+                </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf=" form.controls['itemId'].errors?.['required']">
+                Item is Required
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field *ngIf="storeKeeper">
+            <mat-label>Select a storeKeeper :</mat-label>
+            <mat-select id="storeKeeperId" formControlName="storeKeeperId">
+                <mat-option *ngFor="let storeKeeper of storeKeeper" [value]="storeKeeper.storeKeeperId">
+                    {{storeKeeper.name}}
+                </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf=" form.controls['storeKeeperId'].errors?.['required']">
+               storeKeeper is Required
+            </mat-error>
+
+        </mat-form-field>
+
+      
+        
+        <mat-form-field>
+            <mat-label>transactionType:</mat-label>
+            <input matInput formControlName="transactionType" required placeholder="transactionType" readonly>
+
+            <mat-error *ngIf=" form.controls['transactionType'].errors?.['required']">
+                transactionType is Required
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>quantity:</mat-label>
+            <input matInput formControlName="quantity" required placeholder="Type a quantity">
+
+            <mat-error *ngIf=" form.controls['quantity'].errors?.['required']">
+                quantity is Required
+            </mat-error>
+
+        </mat-form-field>
+        <div>
+            <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid">{{"Create"}}</button>
+            <button mat-stroked-button type="submit" color="secondary" [routerLink]="['']">Cancel</button>      
+          </div>
+    </form>
+</div>

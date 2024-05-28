@@ -42,7 +42,7 @@ class="mat-elevation-z8"
         <td mat-cell *matCellDef="let item">
             <button mat-stroked-button type="submit" color="primary" [routerLink]="['/item', item.itemId]">
                 <mat-icon>edit</mat-icon>
-                  
+
             </button>  
           
             <button mat-stroked-button type="submit" color="warn" (click)="onDelete()">

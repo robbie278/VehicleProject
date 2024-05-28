@@ -44,6 +44,7 @@ import { HomeComponent } from './home/home.component';
     ReceiptComponent,
     TransactionComponent,
     HomeComponent,
+    TransactionComponent
     
   ],
   imports: [
@@ -52,7 +53,7 @@ import { HomeComponent } from './home/home.component';
     AngularMaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

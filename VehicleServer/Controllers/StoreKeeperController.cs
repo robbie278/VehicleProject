@@ -11,7 +11,7 @@ namespace VehicleServer.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    
+
     public class StoreKeepersController : ControllerBase
     {
         private readonly ApplicationContext _context;
@@ -44,7 +44,7 @@ namespace VehicleServer.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeperDto storeKeeper)
         {
-            return await _storeKeeperRepo.PutStoreKeeper(id,storeKeeper);
+            return await _storeKeeperRepo.PutStoreKeeper(id, storeKeeper);
 
         }
 
