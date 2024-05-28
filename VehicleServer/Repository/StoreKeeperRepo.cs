@@ -15,7 +15,7 @@ namespace VehicleServer.Repository
         public StoreKeeperRepo(IMapper mapper, ApplicationContext context)
         {
             _mapper = mapper;
-            this._context = context;
+            _context = context;
         }
         public async Task<ActionResult<IEnumerable<StoreKeeperDto>>> GetStoreKeepers()
         {
@@ -23,8 +23,7 @@ namespace VehicleServer.Repository
                 ProjectTo<StoreKeeperDto>(_mapper.ConfigurationProvider).ToListAsync();
         }
 
-        // GET: api/StoreKeepers/5
-        [HttpGet("{id}")]
+        
         public async Task<ActionResult<StoreKeeper>> GetStoreKeeper(int id)
         {
             var storeKeeper = await _context.StoreKeepers.FindAsync(id);
@@ -37,10 +36,8 @@ namespace VehicleServer.Repository
             return storeKeeper;
         }
 
-        // PUT: api/StoreKeepers/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeper storeKeeper)
+       
+        public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeperDto storeKeeper)
         {
             if (id != storeKeeper.StoreKeeperId)
             {
@@ -68,9 +65,7 @@ namespace VehicleServer.Repository
             return null;
         }
 
-        // POST: api/StoreKeepers
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+       
         public async Task<ActionResult<StoreKeeperDto>> PostStoreKeeper(StoreKeeperDto storeKeeperDTO)
         {
             var storeKeeper = _mapper.Map<StoreKeeper>(storeKeeperDTO);
@@ -81,9 +76,8 @@ namespace VehicleServer.Repository
             return _mapper.Map<StoreKeeperDto>(storeKeeper);
         }
 
-        // DELETE: api/StoreKeepers/5
-        [HttpDelete("{id}")]
-        public async Task<int> DeleteStoreKeeper(int id)
+       
+        public async Task<ActionResult<bool>> DeleteStoreKeeper(int id)
         {
             var storeKeeper = await _context.StoreKeepers.FindAsync(id);
             if (storeKeeper == null)
@@ -92,8 +86,8 @@ namespace VehicleServer.Repository
             }
 
             _context.StoreKeepers.Remove(storeKeeper);
-            var result = await _context.SaveChangesAsync();
-            return result;
+             await _context.SaveChangesAsync();
+            return true;
         }
 
         private bool StoreKeeperExists(int id)

@@ -43,4 +43,6 @@ export class StoreKeeperService extends BaseService<StoreKeeper> {
     var url = this.getUrl('api/Store')
     return this.http.get<Store[]>(url)
   }
+
+  
 }

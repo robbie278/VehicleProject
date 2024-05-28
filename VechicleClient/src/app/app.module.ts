@@ -25,6 +25,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { IssueComponent } from './issue/issue.component';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     IssueComponent,
     ReceiptComponent,
     TransactionComponent,
+    HomeComponent,
     
   ],
   imports: [

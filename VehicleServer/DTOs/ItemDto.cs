@@ -1,5 +1,4 @@
-﻿using VehicleServer.Entities;
-
+﻿
 namespace VehicleServer.DTOs
 {
     public class ItemDto

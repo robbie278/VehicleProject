@@ -62,6 +62,7 @@ ngOnInit() {
         this.title = 'Add new Item'
        }
       }
+      
       loadCategories(){
         //fetch all categories from server
         this.itemService.getCategories().subscribe({

@@ -12,8 +12,11 @@ import { ItemEditComponent } from './item/item-edit.component';
 import { IssueComponent } from './issue/issue.component';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+
+  { path: '', component: HomeComponent },
   { path: 'storekeppers', component: StoreKeeperComponent },
   {path:'storeKeeper/:id', component: StoreKeeperEditComponent},
   {path:'storeKeeper', component: StoreKeeperEditComponent},

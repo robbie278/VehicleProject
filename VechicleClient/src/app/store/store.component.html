@@ -5,9 +5,11 @@
 
 <div class="py-5">
 
-    <button mat-button>
-        <a [routerLink]="['/storeEdit','0']"><mat-icon>add</mat-icon></a>
-    </button>
+    <!-- <button mat-button>
+        <a [routerLink]="['/storeEdit','0']"><mat-icon>add new store</mat-icon></a>
+    </button> -->
+    <button mat-flat-button color="primary" class="btn-add" *ngIf="stores" [routerLink]="['/storeEdit','0']"> Add a new Store</button>
+
     
 <table mat-table [dataSource]="stores" class="mat-elevation-z8" [hidden]="!stores">
 
@@ -21,7 +23,7 @@
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef >Name</th>
         <td mat-cell *matCellDef="let store">
-            <a [routerLink]="['/storeEdit', store.storeId]">{{store.name}}</a>
+            {{store.name}}
         </td>
     </ng-container>
 
