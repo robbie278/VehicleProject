@@ -212,7 +212,7 @@ namespace VehicleServer.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("VehicleServer.Entities.Item", b =>

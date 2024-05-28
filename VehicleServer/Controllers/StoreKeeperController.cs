@@ -11,7 +11,7 @@ namespace VehicleServer.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    
+
     public class StoreKeepersController : ControllerBase
     {
         private readonly ApplicationContext _context;
@@ -42,9 +42,9 @@ namespace VehicleServer.Controllers
         // PUT: api/StoreKeepers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeper storeKeeper)
+        public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeperDto storeKeeper)
         {
-            return await _storeKeeperRepo.PutStoreKeeper(id,storeKeeper);
+            return await _storeKeeperRepo.PutStoreKeeper(id, storeKeeper);
 
         }
 
@@ -55,6 +55,11 @@ namespace VehicleServer.Controllers
         {
             return await _storeKeeperRepo.PostStoreKeeper(storeKeeperDTO);
         }
-       
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<bool>> DeleteStoreKeeper(int id)
+        {
+            return await _storeKeeperRepo.DeleteStoreKeeper(id);
+        }
     }
 }

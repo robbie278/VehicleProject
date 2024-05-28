@@ -13,7 +13,7 @@
         public virtual Item? Items { get; set; }
         public virtual Store? Stores { get; set; }
         public virtual User? User { get; set; }
-        public virtual StoreKeeper StoreKeeper { get; set; }
+        public virtual StoreKeeper? StoreKeeper { get; set; }
 
     }
 

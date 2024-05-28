@@ -41,7 +41,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     EditStoreComponent,
     IssueComponent,
     ReceiptComponent,
-    TransactionComponent,
+    TransactionComponent
     
   ],
   imports: [
@@ -50,7 +50,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     AngularMaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

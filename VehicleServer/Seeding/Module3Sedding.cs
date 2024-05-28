@@ -11,7 +11,7 @@
 //        {
 //            //Seeding Category
 //            var bolo = new Category() { CategoryId = 1, Name = "Bolo" };
-//            var libery = new Category() { CategoryId = 2, Name = "Libery" };
+//            var libery = new Category() { CategoryId = 2, Name = "    " };
 //            var ticket = new Category() { CategoryId = 3, Name = "Ticket" };
 //            var licence = new Category() { CategoryId = 4, Name = "Licence" };
 

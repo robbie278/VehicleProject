@@ -1,54 +1,66 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\VehicleProject\\VehicleServer\\",
+  "WorkspaceRootPath": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\entities\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\dtos\\stocktransactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\stocktransactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\dtos\\storedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\dtos\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\dtos\\storekeeperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\storekeeperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\dtos\\storedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\storedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\transactionrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\transactionrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\dtos\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\entities\\stocktransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\stocktransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\categoryrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\categoryrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\seeding\\module3sedding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:seeding\\module3sedding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\itemrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\itemrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Migrations\\20240528101931_intiall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240528101931_intiall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\stockrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\stockrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\entities\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\entities\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\repository\\storekeeperrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\storekeeperrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\rgat\\world 1\\vehicleproject\\vehicleserver\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\userrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\userrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,179 +70,188 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 11,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Store.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Entities\\Store.cs",
-              "RelativeDocumentMoniker": "Entities\\Store.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Entities\\Store.cs",
-              "RelativeToolTip": "Entities\\Store.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABDAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T09:10:37.66Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StoreDto.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\StoreDto.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreDto.cs",
-              "RelativeToolTip": "DTOs\\StoreDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "CategoryDto.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\CategoryDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\CategoryDto.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\CategoryDto.cs",
+              "RelativeToolTip": "DTOs\\CategoryDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T09:10:32.571Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T12:32:24.909Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TransactionRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\TransactionRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\TransactionRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\TransactionRepo.cs",
-              "RelativeToolTip": "Repository\\TransactionRepo.cs",
-              "ViewState": "AQIAAFIAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Title": "StoreKeeperDto.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\StoreKeeperDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\StoreKeeperDto.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\StoreKeeperDto.cs",
+              "RelativeToolTip": "DTOs\\StoreKeeperDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T08:05:17.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T12:30:01.549Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CategoriesController.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Controllers\\CategoriesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\CategoriesController.cs",
-              "RelativeToolTip": "Controllers\\CategoriesController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "StoreDto.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\StoreDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\StoreDto.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\StoreDto.cs",
+              "RelativeToolTip": "DTOs\\StoreDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T08:00:39.947Z",
+              "WhenOpened": "2024-05-28T12:29:47.198Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Module3Sedding.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Seeding\\Module3Sedding.cs",
+              "RelativeDocumentMoniker": "Seeding\\Module3Sedding.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Seeding\\Module3Sedding.cs",
+              "RelativeToolTip": "Seeding\\Module3Sedding.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAGMAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T10:33:13.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Entities\\Item.cs",
+              "RelativeDocumentMoniker": "Entities\\Item.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Entities\\Item.cs",
+              "RelativeToolTip": "Entities\\Item.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAA1wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T10:20:27.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Store.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Entities\\Store.cs",
+              "RelativeDocumentMoniker": "Entities\\Store.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Entities\\Store.cs",
+              "RelativeToolTip": "Entities\\Store.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T10:20:21.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20240528101931_intiall.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Migrations\\20240528101931_intiall.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240528101931_intiall.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Migrations\\20240528101931_intiall.cs",
+              "RelativeToolTip": "Migrations\\20240528101931_intiall.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwCsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T10:19:33.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-28T10:01:48.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "StoreKeeperRepo.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Repository\\StoreKeeperRepo.cs",
+              "RelativeDocumentMoniker": "Repository\\StoreKeeperRepo.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Repository\\StoreKeeperRepo.cs",
+              "RelativeToolTip": "Repository\\StoreKeeperRepo.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAAwGEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T09:59:23.403Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "StoreKeeperController.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StoreKeeperController.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs",
+              "RelativeToolTip": "Controllers\\StoreKeeperController.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAqwEAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T09:57:58.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Entities\\User.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Entities\\User.cs",
+              "RelativeToolTip": "Entities\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T09:56:18.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StockTransactionDto.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\StockTransactionDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\StockTransactionDto.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\StockTransactionDto.cs",
+              "RelativeToolTip": "DTOs\\StockTransactionDto.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAgwA0AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T09:54:03.57Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "CategoryRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\CategoryRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\CategoryRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\CategoryRepo.cs",
-              "RelativeToolTip": "Repository\\CategoryRepo.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "ItemDto.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\ItemDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ItemDto.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\DTOs\\ItemDto.cs",
+              "RelativeToolTip": "DTOs\\ItemDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T07:56:47.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "StockRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\StockRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\StockRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\StockRepo.cs",
-              "RelativeToolTip": "Repository\\StockRepo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T07:56:11.875Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T07:55:05.894Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T07:50:08.746Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ApplicationContext.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\ApplicationContext.cs",
-              "RelativeDocumentMoniker": "ApplicationContext.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\ApplicationContext.cs",
-              "RelativeToolTip": "ApplicationContext.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAADwvxwAAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T07:49:21.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T09:53:10.558Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ItemRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\ItemRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\ItemRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\ItemRepo.cs",
-              "RelativeToolTip": "Repository\\ItemRepo.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAAAAsAAAApAAAA",
+              "Title": "StockTransaction.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Entities\\StockTransaction.cs",
+              "RelativeDocumentMoniker": "Entities\\StockTransaction.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Entities\\StockTransaction.cs",
+              "RelativeToolTip": "Entities\\StockTransaction.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAIwAYAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T07:26:25.771Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T07:55:26.508Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UserRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\UserRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\UserRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\UserRepo.cs",
-              "RelativeToolTip": "Repository\\UserRepo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAArAAAA",
+              "DocumentIndex": 14,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Rgat\\world 1\\VehicleProject\\VehicleServer\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T07:45:41.66Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "StockTransactionController.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StockTransactionController.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
-              "RelativeToolTip": "Controllers\\StockTransactionController.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T07:17:26.449Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T06:26:34.52Z"
             }
           ]
         }
