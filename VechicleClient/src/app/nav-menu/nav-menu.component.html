@@ -1,28 +1,44 @@
-<header>
-  <mat-toolbar color="primary">
-    <button mat-icon-button [routerLink]="['/']">
-      <mat-icon> home </mat-icon>
-    </button>
-    <a mat-flat-button color="primary" [routerLink]="['/categories']">
-      Category
-    </a>
-
-    <a mat-flat-button color="primary" [routerLink]="['/items']"> Items </a>
-
-    <a mat-flat-button color="primary" [routerLink]="['/store']"> Stores </a>
-
-    <a mat-flat-button color="primary" [routerLink]="['/storekeppers']">
-      Store keeper
-    </a>
-    <a mat-flat-button color="primary" [routerLink]="['/issue']">
-      Issue
-    </a>
-    <a mat-flat-button color="primary" [routerLink]="['/receipt']">
-      Receipt
-    </a>
-    <a mat-flat-button color="primary" [routerLink]="['/transaction']">
-      Transaction
-    </a>
-  </mat-toolbar>
-</header>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="isSidenavOpen">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="/categories">Categories</a>
+      <a mat-list-item routerLink="/items">Items</a>
+      <a mat-list-item routerLink="/store">Stores</a>
+      <a mat-list-item routerLink="/storekeepers">Store Keepers</a>
+      <a mat-list-item routerLink="/issue">Issue</a>
+      <a mat-list-item routerLink="/receipt">Receipt</a>
+      <a mat-list-item routerLink="/transaction">Transaction</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <header>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="toggleSidenav()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <mat-select class="language-select" placeholder="Language" [(value)]="selectedLanguage">
+          <mat-option value="en">English</mat-option>
+          <mat-option value="fr">French</mat-option>
+          <mat-option value="es">Spanish</mat-option>
+        </mat-select>
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-menu-trigger">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #profileMenu="matMenu">
+          <button mat-menu-item [routerLink]="['/profile']">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar>
+    </header>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
        
