@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
 
@@ -22,11 +25,28 @@ namespace VehicleServer.Repository
 
         public async Task<ActionResult<IEnumerable<StockTransactionDto>>> GetStockTransactions()
         {
-            var StockTransactions = await _context.StockTransactions.ToListAsync();
 
-            var StockTransactionDtos = _mapper.Map<List<StockTransactionDto>>(StockTransactions);
 
-            return StockTransactionDtos;
+            var StockTransactions = _context.StockTransactions.Select(c => new StockTransactionDto()
+            {
+                TransactionId = c.TransactionId,
+                TransactionType = c.TransactionType,
+                Quantity = c.Quantity,
+                ItemId = c.Items!.ItemId,
+                ItemName = c.Items!.Name,
+                StoreId = c.Stores!.StoreId,
+                StoreName = c.Stores!.Name,
+                StoreKeeperId = c.StoreKeeper!.StoreKeeperId,
+                StoreKeeperName = c.StoreKeeper!.Name,
+                UserId = c.User!.UserId,
+                UserName = c.User!.UserName,
+
+
+
+            });
+              
+
+            return await StockTransactions.ToListAsync();
         }
 
 

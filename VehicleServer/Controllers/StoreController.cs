@@ -39,7 +39,7 @@ public class StoreController : ControllerBase
 
     // PUT: api/Store/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutStore(int id, StoreDto storeDto)
+    public async Task<ActionResult<Boolean>> PutStore(int id, StoreDto storeDto)
     {
         return await _storeRepo.PutStore(id, storeDto);
     }
@@ -53,7 +53,7 @@ public class StoreController : ControllerBase
 
     // DELETE: api/Store/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteStore(int id)
+    public async Task<ActionResult<int>> DeleteStore(int id)
     {
         return await _storeRepo.DeleteStore(id);
     }

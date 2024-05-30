@@ -86,7 +86,7 @@ constructor(private storeKeeperService: StoreKeeperService,
 
       if(this.id){
         //Edit Mode
-
+console.log(this.id);
         this.storeKeeperService.put(storeKepper).subscribe({
           next: ()=>{
             this.toastr.info("StoreKeeper Updated Successfully")

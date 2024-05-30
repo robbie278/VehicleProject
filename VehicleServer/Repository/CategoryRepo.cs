@@ -82,18 +82,18 @@ namespace VehicleServer.Repository
             return mapper.Map<CategoryDto>(category);
         }
 
-        public async Task<ActionResult<bool>> DeleteCategory(int id)
-        {
-            var item = await _context.Items.FindAsync(id);
-            if (item == null)
+        public async Task<ActionResult<int>> DeleteCategory(int id)
             {
-                return false;
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
+            {
+                return 0;
             }
 
-            _context.Items.Remove(item);
-            await _context.SaveChangesAsync();
+            _context.Categories.Remove(category);
+            return await _context.SaveChangesAsync();
 
-            return true;
+             
         }
 
         // just chaking the catagory exists before submiting

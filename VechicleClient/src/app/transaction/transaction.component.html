@@ -1,77 +1,78 @@
-<h1>Transactions</h1>
-<p *ngIf="!transactions"><em>Loading...</em></p>
-<table mat-table [dataSource]="transactions" class="mat-elevation-z8"
-[hidden]="!transactions">>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Transactions</mat-card-title>
+      <mat-card-subtitle>Transactions</mat-card-subtitle>
 
-<!-- Id Column -->
-<ng-container matColumnDef="index">
-    <th mat-header-cell *matHeaderCellDef  >No</th>
-    <td mat-cell *matCellDef="let transactions; let i = index;">{{i+1}}</td>
-  </ng-container>
-<!-- Name Column -->
-<ng-container matColumnDef="transactionType">
-<th mat-header-cell *matHeaderCellDef>transactionType</th>
-<td mat-cell *matCellDef="let transaction">{{transaction.transactionType}}</td>
-</ng-container>
-<ng-container matColumnDef="itemName">
-    <th mat-header-cell *matHeaderCellDef>itemName</th>
-    <td mat-cell *matCellDef="let transaction">{{transaction.itemName}}</td>
-    </ng-container>
-
-<ng-container matColumnDef="storeName">
-    <th mat-header-cell *matHeaderCellDef>storeName</th>
-    <td mat-cell *matCellDef="let transaction">{{transaction.storeName}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="storeKeeperName">
-        <th mat-header-cell *matHeaderCellDef>storeKeeperName</th>
-        <td mat-cell *matCellDef="let transaction">{{transaction.storeKeeperName}}</td>
+    </mat-card-header>
+    <mat-card-content>
+      <p *ngIf="!transactions"><em>Loading...</em></p>
+      <table mat-table [dataSource]="transactions" class="mat-elevation-z8" >
+        <!-- Id Column -->
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>No</th>
+          <td mat-cell *matCellDef="let transactions; let i = index;">{{i + 1}}</td>
+        </ng-container>
+  
+        <!-- Transaction Type Column -->
+        <ng-container matColumnDef="transactionType">
+          <th mat-header-cell *matHeaderCellDef>Transaction Type</th>
+          <td mat-cell *matCellDef="let transaction" [ngClass]="{'issue-transaction': transaction.transactionType === 'Issue', 'receipt-transaction': transaction.transactionType === 'Receipt'}">
+            <mat-icon *ngIf="transaction.transactionType === 'Receipt'" class="receipt-icon" aria-hidden="true">arrow_downward</mat-icon>
+            <mat-icon *ngIf="transaction.transactionType === 'Issue'" class="issue-icon" aria-hidden="true">arrow_upward</mat-icon>
+            {{transaction.transactionType}}
+          </td>
+        </ng-container>
+  
+        <!-- Item Name Column -->
+        <ng-container matColumnDef="itemName">
+          <th mat-header-cell *matHeaderCellDef>Item Name</th>
+          <td mat-cell *matCellDef="let transaction">{{transaction.itemName}}</td>
+        </ng-container>
+  
+        <!-- Store Name Column -->
+        <ng-container matColumnDef="storeName">
+          <th mat-header-cell *matHeaderCellDef>Store Name</th>
+          <td mat-cell *matCellDef="let transaction">{{transaction.storeName}}</td>
+        </ng-container>
+  
+        <!-- Store Keeper Name Column -->
+        <ng-container matColumnDef="storeKeeperName">
+          <th mat-header-cell *matHeaderCellDef>Store Keeper Name</th>
+          <td mat-cell *matCellDef="let transaction">{{transaction.storeKeeperName}}</td>
+        </ng-container>
+  
+        <!-- User Name Column -->
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef>User Name</th>
+          <td mat-cell *matCellDef="let transaction">{{transaction.userName}}</td>
+        </ng-container>
+  
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef>Quantity</th>
+          <td mat-cell *matCellDef="let transaction">{{transaction.quantity}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="userName">
-            <th mat-header-cell *matHeaderCellDef>userName</th>
-            <td mat-cell *matCellDef="let transaction">{{transaction.userName}}</td>
-            </ng-container>
-            
-            <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef>Actions</th>
-              
-                <td mat-cell *matCellDef="let transaction">
-                    <button mat-stroked-button type="submit" color="primary" [routerLink]="['/transaction', transaction.transactionId]">
-                        <mat-icon>edit</mat-icon>
-        
-                    </button>  
-                  
-                    <button mat-stroked-button type="submit" color="warn" (click)="onDelete()">
-                        <mat-icon>delete</mat-icon>
-                    </button>      
-                 
-                </td>
-            </ng-container>
-
-<ng-container matColumnDef="quantity">
-<th mat-header-cell *matHeaderCellDef>quantity</th>
-<td mat-cell *matCellDef="let transaction">{{transaction.quantity}}</td>
-</ng-container> 
-
-<!-- <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let transaction">
-            <button mat-stroked-button type="submit" color="primary" [routerLink]="['/transaction', transactions.transactionId]">
-                edit
-                  
-            </button>  
-          
+        <!-- Actions Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let transaction">
+            <button mat-stroked-button type="submit" color="primary" [routerLink]="['/transaction', transaction.transactionId]">
+              <mat-icon>edit</mat-icon>
+            </button>
             <button mat-stroked-button type="submit" color="warn" (click)="onDelete()">
-                 delete
-            </button>      
-         
-        </td>
-    </ng-container>
-  -->
-<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-<!-- Pagination directive -->
-
-
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+    
+  </mat-card>
+  
+    <mat-paginator [hidden]="!transactions" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+  

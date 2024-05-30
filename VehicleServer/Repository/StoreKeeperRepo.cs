@@ -37,7 +37,7 @@ namespace VehicleServer.Repository
         }
 
        
-        public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeperDto storeKeeper)
+        public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeper storeKeeper)
         {
             if (id != storeKeeper.StoreKeeperId)
             {

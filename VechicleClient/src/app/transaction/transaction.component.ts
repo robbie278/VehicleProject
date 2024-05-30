@@ -11,7 +11,7 @@ import { Transaction } from '../Models/Transaction';
   styleUrl: './transaction.component.scss'
 })
 export class TransactionComponent implements OnInit {
-  public displayedColumns: string[] = ['index', 'quantity','transactionType', 'itemName','storeName','userName','storeKeeperName','action'];
+  public displayedColumns: string[] = ['index','transactionType', 'itemName','storeName','userName','storeKeeperName','quantity','action'];
  public transactions!:Transaction[];
 constructor(private transactionService:TransactionService,private http: HttpClient,
   private activatedRoute: ActivatedRoute,  
@@ -27,6 +27,7 @@ ngOnInit() {
 
    next: (result) => {
     this.transactions = result
+    console.log(result);
    },
    error: (error) => console.log(error)
    });

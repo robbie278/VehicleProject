@@ -19,17 +19,17 @@ namespace VehicleServer.Configuration
             builder.HasOne(y => y.Stores)
            .WithMany(y => y.StocksTransactions)
            .HasForeignKey(y => y.StoreId)
-           .OnDelete(DeleteBehavior.NoAction);
+           .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(y => y.StoreKeeper)
            .WithMany(y => y.StockTransactions)
            .HasForeignKey(y => y.StoreKeeperId)
-           .OnDelete(DeleteBehavior.NoAction);
+           .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(y => y.Items)
          .WithMany(y => y.StockTransactions)
          .HasForeignKey(y => y.ItemId)
-         .OnDelete(DeleteBehavior.NoAction);
+         .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

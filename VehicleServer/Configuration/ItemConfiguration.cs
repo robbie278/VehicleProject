@@ -16,7 +16,9 @@ namespace VehicleServer.Configuration
             builder.Property(p => p.Description).HasMaxLength(200);
             builder.HasOne(y => y.Category)
             .WithMany(y => y.Items)
-            .HasForeignKey(y => y.CategoryId);
+            .HasForeignKey(y => y.CategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

@@ -42,7 +42,7 @@ namespace VehicleServer.Controllers
         // PUT: api/StoreKeepers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeperDto storeKeeper)
+        public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeper storeKeeper)
         {
             return await _storeKeeperRepo.PutStoreKeeper(id, storeKeeper);
 

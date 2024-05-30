@@ -137,7 +137,7 @@ export class EditStoreComponent implements OnInit {
               this.toastr.success('Store updated successfully!', 'Success');
 
               // go back to cities view
-              this.router.navigate(['/stores']);
+              this.router.navigate(['/store']);
             },
             error: (error) => console.error(error)
           });

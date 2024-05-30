@@ -1,23 +1,23 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using VehicleServer.DTOs;
+using VehicleServer.Entities;
 using VehicleServer.Repository;
+using VehicleServer.Services;
 
 namespace VehicleServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StockTransactionController
+    public class StockTransactionController : ControllerBase
     {
-        private readonly ApplicationContext _context;
-        private readonly IMapper _mapper;
+        private readonly StockService _stockService;
         private readonly TransactionRepo _StockTransactionRepo;
 
-        public StockTransactionController(ApplicationContext context, IMapper mapper, TransactionRepo StockTransactionRepo)
+        public StockTransactionController(StockService stockService, TransactionRepo StockTransactionRepo)
         {
-            _context = context;
-            _mapper = mapper;
-            this._StockTransactionRepo = StockTransactionRepo;
+            _stockService = stockService;
+            _StockTransactionRepo = StockTransactionRepo;
         }
 
         [HttpGet]
@@ -42,10 +42,13 @@ namespace VehicleServer.Controllers
         }
 
         // POST: api/StockTransaction
+       
+
         [HttpPost]
-        public async Task<ActionResult<StockTransactionDto>> PostStockTransaction(StockTransactionDto StockTransactionDto)
+        public async Task<IActionResult> PostStockTransaction(StockTransaction transaction)
         {
-            return await _StockTransactionRepo.PostStockTransaction(StockTransactionDto);
+            await _stockService.HandleStockTransaction(transaction);
+            return Ok();
         }
 
         // DELETE: api/StockTransaction/5

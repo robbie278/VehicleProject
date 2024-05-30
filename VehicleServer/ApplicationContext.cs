@@ -11,11 +11,7 @@ namespace VehicleServer
         public ApplicationContext(DbContextOptions options) : base(options)
         {
         }
-        //protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
-        //{
-        //    configurationBuilder.Properties<DateTime>().HaveColumnType("Date");
-        //    //onfigurationBuilder.Properties<string>().HaveMaxLength(50);
-        //}
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -31,7 +27,8 @@ namespace VehicleServer
         public DbSet<StoreKeeper> StoreKeepers { get; set; }
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<StockTransaction> StockTransactions { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
+
 
         
 

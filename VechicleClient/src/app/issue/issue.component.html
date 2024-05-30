@@ -77,6 +77,10 @@
                 quantity is Required
             </mat-error>
 
+            <mat-error *ngIf="form.controls['quantity'].errors?.['pattern']">
+                Quantity must be a number
+            </mat-error>
+
         </mat-form-field>
    
         

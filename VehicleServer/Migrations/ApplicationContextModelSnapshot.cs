@@ -220,7 +220,7 @@ namespace VehicleServer.Migrations
                     b.HasOne("VehicleServer.Entities.Category", "Category")
                         .WithMany("Items")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -231,13 +231,13 @@ namespace VehicleServer.Migrations
                     b.HasOne("VehicleServer.Entities.Item", "Items")
                         .WithMany("Stock")
                         .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("VehicleServer.Entities.Store", "Stores")
                         .WithMany("Stock")
                         .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Items");
@@ -256,13 +256,13 @@ namespace VehicleServer.Migrations
                     b.HasOne("VehicleServer.Entities.Store", "Stores")
                         .WithMany("StocksTransactions")
                         .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("VehicleServer.Entities.StoreKeeper", "StoreKeeper")
                         .WithMany("StockTransactions")
                         .HasForeignKey("StoreKeeperId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("VehicleServer.Entities.User", "User")

@@ -65,6 +65,10 @@
                 quantity is Required
             </mat-error>
 
+            <mat-error *ngIf="form.controls['quantity'].errors?.['pattern']">
+                Quantity must be a number
+            </mat-error>
+
         </mat-form-field>
         <div>
             <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid">{{"Create"}}</button>

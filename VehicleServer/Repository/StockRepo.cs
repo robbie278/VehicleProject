@@ -17,13 +17,25 @@ namespace VehicleServer.Repository
             this._mapper = mapper;
         }
 
-        public async Task<ActionResult<IEnumerable<StockDto>>> GetStocks()
+       
+
+        public async Task<IEnumerable<StockDto>> GetStocks()
         {
-            var Stocks = await _context.Stocks.ToListAsync();
+            var Stock = _context.Stocks.Select(c => new StockDto()
+            {
+                StockId = c.StockId,
+                QuantityInStock = c.QuantityInStock,
+                ItemId = c.Items!.ItemId,
+                ItemName = c.Items!.Name,
+                StoreId = c.Stores!.StoreId,
+                StoreName = c.Stores!.Name,
+                LastUpdatedDate = c.LastUpdatedDate
 
-            var StockDtos = _mapper.Map<List<StockDto>>(Stocks);
 
-            return StockDtos;
+
+            });
+
+            return await Stock.ToListAsync();
         }
 
 

@@ -29,8 +29,7 @@ namespace VehicleServer.Repository
 
 
 
-        // GET: api/Store/5
-        [HttpGet("{id}")]
+       
         public async Task<ActionResult<StoreDto>> GetStore(int id)
         {
             var store = await _context.Stores.FindAsync(id);
@@ -43,9 +42,9 @@ namespace VehicleServer.Repository
             return _mapper.Map<StoreDto>(store);
         }
 
-        // PUT: api/Store/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStore(int id, StoreDto storeDto)
+     
+        
+        public async Task<ActionResult<Boolean>> PutStore(int id, StoreDto storeDto)
         {
             if (id != storeDto.StoreId)
             {
@@ -71,7 +70,7 @@ namespace VehicleServer.Repository
                 }
             }
 
-            return null;
+            return true;
         }
 
         // POST: api/Store
@@ -88,7 +87,7 @@ namespace VehicleServer.Repository
 
         // DELETE: api/Store/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStore(int id)
+        public async Task<ActionResult<int>> DeleteStore(int id)
         {
             var store = await _context.Stores.FindAsync(id);
             if (store == null)
@@ -97,9 +96,9 @@ namespace VehicleServer.Repository
             }
 
             _context.Stores.Remove(store);
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
 
-            return null;
+            
         }
 
         private bool StoreExists(int id)

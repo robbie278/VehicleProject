@@ -25,7 +25,9 @@ namespace VehicleServer.Profiles
             CreateMap<Store, StoreDto>();
 
             CreateMap<Stock, StockDto>().ReverseMap();
-            CreateMap<StockTransaction, StockTransactionDto>().ReverseMap();
+
+            CreateMap<StockTransaction, StockTransactionDto>();
+            CreateMap<StockTransactionDto, StockTransaction>();
         }
     }
 }

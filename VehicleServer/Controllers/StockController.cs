@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using VehicleServer.DTOs;
+using VehicleServer.Entities;
 using VehicleServer.Repository;
+using VehicleServer.Services;
 
 namespace VehicleServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StockController
+    public class StockController : ControllerBase
     {
         private readonly ApplicationContext _context;
         private readonly IMapper _mapper;
@@ -20,9 +22,10 @@ namespace VehicleServer.Controllers
             this._StockRepo = StockRepo;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StockDto>>> GetStocks()
+        public async Task<ActionResult<IEnumerable<Stock>>> GetStocks()
         {
-            return await _StockRepo.GetStocks();
+            var stockReport = await _StockRepo.GetStocks();
+            return Ok(stockReport);
         }
 
 

@@ -1,59 +1,61 @@
-<!-- <mat-form-field [hidden]="!stores">
-    <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
-           placeholder="Filter by name (or part of it)...">
-</mat-form-field> -->
 
-<div class="py-5">
+<mat-card>
+    <mat-card-header >
+        <mat-card-title>Stores</mat-card-title>
+        <mat-card-subtitle>Stores</mat-card-subtitle>
 
-    <!-- <button mat-button>
-        <a [routerLink]="['/storeEdit','0']"><mat-icon>add new store</mat-icon></a>
-    </button> -->
-    <button mat-flat-button color="primary" class="btn-add" *ngIf="stores" [routerLink]="['/storeEdit','0']"> Add a new Store</button>
+      </mat-card-header>
+      <mat-card-content>
+        <button mat-flat-button color="primary" class="btn-add" *ngIf="stores" [routerLink]="['/storeEdit','0']"> Add a new Store</button>
+        <p *ngIf="!stores"><em>Loading...</em></p>
 
     
-<table mat-table [dataSource]="stores" class="mat-elevation-z8" [hidden]="!stores">
+        <table mat-table [dataSource]="stores" class="mat-elevation-z8" >
+        
+            <!-- Id Column -->
+            <ng-container matColumnDef="storeId">
+                <th mat-header-cell *matHeaderCellDef >ID</th>
+                <td mat-cell *matCellDef="let store">{{store.storeId}}</td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef >Name</th>
+                <td mat-cell *matCellDef="let store">
+                    {{store.name}}
+                </td>
+            </ng-container>
+        
+            <!-- Lat Column -->
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef >Address</th>
+                <td mat-cell *matCellDef="let store">{{store.address}}</td>
+            </ng-container>
+        
+            <!-- Lon Column -->
+            <ng-container matColumnDef="Store Keeper">
+                <th mat-header-cell *matHeaderCellDef >Actions</th>
+                <td mat-cell *matCellDef="let store">
+                    <button mat-button>
+                        
+                        <a [routerLink]="['/storeEdit', store.storeId]"><mat-icon>edit</mat-icon></a>
+                    </button>
+                    <button (click)="deleteStore(store)" mat-button>
+                       
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+        
+        
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+    
+</mat-card>
 
-    <!-- Id Column -->
-    <ng-container matColumnDef="storeId">
-        <th mat-header-cell *matHeaderCellDef >ID</th>
-        <td mat-cell *matCellDef="let store">{{store.storeId}}</td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef >Name</th>
-        <td mat-cell *matCellDef="let store">
-            {{store.name}}
-        </td>
-    </ng-container>
-
-    <!-- Lat Column -->
-    <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef >Address</th>
-        <td mat-cell *matCellDef="let store">{{store.address}}</td>
-    </ng-container>
-
-    <!-- Lon Column -->
-    <ng-container matColumnDef="Store Keeper">
-        <th mat-header-cell *matHeaderCellDef >Actions</th>
-        <td mat-cell *matCellDef="let store">
-            <button mat-button>
-                
-                <a [routerLink]="['/storeEdit', store.storeId]"><mat-icon>edit</mat-icon></a>
-            </button>
-            <button (click)="deleteStore(store)" mat-button>
-               
-                <mat-icon>delete</mat-icon>
-            </button>
-        </td>
-    </ng-container>
-
-
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</div>
+<mat-paginator [hidden]="!stores" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
 
 <!-- Pagination directive -->
-<mat-paginator [hidden]="!stores" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>

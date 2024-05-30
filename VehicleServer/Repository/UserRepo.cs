@@ -19,7 +19,7 @@ namespace VehicleServer.Repository
 
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            var user = await _context.User.ToListAsync();
+            var user = await _context.Users.ToListAsync();
 
 
             return user;

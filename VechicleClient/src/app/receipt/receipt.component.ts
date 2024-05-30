@@ -37,7 +37,7 @@ export class ReceiptComponent  implements OnInit  {
       storeId: new FormControl('', Validators.required),
       storeKeeperId: new FormControl('', Validators.required),
       transactionType: new FormControl('Receipt', Validators.required),
-      quantity: new FormControl('', Validators.required)
+      quantity: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)])
     })
     this.loadData()
   }

@@ -35,18 +35,16 @@ ngOnInit() {
    });
    }
 
-   onDelete(){
-    // retrieve the ID from the 'id' parameter 
-var idParam = this.activatedRoute.snapshot.paramMap.get('id')
-var id = idParam ? +idParam : 0
-
+   onDelete(id:number){
+  
+console.log(id + "heeeeee");
 if(confirm("Are you sure to delete this Item")){
 
 this.itemService.delete(id).subscribe({
  next: () => {
    this.toastr.error("Item Deleted Successfully")
-   this.router.navigate(['/items'])
- },
+   location.reload()
+   },
  error: (err) => console.log(err)
 })
 }

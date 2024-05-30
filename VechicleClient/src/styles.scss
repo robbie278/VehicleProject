@@ -2,6 +2,9 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 // @import '@angular/material/theming';
 // @import '~material-design-icons/iconfont/material-icons.css';
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
@@ -42,6 +45,9 @@ $warn: mat.define-palette(mat.$red-palette, 600);
 $theme: mat.define-light-theme($primary, $accent, $warn);
 
 @include mat.all-component-themes($theme);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .bg-primary {
   background-color:  mat.get-color-from-palette($primary) !important;

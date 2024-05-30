@@ -88,6 +88,7 @@ ngOnInit() {
                 this.toastr.info("Item Updated Successfully")
                   //go back to storeKepper view
                   this.router.navigate(['/items'])
+
               },
               error: err => console.log(err)
             })
@@ -112,13 +113,13 @@ ngOnInit() {
  var id = idParam ? +idParam : 0
  
  if(confirm("Are you sure to delete this Item")){
-
+  console.log(id + "heeeeeee");
    this.itemService.delete(id).subscribe({
      next: () => {
        this.toastr.error("Item Deleted Successfully")
        this.router.navigate(['/items'])
      },
-     error: (err) => console.log(err)
+     error: (err) => console.log(err + id +"heeeeee")
    })
  }
  }

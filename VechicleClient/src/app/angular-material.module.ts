@@ -12,6 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -31,6 +32,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     MatListModule,
     MatMenuModule,
     MatDialogModule,
+    MatCardModule,
 
   ],
   exports: [
@@ -47,6 +49,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     MatListModule,
     MatMenuModule,
     MatDialogModule,
+    MatCardModule
 
   ],
 })

@@ -34,6 +34,7 @@ export class StoreComponent implements OnInit {
     this.http.delete(url).subscribe({
       next: () => {
        this.toastr.success('yay! deleted')
+       location.reload()
       }
     })
   }

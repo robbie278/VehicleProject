@@ -12,6 +12,8 @@ namespace VehicleServer.Configuration
             builder.Property(p => p.Name).HasMaxLength(15).IsRequired();
             builder.HasKey(p => p.CategoryId);
             builder.Property(p => p.Description).HasMaxLength(200);
+           
+
 
         }
     }

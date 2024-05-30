@@ -38,7 +38,7 @@ export class IssueComponent  implements OnInit  {
       userId: new FormControl('', Validators.required),
       storeKeeperId: new FormControl('', Validators.required),
       transactionType: new FormControl('Issue', Validators.required),
-      quantity: new FormControl('', Validators.required)
+      quantity: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)])
     })
     this.loadData()
   }
