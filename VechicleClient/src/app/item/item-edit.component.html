@@ -1,47 +1,37 @@
-<div class="item-Edit">
-    <h1>{{title}}</h1>
-    <p *ngIf="id && !item"> <em>Loading...</em></p> 
 
-    <form [formGroup]="form"  (ngSubmit)="onSubmit()">
-        
-        <mat-form-field>
-            <mat-label>Name:</mat-label>
-            <input matInput formControlName="name" required placeholder="Type a name">
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Name:</mat-label>
+        <input matInput formControlName="name" required placeholder="Type a name">
+        <mat-error *ngIf=" form.controls['name'].errors?.['required']">
+          Name is Required
+        </mat-error>
+    </mat-form-field>
 
-            <mat-error *ngIf=" form.controls['name'].errors?.['required']">
-              Name is Required
-            </mat-error>
-
-        </mat-form-field>
-
-        <mat-form-field>
+    <mat-form-field>
             <mat-label>Description:</mat-label>
             <input matInput formControlName="description" required placeholder="Type a description">
-
             <mat-error *ngIf=" form.controls['description'].errors?.['required']">
                 Description is Required
             </mat-error>
+     </mat-form-field>
 
-        </mat-form-field>
-   
-        
-        <mat-form-field *ngIf="categories">
-            <mat-label>Select a Category :</mat-label>
-            <mat-select id="categoryId" formControlName="categoryId">
-                <mat-option *ngFor="let category of categories" [value]="category.categoryId">
-                    {{category.name}}
-                </mat-option>
-            </mat-select>
-
-            <mat-error *ngIf=" form.controls['categoryId'].errors?.['required']">
-                Category is Required
-            </mat-error>
-
-        </mat-form-field>
-
-        <div>
-            <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid">{{this.id ? "Save" : "Create"}}</button>
-            <button mat-stroked-button type="submit" color="secondary" [routerLink]="['/items']">Cancel</button>      
-          </div>
-    </form>
+     <mat-form-field *ngIf="categories">
+        <mat-label>Select a Category :</mat-label>
+        <mat-select id="categoryId" formControlName="categoryId">
+            <mat-option *ngFor="let category of categories" [value]="category.categoryId">
+                {{category.name}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf=" form.controls['categoryId'].errors?.['required']">
+            Category is Required
+        </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'Update' : 'Create' }}</button>
+  <button mat-stroked-button (click)="onCancel()">Cancel</button>
 </div>

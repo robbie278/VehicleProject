@@ -4,9 +4,9 @@ import { Issue } from '../Models/Issue';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Item } from '../Models/item';
-import { Store } from '../store/Store';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { User } from '../Models/User';
+import { Store } from '../Models/Store';
 
 @Injectable({
   providedIn: 'root'

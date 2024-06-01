@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { StoreKeeperEditComponent } from './store-keeper-edit.component';
 
 @Component({
   selector: 'app-store-keeper',
@@ -18,14 +20,14 @@ export class StoreKeeperComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private storeKeeperService: StoreKeeperService,
-              private toastr: ToastrService 
-  ){}
+  constructor(
+              private storeKeeperService: StoreKeeperService,
+              private toastr: ToastrService ,
+              private dialog: MatDialog
+  )
+  {}
   
-  // ngAfterViewInit() {
-  //   this.storeKeeper.paginator = this.paginator;
-  //   this.storeKeeper.sort = this.sort;
-  // }
+ 
 
   ngOnInit() {
     this.getData()
@@ -38,6 +40,22 @@ this.storeKeeperService.getData().subscribe({
   },
   error: err => console.log(err)
 })
+}
+
+openDialog(id?: number): void {
+  const dialogRef = this.dialog.open(StoreKeeperEditComponent, {
+    width: '45%',
+    disableClose: true,
+    enterAnimationDuration: '500ms',
+    exitAnimationDuration: '500ms',
+    data: { id }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.getData();
+    }
+  });
 }
 
 onDelete(id:number){

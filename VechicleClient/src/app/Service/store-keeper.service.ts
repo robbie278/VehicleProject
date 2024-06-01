@@ -17,7 +17,7 @@ export class StoreKeeperService extends BaseService<StoreKeeper> {
     var url = this.getUrl("api/StoreKeepers")
     return this.http.get<StoreKeeper[]>(url)
   }
-
+  
   override get(id: number): Observable<StoreKeeper> {
     var url = this.getUrl("api/StoreKeepers/" + id)
     return this.http.get<StoreKeeper>(url)

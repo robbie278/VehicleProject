@@ -1,6 +1,5 @@
-<div class="receipting">
-    <h1>{{title}}</h1>
-
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
     <form [formGroup]="form"  (ngSubmit)="onSubmit()">
         
         <mat-form-field *ngIf="store">
@@ -70,9 +69,9 @@
             </mat-error>
 
         </mat-form-field>
-        <div>
-            <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid">{{"Create"}}</button>
-            <button mat-stroked-button type="submit" color="secondary" [routerLink]="['']">Cancel</button>      
-          </div>
     </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{'Create' }}</button>
+    <button mat-stroked-button (click)="onCancel()">Cancel</button>
 </div>

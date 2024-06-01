@@ -1,6 +1,6 @@
-<h1>{{title}}</h1>
+<h1 mat-dialog-title>{{ title }}</h1>
 <p *ngIf="id && !storeKeeper"> <em>Loading...</em></p> 
-<div class="storekeepre-Edit">
+<div  mat-dialog-content>
 
     <form [formGroup]="form"  (ngSubmit)="onSubmit()">
         
@@ -37,10 +37,10 @@
             </mat-error>
 
         </mat-form-field>
-
-        <div>
-            <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid">{{this.id ? "Save" : "Create"}}</button>
-            <!-- <button mat-flat-button [hidden]="!id" (click)="onDelete()" color="warn">Delete</button> -->
-            <button mat-stroked-button type="submit" color="secondary" [routerLink]="['/storekeppers']">Cancel</button>        </div>
     </form>
 </div>
+<div mat-dialog-actions>
+    <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'Update' : 'Create' }}</button>
+    <button mat-stroked-button (click)="onCancel()">Cancel</button>
+  </div>
+  

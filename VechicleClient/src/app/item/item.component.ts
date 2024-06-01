@@ -1,12 +1,11 @@
 import { Component, OnInit,ViewChild} from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator,PageEvent } from '@angular/material/paginator';
 import { ItemService } from '../Service/item.service';
 import { Item } from '../Models/item';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { ItemEditComponent } from './item-edit.component';
 
 @Component({
   selector: 'app-item',
@@ -15,38 +14,59 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ItemComponent implements OnInit {
   public displayedColumns: string[] = ['index', 'name', 'description','categoryName', 'action'];
- public items!:Item[];
-constructor(private itemService:ItemService,private http: HttpClient,
-  private activatedRoute: ActivatedRoute,  
-  private router: Router,
-  private toastr: ToastrService  
-) {
-}
+ public items!:MatTableDataSource<Item>
+
+  constructor(private itemService:ItemService,
+              private toastr: ToastrService,
+              private dialog: MatDialog
+ 
+  ) {
+  }
+
 ngOnInit() {
   this.getData();
    }
-  getData() {
+
+
+   getData() {
     this.itemService.getData().subscribe({
+      next: (result) => {
+        this.items = new MatTableDataSource<Item>(result);
+      },
+      error: (err) => console.log(err)
+    });
+  }
 
-   next: (result) => {
-    this.items = result
-   },
-   error: (error) => console.log(error)
-   });
-   }
+  openDialog(id?: number): void {
+    const dialogRef = this.dialog.open(ItemEditComponent, {
+      width: '40%',
+      disableClose: true,
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data: { id }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getData();
+      }
+    });
+  }
+
+
+ 
    onDelete(id:number){
-  
-console.log(id + "heeeeee");
-if(confirm("Are you sure to delete this Item")){
+  if(confirm("Are you sure to delete this Item")){
 
-this.itemService.delete(id).subscribe({
- next: () => {
-   this.toastr.error("Item Deleted Successfully")
-   location.reload()
-   },
- error: (err) => console.log(err)
-})
-}
-   }
+  this.itemService.delete(id).subscribe({
+  next: () => {
+    this.toastr.error("Item Deleted Successfully")
+    location.reload()
+    },
+  error: (err) => console.log(err)
+  })
+  }
+    }
+
+
   }

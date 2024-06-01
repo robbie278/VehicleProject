@@ -1,18 +1,18 @@
-// regular style toast
-@import 'ngx-toastr/toastr';
-
-// bootstrap style toast
-// or import a bootstrap 4 alert styled design (SASS ONLY)
-// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
-
-
-// if you'd like to use it without importing all of bootstrap it requires
-
-// bootstrap 4
-
-.btn-add { 
-    float: right; 
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 20px;
+table.mat-table { 
+    width: 100%; 
     } 
+  
+  mat-form-field {
+        font-size: 14px;
+        width: 100%;
+      }
+  
+  h1{
+            margin-left:  40%;
+            
+        }
+  .btn-add { 
+            float: right; 
+            margin-bottom: 10px;
+            margin-right: 20px;
+            } 

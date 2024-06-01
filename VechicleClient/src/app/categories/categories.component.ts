@@ -1,74 +1,69 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ICategory } from '../Models/Category';
-import { environment } from './../../environments/environment';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { CategoryService } from '../Service/category.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { CategoryService } from '../Service/category.service';
+import { ICategory } from '../Models/Category';
+import { CategoriesEditComponent } from './categories-edit.component';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrl: './categories.component.scss',
+  styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  public displayedColumns: string[] = [
-    'No',
-    'Name',
-    'Description',
-    'action'
-  ];
-  public categories!:  MatTableDataSource<ICategory>;
+  public displayedColumns: string[] = ['No', 'Name', 'Description', 'action'];
+  public categories!: MatTableDataSource<ICategory>;
   defaultPageIndex: number = 1;
   defaultPageSize: number = 5;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private categoryService: CategoryService,
-    private toastr: ToastrService, private http : HttpClient
-){}
+  constructor(
+    private categoryService: CategoryService,
+    private toastr: ToastrService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
-    var pageEvent = new PageEvent();
-    pageEvent.pageIndex = this.defaultPageIndex;
-    pageEvent.pageSize = this.defaultPageSize;
     this.getData();
   }
-  getData(){
+
+  getData() {
     this.categoryService.getData().subscribe({
-      next:(result) =>{
+      next: (result) => {
         this.categories = new MatTableDataSource<ICategory>(result);
+        this.categories.paginator = this.paginator;
       },
-      error: err => console.log(err)
-    })
-    }
-  // getData(event: PageEvent) {
-  //   var url = 'https://localhost:40443/api/Categories';
-  //   //   var params = new HttpParams()
-  //   // .set("pageIndex", event.pageIndex.toString())
-  //   // .set("pageSize", event.pageSize.toString());
-  //   this.http.get<ICategory[]>(url).subscribe({
-  //     next: (result) => {
-  //       console.log(result);
-  //       this.categories = new MatTableDataSource(result);
-  //       this.categories.paginator = this.paginator
-  //     },
-  //     error: (error) => console.error(error),
-  //   });
-  // }
+      error: (err) => console.log(err)
+    });
+  }
 
-  onDelete(id:number){
+  openDialog(id?: number): void {
+    const dialogRef = this.dialog.open(CategoriesEditComponent, {
+      width: '40%',
+      disableClose: true,
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data: { id }
+    });
 
-    if(confirm("Are you sure to delete this Category")){
-    
-    this.categoryService.delete(id).subscribe({
-    next: () => {
-     this.toastr.error("Category Deleted Successfully")
-     location.reload()
-    
-      },
-        error: (err) => console.log(err)
-      })
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getData();
       }
+    });
+  }
+
+  onDelete(id: number) {
+    if (confirm('Are you sure to delete this category?')) {
+      this.categoryService.delete(id).subscribe({
+        next: () => {
+          this.toastr.error('Category Deleted Successfully');
+          this.getData();
+        },
+        error: (err) => console.log(err)
+      });
     }
+  }
 }

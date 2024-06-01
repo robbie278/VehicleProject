@@ -8,6 +8,7 @@ import { Store } from '../Models/Store';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { User } from '../Models/User';
 import { ReceiptService } from '../Service/receipt.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-receipt',
@@ -25,9 +26,10 @@ export class ReceiptComponent  implements OnInit  {
   form!: FormGroup
   
   constructor(private receiptService: ReceiptService,
-    private activatedRoute: ActivatedRoute,  
     private router: Router,
-    private toastr: ToastrService  
+    private toastr: ToastrService,
+    public dialogRef: MatDialogRef<ReceiptComponent>,
+ 
   
       
   ){}
@@ -102,11 +104,15 @@ receipt.transactionType = this.form.controls['transactionType'].value
   this.receiptService.post(receipt).subscribe({
     next: ()=>{
       this.toastr.info("receipted Successfully")
-        //go back to storeKepper view
-        this.router.navigate([''])
+      this.dialogRef.close(true);
     },
     error: err => console.log(err)
   })
 
 }
+
+onCancel(): void {
+  this.dialogRef.close();
+}
+
 }

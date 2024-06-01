@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { Store } from '../Models/Store';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StoreKeeperService } from '../Service/store-keeper.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-store-keeper-edit',
@@ -12,59 +13,51 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './store-keeper-edit.component.scss'
 })
 export class StoreKeeperEditComponent implements OnInit{
-title?: string
-storeKeeper?: StoreKeeper
-id?: number
-stores?: Store[]
+title: string
+storeKeeper!: StoreKeeper
+id: number
+stores!: Store[]
 form!: FormGroup
 
 
-constructor(private storeKeeperService: StoreKeeperService,
-            private activatedRoute: ActivatedRoute,  
-            private router: Router,
-            private toastr: ToastrService  
-){}
+constructor(
+  public dialogRef: MatDialogRef<StoreKeeperEditComponent>,
+  @Inject(MAT_DIALOG_DATA) public data: any,
+  private storeKeeperService: StoreKeeperService,
+  private toastr: ToastrService          
+)
+{
+  this.id = data.id;
+  this.title = this.id ? 'Edit StoreKeeper' : 'Create StoreKeeper';
+}
 
   ngOnInit() {
+    this.instantiateForm();
+   this.loadStores();
+    if(this.id){
+      this.fetchData();
+    }
+  }
+
+   instantiateForm(){
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       storeId: new FormControl('', Validators.required)
     })
-    this.loadData()
   }
 
-  loadData(){
- this.loadStores()
-
- //get id from Id from id parameter
- var idParam = this.activatedRoute.snapshot.paramMap.get('id')
-  this.id = idParam ? +idParam : 0
-
- if(this.id){
-  //Edit Mode
-
-  //fetch storekeeper from server
-  this.storeKeeperService.get(this.id).subscribe({
-    next: (result) =>{
-      this.storeKeeper = result
-      this.title = "Edit- " + this.storeKeeper.name
-
-      //populate the from with storeKeeper value
-      this.form.patchValue(this.storeKeeper)
-    }
-  })
-
- }
- else{
-  //Add new StoreKeeper
-
-  this.title = 'Add new StoreKepper'
-
-
- }
-
+  fetchData(){
+    this.storeKeeperService.get(this.id).subscribe({
+      next: (result) =>{
+        this.storeKeeper = result
+        //populate the from with storeKeeper value
+        this.form.patchValue(this.storeKeeper)
+      }
+    });
   }
+
+ 
 
   loadStores(){
     //fetch all stores from server
@@ -74,57 +67,36 @@ constructor(private storeKeeperService: StoreKeeperService,
       },
       error: err => console.log(err)
     })
-  }
+  }    
 
-  onSubmit(){
-    var storeKepper = (this.id)? this.storeKeeper : <StoreKeeper>{}
+  onSubmit() {
+    const storeKepper = this.id? this.storeKeeper : <StoreKeeper>{}
+    storeKepper.name = this.form.controls['name'].value
+    storeKepper.email = this.form.controls['email'].value
+    storeKepper.storeId = this.form.controls['storeId'].value
 
-    if(storeKepper){
-      storeKepper.name = this.form.controls['name'].value
-      storeKepper.email = this.form.controls['email'].value
-      storeKepper.storeId = this.form.controls['storeId'].value
-
-      if(this.id){
-        //Edit Mode
-console.log(this.id);
-        this.storeKeeperService.put(storeKepper).subscribe({
-          next: ()=>{
-            this.toastr.info("StoreKeeper Updated Successfully")
-              //go back to storeKepper view
-              this.router.navigate(['/storekeppers'])
-          },
-          error: err => console.log(err)
-        })
-      }
-      else{
-        //Add New Mode
-
-        this.storeKeeperService.post(storeKepper).subscribe({
-          next: () =>{
-            this.toastr.success("StoreKeeper Inserted SuccessFully")
-           //go back to storeKepper view
-            this.router.navigate(['/storekeppers'])
-          },
-          error: err => console.log(err)
-        })
-      }
+    if (this.id) {
+      this.storeKeeperService.put(storeKepper).subscribe({
+        next: () => {
+          this.toastr.info('StoreKepper Updated Successfully');
+          this.dialogRef.close(true);
+        },
+        error: (error) => console.error(error)
+      });
+    } else {
+      this.storeKeeperService.post(storeKepper).subscribe({
+        next: () => {
+          this.toastr.success('StoreKepper Added Successfully');
+          this.dialogRef.close(true);
+        },
+        error: (error) => console.error(error)
+      });
     }
   }
 
-  onDelete(){
-         // retrieve the ID from the 'id' parameter 
-  var idParam = this.activatedRoute.snapshot.paramMap.get('id')
-  var id = idParam ? +idParam : 0
-  
-  if(confirm("Are you sure to delete this StoreKeeper")){
+  onCancel(): void {
+    this.dialogRef.close();
+  }
 
-    this.storeKeeperService.delete(id).subscribe({
-      next: () => {
-        this.toastr.error("StoreKeeper Deleted Successfully")
-        this.router.navigate(['/storekeppers'])
-      },
-      error: (err) => console.log(err)
-    })
-  }
-  }
+  
 }

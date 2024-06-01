@@ -21,11 +21,11 @@
         <mat-icon>person</mat-icon>
         Store Keepers
       </a>
-      <a mat-list-item routerLink="/issue">
+      <a mat-list-item (click)="issueDialog()" >
         <mat-icon>assignment_return</mat-icon>
         Issue
       </a>
-      <a mat-list-item routerLink="/receipt">
+      <a mat-list-item (click)="receiptDialog()">
         <mat-icon>receipt</mat-icon>
         Receipt
       </a>

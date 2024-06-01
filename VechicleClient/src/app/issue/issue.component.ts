@@ -8,6 +8,7 @@ import { Store } from '../Models/Store';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { User } from '../Models/User';
 import { IssueService } from '../Service/issue.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-issue',
@@ -25,8 +26,7 @@ export class IssueComponent  implements OnInit  {
   form!: FormGroup
   
   constructor(private issueService: IssueService,
-    private activatedRoute: ActivatedRoute,  
-    private router: Router,
+    public dialogRef: MatDialogRef<IssueComponent>,
     private toastr: ToastrService  
   
       
@@ -104,13 +104,18 @@ var issue =  <Issue>{}
   this.issueService.post(issue).subscribe({
     next: ()=>{
       this.toastr.info("issued Successfully")
-        //go back to storeKepper view
-        this.router.navigate([''])
+      this.dialogRef.close(true);
+        
     },
     error: err => console.log(err)
   })
 
 }
+
+onCancel(): void {
+  this.dialogRef.close();
+}
+
 }
 
 
