@@ -1,11 +1,11 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
 
-  
-  mat-form-field { 
-    display: block; 
-    margin: 10px 0; 
-    } 
-
-    .button {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

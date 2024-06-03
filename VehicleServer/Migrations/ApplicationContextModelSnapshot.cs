@@ -111,6 +111,12 @@ namespace VehicleServer.Migrations
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PadNumberEnd")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PadNumberStart")
+                        .HasColumnType("int");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -250,7 +256,7 @@ namespace VehicleServer.Migrations
                     b.HasOne("VehicleServer.Entities.Item", "Items")
                         .WithMany("StockTransactions")
                         .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("VehicleServer.Entities.Store", "Stores")

@@ -12,7 +12,7 @@ export abstract class BaseService<T> {
   abstract getData(): Observable<T[]>;
   abstract get(id: number): Observable<T>;
   abstract put(item: T): Observable<T>;
-  abstract post(item: T): Observable<T>;
+  abstract post(item: T): Observable<T | string>;
   abstract delete(id: number): Observable<T>;
 
   protected getUrl(url: string) {

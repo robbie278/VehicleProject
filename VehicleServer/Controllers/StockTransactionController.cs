@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
 using VehicleServer.Repository;
 using VehicleServer.Services;
+using VehicleServer.Services.StockTransactionDetailServices;
 
 namespace VehicleServer.Controllers
 {
@@ -13,11 +15,14 @@ namespace VehicleServer.Controllers
     {
         private readonly StockService _stockService;
         private readonly TransactionRepo _StockTransactionRepo;
+        private readonly IStockTransactionDetailService _stockTransactionDetailService;
 
-        public StockTransactionController(StockService stockService, TransactionRepo StockTransactionRepo)
+        public StockTransactionController(StockService stockService, TransactionRepo StockTransactionRepo, IStockTransactionDetailService stockTransactionDetailService)
         {
             _stockService = stockService;
             _StockTransactionRepo = StockTransactionRepo;
+            _stockTransactionDetailService = stockTransactionDetailService;
+
         }
 
         [HttpGet]
@@ -45,10 +50,46 @@ namespace VehicleServer.Controllers
        
 
         [HttpPost]
-        public async Task<IActionResult> PostStockTransaction(StockTransaction transaction)
+        public async Task<IActionResult> PostStockTransaction(StockTransaction request)
         {
-            await _stockService.HandleStockTransaction(transaction);
-            return Ok();
+            var transaction = new StockTransaction
+            {
+                ItemId = request.ItemId,
+                StoreId = request.StoreId,
+                UserId = request.UserId,
+                StoreKeeperId = request.StoreKeeperId,
+                TransactionType = request.TransactionType,
+                Quantity = request.Quantity,
+                PadNumberStart = request.PadNumberStart,
+                PadNumberEnd = request.PadNumberEnd,
+                TransactionDate = request.TransactionDate
+            };
+            if(transaction.TransactionType == "Issue")
+            {
+                var canIssueTransaction = await _stockService.CanIssueTransactionAsync(transaction.ItemId, transaction.StoreId, transaction.Quantity);
+                if (!canIssueTransaction)
+                {
+                    return BadRequest("Not enough Stock!");
+                }
+            }
+
+            var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockTransactionDetail
+            {
+                ItemId = request.ItemId,
+                StoreId = request.StoreId,
+                UserId = request.UserId,
+                StoreKeeperId = request.StoreKeeperId,
+                TransactionType = request.TransactionType
+            }, request.PadNumberStart, request.PadNumberEnd);
+
+            if (!isValid)
+            {
+                return BadRequest("Validation failed.");
+            }
+
+            await _stockTransactionDetailService.BulkInsertTransactionsAsync(transaction);
+
+            return Ok("Bulk insertion and stock update successful.");
         }
 
         // DELETE: api/StockTransaction/5

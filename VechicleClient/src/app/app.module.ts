@@ -44,8 +44,7 @@ import { HomeComponent } from './home/home.component';
     ReceiptComponent,
     TransactionComponent,
     HomeComponent,
-    TransactionComponent
-    
+    TransactionComponent,
   ],
   imports: [
     BrowserModule,
