@@ -250,7 +250,7 @@ namespace VehicleServer.Migrations
                     b.HasOne("VehicleServer.Entities.Item", "Items")
                         .WithMany("StockTransactions")
                         .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("VehicleServer.Entities.Store", "Stores")
