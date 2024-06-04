@@ -1,7 +1,10 @@
-﻿namespace VehicleServer.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VehicleServer.Entities
 {
     public class StockTransactionDetail
     {
+        [Key]
         public int StockTransactionDetailId { get; set; }
         public int ItemId { get; set; }
         public int StoreId { get; set; }

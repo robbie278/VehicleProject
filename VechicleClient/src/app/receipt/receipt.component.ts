@@ -121,7 +121,7 @@ export class ReceiptComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
-        this.toastr.error(err);
+        this.toastr.error(err.error);
       },
     });
   }

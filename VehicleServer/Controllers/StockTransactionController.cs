@@ -87,9 +87,24 @@ namespace VehicleServer.Controllers
                 return BadRequest("Validation failed.");
             }
 
-            await _stockTransactionDetailService.BulkInsertTransactionsAsync(transaction);
+            if (transaction.TransactionType == "Receipt")
+            {
+                await _stockTransactionDetailService.BulkInsertTransactionsAsync(transaction);
+                return Ok("Bulk insertion and stock update successful.");
+            }
 
-            return Ok("Bulk insertion and stock update successful.");
+            else if (transaction.TransactionType == "Issue")
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(transaction);
+                return Ok("Bulk Issue and stock update successful.");
+
+            }
+            else
+            {
+                return BadRequest("Something went wrong");
+            }
+
+
         }
 
         // DELETE: api/StockTransaction/5

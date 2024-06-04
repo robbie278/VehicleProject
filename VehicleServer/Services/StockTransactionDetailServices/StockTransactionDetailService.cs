@@ -20,7 +20,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
             for (int padNumber = padNumberStart; padNumber <= padNumberEnd; padNumber++)
             {
-                if (await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber))
+                if (transactionDetail.TransactionType == "Receipt" && await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber))
                 {
                     return false;
                 }
@@ -79,6 +79,26 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
             await UpdateStockAsync(transaction.ItemId, transaction.StoreId, transaction.TransactionType == "issue" ? -transaction.Quantity : transaction.Quantity);
         }
+
+        public async Task BulkUpdateItemDetailsTransactionAsync(StockTransaction transaction)
+        {
+             
+            var transactionsToUpdate = _context.StockTransactionsDetail
+                .Where(t => t.PadNumber >= transaction.PadNumberStart && t.PadNumber <= transaction.PadNumberEnd)
+                .ToList();
+
+            foreach (var trans in transactionsToUpdate)
+            {
+                trans.TransactionType = "Issue";
+            }
+
+            _context.StockTransactionsDetail.UpdateRange(transactionsToUpdate);
+            await _context.StockTransactions.AddAsync(transaction);
+
+            await _context.SaveChangesAsync();
+            await UpdateStockAsync(transaction.ItemId, transaction.StoreId, -transaction.Quantity);
+        }
+
 
         public async Task UpdateStockAsync(int itemId, int storeId, int quantityChange)
         {
