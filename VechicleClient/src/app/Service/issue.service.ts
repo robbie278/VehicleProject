@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { Issue } from '../Models/Issue';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Item } from '../Models/item';
 import { StoreKeeper } from '../Models/Store-keeper';
@@ -24,9 +24,10 @@ import { Store } from '../Models/Store';
     override put(item: Issue): Observable<Issue> {
       throw new Error('Method not implemented.');
     }
-    override post(issue: Issue): Observable<Issue> {
+    override post(issue: Issue): Observable<string> {
       var url = this.getUrl("api/StockTransaction")
-      return this.http.post<Issue>(url, issue)    }
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.http.post(url, issue, { headers, responseType: 'text' })    }
 
     override delete(id: number): Observable<Issue> {
       throw new Error('Method not implemented.');

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from '../Models/item';
 import { Receipt } from '../Models/Receipt';
 import { Store } from '../Models/Store';
@@ -29,9 +29,10 @@ export class ReceiptService extends BaseService<Receipt> {
     throw new Error('Method not implemented.');
   }
   
-  override post(receipt: Receipt): Observable<Receipt> {
+  override post(receipt: Receipt): Observable<string> {
     var url = this.getUrl("api/StockTransaction")
-    return this.http.post<Receipt>(url, receipt)    }
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(url, receipt, { headers, responseType: 'text' })    }
 
   
     override delete(id: number): Observable<Receipt> {

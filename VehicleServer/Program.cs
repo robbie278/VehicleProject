@@ -4,6 +4,7 @@ using VehicleServer.Entities;
 using VehicleServer.Profiles;
 using VehicleServer.Repository;
 using VehicleServer.Services;
+using VehicleServer.Services.StockTransactionDetailServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddScoped<StoreRepo>();
 builder.Services.AddScoped<StoreKeeperRepo>();
 builder.Services.AddScoped<UserRepo>();
 builder.Services.AddScoped<StockService>();
+builder.Services.AddScoped<IStockTransactionDetailService, StockTransactionDetailService>();
 
 
 builder.Services.AddDbContext<ApplicationContext>(options =>

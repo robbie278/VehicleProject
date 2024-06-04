@@ -12,8 +12,8 @@ using VehicleServer;
 namespace VehicleServer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240530082614_set null14")]
-    partial class setnull14
+    [Migration("20240603151748_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,6 +112,12 @@ namespace VehicleServer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
 
                     b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PadNumberEnd")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PadNumberStart")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -253,7 +259,7 @@ namespace VehicleServer.Migrations
                     b.HasOne("VehicleServer.Entities.Item", "Items")
                         .WithMany("StockTransactions")
                         .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("VehicleServer.Entities.Store", "Stores")

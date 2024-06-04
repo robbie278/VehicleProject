@@ -17,6 +17,7 @@ namespace VehicleServer.Services
 
         public async Task HandleStockTransaction(StockTransaction transaction)
         {
+
             // Add the transaction to the database
             _context.StockTransactions.Add(transaction);
 
@@ -53,5 +54,11 @@ namespace VehicleServer.Services
             // Save changes to the database
             await _context.SaveChangesAsync();
         }
+        public async Task<bool> CanIssueTransactionAsync(int itemId, int storeId, int issueAmmount)
+        {
+            var transaction = await _context.Stocks.FirstOrDefaultAsync(s => s.ItemId == itemId && s.StoreId == storeId);
+            return transaction != null && transaction.QuantityInStock >= issueAmmount;
+        }
+
     }
 }

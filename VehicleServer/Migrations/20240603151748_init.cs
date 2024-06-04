@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VehicleServer.Migrations
 {
     /// <inheritdoc />
-    public partial class stocktransactonandstockadded1 : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,7 +40,7 @@ namespace VehicleServer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
@@ -51,7 +51,7 @@ namespace VehicleServer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,7 +72,7 @@ namespace VehicleServer.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -114,12 +114,14 @@ namespace VehicleServer.Migrations
                         name: "FK_Stocks_Items_ItemId",
                         column: x => x.ItemId,
                         principalTable: "Items",
-                        principalColumn: "ItemId");
+                        principalColumn: "ItemId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Stocks_Stores_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Stores",
-                        principalColumn: "StoreId");
+                        principalColumn: "StoreId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -134,6 +136,8 @@ namespace VehicleServer.Migrations
                     StoreKeeperId = table.Column<int>(type: "int", nullable: false),
                     TransactionType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
+                    PadNumberStart = table.Column<int>(type: "int", nullable: false),
+                    PadNumberEnd = table.Column<int>(type: "int", nullable: true),
                     TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -143,21 +147,24 @@ namespace VehicleServer.Migrations
                         name: "FK_StockTransactions_Items_ItemId",
                         column: x => x.ItemId,
                         principalTable: "Items",
-                        principalColumn: "ItemId");
+                        principalColumn: "ItemId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_StockTransactions_StoreKeepers_StoreKeeperId",
                         column: x => x.StoreKeeperId,
                         principalTable: "StoreKeepers",
-                        principalColumn: "StoreKeeperId");
+                        principalColumn: "StoreKeeperId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_StockTransactions_Stores_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Stores",
-                        principalColumn: "StoreId");
+                        principalColumn: "StoreId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_StockTransactions_User_UserId",
+                        name: "FK_StockTransactions_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "UserId");
                 });
 
@@ -218,7 +225,7 @@ namespace VehicleServer.Migrations
                 name: "StoreKeepers");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Categories");
