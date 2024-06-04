@@ -1,12 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Issue } from '../Models/Issue';
@@ -15,14 +8,16 @@ import { Store } from '../Models/Store';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { User } from '../Models/User';
 import { IssueService } from '../Service/issue.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TransactionType } from '../enums/transaction-type.enum';
 
 @Component({
-  selector: 'app-issue',
-  templateUrl: './issue.component.html',
-  styleUrls: ['./issue.component.scss'],
+  selector: 'app-transaction-form',
+  templateUrl: './transaction-form.component.html',
+  styleUrls: ['./transaction-form.component.scss'],
 })
-export class IssueComponent implements OnInit {
+export class TransactionFormComponent implements OnInit {
+  transactionType: TransactionType = TransactionType.Issue;
   title?: string;
   id?: number;
   issue?: Issue;
@@ -36,36 +31,52 @@ export class IssueComponent implements OnInit {
     private issueService: IssueService,
     private router: Router,
     private toastr: ToastrService,
-    public dialogRef: MatDialogRef<IssueComponent>
-  ) {}
+    public dialogRef: MatDialogRef<TransactionFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.transactionType = data.transactionType || TransactionType.Issue;
+  }
+
   ngOnInit() {
     this.form = new FormGroup(
       {
         itemId: new FormControl('', Validators.required),
         storeId: new FormControl('', Validators.required),
         storeKeeperId: new FormControl('', Validators.required),
-        transactionType: new FormControl('Issue', Validators.required),
+        transactionType: new FormControl(this.transactionType, Validators.required),
+        singleItem: new FormControl(false),
         padNumberStart: new FormControl('', [
           Validators.required,
           Validators.pattern(/^\d+$/),
         ]),
         padNumberEnd: new FormControl('', [
-          Validators.required,
           Validators.pattern(/^\d+$/),
         ]),
-        quantity: new FormControl('', [
-          Validators.required,
-          Validators.pattern(/^\d+$/),
-        ]),
+        quantity: new FormControl({ value: 0, disabled: true },),
       },
       { validators: this.padNumberValidator() }
     );
+
+    this.form.get('singleItem')?.valueChanges.subscribe((isSingleItem) => {
+      if (isSingleItem) {
+        this.form.get('padNumberEnd')?.clearValidators();
+        this.form.get('padNumberEnd')?.updateValueAndValidity();
+        this.form.get('quantity')?.setValue(1);
+      } else {
+        this.form.get('padNumberEnd')?.setValidators([Validators.required, Validators.pattern(/^\d+$/)]);
+        this.form.get('padNumberEnd')?.updateValueAndValidity();
+        this.calculateQuantity();
+      }
+    });
+
+    this.form.get('padNumberStart')?.valueChanges.subscribe(() => this.calculateQuantity());
+    this.form.get('padNumberEnd')?.valueChanges.subscribe(() => this.calculateQuantity());
 
     this.loadData();
   }
 
   loadData() {
-    this.title = 'Issueing Goods';
+    this.title = this.transactionType === TransactionType.Issue ? 'Issuing Goods' : 'Receiving Goods';
     this.loadItems();
     this.loadStore();
     this.loadStoreKeeper();
@@ -73,7 +84,6 @@ export class IssueComponent implements OnInit {
   }
 
   loadItems() {
-    //fetch all categories from server
     this.issueService.getItem().subscribe({
       next: (result) => {
         this.item = result;
@@ -81,8 +91,8 @@ export class IssueComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
   loadStore() {
-    //fetch all categories from server
     this.issueService.getStore().subscribe({
       next: (result) => {
         this.store = result;
@@ -90,8 +100,8 @@ export class IssueComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
   loadStoreKeeper() {
-    //fetch all categories from server
     this.issueService.getStoreKeeper().subscribe({
       next: (result) => {
         this.storeKeeper = result;
@@ -99,8 +109,8 @@ export class IssueComponent implements OnInit {
       error: (err) => console.log(err),
     });
   }
+
   loadUser() {
-    //fetch all categories from server
     this.issueService.getUser().subscribe({
       next: (result) => {
         this.user = result;
@@ -110,9 +120,7 @@ export class IssueComponent implements OnInit {
   }
 
   onSubmit() {
-    var issue = <Issue>{};
-
-    issue = this.form.value
+    const issue: Issue = this.form.getRawValue();
 
     this.issueService.post(issue).subscribe({
       next: (response) => {
@@ -132,9 +140,14 @@ export class IssueComponent implements OnInit {
 
   padNumberValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
+      const singleItem = control.get('singleItem')?.value;
       const start = control.get('padNumberStart')?.value;
       const end = control.get('padNumberEnd')?.value;
       const quantity = control.get('quantity')?.value;
+
+      if (singleItem) {
+        return null;
+      }
 
       if (!start || !end || !quantity) {
         return null; // Return null if any of the values are not provided
@@ -148,9 +161,33 @@ export class IssueComponent implements OnInit {
         return { invalidNumber: true };
       }
 
+      if(quantityNum < 1){
+        return { negativePadNumbers: true };
+      }
+
       const isValid = endNum - startNum + 1 === quantityNum;
 
       return isValid ? null : { invalidPadNumbers: true };
     };
+  }
+
+  private calculateQuantity() {
+    const start = this.form.get('padNumberStart')?.value;
+    const end = this.form.get('padNumberEnd')?.value;
+
+    if (this.form.get('singleItem')?.value) {
+      this.form.get('quantity')?.setValue(1);
+    } else if (start && end) {
+      const startNum = parseInt(start, 10);
+      const endNum = parseInt(end, 10);
+      const quantity = endNum - startNum + 1;
+      if (!isNaN(quantity)) {
+        this.form.get('quantity')?.setValue(quantity);
+      } else {
+        this.form.get('quantity')?.setValue('');
+      }
+    } else {
+      this.form.get('quantity')?.setValue('');
+    }
   }
 }

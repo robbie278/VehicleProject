@@ -15,9 +15,9 @@ namespace VehicleServer.Controllers
     {
         private readonly StockService _stockService;
         private readonly TransactionRepo _StockTransactionRepo;
-        private readonly IStockTransactionDetailService _stockTransactionDetailService;
+        private readonly IStockItemsDetailService _stockTransactionDetailService;
 
-        public StockTransactionController(StockService stockService, TransactionRepo StockTransactionRepo, IStockTransactionDetailService stockTransactionDetailService)
+        public StockTransactionController(StockService stockService, TransactionRepo StockTransactionRepo, IStockItemsDetailService stockTransactionDetailService)
         {
             _stockService = stockService;
             _StockTransactionRepo = StockTransactionRepo;
@@ -73,7 +73,7 @@ namespace VehicleServer.Controllers
                 }
             }
 
-            var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockTransactionDetail
+            var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockItemsDetail
             {
                 ItemId = request.ItemId,
                 StoreId = request.StoreId,

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { IssueComponent } from '../issue/issue.component';
-import { ReceiptComponent } from '../receipt/receipt.component';
+import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
+import { TransactionType } from '../enums/transaction-type.enum';
 
 @Component({
   selector: 'app-nav-menu',
@@ -20,10 +20,11 @@ export class NavMenuComponent {
   }
 
   issueDialog() {
-    const dialogRef = this.dialog.open(IssueComponent, {
+    const dialogRef = this.dialog.open(TransactionFormComponent, {
       disableClose: true,
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
+      data: { transactionType: TransactionType.Issue }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -34,12 +35,11 @@ export class NavMenuComponent {
   }
 
   receiptDialog() {
-    const dialogRef = this.dialog.open(ReceiptComponent, {
-      // width: '40%',
-      // height: '90%',
+    const dialogRef = this.dialog.open(TransactionFormComponent, {
       disableClose: true,
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
+      data: { transactionType: TransactionType.Receipt }
     });
 
     dialogRef.afterClosed().subscribe(result => {

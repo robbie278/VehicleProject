@@ -2,10 +2,10 @@
 
 namespace VehicleServer.Entities
 {
-    public class StockTransactionDetail
+    public class StockItemsDetail
     {
         [Key]
-        public int StockTransactionDetailId { get; set; }
+        public int StockItemsDetailId { get; set; }
         public int ItemId { get; set; }
         public int StoreId { get; set; }
         public int? UserId { get; set; }

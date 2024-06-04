@@ -3,15 +3,15 @@ using VehicleServer.Entities;
 
 namespace VehicleServer.Services.StockTransactionDetailServices
 {
-    public class StockTransactionDetailService : IStockTransactionDetailService
+    public class StockItemsDetailService : IStockItemsDetailService
     {
         private readonly ApplicationContext _context;
 
-        public StockTransactionDetailService(ApplicationContext context)
+        public StockItemsDetailService(ApplicationContext context)
         {
             _context = context;
         }
-        public async Task<bool> ValidateTransactionAsync(StockTransactionDetail transactionDetail, int padNumberStart, int padNumberEnd)
+        public async Task<bool> ValidateTransactionAsync(StockItemsDetail transactionDetail, int padNumberStart, int padNumberEnd)
         {
             if (padNumberEnd < padNumberStart)
             {
@@ -41,27 +41,27 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
         public async Task<bool> IsDuplicateEntryAsync(int itemId, int padNumber)
         {
-            return await _context.StockTransactionsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+            return await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
         }
 
         public async Task<bool> CanIssueTransactionAsync(int itemId, int padNumber)
         {
-            var transaction = await _context.StockTransactionsDetail.FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+            var transaction = await _context.StockItemsDetail.FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
             return transaction != null && transaction.TransactionType != "issue";
         }
 
         public async Task<bool> CanReceiveTransactionAsync(int itemId, int padNumber)
         {
-            return !await _context.StockTransactionsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+            return !await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
         }
 
         public async Task BulkInsertTransactionsAsync(StockTransaction transaction)
         {
-            var transactionDetails = new List<StockTransactionDetail>();
+            var transactionDetails = new List<StockItemsDetail>();
 
             for (int padNumber = transaction.PadNumberStart; padNumber <= transaction.PadNumberEnd; padNumber++)
             {
-                transactionDetails.Add(new StockTransactionDetail
+                transactionDetails.Add(new StockItemsDetail
                 {
                     ItemId = transaction.ItemId,
                     StoreId = transaction.StoreId,
@@ -73,7 +73,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 });
             }
 
-            await _context.StockTransactionsDetail.AddRangeAsync(transactionDetails);
+            await _context.StockItemsDetail.AddRangeAsync(transactionDetails);
             await _context.StockTransactions.AddAsync(transaction);
             await _context.SaveChangesAsync();
 
@@ -83,7 +83,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         public async Task BulkUpdateItemDetailsTransactionAsync(StockTransaction transaction)
         {
              
-            var transactionsToUpdate = _context.StockTransactionsDetail
+            var transactionsToUpdate = _context.StockItemsDetail
                 .Where(t => t.PadNumber >= transaction.PadNumberStart && t.PadNumber <= transaction.PadNumberEnd)
                 .ToList();
 
@@ -92,7 +92,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 trans.TransactionType = "Issue";
             }
 
-            _context.StockTransactionsDetail.UpdateRange(transactionsToUpdate);
+            _context.StockItemsDetail.UpdateRange(transactionsToUpdate);
             await _context.StockTransactions.AddAsync(transaction);
 
             await _context.SaveChangesAsync();

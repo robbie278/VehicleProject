@@ -54,6 +54,8 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
+
     <mat-form-field>
       <mat-label>Pad number start:</mat-label>
       <input
@@ -70,17 +72,13 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field *ngIf="!form.controls['singleItem'].value">
       <mat-label>Pad number End:</mat-label>
       <input
         matInput
         formControlName="padNumberEnd"
-        required
         placeholder="Type a pad number End"
       />
-      <mat-error *ngIf="form.controls['padNumberEnd'].errors?.['required']">
-        Pad number End is Required
-      </mat-error>
       <mat-error *ngIf="form.controls['padNumberEnd'].errors?.['pattern']">
         Pad number End must be a number
       </mat-error>
@@ -91,20 +89,17 @@
       <input
         matInput
         formControlName="quantity"
-        required
-        placeholder="Type a quantity"
+        placeholder="0"
+        readonly
       />
-      <mat-error *ngIf="form.controls['quantity'].errors?.['required']">
-        Quantity is Required
-      </mat-error>
-      <mat-error *ngIf="form.controls['quantity'].errors?.['pattern']">
-        Quantity must be a number
-      </mat-error>
     </mat-form-field>
   </form>
 </div>
 <div style="border-left: 5px; color: red;" *ngIf="form.errors?.['invalidPadNumbers']" class="error-message">
   Pad numbers and quantity do not match.
+</div>
+<div style="border-left: 5px; color: red;" *ngIf="form.errors?.['negativePadNumbers']" class="error-message">
+  Pad numbers can not be negative.
 </div>
 <div mat-dialog-actions>
   <button
