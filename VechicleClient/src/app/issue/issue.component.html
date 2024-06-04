@@ -1,90 +1,119 @@
-<h1 mat-dialog-title>{{title}}</h1>
+<h1 mat-dialog-title>{{ title }}</h1>
 <div mat-dialog-content>
-    <form [formGroup]="form"  (ngSubmit)="onSubmit()">
-        
-        <mat-form-field *ngIf="store">
-            <mat-label>Select a Store :</mat-label>
-            <mat-select id="storeId" formControlName="storeId">
-                <mat-option *ngFor="let store of store" [value]="store.storeId">
-                    {{store.name}}
-                </mat-option>
-            </mat-select>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
+    <mat-form-field *ngIf="store">
+      <mat-label>Select a Store :</mat-label>
+      <mat-select id="storeId" formControlName="storeId">
+        <mat-option *ngFor="let store of store" [value]="store.storeId">
+          {{ store.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['storeId'].errors?.['required']">
+        Store is Required
+      </mat-error>
+    </mat-form-field>
 
-            <mat-error *ngIf=" form.controls['storeId'].errors?.['required']">
-               Store is Required
-            </mat-error>
+    <mat-form-field *ngIf="item">
+      <mat-label>Select an Item :</mat-label>
+      <mat-select id="itemId" formControlName="itemId">
+        <mat-option *ngFor="let item of item" [value]="item.itemId">
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['itemId'].errors?.['required']">
+        Item is Required
+      </mat-error>
+    </mat-form-field>
 
-        </mat-form-field>
+    <mat-form-field *ngIf="storeKeeper">
+      <mat-label>Select a Store Keeper :</mat-label>
+      <mat-select id="storeKeeperId" formControlName="storeKeeperId">
+        <mat-option
+          *ngFor="let storeKeeper of storeKeeper"
+          [value]="storeKeeper.storeKeeperId"
+        >
+          {{ storeKeeper.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['storeKeeperId'].errors?.['required']">
+        Store Keeper is Required
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field *ngIf="item">
-            <mat-label>Select a item :</mat-label>
-            <mat-select id="itemId" formControlName="itemId">
-                <mat-option *ngFor="let item of item" [value]="item.itemId">
-                    {{item.name}}
-                </mat-option>
-            </mat-select>
+    <mat-form-field>
+      <mat-label>Transaction Type:</mat-label>
+      <input
+        matInput
+        formControlName="transactionType"
+        required
+        placeholder="Transaction Type"
+        readonly
+      />
+      <mat-error *ngIf="form.controls['transactionType'].errors?.['required']">
+        Transaction Type is Required
+      </mat-error>
+    </mat-form-field>
 
-            <mat-error *ngIf=" form.controls['itemId'].errors?.['required']">
-                Item is Required
-            </mat-error>
+    <mat-form-field>
+      <mat-label>Pad number start:</mat-label>
+      <input
+        matInput
+        formControlName="padNumberStart"
+        required
+        placeholder="Type a pad number start"
+      />
+      <mat-error *ngIf="form.controls['padNumberStart'].errors?.['required']">
+        Pad number start is Required
+      </mat-error>
+      <mat-error *ngIf="form.controls['padNumberStart'].errors?.['pattern']">
+        Pad number start must be a number
+      </mat-error>
+    </mat-form-field>
 
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Pad number End:</mat-label>
+      <input
+        matInput
+        formControlName="padNumberEnd"
+        required
+        placeholder="Type a pad number End"
+      />
+      <mat-error *ngIf="form.controls['padNumberEnd'].errors?.['required']">
+        Pad number End is Required
+      </mat-error>
+      <mat-error *ngIf="form.controls['padNumberEnd'].errors?.['pattern']">
+        Pad number End must be a number
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field *ngIf="storeKeeper">
-            <mat-label>Select a storeKeeper :</mat-label>
-            <mat-select id="storeKeeperId" formControlName="storeKeeperId">
-                <mat-option *ngFor="let storeKeeper of storeKeeper" [value]="storeKeeper.storeKeeperId">
-                    {{storeKeeper.name}}
-                </mat-option>
-            </mat-select>
-
-            <mat-error *ngIf=" form.controls['storeKeeperId'].errors?.['required']">
-               storeKeeper is Required
-            </mat-error>
-
-        </mat-form-field>
-
-        <mat-form-field *ngIf="user">
-            <mat-label>Select a user :</mat-label>
-            <mat-select id="userId" formControlName="userId">
-                <mat-option *ngFor="let user of user" [value]="user.userId">
-                    {{user.userName}}
-                </mat-option>
-            </mat-select>
-
-            <mat-error *ngIf=" form.controls['userId'].errors?.['required']">
-               user is Required
-            </mat-error>
-
-        </mat-form-field>
-        
-        <mat-form-field>
-            <mat-label>transactionType:</mat-label>
-            <input matInput formControlName="transactionType" required placeholder="transactionType" readonly>
-
-            <mat-error *ngIf=" form.controls['transactionType'].errors?.['required']">
-                transactionType is Required
-            </mat-error>
-
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>quantity:</mat-label>
-            <input matInput formControlName="quantity" required placeholder="Type a quantity">
-
-            <mat-error *ngIf=" form.controls['quantity'].errors?.['required']">
-                quantity is Required
-            </mat-error>
-
-            <mat-error *ngIf="form.controls['quantity'].errors?.['pattern']">
-                Quantity must be a number
-            </mat-error>
-
-        </mat-form-field>
-   
-    </form>
+    <mat-form-field>
+      <mat-label>Quantity:</mat-label>
+      <input
+        matInput
+        formControlName="quantity"
+        required
+        placeholder="Type a quantity"
+      />
+      <mat-error *ngIf="form.controls['quantity'].errors?.['required']">
+        Quantity is Required
+      </mat-error>
+      <mat-error *ngIf="form.controls['quantity'].errors?.['pattern']">
+        Quantity must be a number
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div style="border-left: 5px; color: red;" *ngIf="form.errors?.['invalidPadNumbers']" class="error-message">
+  Pad numbers and quantity do not match.
 </div>
 <div mat-dialog-actions>
-    <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{'Create' }}</button>
-    <button mat-stroked-button (click)="onCancel()">Cancel</button>
-  </div>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="!form.valid"
+    (click)="onSubmit()"
+  >
+    {{ "Create" }}
+  </button>
+  <button mat-stroked-button (click)="onCancel()">Cancel</button>
+</div>
