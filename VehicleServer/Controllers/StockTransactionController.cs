@@ -15,9 +15,9 @@ namespace VehicleServer.Controllers
     {
         private readonly StockService _stockService;
         private readonly TransactionRepo _StockTransactionRepo;
-        private readonly IStockTransactionDetailService _stockTransactionDetailService;
+        private readonly IStockItemsDetailService _stockTransactionDetailService;
 
-        public StockTransactionController(StockService stockService, TransactionRepo StockTransactionRepo, IStockTransactionDetailService stockTransactionDetailService)
+        public StockTransactionController(StockService stockService, TransactionRepo StockTransactionRepo, IStockItemsDetailService stockTransactionDetailService)
         {
             _stockService = stockService;
             _StockTransactionRepo = StockTransactionRepo;
@@ -73,7 +73,7 @@ namespace VehicleServer.Controllers
                 }
             }
 
-            var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockTransactionDetail
+            var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockItemsDetail
             {
                 ItemId = request.ItemId,
                 StoreId = request.StoreId,
@@ -87,9 +87,24 @@ namespace VehicleServer.Controllers
                 return BadRequest("Validation failed.");
             }
 
-            await _stockTransactionDetailService.BulkInsertTransactionsAsync(transaction);
+            if (transaction.TransactionType == "Receipt")
+            {
+                await _stockTransactionDetailService.BulkInsertTransactionsAsync(transaction);
+                return Ok("Bulk insertion and stock update successful.");
+            }
 
-            return Ok("Bulk insertion and stock update successful.");
+            else if (transaction.TransactionType == "Issue")
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(transaction);
+                return Ok("Bulk Issue and stock update successful.");
+
+            }
+            else
+            {
+                return BadRequest("Something went wrong");
+            }
+
+
         }
 
         // DELETE: api/StockTransaction/5

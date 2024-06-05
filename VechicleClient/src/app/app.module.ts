@@ -22,8 +22,7 @@ import { EditStoreComponent } from './store/edit-store.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIcon } from '@angular/material/icon'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { IssueComponent } from './issue/issue.component';
-import { ReceiptComponent } from './receipt/receipt.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
 
@@ -40,8 +39,7 @@ import { HomeComponent } from './home/home.component';
     StoreKeeperEditComponent,
     StoreComponent,
     EditStoreComponent,
-    IssueComponent,
-    ReceiptComponent,
+    TransactionFormComponent,
     TransactionComponent,
     HomeComponent,
     TransactionComponent,

@@ -1,8 +1,11 @@
-﻿namespace VehicleServer.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VehicleServer.Entities
 {
     public class StockTransaction
     {
-        public int TransactionId { get; set; }
+        [Key]
+        public int StockTransactionId { get; set; }
         public int ItemId { get; set; }
         public int StoreId { get; set; }
         public int? UserId { get; set; }

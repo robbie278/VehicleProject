@@ -10,7 +10,7 @@ namespace VehicleServer.Configuration
         void IEntityTypeConfiguration<StockTransaction>.Configure(EntityTypeBuilder<StockTransaction> builder)
         {
            
-            builder.HasKey(p => p.TransactionId);
+            builder.HasKey(p => p.StockTransactionId);
 
             builder.HasOne(y => y.User)
             .WithMany(y => y.StockTransactions)

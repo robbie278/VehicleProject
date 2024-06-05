@@ -111,7 +111,7 @@ namespace VehicleServer.Migrations
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PadNumberEnd")
+                    b.Property<int>("PadNumberEnd")
                         .HasColumnType("int");
 
                     b.Property<int>("PadNumberStart")
@@ -147,6 +147,49 @@ namespace VehicleServer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("StockTransactions");
+                });
+
+            modelBuilder.Entity("VehicleServer.Entities.StockTransactionDetail", b =>
+                {
+                    b.Property<int>("StockTransactionDetailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StockTransactionDetailId"));
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PadNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StoreId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StoreKeeperId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TransactionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("StockTransactionDetailId");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("StoreId");
+
+                    b.HasIndex("StoreKeeperId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("StockTransactionsDetail");
                 });
 
             modelBuilder.Entity("VehicleServer.Entities.Store", b =>
@@ -273,6 +316,39 @@ namespace VehicleServer.Migrations
 
                     b.HasOne("VehicleServer.Entities.User", "User")
                         .WithMany("StockTransactions")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Items");
+
+                    b.Navigation("StoreKeeper");
+
+                    b.Navigation("Stores");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VehicleServer.Entities.StockTransactionDetail", b =>
+                {
+                    b.HasOne("VehicleServer.Entities.Item", "Items")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VehicleServer.Entities.Store", "Stores")
+                        .WithMany()
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VehicleServer.Entities.StoreKeeper", "StoreKeeper")
+                        .WithMany()
+                        .HasForeignKey("StoreKeeperId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VehicleServer.Entities.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Items");

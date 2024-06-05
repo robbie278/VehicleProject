@@ -9,8 +9,7 @@ import { EditStoreComponent } from './store/edit-store.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ItemComponent } from './item/item.component';
 import { ItemEditComponent } from './item/item-edit.component';
-import { IssueComponent } from './issue/issue.component';
-import { ReceiptComponent } from './receipt/receipt.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
 
@@ -30,8 +29,7 @@ const routes: Routes = [
   {path:'item/:id', component: ItemEditComponent},
   {path:'item', component: ItemEditComponent},
   // newly created route
-  {path:'issue', component: IssueComponent},
-  {path:'receipt', component: ReceiptComponent},
+  {path:'transaction-form', component: TransactionFormComponent},
   {path:'transaction', component: TransactionComponent},
 
 ]

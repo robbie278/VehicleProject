@@ -12,9 +12,9 @@ namespace VehicleServer.Controllers
     [ApiController]
     public class StockTransactionDetailController : ControllerBase
     {
-        private readonly IStockTransactionDetailService _stockTransactionDetailService;
+        private readonly IStockItemsDetailService _stockTransactionDetailService;
 
-        public StockTransactionDetailController(IStockTransactionDetailService stockTransactionDetailService)
+        public StockTransactionDetailController(IStockItemsDetailService stockTransactionDetailService)
         {
             _stockTransactionDetailService = stockTransactionDetailService;
         }
@@ -22,7 +22,7 @@ namespace VehicleServer.Controllers
         [HttpPost("validate")]
         public async Task<IActionResult> ValidateStockTransaction([FromBody] ValidationRequest request)
         {
-            var transactionDetail = new StockTransactionDetail
+            var transactionDetail = new StockItemsDetail
             {
                 ItemId = request.ItemId,
                 StoreId = request.StoreId,

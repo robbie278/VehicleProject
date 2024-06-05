@@ -29,7 +29,7 @@ namespace VehicleServer.Repository
 
             var StockTransactions = _context.StockTransactions.Select(c => new StockTransactionDto()
             {
-                TransactionId = c.TransactionId,
+                StockTransactionId = c.StockTransactionId,
                 TransactionType = c.TransactionType,
                 Quantity = c.Quantity,
                 ItemId = c.Items!.ItemId,
@@ -70,7 +70,7 @@ namespace VehicleServer.Repository
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStockTransaction(int id, StockTransactionDto StockTransactionDto)
         {
-            if (id != StockTransactionDto.TransactionId)
+            if (id != StockTransactionDto.StockTransactionId)
             {
                 throw new Exception("No id!");
             }
@@ -127,7 +127,7 @@ namespace VehicleServer.Repository
 
         private bool StockTransactionExists(int id)
         {
-            return _context.StockTransactions.Any(e => e.TransactionId == id);
+            return _context.StockTransactions.Any(e => e.StockTransactionId == id);
         }
     }
 }
