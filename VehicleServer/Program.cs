@@ -23,7 +23,7 @@ builder.Services.AddScoped<StoreRepo>();
 builder.Services.AddScoped<StoreKeeperRepo>();
 builder.Services.AddScoped<UserRepo>();
 builder.Services.AddScoped<StockService>();
-builder.Services.AddScoped<IStockItemsDetailService, StockItemsDetailService>();
+builder.Services.AddScoped<IStockTransactionDetailService, StockTransactionDetailService>();
 
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
