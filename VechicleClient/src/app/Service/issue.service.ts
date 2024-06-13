@@ -48,6 +48,6 @@ import { Store } from '../Models/Store';
       var url = this.getUrl('api/User')
       return this.http.get<User[]>(url)
     }
-
+    
   }
 

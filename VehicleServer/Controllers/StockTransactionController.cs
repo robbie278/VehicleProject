@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
 using VehicleServer.Repository;
@@ -26,9 +27,15 @@ namespace VehicleServer.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StockTransactionDto>>> GetStockTransactions()
+        public async Task<ActionResult<ApiResult<StockTransactionDto>>> GetStockTransactions(
+                    int pageIndex = 0,
+        int pageSize = 10,
+        string? sortColumn = null,
+        string? sortOrder = null,
+        string? filterColumn = null,
+        string? filterQuery = null)
         {
-            return await _StockTransactionRepo.GetStockTransactions();
+            return await _StockTransactionRepo.GetStockTransactions(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
         }
 
 
@@ -113,5 +120,8 @@ namespace VehicleServer.Controllers
         {
             return await _StockTransactionRepo.DeleteStockTransaction(id);
         }
+
+        
+
     }
 }

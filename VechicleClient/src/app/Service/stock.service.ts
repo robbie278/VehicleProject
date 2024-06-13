@@ -17,6 +17,7 @@ export class StockService extends BaseService<Stock> {
     var url = this.getUrl("api/Stock")
     return this.http.get<Stock[]>(url)
   }
+  
   override get(id: number): Observable<Stock> {
     throw new Error('Method not implemented.');
   }
