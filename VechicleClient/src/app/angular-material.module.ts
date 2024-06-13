@@ -13,7 +13,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 
 
@@ -34,7 +35,8 @@ import { MatCardModule } from '@angular/material/card';
     MatMenuModule,
     MatDialogModule,
     MatCardModule,
-
+    MatPaginator,
+    MatSortModule,
   ],
   exports: [
     MatToolbarModule,
@@ -50,8 +52,9 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     MatMenuModule,
     MatDialogModule,
-    MatCardModule
-
+    MatCardModule,
+    MatPaginator,
+    MatSortModule,
   ],
 })
 export class AngularMaterialModule {}

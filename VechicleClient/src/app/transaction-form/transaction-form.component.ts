@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors, AsyncValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Issue } from '../Models/Issue';
@@ -10,6 +10,7 @@ import { User } from '../Models/User';
 import { IssueService } from '../Service/issue.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TransactionType } from '../enums/transaction-type.enum';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-transaction-form',
@@ -73,6 +74,7 @@ export class TransactionFormComponent implements OnInit {
     this.form.get('padNumberEnd')?.valueChanges.subscribe(() => this.calculateQuantity());
 
     this.loadData();
+   
   }
 
   loadData() {
@@ -190,4 +192,6 @@ export class TransactionFormComponent implements OnInit {
       this.form.get('quantity')?.setValue('');
     }
   }
+
+ 
 }

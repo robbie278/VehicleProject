@@ -27,6 +27,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,8 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    
+
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

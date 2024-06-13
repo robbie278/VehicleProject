@@ -23,30 +23,38 @@ namespace VehicleServer.Repository
            
         }
 
-        public async Task<ActionResult<IEnumerable<StockTransactionDto>>> GetStockTransactions()
+        public async Task<ActionResult<ApiResult<StockTransactionDto>>> GetStockTransactions(
+                int pageIndex = 0,
+                int pageSize = 10,
+                string? sortColumn = null,
+                string? sortOrder = null,
+                string? filterColumn = null,
+                string? filterQuery = null)
         {
 
+            return await ApiResult<StockTransactionDto>.CreateAsync(
+                    _context.StockTransactions.AsNoTracking().Select(c => new StockTransactionDto()
+                    {
+                        StockTransactionId = c.StockTransactionId,
+                        TransactionType = c.TransactionType,
+                        Quantity = c.Quantity,
+                        ItemId = c.Items!.ItemId,
+                        ItemName = c.Items!.Name,
+                        StoreId = c.Stores!.StoreId,
+                        StoreName = c.Stores!.Name,
+                        StoreKeeperId = c.StoreKeeper!.StoreKeeperId,
+                        StoreKeeperName = c.StoreKeeper!.Name,
+                        UserId = c.User!.UserId,
+                        UserName = c.User!.UserName,
+                    }),
+                    pageIndex,
+                    pageSize,
+                    sortColumn,
+                    sortOrder,
+                    filterColumn,
+                    filterQuery);
 
-            var StockTransactions = _context.StockTransactions.Select(c => new StockTransactionDto()
-            {
-                StockTransactionId = c.StockTransactionId,
-                TransactionType = c.TransactionType,
-                Quantity = c.Quantity,
-                ItemId = c.Items!.ItemId,
-                ItemName = c.Items!.Name,
-                StoreId = c.Stores!.StoreId,
-                StoreName = c.Stores!.Name,
-                StoreKeeperId = c.StoreKeeper!.StoreKeeperId,
-                StoreKeeperName = c.StoreKeeper!.Name,
-                UserId = c.User!.UserId,
-                UserName = c.User!.UserName,
 
-
-
-            });
-              
-
-            return await StockTransactions.ToListAsync();
         }
 
 
@@ -129,5 +137,7 @@ namespace VehicleServer.Repository
         {
             return _context.StockTransactions.Any(e => e.StockTransactionId == id);
         }
+
+       
     }
 }
