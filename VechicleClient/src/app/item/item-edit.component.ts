@@ -1,10 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ICategory } from '../Models/Category';
 import { Item } from '../Models/item';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from '../Service/item.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -94,5 +95,19 @@ fetchData() {
       onCancel(): void {
         this.dialogRef.close();
       }
+      isDupeItem(): AsyncValidatorFn {
+        return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
+      
+          var item = <Item>{};
+          item.itemId = (this.id) ? this.id : 0;
+          item.name = this.form.controls['name'].value; 
+          item.description = this.form.controls['description'].value; 
+          item.categoryId = this.form.controls['categoryId'].value; 
+
+         return this.itemService.isDupeItem(item).pipe(map(result => {
+      
+            return (result ? { isDupeItem: true } : null);
+          }));
 }
-    
+}
+}

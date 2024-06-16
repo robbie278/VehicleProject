@@ -12,7 +12,7 @@
         <!-- Id Column -->
         <ng-container matColumnDef="index">
           <th mat-header-cell *matHeaderCellDef>No</th>
-          <td mat-cell *matCellDef="let storeKeppers; let i = index;">{{i + 1}}</td>
+          <td mat-cell *matCellDef="let items; let i = index;">{{i + 1}}</td>
         </ng-container>
   
         <!-- Name Column -->
@@ -63,4 +63,8 @@
       </table>
     </mat-card-content>
   </mat-card>
-  
+  <mat-paginator [hidden]="!items"
+               (page)="getData($event)"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 20, 50]"
+               showFirstLastButtons></mat-paginator> 
