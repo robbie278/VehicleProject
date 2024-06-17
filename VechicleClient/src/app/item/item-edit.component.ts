@@ -5,7 +5,7 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators }
 import { ItemService } from '../Service/item.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 
 @Component({

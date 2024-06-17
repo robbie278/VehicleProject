@@ -1,21 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Linq.Dynamic;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
 using System.Reflection;
 
 namespace VehicleServer.Repository
 {
     public class ApiResult<T>
     {
+
         private ApiResult(
-           List<T> data,
-           int count,
-           int pageIndex,
-           int pageSize,
-           string? sortColumn,
-           string? sortOrder,
-           string? filterColumn = null,
-           string? filterQuery = null)
+            List<T> data,
+            int count,
+            int pageIndex,
+            int pageSize,
+            string? sortColumn,
+            string? sortOrder,
+            string? filterColumn = null,
+            string? filterQuery = null)
         {
             Data = data;
             PageIndex = pageIndex;

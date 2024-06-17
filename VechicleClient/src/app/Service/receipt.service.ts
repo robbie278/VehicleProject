@@ -55,5 +55,5 @@ export class ReceiptService extends BaseService<Receipt> {
         return this.http.get<User[]>(url)
       }
   
-    
+      
 }
