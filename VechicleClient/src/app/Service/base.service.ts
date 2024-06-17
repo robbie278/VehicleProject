@@ -19,3 +19,15 @@ export abstract class BaseService<T> {
     return environment.baseUrl + url;
   }
 }
+
+export interface ApiResult<T> {
+  data: T[];
+  pageIndex: number;
+  pageSize: number;
+  totalCount: number;
+  totalPages: number;
+  sortColumn: string;
+  sortOrder: string;
+  filterColumn: string;
+  filterQuery: string;
+}

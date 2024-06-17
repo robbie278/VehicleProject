@@ -30,8 +30,5 @@ namespace VehicleServer
         public DbSet<User> Users { get; set; }
         public DbSet<StockItemsDetail> StockItemsDetail { get; set;}
 
-        
-
-
     }
 }

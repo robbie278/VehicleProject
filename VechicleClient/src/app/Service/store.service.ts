@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from './base.service';
+import { ApiResult, BaseService } from './base.service';
 import { Store } from '../Models/Store';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,24 @@ export class StoreService extends BaseService<Store> {
     var url = this.getUrl("api/Store")
     return this.http.get<Store[]>(url)
   }
+
+  getData2(pageIndex: number, pageSize: number, sortColumn: string, sortOrder: string,
+    filterColumn: string | null, filterQuery: string | null): Observable<ApiResult<Store>> {
+    var url = this.getUrl("api/Store")
+    var params = new HttpParams()
+      .set("pageIndex", pageIndex.toString())
+      .set("pageSize", pageSize.toString())
+      .set("sortColumn", sortColumn)
+      .set("sortOrder", sortOrder);
+
+    if (filterQuery && filterColumn) {
+      params = params
+        .set("filterColumn", filterColumn)
+        .set("filterQuery", filterQuery);
+    }
+    return this.http.get<ApiResult<Store>>(url, { params })
+  }
+
 
   override get(id: number): Observable<Store> {
     var url = this.getUrl("api/Store/" + id)

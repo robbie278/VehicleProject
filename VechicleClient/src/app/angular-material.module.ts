@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -34,6 +35,7 @@ import { MatCardModule } from '@angular/material/card';
     MatMenuModule,
     MatDialogModule,
     MatCardModule,
+    MatSortModule
 
   ],
   exports: [
@@ -50,7 +52,8 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     MatMenuModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatSortModule
 
   ],
 })

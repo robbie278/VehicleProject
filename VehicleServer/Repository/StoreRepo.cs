@@ -17,19 +17,48 @@ namespace VehicleServer.Repository
             this._mapper = mapper;
         }
 
-        public async Task<ActionResult<IEnumerable<StoreDto>>> GetStores()
+        //public async Task<ActionResult<IEnumerable<StoreDto>>> GetStores()
+        //{
+        //    var stores = await _context.Stores.ToListAsync();
+
+        //    var storeDtos = _mapper.Map<List<StoreDto>>(stores);
+
+        //    return storeDtos;
+        //}
+        //----------------
+        public async Task<ActionResult<ApiResult<StoreDto>>> GetStores(
+                int pageIndex = 0,
+                int pageSize = 10,
+                string? sortColumn = null,
+                string? sortOrder = null,
+                string? filterColumn = null,
+                string? filterQuery = null)
         {
-            var stores = await _context.Stores.ToListAsync();
 
-            var storeDtos = _mapper.Map<List<StoreDto>>(stores);
+            return await ApiResult<StoreDto>.CreateAsync(
+                    _context.Stores.AsNoTracking().Select(s => new StoreDto()
+                    {
+                        StoreId = s.StoreId,
+                        Name = s.Name,
+                        address = s.Address,
+                    }),
+                    pageIndex,
+                    pageSize,
+                    sortColumn,
+                    sortOrder,
+                    filterColumn,
+                    filterQuery);
 
-            return storeDtos;
+
         }
 
 
+        //----------------
 
 
-       
+
+
+
         public async Task<ActionResult<StoreDto>> GetStore(int id)
         {
             var store = await _context.Stores.FindAsync(id);

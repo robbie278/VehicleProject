@@ -23,12 +23,14 @@ export class EditStoreComponent implements OnInit {
     private toastr: ToastrService,
     private storeService: StoreService
   ) {
+    console.log(data)
     this.id = data.id;
     this.title = this.id ? 'Edit Store' : 'Create Store';
   }
 
   ngOnInit(): void {
     this.instantiateForm();
+    
     if (this.id) {
       this.fetchData();
     }
@@ -44,6 +46,7 @@ export class EditStoreComponent implements OnInit {
   fetchData() {
     this.storeService.get(this.id).subscribe({
       next: (result) => {
+        console.log(result)
         this.stores = result;
         this.form.patchValue(this.stores);
       },
@@ -61,6 +64,9 @@ export class EditStoreComponent implements OnInit {
         next: () => {
           this.toastr.info('Store Updated Successfully');
           this.dialogRef.close(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         },
         error: (error) => console.error(error)
       });
@@ -69,6 +75,9 @@ export class EditStoreComponent implements OnInit {
         next: (result) => {
           this.toastr.success('Store Added Successfully');
           this.dialogRef.close(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         },
         error: (error) => console.error(error)
       });
