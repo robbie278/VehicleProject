@@ -18,6 +18,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 
 
 
+
 @NgModule({
   declarations: [],
   imports: [
@@ -37,6 +38,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     MatCardModule,
     MatPaginator,
     MatSortModule,
+  
+
   ],
   exports: [
     MatToolbarModule,
@@ -55,6 +58,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     MatCardModule,
     MatPaginator,
     MatSortModule,
+   
+
   ],
 })
 export class AngularMaterialModule {}
