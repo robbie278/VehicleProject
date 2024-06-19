@@ -35,7 +35,7 @@
       <!-- Addres Column -->
       <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
-        <td mat-cell *matCellDef="let store">{{store.storeId}}</td>
+        <td mat-cell *matCellDef="let store">{{store.address}}</td>
       </ng-container>
 
       <!-- Action Column -->
@@ -58,6 +58,6 @@
 
 </mat-card>
 
-<mat-paginator [hidden]="!stores" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+<mat-paginator [hidden]="!stores" [pageSize]="10" [pageSizeOptions]="[5,10, 20, 50]" showFirstLastButtons></mat-paginator>
 
 <!-- Pagination directive -->

@@ -134,6 +134,15 @@ namespace VehicleServer.Repository
         {
             return _context.Stores.Any(e => e.StoreId == id);
         }
+
+        public bool isDupeStore(StoreDto store)
+        {
+            return _context.Stores.AsNoTracking().Any(
+                 e => e.Name == store.Name
+             && e.Address == store.address
+             && e.StoreId != store.StoreId
+                );
+        }
     }
 }
 

@@ -84,6 +84,8 @@ export class StoreComponent implements OnInit {
           this.paginator.pageIndex = result.pageIndex;
           this.paginator.pageSize = result.pageSize;
           this.stores = new MatTableDataSource<Store>(result.data);
+          this.stores.paginator = this.paginator; // bind paginator
+          this.stores.sort = this.sort; // bind sort
           
         },
         error: (error) => console.error(error)

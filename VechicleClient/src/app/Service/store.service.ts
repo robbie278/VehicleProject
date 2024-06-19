@@ -57,5 +57,10 @@ export class StoreService extends BaseService<Store> {
     return this.http.delete<Store>(url)
   }
 
+  isDupeStore(store: Store): Observable<boolean>{
+    var url = this.getUrl("api/Store/isDupeStore/")
+    return this.http.post<boolean>(url, store)
+  }
+
  
 }

@@ -66,5 +66,12 @@ public class StoreController : ControllerBase
         return await _storeRepo.DeleteStore(id);
     }
 
-    
+    [HttpPost]
+    [Route("isDupeStore")]
+    public bool isDupeStore(StoreDto store)
+    {
+        return _storeRepo.isDupeStore(store);
+    }
+
+
 }
