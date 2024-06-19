@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
+using VehicleServer.Enums;
 using VehicleServer.Repository;
 using VehicleServer.Services;
 using VehicleServer.Services.StockTransactionDetailServices;
@@ -94,16 +95,22 @@ namespace VehicleServer.Controllers
                 return BadRequest("Validation failed.");
             }
 
-            if (transaction.TransactionType == "Receipt")
+            if (transaction.TransactionType == TransactionType.Receipt)
             {
                 await _stockTransactionDetailService.BulkInsertTransactionsAsync(transaction);
                 return Ok("Bulk insertion and stock update successful.");
             }
 
-            else if (transaction.TransactionType == "Issue")
+            else if (transaction.TransactionType == TransactionType.Issue)
             {
                 await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(transaction);
                 return Ok("Bulk Issue and stock update successful.");
+
+            }
+            else if(transaction.TransactionType == TransactionType.Damaged)
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(transaction);
+                return Ok("Bulk Damage and stock update successful.");
 
             }
             else

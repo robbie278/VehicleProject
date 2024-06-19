@@ -1,9 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CategoryService } from '../Service/category.service';
 import { ICategory } from '../Models/Category';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable, map } from 'rxjs';
 
 
 @Component({
@@ -21,10 +23,11 @@ export class CategoriesEditComponent implements OnInit {
     public dialogRef: MatDialogRef<CategoriesEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private categoryService: CategoryService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translateService: TranslateService
   ) {
     this.id = data.id;
-    this.title = this.id ? 'Edit Category' : 'Create Category';
+    this.title = translateService.instant( this.id ? 'Category.EditCategory' : 'Category.CreateCategory');
   }
 
   ngOnInit(): void {
@@ -38,7 +41,7 @@ export class CategoriesEditComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)
-    });
+    },null,this.isDupeCategory());
   }
 
   
@@ -78,5 +81,19 @@ export class CategoriesEditComponent implements OnInit {
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  isDupeCategory(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
+  
+      var category = <ICategory>{};
+      category.categoryId = (this.id) ? this.id : 0;
+      category.name = this.form.controls['name'].value; 
+  
+     return this.categoryService.isDupeCategory(category).pipe(map(result => {
+  
+        return (result ? { isDupeCategory: true } : null);
+      }));
+    }
   }
 }

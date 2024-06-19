@@ -27,6 +27,14 @@ namespace VehicleServer.Repository
             return await item.ToListAsync();
 
         }
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory(int id)
+        {
+            var items = await _context.Items
+                                          .Where(it => it.CategoryId == id)
+                                          .ToListAsync();
+            return items;
+
+        }
         public async Task<ActionResult<Item>> GetItem(int id)
         {
             var item = await _context.Items.FindAsync(id);

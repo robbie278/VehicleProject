@@ -13,7 +13,19 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field *ngIf="item">
+    <mat-form-field *ngIf="categories">
+      <mat-label>Select a category :</mat-label>
+      <mat-select id="categoryId" formControlName="categoryId">
+        <mat-option *ngFor="let category of categories" [value]="category.categoryId" (onSelectionChange)="getItemsByCategory(category.categoryId)">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['categoryId'].errors?.['required']">
+        Category is Required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
       <mat-label>Select an Item :</mat-label>
       <mat-select id="itemId" formControlName="itemId">
         <mat-option *ngFor="let item of item" [value]="item.itemId">

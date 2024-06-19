@@ -20,7 +20,7 @@
         
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef >Name</th>
+                <th mat-header-cell *matHeaderCellDef >{{ 'FORM.NAME' | translate }}</th>
                 <td mat-cell *matCellDef="let store">
                     {{store.name}}
                 </td>
@@ -28,13 +28,13 @@
         
             <!-- Addres Column -->
             <ng-container matColumnDef="address">
-                <th mat-header-cell *matHeaderCellDef >Address</th>
+                <th mat-header-cell *matHeaderCellDef >{{ 'StoreKeeper.Address' | translate }}</th>
                 <td mat-cell *matCellDef="let store">{{store.address}}</td>
             </ng-container>
         
             <!-- Action Column -->
             <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <th mat-header-cell *matHeaderCellDef>{{ 'FORM.ACTION' | translate }}</th>
                 <td mat-cell *matCellDef="let store">
                   <button mat-icon-button color="primary" aria-label="Edit" (click)="openDialog(store.storeId)">
                     <mat-icon>edit</mat-icon>

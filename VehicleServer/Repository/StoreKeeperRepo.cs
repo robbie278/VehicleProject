@@ -124,7 +124,7 @@ namespace VehicleServer.Repository
             return _context.StoreKeepers.AsNoTracking().Any(
                  e => e.Name == storeKeeper.Name
                 && e.Email == storeKeeper.Email
-                && e.StoreId == storeKeeper.StoreId           
+               // && e.StoreId == storeKeeper.StoreId           
                 && e.StoreKeeperId != storeKeeper.StoreKeeperId
                 );
         }

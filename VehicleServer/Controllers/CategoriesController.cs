@@ -22,10 +22,15 @@ namespace VehicleServer.Controllers
 
         // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
+        public async Task<ActionResult<ApiResult<CategoryDto>>> GetStoreKeepers(
+                int pageIndex = 0,
+                int pageSize = 10,
+                string? sortColumn = null,
+                string? sortOrder = null,
+                string? filterColumn = null,
+                string? filterQuery = null)
         {
-
-            return await categoryRepo.GetCategories();
+            return await categoryRepo.GetCategories(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
         }
 
         // GET: api/Categories/5
@@ -68,6 +73,13 @@ namespace VehicleServer.Controllers
                 return BadRequest();
             }
             return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("isDupeCategory")]
+        public bool isDupeCategory(CategoryDto category)
+        {
+            return categoryRepo.isDupeCategory(category);
         }
 
 

@@ -29,6 +29,11 @@ namespace VehicleServer.Controllers
                 return await itemRepo.GetItems();
             }
 
+        [HttpGet("Category/{id}")]
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory(int id)
+        {
+            return await itemRepo.GetItemsByCategory(id);
+        }
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {

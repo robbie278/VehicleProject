@@ -14,14 +14,12 @@ namespace VehicleServer.Controllers
 
     public class StoreKeepersController : ControllerBase
     {
-        private readonly ApplicationContext _context;
-        private readonly IMapper _mapper;
+       
         private readonly StoreKeeperRepo _storeKeeperRepo;
 
-        public StoreKeepersController(ApplicationContext context, IMapper mapper, StoreKeeperRepo storeKeeperRepo)
+        public StoreKeepersController(StoreKeeperRepo storeKeeperRepo)
         {
-            _context = context;
-            _mapper = mapper;
+            
             this._storeKeeperRepo = storeKeeperRepo;
         }
 

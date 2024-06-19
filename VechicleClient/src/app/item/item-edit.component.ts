@@ -59,7 +59,8 @@ fetchData() {
         //fetch all categories from server
         this.itemService.getCategories().subscribe({
           next:(result) =>{
-            this.categories = result
+            this.categories = result.data as ICategory[]
+            console.log(result);
           },
           error: err => console.log(err)
         })

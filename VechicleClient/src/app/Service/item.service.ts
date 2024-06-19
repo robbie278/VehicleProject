@@ -43,4 +43,8 @@ export class ItemService extends BaseService<Item> {
     var url = this.getUrl('api/Categories')
     return this.http.get<ICategory[]>(url)
   }
+  getStoreKeeper(): Observable<any>{
+    var url = this.getUrl('api/StoreKeepers')
+    return this.http.get<any>(url)
+  }
 }

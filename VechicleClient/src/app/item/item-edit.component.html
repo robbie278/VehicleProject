@@ -3,30 +3,30 @@
 <div mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field>
-        <mat-label>Name:</mat-label>
-        <input matInput formControlName="name" required placeholder="Type a name">
+        <mat-label>{{ 'FORM.NAME' | translate }}:</mat-label>
+        <input matInput formControlName="name" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
         <mat-error *ngIf=" form.controls['name'].errors?.['required']">
-          Name is Required
+          {{ 'FORM.NAME_REQUIRED' | translate }}
         </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-            <mat-label>Description:</mat-label>
-            <input matInput formControlName="description" required placeholder="Type a description">
+            <mat-label>{{ 'FORM.DESCRIPTION' | translate }}:</mat-label>
+            <input matInput formControlName="description" required placeholder="{{ 'FORM.DESCRIPTION_PLACEHOLDER' | translate }}">
             <mat-error *ngIf=" form.controls['description'].errors?.['required']">
-                Description is Required
+              {{ 'FORM.DESCRIPTION_REQUIRED' | translate }}
             </mat-error>
      </mat-form-field>
 
      <mat-form-field *ngIf="categories">
-        <mat-label>Select a Category :</mat-label>
+        <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
         <mat-select id="categoryId" formControlName="categoryId">
             <mat-option *ngFor="let category of categories" [value]="category.categoryId">
                 {{category.name}}
             </mat-option>
         </mat-select>
         <mat-error *ngIf=" form.controls['categoryId'].errors?.['required']">
-            Category is Required
+          {{ 'Category.Category_Name_Placeholder' | translate }}
         </mat-error>
     </mat-form-field>
   </form>

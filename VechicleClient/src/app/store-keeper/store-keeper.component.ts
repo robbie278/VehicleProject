@@ -102,8 +102,7 @@ if(confirm("Are you sure to delete this StoreKeeper")){
 this.storeKeeperService.delete(id).subscribe({
 next: () => {
  this.toastr.error("StoreKeeper Deleted Successfully")
- location.reload()
-
+ this.loadData()
   },
     error: (err) => console.log(err)
   })
