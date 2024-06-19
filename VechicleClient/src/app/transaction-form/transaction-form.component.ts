@@ -79,7 +79,6 @@ export class TransactionFormComponent implements OnInit {
     this.form.get('padNumberEnd')?.valueChanges.subscribe(() => this.calculateQuantity());
 
     this.loadData();
-
   }
 
   loadData() {

@@ -510,4 +510,9 @@ C:\Users\Rgat\world 1\VehicleProject\VehicleServer\obj\Debug\net7.0\VehicleServe
 C:\Users\Rgat\world 1\VehicleProject\VehicleServer\obj\Debug\net7.0\VehicleServer.genruntimeconfig.cache
 C:\Users\Rgat\world 1\VehicleProject\VehicleServer\obj\Debug\net7.0\ref\VehicleServer.dll
 C:\VehicleProject\VehicleServer\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll
+<<<<<<< HEAD
 C:\VehicleProject\VehicleServer\obj\Debug\net7.0\VehicleS.72C3B3C2.Up2Date
+=======
+C:\VehicleProject\VehicleServer\bin\Debug\net7.0\System.Linq.Dynamic.dll
+C:\VehicleProject\VehicleServer\obj\Debug\net7.0\VehicleServer.csproj.CopyComplete
+>>>>>>> origin/rgat

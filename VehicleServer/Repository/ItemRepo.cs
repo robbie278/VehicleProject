@@ -2,8 +2,10 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
+using VehicleServer.Migrations;
 
 
 
@@ -19,13 +21,30 @@ namespace VehicleServer.Repository
             this._mapper = mapper;
             this._context = context;
         }
-        public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems()
+        public async Task<ActionResult<ApiResult<ItemDto>>> GetItems(
+                int pageIndex = 0,
+              int pageSize = 10,
+              string? sortColumn = null,
+              string? sortOrder = null,
+              string? filterColumn = null,
+              string? filterQuery = null)
         {
-            var item = _context.Items.
-                ProjectTo<ItemDto>(_mapper.ConfigurationProvider);
+                return await ApiResult<ItemDto>.CreateAsync(
+                    _context.Items.AsNoTracking().Select(c => new ItemDto()
+                    {
+                        ItemId = c.ItemId,
+                        Name = c.Name,
+                        Description = c.Description,
+                        CategoryId = c.Category!.CategoryId,
+                        CategoryName = c.Category!.Name,
+                    }),
 
-            return await item.ToListAsync();
-
+            pageIndex,
+                    pageSize,
+                    sortColumn,
+                    sortOrder,
+                    filterColumn,
+                    filterQuery);
         }
         public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory(int id)
         {
@@ -101,6 +120,15 @@ namespace VehicleServer.Repository
         private bool ItemExists(int id)
         {
             return _context.Categories.Any(e => e.CategoryId == id);
+        }
+        public bool isDupeItem(ItemDto item)
+        {
+            return _context.Items.AsNoTracking().Any(
+                 e => e.Name == item.Name
+                && e.Description == item.Description
+                && e.ItemId != item.ItemId
+                && e.CategoryId == item.CategoryId
+                );
         }
     }
 }

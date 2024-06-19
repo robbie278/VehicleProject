@@ -24,9 +24,15 @@ namespace VehicleServer.Controllers
         }      
         
             [HttpGet]
-            public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems()
-            {
-                return await itemRepo.GetItems();
+            public async Task<ActionResult<ApiResult<ItemDto>>> GetItems(
+                  int pageIndex = 0,
+                  int pageSize = 10,
+                  string? sortColumn = null,
+                  string? sortOrder = null,
+                  string? filterColumn = null,
+                  string? filterQuery = null)
+        {
+                return await itemRepo.GetItems(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
             }
 
         [HttpGet("Category/{id}")]
@@ -60,6 +66,12 @@ namespace VehicleServer.Controllers
         public async Task<IActionResult> DeleteItem(int id)
         {
             return await itemRepo.DeleteItem(id);
+        }
+        [HttpPost]
+        [Route("isDupeItem")]
+        public bool isDupeItem(ItemDto item)
+        {
+            return itemRepo.isDupeItem(item);
         }
 
     }
