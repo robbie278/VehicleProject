@@ -43,8 +43,7 @@ ngOnInit() {
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     categoryId: new FormControl('', Validators.required)
-  })
-}
+  },null, this.isDupeItem())}
 
 fetchData() {
   this.itemService.get(this.id).subscribe({
