@@ -7,11 +7,12 @@ import { Item } from '../Models/item';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { User } from '../Models/User';
 import { Store } from '../Models/Store';
+import { ICategory } from '../Models/Category';
 
 @Injectable({
   providedIn: 'root'
 })
-  export class IssueService extends BaseService<Issue> {
+  export class TransactionFormService extends BaseService<Issue> {
     constructor(http: HttpClient) { 
       super(http)
     } 
@@ -40,14 +41,21 @@ import { Store } from '../Models/Store';
       var url = this.getUrl('api/Store')
       return this.http.get<Store[]>(url)
     }
-    getStoreKeeper(): Observable<StoreKeeper[]>{
+    getStoreKeeper(): Observable<any>{
       var url = this.getUrl('api/StoreKeepers')
-      return this.http.get<StoreKeeper[]>(url)
+      return this.http.get<any>(url)
     }
     getUser(): Observable<User[]>{
       var url = this.getUrl('api/User')
       return this.http.get<User[]>(url)
     }
-
+    getAllCategory(): Observable<ICategory[]>{
+      var url = this.getUrl('api/Categories/')
+      return this.http.get<ICategory[]>(url)
+    }
+    getItemsByCategory(id: number): Observable<Item[]> {
+      var url = this.getUrl("api/Items/Category/" + id)
+      return this.http.get<Item[]>(url)
+    }
   }
 

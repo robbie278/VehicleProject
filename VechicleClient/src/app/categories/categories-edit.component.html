@@ -1,20 +1,26 @@
 <h1 mat-dialog-title>{{ title }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-error *ngIf=" form.invalid && form.hasError('isDupeCategory')">
+              <strong> ERROR </strong>:
+            Categoty  with the same <i>Name</i>  already exists
+      </mat-error>
+  </p>
     <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name" required placeholder="Type a name" />
-      <mat-error *ngIf="form.controls['name'].errors?.['required']">Name is Required</mat-error>
+      <mat-label>{{ 'Category.Category_Name' | translate }}</mat-label>
+      <input matInput formControlName="name" required placeholder="{{ 'Category.Category_Name' | translate }}" />
+      <mat-error *ngIf="form.controls['name'].errors?.['required']">{{ 'FORM.NAME_REQUIRED' | translate }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Description</mat-label>
-      <input matInput formControlName="description" required placeholder="Type a description" />
-      <mat-error *ngIf="form.controls['description'].errors?.['required']">Description is Required</mat-error>
+      <mat-label>{{ 'FORM.DESCRIPTION' | translate }}</mat-label>
+      <input matInput formControlName="description" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}" />
+      <mat-error *ngIf="form.controls['description'].errors?.['required']">{{ 'FORM.DESCRIPTION_REQUIRED' | translate }}</mat-error>
     </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'Update' : 'Create' }}</button>
-  <button mat-stroked-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'FORM.UPDATE' : 'FORM.CREATE' | translate }}</button>
+  <button mat-stroked-button (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors, AsyncValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Issue } from '../Models/Issue';
@@ -7,9 +7,11 @@ import { Item } from '../Models/item';
 import { Store } from '../Models/Store';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { User } from '../Models/User';
-import { IssueService } from '../Service/issue.service';
+import { TransactionFormService } from '../Service/transaction-form.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TransactionType } from '../enums/transaction-type.enum';
+import { Observable, map } from 'rxjs';
+import { ICategory } from '../Models/Category';
 
 @Component({
   selector: 'app-transaction-form',
@@ -21,14 +23,17 @@ export class TransactionFormComponent implements OnInit {
   title?: string;
   id?: number;
   issue?: Issue;
+  categories?: ICategory[];
   item?: Item[];
   store?: Store[];
   storeKeeper?: StoreKeeper[];
   user?: User[];
   form!: FormGroup;
 
+  categoryId: number = 0;
+
   constructor(
-    private issueService: IssueService,
+    private transactionFormService: TransactionFormService,
     private router: Router,
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<TransactionFormComponent>,
@@ -40,6 +45,7 @@ export class TransactionFormComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup(
       {
+        categoryId: new FormControl('', Validators.required),
         itemId: new FormControl('', Validators.required),
         storeId: new FormControl('', Validators.required),
         storeKeeperId: new FormControl('', Validators.required),
@@ -76,15 +82,27 @@ export class TransactionFormComponent implements OnInit {
   }
 
   loadData() {
-    this.title = this.transactionType === TransactionType.Issue ? 'Issuing Goods' : 'Receiving Goods';
-    this.loadItems();
+    switch(this.transactionType){
+      case TransactionType.Issue: 
+          this.title = 'Issuing Goods'
+          break
+      case TransactionType.Receipt: 
+          this.title = 'Receiving Goods'
+          break
+      case TransactionType.Damaged: 
+          this.title = 'Damaged Goods'
+          break
+    }
+
+    // this.loadItems();
+    this.loadCategories();
     this.loadStore();
     this.loadStoreKeeper();
     this.loadUser();
   }
 
   loadItems() {
-    this.issueService.getItem().subscribe({
+    this.transactionFormService.getItem().subscribe({
       next: (result) => {
         this.item = result;
       },
@@ -93,7 +111,7 @@ export class TransactionFormComponent implements OnInit {
   }
 
   loadStore() {
-    this.issueService.getStore().subscribe({
+    this.transactionFormService.getStore().subscribe({
       next: (result) => {
         this.store = result;
       },
@@ -102,16 +120,16 @@ export class TransactionFormComponent implements OnInit {
   }
 
   loadStoreKeeper() {
-    this.issueService.getStoreKeeper().subscribe({
+    this.transactionFormService.getStoreKeeper().subscribe({
       next: (result) => {
-        this.storeKeeper = result;
+        this.storeKeeper = result.data as StoreKeeper[];
       },
       error: (err) => console.log(err),
     });
   }
 
   loadUser() {
-    this.issueService.getUser().subscribe({
+    this.transactionFormService.getUser().subscribe({
       next: (result) => {
         this.user = result;
       },
@@ -122,7 +140,7 @@ export class TransactionFormComponent implements OnInit {
   onSubmit() {
     const issue: Issue = this.form.getRawValue();
 
-    this.issueService.post(issue).subscribe({
+    this.transactionFormService.post(issue).subscribe({
       next: (response) => {
         this.toastr.info(response);
         this.dialogRef.close(true);
@@ -161,7 +179,7 @@ export class TransactionFormComponent implements OnInit {
         return { invalidNumber: true };
       }
 
-      if(quantityNum < 1){
+      if (quantityNum < 1) {
         return { negativePadNumbers: true };
       }
 
@@ -190,4 +208,19 @@ export class TransactionFormComponent implements OnInit {
       this.form.get('quantity')?.setValue('');
     }
   }
+  loadCategories() {
+    this.transactionFormService.getAllCategory().subscribe(categories => {
+      this.categories = categories;
+    })
+  }
+
+  getItemsByCategory(id: number) {
+    console.log('The id is', id);
+    this.categoryId = id
+    this.transactionFormService.getItemsByCategory(id).subscribe(items => {
+      this.item = items
+    })
+  }
+
+
 }

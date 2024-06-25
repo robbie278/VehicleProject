@@ -14,22 +14,26 @@ namespace VehicleServer.Controllers
 
     public class StoreKeepersController : ControllerBase
     {
-        private readonly ApplicationContext _context;
-        private readonly IMapper _mapper;
+       
         private readonly StoreKeeperRepo _storeKeeperRepo;
 
-        public StoreKeepersController(ApplicationContext context, IMapper mapper, StoreKeeperRepo storeKeeperRepo)
+        public StoreKeepersController(StoreKeeperRepo storeKeeperRepo)
         {
-            _context = context;
-            _mapper = mapper;
+            
             this._storeKeeperRepo = storeKeeperRepo;
         }
 
         // GET: api/StoreKeepers
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<StoreKeeperDto>>> GetStoreKeepers()
+         [HttpGet]
+        public async Task<ActionResult<ApiResult<StoreKeeperDto>>> GetStoreKeepers(
+                  int pageIndex = 0,
+                  int pageSize = 10,
+                  string? sortColumn = null,
+                  string? sortOrder = null,
+                  string? filterColumn = null,
+                  string? filterQuery = null)
         {
-            return await _storeKeeperRepo.GetStoreKeepers();
+            return await _storeKeeperRepo.GetStoreKeepers(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
         }
 
         // GET: api/StoreKeepers/5
@@ -60,6 +64,13 @@ namespace VehicleServer.Controllers
         public async Task<ActionResult<bool>> DeleteStoreKeeper(int id)
         {
             return await _storeKeeperRepo.DeleteStoreKeeper(id);
+        }
+
+        [HttpPost]
+        [Route("isDupeStoreKeeper")]
+        public bool isDupeStoreKeeper(StoreKeeperDto storeKeeper)
+        {
+            return _storeKeeperRepo.isDupeStoreKeeper(storeKeeper);
         }
     }
 }

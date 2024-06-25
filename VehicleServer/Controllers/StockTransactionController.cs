@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
+using VehicleServer.Enums;
 using VehicleServer.Repository;
 using VehicleServer.Services;
 using VehicleServer.Services.StockTransactionDetailServices;
@@ -26,9 +28,15 @@ namespace VehicleServer.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StockTransactionDto>>> GetStockTransactions()
+        public async Task<ActionResult<ApiResult<StockTransactionDto>>> GetStockTransactions(
+                    int pageIndex = 0,
+        int pageSize = 10,
+        string? sortColumn = null,
+        string? sortOrder = null,
+        string? filterColumn = null,
+        string? filterQuery = null)
         {
-            return await _StockTransactionRepo.GetStockTransactions();
+            return await _StockTransactionRepo.GetStockTransactions(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
         }
 
 
@@ -87,16 +95,22 @@ namespace VehicleServer.Controllers
                 return BadRequest("Validation failed.");
             }
 
-            if (transaction.TransactionType == "Receipt")
+            if (transaction.TransactionType == TransactionType.Receipt)
             {
                 await _stockTransactionDetailService.BulkInsertTransactionsAsync(transaction);
                 return Ok("Bulk insertion and stock update successful.");
             }
 
-            else if (transaction.TransactionType == "Issue")
+            else if (transaction.TransactionType == TransactionType.Issue)
             {
                 await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(transaction);
                 return Ok("Bulk Issue and stock update successful.");
+
+            }
+            else if(transaction.TransactionType == TransactionType.Damaged)
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(transaction);
+                return Ok("Bulk Damage and stock update successful.");
 
             }
             else
@@ -113,5 +127,8 @@ namespace VehicleServer.Controllers
         {
             return await _StockTransactionRepo.DeleteStockTransaction(id);
         }
+
+        
+
     }
 }

@@ -4,6 +4,11 @@
     <mat-card-title>Store Keppers</mat-card-title>
     <mat-card-subtitle>Store Keppers</mat-card-subtitle>
 
+    <mat-form-field [hidden]="!storeKeeper" >
+      <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
+              placeholder="Filter by name">
+    </mat-form-field>
+
   </mat-card-header >
 
   <mat-card-content>
@@ -11,35 +16,39 @@
   
   <button mat-flat-button color="primary" class="btn-add" *ngIf="storeKeeper" (click)="openDialog()"> Add a new StoreKeeper</button>
   
-  <table mat-table [dataSource]="storeKeeper" class="mat-elevation-z8"  matSort>
+  <table mat-table [dataSource]="storeKeeper" class="mat-elevation-z8"
+        matSort
+        (matSortChange)="loadData()"
+        [matSortActive]="defaultSortColumn"
+        [matSortDirection]="defaultSortOrder">
   
     <!-- Index Column -->
     <ng-container matColumnDef="index">
-      <th mat-header-cell *matHeaderCellDef  >No</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >No</th>
       <td mat-cell *matCellDef="let storeKeppers; let i = index;">{{i+1}}</td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header >Name</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >{{ 'FORM.NAME' | translate }}</th>
       <td mat-cell *matCellDef="let storeKeppers"> {{storeKeppers.name}} </td>
     </ng-container>
   
     <!-- Email Column -->
     <ng-container matColumnDef="email">   
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'StoreKeeper.Email' | translate }}</th>
       <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.email}}</td>
     </ng-container>
   
     <!-- StoreName Column -->
     <ng-container matColumnDef="storeName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header >StoreAddress</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >{{ 'FORM.NAME' | translate }}</th>
       <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.storeName}}</td>
     </ng-container>
     
     <!-- Action Column -->
     <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <th mat-header-cell *matHeaderCellDef>{{ 'FORM.ACTION' | translate }}</th>
       <td mat-cell *matCellDef="let storeKeppers">
         <button mat-icon-button color="primary" aria-label="Edit" (click)="openDialog(storeKeppers.storeKeeperId)">
           <mat-icon> edit</mat-icon>
@@ -53,8 +62,13 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
-  </table>
-</mat-card-content>
+        </table>
+    </mat-card-content>
+ </mat-card>
 
-    </mat-card>
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+<!-- Pagination directive -->
+<mat-paginator [hidden]="!storeKeeper"
+               (page)="getData($event)"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 20, 50]"
+               showFirstLastButtons></mat-paginator> 

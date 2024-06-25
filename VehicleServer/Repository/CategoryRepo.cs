@@ -18,12 +18,32 @@ namespace VehicleServer.Repository
             this._context = context;
         }
 
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
-        {
-            var categoryDto = _context.Categories.
-               ProjectTo<CategoryDto>(mapper.ConfigurationProvider);
+     
 
-            return await categoryDto.ToListAsync();
+        public async Task<ActionResult<ApiResult<CategoryDto>>> GetCategories(
+            int pageIndex = 0,
+            int pageSize = 10,
+            string? sortColumn = null,
+            string? sortOrder = null,
+            string? filterColumn = null,
+            string? filterQuery = null)
+        {
+
+            return await ApiResult<CategoryDto>.CreateAsync(
+                    _context.Categories.AsNoTracking().Select(c => new CategoryDto()
+                    {
+                        CategoryId = c.CategoryId,
+                        Name = c.Name,
+                        Description = c.Description,
+                    }),
+                    pageIndex,
+                    pageSize,
+                    sortColumn,
+                    sortOrder,
+                    filterColumn,
+                    filterQuery);
+
+
         }
 
         public async Task<ActionResult<Category>> GetCategory(int id)
@@ -100,6 +120,14 @@ namespace VehicleServer.Repository
         private bool CategoryExists(int id)
         {
             return _context.Categories.Any(e => e.CategoryId == id);
+        }
+
+        public bool isDupeCategory(CategoryDto category)
+        {
+            return _context.Categories.AsNoTracking().Any(
+                 e => e.Name == category.Name           
+                && e.CategoryId != category.CategoryId
+                );
         }
     }
 }

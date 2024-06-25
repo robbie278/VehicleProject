@@ -1,0 +1,55 @@
+{
+    "FORM": {
+      "TITLE": "Form Title",
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Type a name",
+      "NAME_REQUIRED": "Name is required",
+      "DESCRIPTION": "Description",
+      "DESCRIPTION_PLACEHOLDER": "Type a description",
+      "DESCRIPTION_REQUIRED": "Description is required",
+      "ADDRESS": "Address",
+      "ADDRESS_PLACEHOLDER": "Type an address",
+      "ADDRESS_REQUIRED": "Address is required",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Type an email",
+      "EMAIL_REQUIRED": "Email is required",
+      "CREATE": "Create",
+      "UPDATE": "Update",
+      "CANCEL": "Cancel",
+      "STORE_REQUIRED": "Store is required",
+      "ACTION":"action"
+    },
+    "Item": {
+      "id": "ID",
+      "description": "Description",
+      "description_placeholder": "Enter description"
+    },
+    "Category": {
+      "Category": "Category",
+      "Category_Name": "Category Name",
+      "Category_Name_Placeholder": "Enter category name",
+      "EditCategory":"Edit Category",
+      "CreateCategory": "Create Category"
+    },
+    "StoreKeeper": {
+      "Address": "Address",
+      "Email": "Email",
+      "Address_Placeholder": "Enter address",
+      "Email_Placeholder": "Enter email"
+    },
+    "Store": {
+      "Address": "Address",
+      "Address_Placeholder": "Enter address"
+    },
+    "Transaction": {
+      "select_a_store": "Select a store",
+      "select_a_category": "Select a category",
+      "select_an_item": "Select an item",
+      "select_storekeeper": "Select storekeeper",
+      "transaction_type": "Transaction type",
+      "pad_number_start": "Pad number start",
+      "pad_number_end": "Pad number end",
+      "quantity": "Quantity"
+    }
+  }
+  
