@@ -3,39 +3,39 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/">
         <mat-icon>home</mat-icon>
-        {{'welcomeMessage' | translate}}
+        {{'home' | translate}}
       </a>
       <a mat-list-item routerLink="/categories">
         <mat-icon>category</mat-icon>
-        Categories
+        {{ 'others.Categories' | translate  }}
       </a>
       <a mat-list-item routerLink="/items">
         <mat-icon>inventory</mat-icon>
-        Items
+        {{ 'others.Items' | translate  }}
       </a>
       <a mat-list-item routerLink="/store">
         <mat-icon>store</mat-icon>
-        Stores
+        {{ 'others.Stores' | translate  }}
       </a>
       <a mat-list-item routerLink="/storekeppers">
         <mat-icon>person</mat-icon>
-        Store Keepers
+        {{ 'others.Store_Keepers' | translate  }}
       </a>
       <a mat-list-item (click)="openTransactionDialog(transactionType.Issue)" >
         <mat-icon>assignment_return</mat-icon>
-        Issue
+        {{ 'others.Issue' | translate  }}
       </a>
       <a mat-list-item (click)="openTransactionDialog(transactionType.Receipt)">
         <mat-icon>receipt</mat-icon>
-        Receipt
+        {{ 'others.Receipt' | translate  }}
       </a>
       <a mat-list-item (click)="openTransactionDialog(transactionType.Damaged)">
         <mat-icon>Damaged</mat-icon>
-        Damaged
+        {{ 'others.Damaged' | translate  }}
       </a>
       <a mat-list-item routerLink="/transaction">
         <mat-icon>swap_horiz</mat-icon>
-        Transaction
+        {{ 'others.Transaction' | translate  }}
       </a>
     </mat-nav-list>
   </mat-sidenav>

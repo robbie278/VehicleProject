@@ -104,7 +104,7 @@ export class TransactionFormComponent implements OnInit {
   loadItems() {
     this.transactionFormService.getItem().subscribe({
       next: (result) => {
-        this.item = result;
+        this.item = result.data as Item[];
       },
       error: (err) => console.log(err),
     });
@@ -113,7 +113,7 @@ export class TransactionFormComponent implements OnInit {
   loadStore() {
     this.transactionFormService.getStore().subscribe({
       next: (result) => {
-        this.store = result;
+        this.store = result.data as Store[];
       },
       error: (err) => console.log(err),
     });
@@ -210,7 +210,7 @@ export class TransactionFormComponent implements OnInit {
   }
   loadCategories() {
     this.transactionFormService.getAllCategory().subscribe(categories => {
-      this.categories = categories;
+      this.categories = categories.data;
     })
   }
 

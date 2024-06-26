@@ -43,7 +43,7 @@ constructor(
    instantiateForm(){
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       storeId: new FormControl('', Validators.required)
     },null, this.isDupeStoreKeeper())
   }
@@ -64,7 +64,7 @@ constructor(
     //fetch all stores from server
     this.storeKeeperService.getStores().subscribe({
       next:(result) =>{
-        this.stores = result
+        this.stores = result.data as Store[]
       },
       error: err => console.log(err)
     })

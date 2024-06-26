@@ -38,6 +38,6 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'Update' : 'Create' }}</button>
-  <button mat-stroked-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ getButtonLabel() | translate }}</button>
+  <button mat-stroked-button (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
 </div>

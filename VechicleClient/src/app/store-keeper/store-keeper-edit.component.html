@@ -24,9 +24,12 @@
             <input matInput formControlName="email" required placeholder="{{ 'StoreKeeper.Email_Placeholder' | translate }}">
 
             <mat-error *ngIf=" form.controls['email'].errors?.['required']">
-                {{ 'Storekeeper.Email_Placeholder' | translate }}
+                {{ 'StoreKeeper.Email_Placeholder' | translate }}
             </mat-error>
-
+            
+            <mat-error *ngIf="form.controls['email'].errors?.['email']">
+                {{ 'StoreKeeper.Email_INVALID' | translate }}
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field *ngIf="stores">
@@ -45,7 +48,7 @@
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'Update' : 'Create' }}</button>
+    <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'FORM.UPDATE' : 'FORM.CREATE' | translate }}</button>
     <button mat-stroked-button (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
   </div>
   

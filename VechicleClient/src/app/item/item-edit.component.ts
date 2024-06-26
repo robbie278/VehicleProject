@@ -95,6 +95,10 @@ fetchData() {
       onCancel(): void {
         this.dialogRef.close();
       }
+      getButtonLabel(): string {
+        return this.id ? 'FORM.UPDATE' : 'FORM.CREATE';
+      }
+      
       isDupeItem(): AsyncValidatorFn {
         return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
       

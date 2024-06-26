@@ -1,89 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Custor\\Documents\\world1\\version2\\VehicleProject\\VehicleServer\\",
+  "WorkspaceRootPath": "C:\\VehicleProject\\VehicleServer\\",
   "Documents": [
-    {
-<<<<<<< HEAD
-=======
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
->>>>>>> origin/rgat
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\storekeeperrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\storekeeperrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\categoryrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\categoryrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\dtos\\storekeeperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:dtos\\storekeeperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\storekeepercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> origin/rgat
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-<<<<<<< HEAD
-=======
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\transactionrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\transactionrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\entities\\storekeeper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\storekeeper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\storerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\storerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\stockrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\stockrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\itemrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\itemrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\repository\\apiresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\apiresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
     {
       "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\services\\stockitemsdetailservices\\stockitemsdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:services\\stockitemsdetailservices\\stockitemsdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\entities\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:entities\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> origin/rgat
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -93,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -105,272 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Storekeeper.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Entities\\Storekeeper.cs",
-              "RelativeDocumentMoniker": "Entities\\Storekeeper.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Entities\\Storekeeper.cs",
-              "RelativeToolTip": "Entities\\Storekeeper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T13:47:44.983Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "StoreRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\StoreRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\StoreRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\StoreRepo.cs",
-              "RelativeToolTip": "Repository\\StoreRepo.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAYwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T13:42:35.74Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "StockRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\StockRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\StockRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\StockRepo.cs",
-              "RelativeToolTip": "Repository\\StockRepo.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAzwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T13:42:30.353Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ItemRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\ItemRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\ItemRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\ItemRepo.cs",
-              "RelativeToolTip": "Repository\\ItemRepo.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAA5wAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T13:42:22.433Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StoreKeeperController.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StoreKeeperController.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs",
-              "RelativeToolTip": "Controllers\\StoreKeeperController.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAmwCgAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T09:52:25.95Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-<<<<<<< HEAD
-              "Title": "CategoryRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\CategoryRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\CategoryRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\CategoryRepo.cs",
-              "RelativeToolTip": "Repository\\CategoryRepo.cs",
-              "ViewState": "AQIAAHQAAAAAAAAAAAAcwAUAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T08:45:12.753Z",
-=======
-              "Title": "StoreKeeperRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\StoreKeeperRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\StoreKeeperRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\StoreKeeperRepo.cs",
-              "RelativeToolTip": "Repository\\StoreKeeperRepo.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAowBMAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T09:48:36.784Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
               "Title": "StockItemsDetailService.cs",
               "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Services\\StockItemsDetailServices\\StockItemsDetailService.cs",
               "RelativeDocumentMoniker": "Services\\StockItemsDetailServices\\StockItemsDetailService.cs",
               "ToolTip": "C:\\VehicleProject\\VehicleServer\\Services\\StockItemsDetailServices\\StockItemsDetailService.cs",
               "RelativeToolTip": "Services\\StockItemsDetailServices\\StockItemsDetailService.cs",
-              "ViewState": "AQIAAG4AAAAAAAAAAAAwwCkAAAA1AAAA",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAnwFUAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T09:46:13.327Z"
+              "WhenOpened": "2024-06-25T08:26:35.044Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Stock.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Entities\\Stock.cs",
-              "RelativeDocumentMoniker": "Entities\\Stock.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Entities\\Stock.cs",
-              "RelativeToolTip": "Entities\\Stock.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T08:36:00.479Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "StockTransactionController.cs",
               "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
               "RelativeDocumentMoniker": "Controllers\\StockTransactionController.cs",
               "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
               "RelativeToolTip": "Controllers\\StockTransactionController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAvwBwAAAAGAAAA",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAxwG8AAABaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T07:27:32.282Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ApiResult.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\ApiResult.cs",
-              "RelativeDocumentMoniker": "Repository\\ApiResult.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\ApiResult.cs",
-              "RelativeToolTip": "Repository\\ApiResult.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAowAgAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T07:19:18.719Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TransactionRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\TransactionRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\TransactionRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\TransactionRepo.cs",
-              "RelativeToolTip": "Repository\\TransactionRepo.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAewBkAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T07:16:59.976Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T09:00:44.747Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-05T08:25:03.91Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "appsettings.Development.json",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\appsettings.Development.json",
-              "RelativeToolTip": "appsettings.Development.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-05T08:24:59.519Z",
->>>>>>> origin/rgat
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-<<<<<<< HEAD
-              "Title": "StoreKeeperDto.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreKeeperDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\StoreKeeperDto.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\DTOs\\StoreKeeperDto.cs",
-              "RelativeToolTip": "DTOs\\StoreKeeperDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T08:43:27.676Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoriesController.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Controllers\\CategoriesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\CategoriesController.cs",
-              "RelativeToolTip": "Controllers\\CategoriesController.cs",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAqwDwAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T07:42:56.091Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "StockTransactionController.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StockTransactionController.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
-              "RelativeToolTip": "Controllers\\StockTransactionController.cs",
-              "ViewState": "AQIAAHMAAAAAAAAAAAAxwFEAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T06:29:20.898Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "StoreKeeperController.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StoreKeeperController.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\StoreKeeperController.cs",
-              "RelativeToolTip": "Controllers\\StoreKeeperController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T06:17:51.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StoreKeeperRepo.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Repository\\StoreKeeperRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\StoreKeeperRepo.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Repository\\StoreKeeperRepo.cs*",
-              "RelativeToolTip": "Repository\\StoreKeeperRepo.cs*",
-              "ViewState": "AQIAAHUAAAAAAAAAAAAcwH4AAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T06:01:43.179Z",
-              "EditorCaption": ""
-=======
-              "Title": "ApplicationContext.cs",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\ApplicationContext.cs",
-              "RelativeDocumentMoniker": "ApplicationContext.cs",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\ApplicationContext.cs",
-              "RelativeToolTip": "ApplicationContext.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAywAgAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T08:24:51.852Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-05T06:43:37.155Z"
->>>>>>> origin/rgat
+              "WhenOpened": "2024-06-25T08:26:08.676Z"
             }
           ]
         }

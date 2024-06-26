@@ -39,7 +39,8 @@
     },
     "Store": {
       "Address": "Address",
-      "Address_Placeholder": "Enter address"
+      "Address_Placeholder": "Enter address",
+      "STORE_REQUIRED": "Store is required"
     },
     "Transaction": {
       "select_a_store": "Select a store",
@@ -50,6 +51,25 @@
       "pad_number_start": "Pad number start",
       "pad_number_end": "Pad number end",
       "quantity": "Quantity"
+    },
+    "Generals":{
+      "Transaction":"Transaction Type",
+      "Transaction_Type":"Item Name",
+      "Item_Name":"የንጥል ስም",
+      "Store_Name":"Store Name",
+      "Store_Keeper_Name":"Store Keeper Name"
+    },
+    "others": {
+      "Categories": "Categories",
+      "Items": "Items",
+      "Stores": "Stores",
+      "Store_Keepers": "Store Keepers",
+      "Issue": "Issue",
+      "Receipt": "Receipt",
+      "Damaged": "Damaged",
+      "Transaction": "Transaction",
+      "Loading": "Loading",
+      "home":"home"
     }
   }
   

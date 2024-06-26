@@ -40,11 +40,30 @@
       "select_a_store": "ሱቅ ይምረጡ",
       "select_a_category": "አንድ ምድብ ይምረጡ",
       "select_an_item": "ንጥል ይምረጡ",
-      "select_storekeeper": "መጋዘን ይምረጡ",
+      "select_storekeeper": "መደብር ጠባቂ ይምረጡ",
       "transaction_type": "የግብይት አይነት",
       "pad_number_start": "ፓድ ቁጥር ይጀምራል",
       "pad_number_end": "የፓድ ቁጥር መጨረሻ",
       "quantity": "ብዛት"
+    },
+    "Generals":{
+      "Transaction":"ግብይት",
+      "Transaction_Type":"የግብይት አይነት",
+      "Item_Name":"የንጥል ስም",
+      "Store_Name":"የማከማቻ ስም",
+      "Store_Keeper_Name":"የመደብር ጠባቂ ስም"
+    },
+    "others": {
+      "Categories": "ምድቦች",
+      "Items": "ንጥሎች",
+      "Stores": "መደቦች",
+      "Store_Keepers": "የመደብ ጠባቂዎች",
+      "Issue": "ጉዳይ",
+      "Receipt": "መቀበያ",
+      "Damaged": "ተበላሽቷል",
+      "Transaction": "ግብይት",
+      "Loading": "በመችሃን ልይ",
+      "home":"በት"
     }
   }
   

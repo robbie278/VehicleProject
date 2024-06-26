@@ -4,6 +4,7 @@ using VehicleServer.Entities;
 using VehicleServer.Profiles;
 using VehicleServer.Repository;
 using VehicleServer.Services;
+
 using VehicleServer.Services.StockTransactionDetailServices;
 
 var builder = WebApplication.CreateBuilder(args);

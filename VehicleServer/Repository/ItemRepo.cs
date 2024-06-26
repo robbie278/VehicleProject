@@ -125,7 +125,6 @@ namespace VehicleServer.Repository
         {
             return _context.Items.AsNoTracking().Any(
                  e => e.Name == item.Name
-                && e.Description == item.Description
                 && e.ItemId != item.ItemId
                 && e.CategoryId == item.CategoryId
                 );

@@ -54,7 +54,7 @@ export class ItemService extends BaseService<Item> {
     return this.http.delete<Item>(url)
   }
   
-  getCategories(): Observable<ICategory[]>{
+  getCategories(): Observable<any>{
     var url = this.getUrl('api/Categories')
     return this.http.get<ICategory[]>(url)
   }

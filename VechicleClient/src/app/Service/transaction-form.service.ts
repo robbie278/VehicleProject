@@ -33,11 +33,11 @@ import { ICategory } from '../Models/Category';
     override delete(id: number): Observable<Issue> {
       throw new Error('Method not implemented.');
     }
-    getItem(): Observable<Item[]>{
+    getItem(): Observable<any>{
       var url = this.getUrl('api/Items')
       return this.http.get<Item[]>(url)
     }
-    getStore(): Observable<Store[]>{
+    getStore(): Observable<any>{
       var url = this.getUrl('api/Store')
       return this.http.get<Store[]>(url)
     }
@@ -49,7 +49,7 @@ import { ICategory } from '../Models/Category';
       var url = this.getUrl('api/User')
       return this.http.get<User[]>(url)
     }
-    getAllCategory(): Observable<ICategory[]>{
+    getAllCategory(): Observable<any>{
       var url = this.getUrl('api/Categories/')
       return this.http.get<ICategory[]>(url)
     }

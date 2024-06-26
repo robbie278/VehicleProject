@@ -56,7 +56,7 @@ export class StoreKeeperService extends BaseService<StoreKeeper> {
     return this.http.delete<StoreKeeper>(url)
   }
   
-  getStores(): Observable<Store[]>{
+  getStores(): Observable<any>{
     var url = this.getUrl('api/Store')
     return this.http.get<Store[]>(url)
   }
