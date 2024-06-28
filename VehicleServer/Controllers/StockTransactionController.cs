@@ -112,6 +112,11 @@ namespace VehicleServer.Controllers
                 await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(transaction);
                 return Ok("Bulk Damage and stock update successful.");
 
+            }   
+            else if (transaction.TransactionType == TransactionType.Return)
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(transaction);
+                return Ok("Bulk Return and stock update successful.");
             }
             else
             {

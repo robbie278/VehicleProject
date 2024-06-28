@@ -11,5 +11,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         Task<bool> IsDuplicateEntryAsync(int itemId, int padNumber);
         Task<bool> CanIssueTransactionAsync(int itemId, int padNumber);
         Task<bool> CanReceiveTransactionAsync(int itemId, int padNumber);
+        Task<bool> CanReturnTransactionAsync(int itemId, int padNumber); 
+
     }
 }

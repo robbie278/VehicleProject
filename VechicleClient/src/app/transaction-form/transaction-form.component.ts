@@ -20,6 +20,7 @@ import { ICategory } from '../Models/Category';
 })
 export class TransactionFormComponent implements OnInit {
   transactionType: TransactionType = TransactionType.Issue;
+  TransactionType = TransactionType
   title?: string;
   id?: number;
   issue?: Issue;
@@ -49,6 +50,7 @@ export class TransactionFormComponent implements OnInit {
         itemId: new FormControl('', Validators.required),
         storeId: new FormControl('', Validators.required),
         storeKeeperId: new FormControl('', Validators.required),
+        userId: new FormControl(''),
         transactionType: new FormControl(this.transactionType, Validators.required),
         singleItem: new FormControl(false),
         padNumberStart: new FormControl('', [
@@ -91,6 +93,9 @@ export class TransactionFormComponent implements OnInit {
           break
       case TransactionType.Damaged: 
           this.title = 'Damaged Goods'
+          break
+          case TransactionType.Return: 
+          this.title = 'Returning Goods'
           break
     }
 
