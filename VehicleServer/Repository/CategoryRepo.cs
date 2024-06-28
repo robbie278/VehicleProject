@@ -18,7 +18,7 @@ namespace VehicleServer.Repository
             this._context = context;
         }
 
-     
+
 
         public async Task<ActionResult<ApiResult<CategoryDto>>> GetCategories(
             int pageIndex = 0,
@@ -30,7 +30,7 @@ namespace VehicleServer.Repository
         {
 
             return await ApiResult<CategoryDto>.CreateAsync(
-                    _context.Categories.AsNoTracking().Select(c => new CategoryDto()
+                    _context.Categories.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(c => new CategoryDto()
                     {
                         CategoryId = c.CategoryId,
                         Name = c.Name,
@@ -49,13 +49,15 @@ namespace VehicleServer.Repository
         public async Task<ActionResult<Category>> GetCategory(int id)
         {
 
-            try {
+            try
+            {
                 var Category = await _context.Categories.FindAsync(id);
 
-                return Category;    
-               
-            } 
-            catch{
+                return Category;
+
+            }
+            catch
+            {
                 throw new Exception("No Data Found!");
             }
 
@@ -95,7 +97,8 @@ namespace VehicleServer.Repository
             var created_catagoty = _context.Categories.Add(category);
             await _context.SaveChangesAsync();
 
-            if (created_catagoty == null) {
+            if (created_catagoty == null)
+            {
                 throw new Exception("cant add category");
             }
 
@@ -103,17 +106,16 @@ namespace VehicleServer.Repository
         }
 
         public async Task<ActionResult<int>> DeleteCategory(int id)
-            {
+        {
             var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
                 return 0;
             }
 
-            _context.Categories.Remove(category);
+            category.IsDeleted = true;
+            _context.Entry(category).State = EntityState.Modified;
             return await _context.SaveChangesAsync();
-
-             
         }
 
         // just chaking the catagory exists before submiting
@@ -125,7 +127,7 @@ namespace VehicleServer.Repository
         public bool isDupeCategory(CategoryDto category)
         {
             return _context.Categories.AsNoTracking().Any(
-                 e => e.Name == category.Name           
+                 e => e.Name == category.Name
                 && e.CategoryId != category.CategoryId
                 );
         }

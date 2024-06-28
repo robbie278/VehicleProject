@@ -63,7 +63,12 @@ namespace VehicleServer.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> DeleteStoreKeeper(int id)
         {
-            return await _storeKeeperRepo.DeleteStoreKeeper(id);
+            var result = await _storeKeeperRepo.DeleteStoreKeeper(id);
+                if (result == null)
+            {
+                return BadRequest(result);
+            }
+                return Ok(result);
         }
 
         [HttpPost]

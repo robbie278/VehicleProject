@@ -36,7 +36,7 @@ namespace VehicleServer.Repository
         {
 
             return await ApiResult<StoreDto>.CreateAsync(
-                    _context.Stores.AsNoTracking().Select(s => new StoreDto()
+                    _context.Stores.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(s => new StoreDto()
                     {
                         StoreId = s.StoreId,
                         Name = s.Name,
@@ -51,12 +51,6 @@ namespace VehicleServer.Repository
 
 
         }
-
-
-        //----------------
-
-
-
 
 
         public async Task<ActionResult<StoreDto>> GetStore(int id)
@@ -121,11 +115,11 @@ namespace VehicleServer.Repository
             var store = await _context.Stores.FindAsync(id);
             if (store == null)
             {
-                 throw new Exception("Id Not found!");
+                return 0;
             }
-
-            _context.Stores.Remove(store);
-            return await _context.SaveChangesAsync();
+            store.IsDeleted = true;
+            _context.Entry(store).State = EntityState.Modified;
+                return await _context.SaveChangesAsync();
 
             
         }
