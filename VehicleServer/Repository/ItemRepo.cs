@@ -30,7 +30,7 @@ namespace VehicleServer.Repository
               string? filterQuery = null)
         {
                 return await ApiResult<ItemDto>.CreateAsync(
-                    _context.Items.AsNoTracking().Select(c => new ItemDto()
+                    _context.Items.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(c => new ItemDto()
                     {
                         ItemId = c.ItemId,
                         Name = c.Name,
@@ -109,8 +109,9 @@ namespace VehicleServer.Repository
             {
                 return NotFound();
             }
-
-            _context.Items.Remove(item);
+            
+            item.IsDeleted = true;
+            _context.Entry(item).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();

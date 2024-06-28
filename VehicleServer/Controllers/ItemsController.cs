@@ -65,7 +65,13 @@ namespace VehicleServer.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
         {
-            return await itemRepo.DeleteItem(id);
+            var result = await itemRepo.DeleteItem(id);
+
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            return Ok(result);
         }
         [HttpPost]
         [Route("isDupeItem")]

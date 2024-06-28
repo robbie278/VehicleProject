@@ -29,7 +29,7 @@ namespace VehicleServer.Repository
         {
 
             return await ApiResult<StoreKeeperDto>.CreateAsync(
-                    _context.StoreKeepers.AsNoTracking().Select(c => new StoreKeeperDto()
+                    _context.StoreKeepers.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(c => new StoreKeeperDto()
                     {
                         StoreKeeperId = c.StoreKeeperId,
                         Name = c.Name,
@@ -101,17 +101,17 @@ namespace VehicleServer.Repository
         }
 
        
-        public async Task<ActionResult<bool>> DeleteStoreKeeper(int id)
+        public async Task<ActionResult<int>> DeleteStoreKeeper(int id)
         {
             var storeKeeper = await _context.StoreKeepers.FindAsync(id);
             if (storeKeeper == null)
             {
                 throw new Exception("No Data Found!");
             }
-
-            _context.StoreKeepers.Remove(storeKeeper);
-             await _context.SaveChangesAsync();
-            return true;
+            storeKeeper.IsDeleted = true;
+            _context.Entry(storeKeeper).State = EntityState.Modified;
+            return await _context.SaveChangesAsync();
+            
         }
 
         private bool StoreKeeperExists(int id)

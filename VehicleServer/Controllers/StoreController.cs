@@ -13,13 +13,13 @@ public class StoreController : ControllerBase
 {
     private readonly ApplicationContext _context;
     private readonly IMapper _mapper;
-    private readonly StoreRepo _storeRepo;
+    private readonly StoreRepo storeRepo;
 
     public StoreController(ApplicationContext context, IMapper mapper, StoreRepo storeRepo)
     {
         _context = context;
         _mapper = mapper;
-        this._storeRepo = storeRepo;
+        this.storeRepo = storeRepo;
     }
 
     // GET: api/Store
@@ -33,7 +33,7 @@ public class StoreController : ControllerBase
        string? filterColumn = null,
        string? filterQuery = null)
     {
-        return await _storeRepo.GetStores(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+        return await storeRepo.GetStores(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
     }
     //-------------------------------------------
 
@@ -42,35 +42,40 @@ public class StoreController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<StoreDto>> GetStore(int id)
     {
-       return await _storeRepo.GetStore(id);
+       return await storeRepo.GetStore(id);
     }
 
     // PUT: api/Store/5
     [HttpPut("{id}")]
     public async Task<ActionResult<Boolean>> PutStore(int id, StoreDto storeDto)
     {
-        return await _storeRepo.PutStore(id, storeDto);
+        return await storeRepo.PutStore(id, storeDto);
     }
 
     // POST: api/Store
     [HttpPost]
     public async Task<ActionResult<StoreDto>> PostStore(StoreDto storeDto)
     {
-        return await _storeRepo.PostStore(storeDto);
+        return await storeRepo.PostStore(storeDto);
     }
 
     // DELETE: api/Store/5
     [HttpDelete("{id}")]
-    public async Task<ActionResult<int>> DeleteStore(int id)
+    public async Task<IActionResult> DeleteStore(int id)
     {
-        return await _storeRepo.DeleteStore(id);
+        var result = await storeRepo.DeleteStore(id);
+        if (result == null)
+        {
+            return BadRequest();
+        }
+        return Ok(result);
     }
 
     [HttpPost]
     [Route("isDupeStore")]
     public bool isDupeStore(StoreDto store)
     {
-        return _storeRepo.isDupeStore(store);
+        return storeRepo.isDupeStore(store);
     }
 
 
