@@ -37,6 +37,18 @@
       </mat-error>
     </mat-form-field>
 
+    <mat-form-field *ngIf="TransactionType.Issue">
+      <mat-label>User</mat-label>
+      <mat-select id="userId" formControlName="userId">
+        <mat-option *ngFor="let user of user" [value]="user.userId">
+          {{ user.userName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['userId'].errors?.['required']">
+       
+      </mat-error>
+    </mat-form-field>
+
     <mat-form-field *ngIf="storeKeeper">
       <mat-label>{{ 'Transaction.select_storekeeper' | translate }} :</mat-label>
       <mat-select id="storeKeeperId" formControlName="storeKeeperId">

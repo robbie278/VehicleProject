@@ -9,6 +9,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\services\\stockitemsdetailservices\\istockitemsdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:services\\stockitemsdetailservices\\istockitemsdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\vehicleproject\\vehicleserver\\enums\\transactiontypeenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:enums\\transactiontypeenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,13 +38,38 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IStockItemsDetailService.cs",
+              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Services\\StockItemsDetailServices\\IStockItemsDetailService.cs",
+              "RelativeDocumentMoniker": "Services\\StockItemsDetailServices\\IStockItemsDetailService.cs",
+              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Services\\StockItemsDetailServices\\IStockItemsDetailService.cs",
+              "RelativeToolTip": "Services\\StockItemsDetailServices\\IStockItemsDetailService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-27T10:34:39.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TransactionTypeEnum.cs",
+              "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Enums\\TransactionTypeEnum.cs",
+              "RelativeDocumentMoniker": "Enums\\TransactionTypeEnum.cs",
+              "ToolTip": "C:\\VehicleProject\\VehicleServer\\Enums\\TransactionTypeEnum.cs",
+              "RelativeToolTip": "Enums\\TransactionTypeEnum.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-27T10:23:15.244Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "StockItemsDetailService.cs",
               "DocumentMoniker": "C:\\VehicleProject\\VehicleServer\\Services\\StockItemsDetailServices\\StockItemsDetailService.cs",
               "RelativeDocumentMoniker": "Services\\StockItemsDetailServices\\StockItemsDetailService.cs",
               "ToolTip": "C:\\VehicleProject\\VehicleServer\\Services\\StockItemsDetailServices\\StockItemsDetailService.cs",
               "RelativeToolTip": "Services\\StockItemsDetailServices\\StockItemsDetailService.cs",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAnwFUAAAANAAAA",
+              "ViewState": "AQIAAFUAAACAS78seqkqwGgAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-25T08:26:35.044Z",
               "EditorCaption": ""
@@ -49,9 +82,10 @@
               "RelativeDocumentMoniker": "Controllers\\StockTransactionController.cs",
               "ToolTip": "C:\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
               "RelativeToolTip": "Controllers\\StockTransactionController.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAxwG8AAABaAAAA",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAowHQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T08:26:08.676Z"
+              "WhenOpened": "2024-06-25T08:26:08.676Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -35,6 +35,10 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 {
                     return false;
                 }
+                if (transactionDetail.TransactionType == TransactionType.Return && !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber))
+                {
+                    return false;
+                }
             }
 
             return true;
@@ -48,12 +52,18 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         public async Task<bool> CanIssueTransactionAsync(int itemId, int padNumber)
         {
             var transaction = await _context.StockItemsDetail.FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
-            return transaction != null && transaction.TransactionType != TransactionType.Issue;
+            return transaction != null && transaction.TransactionType == TransactionType.Receipt;
         }
 
         public async Task<bool> CanReceiveTransactionAsync(int itemId, int padNumber)
         {
             return !await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+        }
+
+        public async Task<bool> CanReturnTransactionAsync(int itemId, int padNumber)
+        {
+            var transaction = await _context.StockItemsDetail.FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+            return transaction != null && transaction.TransactionType == TransactionType.Issue;
         }
 
         public async Task BulkInsertTransactionsAsync(StockTransaction transaction)
@@ -78,7 +88,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
             await _context.StockTransactions.AddAsync(transaction);
             await _context.SaveChangesAsync();
 
-            await UpdateStockAsync(transaction.ItemId, transaction.StoreId, transaction.TransactionType == TransactionType.Issue ? -transaction.Quantity : transaction.Quantity);
+            await UpdateStockAsync(transaction.ItemId, transaction.StoreId, transaction.TransactionType != TransactionType.Return ? transaction.Quantity : -transaction.Quantity);
         }
 
         public async Task BulkUpdateItemDetailsTransactionAsync(StockTransaction transaction)
@@ -90,14 +100,22 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
             foreach (var trans in transactionsToUpdate)
             {
-                trans.TransactionType = TransactionType.Issue;
+                if(transaction.TransactionType == TransactionType.Return)
+                {
+                    trans.TransactionType = TransactionType.Receipt;
+
+                }
+                else
+                {
+                    trans.TransactionType = transaction.TransactionType;
+                }
             }
 
             _context.StockItemsDetail.UpdateRange(transactionsToUpdate);
             await _context.StockTransactions.AddAsync(transaction);
 
             await _context.SaveChangesAsync();
-            await UpdateStockAsync(transaction.ItemId, transaction.StoreId, -transaction.Quantity);
+            await UpdateStockAsync(transaction.ItemId, transaction.StoreId, transaction.TransactionType == TransactionType.Return ? transaction.Quantity : -transaction.Quantity);
         }
 
 

@@ -33,6 +33,10 @@
         <mat-icon>Damaged</mat-icon>
         {{ 'others.Damaged' | translate  }}
       </a>
+      <a mat-list-item (click)="openTransactionDialog(transactionType.Return)">
+        <mat-icon>Return</mat-icon>
+        {{ 'others.Damaged' | translate  }}
+      </a>
       <a mat-list-item routerLink="/transaction">
         <mat-icon>swap_horiz</mat-icon>
         {{ 'others.Transaction' | translate  }}
