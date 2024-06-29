@@ -3,29 +3,37 @@
 <div  mat-dialog-content>
 
     <form [formGroup]="form"  (ngSubmit)="onSubmit()">
-        
+        <p>
+            <mat-error *ngIf=" form.invalid && form.hasError('isDupeStoreKeeper')">
+                    <strong> ERROR </strong>:
+                    A Storekepper with the same <i>Name</i>, <i>Email</i>, And <i>Store</i>  already exists
+            </mat-error>
+        </p>
         <mat-form-field>
-            <mat-label>Name:</mat-label>
-            <input matInput formControlName="name" required placeholder="Type a name">
+            <mat-label>{{ "FORM.NAME" | translate }}:</mat-label>
+            <input matInput formControlName="name" required placeholder="{{ 'FORM.NAME' | translate }}">
 
             <mat-error *ngIf=" form.controls['name'].errors?.['required']">
-              Name is Required
+                {{ 'FORM.NAME_REQUIRED' | translate }}
             </mat-error>
 
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Email:</mat-label>
-            <input matInput formControlName="email" required placeholder="Type a Email">
+            <mat-label>{{ 'StoreKeeper.Email' | translate }}:</mat-label>
+            <input matInput formControlName="email" required placeholder="{{ 'StoreKeeper.Email_Placeholder' | translate }}">
 
             <mat-error *ngIf=" form.controls['email'].errors?.['required']">
-               Email is Required
+                {{ 'StoreKeeper.Email_Placeholder' | translate }}
             </mat-error>
-
+            
+            <mat-error *ngIf="form.controls['email'].errors?.['email']">
+                {{ 'StoreKeeper.Email_INVALID' | translate }}
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field *ngIf="stores">
-            <mat-label>Select a Store :</mat-label>
+            <mat-label>{{ 'Transaction.select_a_store' | translate }}:</mat-label>
             <mat-select id="storeId" formControlName="storeId">
                 <mat-option *ngFor="let store of stores" [value]="store.storeId">
                     {{store.name}}
@@ -33,14 +41,14 @@
             </mat-select>
 
             <mat-error *ngIf=" form.controls['storeId'].errors?.['required']">
-               Store is Required
+                {{ 'Store.STORE_REQUIRED' | translate }}
             </mat-error>
 
         </mat-form-field>
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'Update' : 'Create' }}</button>
-    <button mat-stroked-button (click)="onCancel()">Cancel</button>
+    <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'FORM.UPDATE' : 'FORM.CREATE' | translate }}</button>
+    <button mat-stroked-button (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
   </div>
   

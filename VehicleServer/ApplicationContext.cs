@@ -28,10 +28,7 @@ namespace VehicleServer
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<StockTransaction> StockTransactions { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<StockTransactionDetail> StockTransactionsDetail { get; set;}
-
-        
-
+        public DbSet<StockItemsDetail> StockItemsDetail { get; set;}
 
     }
 }

@@ -1,11 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { Store } from '../Models/Store';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StoreKeeperService } from '../Service/store-keeper.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-store-keeper-edit',
@@ -42,9 +43,9 @@ constructor(
    instantiateForm(){
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       storeId: new FormControl('', Validators.required)
-    })
+    },null, this.isDupeStoreKeeper())
   }
 
   fetchData(){
@@ -63,7 +64,7 @@ constructor(
     //fetch all stores from server
     this.storeKeeperService.getStores().subscribe({
       next:(result) =>{
-        this.stores = result
+        this.stores = result.data as Store[]
       },
       error: err => console.log(err)
     })
@@ -98,5 +99,19 @@ constructor(
     this.dialogRef.close();
   }
 
+  isDupeStoreKeeper(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
   
+      var storeKeeper = <StoreKeeper>{};
+      storeKeeper.storeKeeperId = (this.id) ? this.id : 0;
+      storeKeeper.name = this.form.controls['name'].value; 
+      storeKeeper.email = this.form.controls['email'].value;
+      storeKeeper.storeId = +this.form.controls['storeId'].value;
+  
+     return this.storeKeeperService.isDupeStoreKeeper(storeKeeper).pipe(map(result => {
+  
+        return (result ? { isDupeStoreKeeper: true } : null);
+      }));
+    }
+  }
 }

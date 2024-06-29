@@ -17,13 +17,37 @@ namespace VehicleServer.Repository
             _mapper = mapper;
             _context = context;
         }
-        public async Task<ActionResult<IEnumerable<StoreKeeperDto>>> GetStoreKeepers()
+     
+
+        public async Task<ActionResult<ApiResult<StoreKeeperDto>>> GetStoreKeepers(
+              int pageIndex = 0,
+              int pageSize = 10,
+              string? sortColumn = null,
+              string? sortOrder = null,
+              string? filterColumn = null,
+              string? filterQuery = null)
         {
-            return await _context.StoreKeepers.
-                ProjectTo<StoreKeeperDto>(_mapper.ConfigurationProvider).ToListAsync();
+
+            return await ApiResult<StoreKeeperDto>.CreateAsync(
+                    _context.StoreKeepers.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(c => new StoreKeeperDto()
+                    {
+                        StoreKeeperId = c.StoreKeeperId,
+                        Name = c.Name,
+                        Email = c.Email,
+                        StoreId = c.Store!.StoreId,
+                        StoreName = c.Store!.Name,
+                    }),
+                    pageIndex,
+                    pageSize,
+                    sortColumn,
+                    sortOrder,
+                    filterColumn,
+                    filterQuery);
+
+
         }
 
-        
+
         public async Task<ActionResult<StoreKeeper>> GetStoreKeeper(int id)
         {
             var storeKeeper = await _context.StoreKeepers.FindAsync(id);
@@ -77,22 +101,32 @@ namespace VehicleServer.Repository
         }
 
        
-        public async Task<ActionResult<bool>> DeleteStoreKeeper(int id)
+        public async Task<ActionResult<int>> DeleteStoreKeeper(int id)
         {
             var storeKeeper = await _context.StoreKeepers.FindAsync(id);
             if (storeKeeper == null)
             {
                 throw new Exception("No Data Found!");
             }
-
-            _context.StoreKeepers.Remove(storeKeeper);
-             await _context.SaveChangesAsync();
-            return true;
+            storeKeeper.IsDeleted = true;
+            _context.Entry(storeKeeper).State = EntityState.Modified;
+            return await _context.SaveChangesAsync();
+            
         }
 
         private bool StoreKeeperExists(int id)
         {
             return _context.StoreKeepers.Any(e => e.StoreKeeperId == id);
+        }
+
+        public bool isDupeStoreKeeper(StoreKeeperDto storeKeeper)
+        {
+            return _context.StoreKeepers.AsNoTracking().Any(
+                 e => e.Name == storeKeeper.Name
+                && e.Email == storeKeeper.Email
+                && e.StoreId == storeKeeper.StoreId           
+                && e.StoreKeeperId != storeKeeper.StoreKeeperId
+                );
         }
     }
 }

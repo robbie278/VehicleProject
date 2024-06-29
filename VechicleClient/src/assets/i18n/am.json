@@ -1,0 +1,69 @@
+{
+    "FORM": {
+      "TITLE": "የቅጽ ርዕስ",
+      "NAME": "ስም",
+      "NAME_PLACEHOLDER": "ስም ይጻፉ",
+      "NAME_REQUIRED": "ስም ያስፈልጋል",
+      "DESCRIPTION": "መግለጫ",
+      "DESCRIPTION_PLACEHOLDER": "መግለጫ ይጻፉ",
+      "DESCRIPTION_REQUIRED": "መግለጫ ያስፈልጋል",
+      "CREATE": "አስካምጥ",
+      "UPDATE": "አዘምን",
+      "CANCEL": "ሰርዝ",
+      "ACTION":"ድርጊት"
+    },
+    "Item": {
+      "id": "መለያ ቁጥር",
+      "description": "መግለጫ",
+      "description_placeholder": "መግለጫ ያስገቡ"
+    },
+    "Category": {
+      "Category": "ምድብ",
+      "Category_Name": "የምድብ ስም",
+      "Category_Name_Placeholder": "የምድብ ስም ያስገቡ",
+      "EditCategory":"ምድብ አስተካክል",
+      "CreateCategory": "ምድብ ፍጠር"
+    },
+    "StoreKeeper": {
+      "Address": "አድራሻ",
+      "Email": "ኢሜይል",
+      "Address_Placeholder": "አድራሻ ያስገቡ",
+      "Email_Placeholder": "ኢሜይል ያስገቡ"
+    },
+    "Store": {
+      "Address": "አድራሻ",
+      "Address_Placeholder": "አድራሻ ያስገቡ",
+      "Address_Placeholder_REQUIRED":"አድራሻ ያስፋልጋል",
+      "STORE_REQUIRED": "ሱቅ ያስፈልጋል"
+    },
+    "Transaction": {
+      "select_a_store": "ሱቅ ይምረጡ",
+      "select_a_category": "አንድ ምድብ ይምረጡ",
+      "select_an_item": "ንጥል ይምረጡ",
+      "select_storekeeper": "መደብር ጠባቂ ይምረጡ",
+      "transaction_type": "የግብይት አይነት",
+      "pad_number_start": "ፓድ ቁጥር ይጀምራል",
+      "pad_number_end": "የፓድ ቁጥር መጨረሻ",
+      "quantity": "ብዛት"
+    },
+    "Generals":{
+      "Transaction":"ግብይት",
+      "Transaction_Type":"የግብይት አይነት",
+      "Item_Name":"የንጥል ስም",
+      "Store_Name":"የማከማቻ ስም",
+      "Store_Keeper_Name":"የመደብር ጠባቂ ስም"
+    },
+    "others": {
+      "Categories": "ምድቦች",
+      "Items": "ንጥሎች",
+      "Stores": "መደቦች",
+      "Store_Keepers": "የመደብ ጠባቂዎች",
+      "Issue": "ጉዳይ",
+      "Receipt": "መቀበያ",
+      "Damaged": "ተበላሽቷል",
+      "Transaction": "ግብይት",
+      "Loading": "በመችሃን ልይ",
+      "home":"በት"
+    }
+  }
+  

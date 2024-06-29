@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from './base.service';
+import { ApiResult, BaseService } from './base.service';
 import { StoreKeeper } from '../Models/Store-keeper';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Store } from '../Models/Store';
 
 @Injectable({
@@ -13,6 +13,23 @@ export class StoreKeeperService extends BaseService<StoreKeeper> {
     super(http)
   }
 
+  getData2(pageIndex: number, pageSize: number, sortColumn: string, sortOrder: string,
+    filterColumn: string | null, filterQuery: string | null): Observable<ApiResult<StoreKeeper>> {
+    var url = this.getUrl("api/StoreKeepers")
+    var params = new HttpParams()
+      .set("pageIndex", pageIndex.toString())
+      .set("pageSize", pageSize.toString())
+      .set("sortColumn", sortColumn)
+      .set("sortOrder", sortOrder);
+
+    if (filterQuery && filterColumn) {
+      params = params
+        .set("filterColumn", filterColumn)
+        .set("filterQuery", filterQuery);
+    }
+    return this.http.get<ApiResult<StoreKeeper>>(url, { params })
+  }
+  
   override getData(): Observable<StoreKeeper[]> {
     var url = this.getUrl("api/StoreKeepers")
     return this.http.get<StoreKeeper[]>(url)
@@ -39,10 +56,13 @@ export class StoreKeeperService extends BaseService<StoreKeeper> {
     return this.http.delete<StoreKeeper>(url)
   }
   
-  getStores(): Observable<Store[]>{
+  getStores(): Observable<any>{
     var url = this.getUrl('api/Store')
     return this.http.get<Store[]>(url)
   }
-
+  isDupeStoreKeeper(item:StoreKeeper): Observable<boolean>{
+    var url = this.getUrl("api/StoreKeepers/isDupeStoreKeeper")
+    return this.http.post<boolean>(url, item)
+  }
   
 }

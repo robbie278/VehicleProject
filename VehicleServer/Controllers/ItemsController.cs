@@ -24,11 +24,22 @@ namespace VehicleServer.Controllers
         }      
         
             [HttpGet]
-            public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems()
-            {
-                return await itemRepo.GetItems();
+            public async Task<ActionResult<ApiResult<ItemDto>>> GetItems(
+                  int pageIndex = 0,
+                  int pageSize = 10,
+                  string? sortColumn = null,
+                  string? sortOrder = null,
+                  string? filterColumn = null,
+                  string? filterQuery = null)
+        {
+                return await itemRepo.GetItems(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
             }
 
+        [HttpGet("Category/{id}")]
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory(int id)
+        {
+            return await itemRepo.GetItemsByCategory(id);
+        }
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {
@@ -54,7 +65,19 @@ namespace VehicleServer.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
         {
-            return await itemRepo.DeleteItem(id);
+            var result = await itemRepo.DeleteItem(id);
+
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            return Ok(result);
+        }
+        [HttpPost]
+        [Route("isDupeItem")]
+        public bool isDupeItem(ItemDto item)
+        {
+            return itemRepo.isDupeItem(item);
         }
 
     }

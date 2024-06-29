@@ -14,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesEditComponent } from './categories/categories-edit.component';
 import { StoreKeeperComponent } from './store-keeper/store-keeper.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { StoreKeeperEditComponent } from './store-keeper/store-keeper-edit.component';
 import { StoreComponent } from './store/store.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,10 +22,18 @@ import { EditStoreComponent } from './store/edit-store.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIcon } from '@angular/material/icon'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { IssueComponent } from './issue/issue.component';
-import { ReceiptComponent } from './receipt/receipt.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+
 
 
 @NgModule({
@@ -40,8 +48,7 @@ import { HomeComponent } from './home/home.component';
     StoreKeeperEditComponent,
     StoreComponent,
     EditStoreComponent,
-    IssueComponent,
-    ReceiptComponent,
+    TransactionFormComponent,
     TransactionComponent,
     HomeComponent,
     TransactionComponent,
@@ -53,6 +60,14 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

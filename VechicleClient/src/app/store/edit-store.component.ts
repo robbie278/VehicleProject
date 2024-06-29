@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Store } from '../Models/Store';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StoreService } from '../Service/store.service';
+import { Observable, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-edit-store',
@@ -23,12 +24,14 @@ export class EditStoreComponent implements OnInit {
     private toastr: ToastrService,
     private storeService: StoreService
   ) {
+    console.log(data)
     this.id = data.id;
     this.title = this.id ? 'Edit Store' : 'Create Store';
   }
 
   ngOnInit(): void {
     this.instantiateForm();
+    
     if (this.id) {
       this.fetchData();
     }
@@ -38,12 +41,15 @@ export class EditStoreComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required)
+    } ,{
+      asyncValidators: [this.isDupeStore()]
     });
   }
 
   fetchData() {
     this.storeService.get(this.id).subscribe({
       next: (result) => {
+        console.log(result)
         this.stores = result;
         this.form.patchValue(this.stores);
       },
@@ -61,6 +67,9 @@ export class EditStoreComponent implements OnInit {
         next: () => {
           this.toastr.info('Store Updated Successfully');
           this.dialogRef.close(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         },
         error: (error) => console.error(error)
       });
@@ -69,6 +78,9 @@ export class EditStoreComponent implements OnInit {
         next: (result) => {
           this.toastr.success('Store Added Successfully');
           this.dialogRef.close(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         },
         error: (error) => console.error(error)
       });
@@ -77,6 +89,25 @@ export class EditStoreComponent implements OnInit {
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  isDupeStore(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
+  
+      var store = <Store>{};
+      store.storeId = (this.id) ? this.id : 0;
+      store.name = this.form.controls['name'].value; 
+      store.address = this.form.controls['address'].value;
+      
+  
+     return this.storeService.isDupeStore(store).pipe(map(result => {
+  
+      if (!this.form) {
+        return of(null);  // Ensure the form is initialized
+      }
+       return result ? { isDupeStore: true } : null;
+      }));
+    }
   }
 
 }

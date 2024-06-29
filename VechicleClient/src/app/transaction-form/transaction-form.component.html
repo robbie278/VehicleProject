@@ -1,0 +1,138 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
+    <mat-form-field *ngIf="store">
+      <mat-label>{{ 'Transaction.select_a_store' | translate }} :</mat-label>
+      <mat-select id="storeId" formControlName="storeId">
+        <mat-option *ngFor="let store of store" [value]="store.storeId">
+          {{ store.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['storeId'].errors?.['required']">
+        {{ 'Store.STORE_REQUIRED' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="categories">
+      <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
+      <mat-select id="categoryId" formControlName="categoryId">
+        <mat-option *ngFor="let category of categories" [value]="category.categoryId" (onSelectionChange)="getItemsByCategory(category.categoryId)">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['categoryId'].errors?.['required']">
+        {{ 'Category.Category_Name_Placeholder' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'Transaction.select_an_item' | translate }} :</mat-label>
+      <mat-select id="itemId" formControlName="itemId">
+        <mat-option *ngFor="let item of item" [value]="item.itemId">
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['itemId'].errors?.['required']">
+        {{ 'Item.description_placeholder' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="TransactionType.Issue">
+      <mat-label>User</mat-label>
+      <mat-select id="userId" formControlName="userId">
+        <mat-option *ngFor="let user of user" [value]="user.userId">
+          {{ user.userName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['userId'].errors?.['required']">
+       
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="storeKeeper">
+      <mat-label>{{ 'Transaction.select_storekeeper' | translate }} :</mat-label>
+      <mat-select id="storeKeeperId" formControlName="storeKeeperId">
+        <mat-option
+          *ngFor="let storeKeeper of storeKeeper"
+          [value]="storeKeeper.storeKeeperId"
+        >
+          {{ storeKeeper.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['storeKeeperId'].errors?.['required']">
+        {{ 'Item.description_placeholder' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'Transaction.transaction_type' | translate }}:</mat-label>
+      <input
+        matInput
+        formControlName="transactionType"
+        required
+        placeholder="Transaction Type"
+        readonly
+      />
+      <mat-error *ngIf="form.controls['transactionType'].errors?.['required']">
+        {{ 'Item.description_placeholder' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
+
+    <mat-form-field>
+      <mat-label>{{ 'Transaction.pad_number_start' | translate }}:</mat-label>
+      <input
+        matInput
+        formControlName="padNumberStart"
+        required
+        placeholder="{{ 'Transaction.pad_number_start' | translate }}"
+      />
+      <mat-error *ngIf="form.controls['padNumberStart'].errors?.['required']">
+        {{ 'Item.description_placeholder' | translate }}
+      </mat-error>
+      <mat-error *ngIf="form.controls['padNumberStart'].errors?.['pattern']">
+        {{ 'Item.description_placeholder' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!form.controls['singleItem'].value">
+      <mat-label>{{ 'Transaction.pad_number_end' | translate }}:</mat-label>
+      <input
+        matInput
+        formControlName="padNumberEnd"
+        placeholder="{{ 'Transaction.pad_number_end' | translate }}"
+      />
+      <mat-error *ngIf="form.controls['padNumberEnd'].errors?.['pattern']">
+        {{ 'Item.description_placeholder' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'Transaction.quantity' | translate }}:</mat-label>
+      <input
+        matInput
+        formControlName="quantity"
+        placeholder="0"
+        readonly
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div style="border-left: 5px; color: red;" *ngIf="form.errors?.['invalidPadNumbers']" class="error-message">
+  {{ 'Item.description_placeholder' | translate }}
+</div>
+<div style="border-left: 5px; color: red;" *ngIf="form.errors?.['negativePadNumbers']" class="error-message">
+  {{ 'Item.description_placeholder' | translate }}
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="!form.valid"
+    (click)="onSubmit()"
+  >
+    {{ "FORM.CREATE" | translate }}
+  </button>
+  <button mat-stroked-button (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
+</div>
