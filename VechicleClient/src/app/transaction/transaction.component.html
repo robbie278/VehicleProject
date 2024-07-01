@@ -62,7 +62,7 @@
             <button mat-stroked-button type="submit" color="primary" [routerLink]="['/transaction', transaction.transactionId]">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-stroked-button type="submit" color="warn" (click)="onDelete()">
+            <button mat-stroked-button type="submit" color="warn" (click)="onDelete(transaction.stockTransactionId)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>

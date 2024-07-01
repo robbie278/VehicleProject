@@ -85,20 +85,16 @@ export class TransactionComponent implements OnInit {
 
   }
 
-  onDelete() {
-    // retrieve the ID from the 'id' parameter
-    var idParam = this.activatedRoute.snapshot.paramMap.get('id');
-    var id = idParam ? +idParam : 0;
-
-    if (confirm('Are you sure to delete this Item')) {
-      this.transactionService.delete(id).subscribe({
-        next: () => {
-          this.toastr.error('Transaction Deleted Successfully');
-          this.router.navigate(['/transactions']);
-        },
-        error: (err) => console.log(err),
-      });
-    }
-  }
+  onDelete(id:number){
+    if(confirm("Are you sure to delete this Item")){
   
+    this.transactionService.delete(id).subscribe({
+    next: () => {
+      this.toastr.error("Item Deleted Successfully")
+      location.reload()
+      },
+    error: (err) => console.log(err)
+    })
+    }
+      }
 }
