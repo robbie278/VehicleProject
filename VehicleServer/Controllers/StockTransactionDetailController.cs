@@ -6,6 +6,7 @@ namespace VehicleServer.Controllers
 {
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using VehicleServer.DTOs;
     using VehicleServer.Entities;
 
     [Route("api/[controller]")]
@@ -41,6 +42,26 @@ namespace VehicleServer.Controllers
 
             return Ok("Validation successful.");
         }
+
+        [HttpGet("pad-numbers")]
+        public async Task<ActionResult<PadNumberRangeDto>> GetPadNumbers([FromQuery] int quantity)
+        {
+            if (quantity < 1)
+            {
+                return BadRequest("Quantity must be at least 1.");
+            }
+
+            var padNumbers = await _stockTransactionDetailService.GetAvailablePadNumbers(quantity);
+
+            if (padNumbers == null || padNumbers.Start == 0 || padNumbers.End == 0)
+            {
+                return NotFound("No available pad numbers found for the requested quantity.");
+            }
+
+            return Ok(padNumbers);
+        }
+
+
     }
 
     public class ValidationRequest
