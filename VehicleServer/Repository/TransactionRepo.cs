@@ -14,13 +14,13 @@ namespace VehicleServer.Repository
 
         private readonly ApplicationContext _context;
         private readonly IMapper _mapper;
-        
+
 
         public TransactionRepo(ApplicationContext context, IMapper mapper)
         {
             this._context = context;
             this._mapper = mapper;
-           
+
         }
 
         public async Task<ActionResult<ApiResult<StockTransactionDto>>> GetStockTransactions(
@@ -33,7 +33,7 @@ namespace VehicleServer.Repository
         {
 
             return await ApiResult<StockTransactionDto>.CreateAsync(
-                    _context.StockTransactions.AsNoTracking().Select(c => new StockTransactionDto()
+                    _context.StockTransactions.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(c => new StockTransactionDto()
                     {
                         StockTransactionId = c.StockTransactionId,
                         TransactionType = c.TransactionType,
@@ -119,18 +119,18 @@ namespace VehicleServer.Repository
 
         // DELETE: api/StockTransaction/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStockTransaction(int id)
+        public async Task<ActionResult<int>> DeleteStockTransaction(int id)
         {
-            var StockTransaction = await _context.StockTransactions.FindAsync(id);
-            if (StockTransaction == null)
+            var stockTransaction = await _context.StockTransactions.FindAsync(id);
+            if (stockTransaction == null)
             {
                 throw new Exception("Id Not found!");
             }
 
-            _context.StockTransactions.Remove(StockTransaction);
-            await _context.SaveChangesAsync();
-            
-            return null;
+            stockTransaction.IsDeleted = true;
+            _context.Entry(stockTransaction).State = EntityState.Modified;
+            return await _context.SaveChangesAsync();
+
         }
 
         private bool StockTransactionExists(int id)
@@ -138,6 +138,6 @@ namespace VehicleServer.Repository
             return _context.StockTransactions.Any(e => e.StockTransactionId == id);
         }
 
-       
+
     }
 }

@@ -3,6 +3,8 @@ import { ApiResult, BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Transaction } from '../Models/Transaction';
+import { Item } from '../Models/item';
+import { Store } from '../Models/Store';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +56,19 @@ export class TransactionService extends BaseService<Transaction> {
   override delete(id: number): Observable<Transaction> {
     var url = this.getUrl("api/StockTransaction/" + id)
     return this.http.delete<Transaction>(url)
+  }
+
+  getItem(): Observable<any>{
+    var url = this.getUrl('api/Items')
+    return this.http.get<Item[]>(url)
+  }
+  getStore(): Observable<any>{
+    var url = this.getUrl('api/Store')
+    return this.http.get<Store[]>(url)
+  }
+  getStoreKeeper(): Observable<any>{
+    var url = this.getUrl('api/StoreKeepers')
+    return this.http.get<any>(url)
   }
   
   //   getCategories(): Observable<ICategory[]>{

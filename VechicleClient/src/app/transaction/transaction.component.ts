@@ -8,6 +8,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { TransactionEditComponent } from './transaction-edit.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-transaction',
@@ -39,10 +41,8 @@ export class TransactionComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
-    private http: HttpClient,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialog: MatDialog
   ) { }
   ngOnInit() {
     this.loadData();
@@ -83,6 +83,23 @@ export class TransactionComponent implements OnInit {
         error: (error) => console.error(error)
       });
 
+  }
+
+
+  openDialog(id?: number): void {
+    const dialogRef = this.dialog.open(TransactionEditComponent, {
+      width: '60%',
+      disableClose: true,
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data: { id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadData();
+      }
+    });
   }
 
   onDelete(id:number){
