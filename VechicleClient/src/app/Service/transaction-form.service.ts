@@ -57,5 +57,10 @@ import { ICategory } from '../Models/Category';
       var url = this.getUrl("api/Items/Category/" + id)
       return this.http.get<Item[]>(url)
     }
+
+    getStoreKeeperByStore(id: number): Observable<StoreKeeper[]> {
+      var url = this.getUrl("api/StoreKeepers/Store/" + id)
+      return this.http.get<StoreKeeper[]>(url)
+    }
   }
 

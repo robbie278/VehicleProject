@@ -1,4 +1,4 @@
-export interface StockItemDetail{
+export interface StockDetail{
      stockItemsDetailId : number,
       itemId: number,
       storeId: number,

@@ -8,6 +8,7 @@ import { ICategory } from '../Models/Category';
 import { CategoriesEditComponent } from './categories-edit.component';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
 
 @Component({
   selector: 'app-categories',
@@ -23,6 +24,7 @@ export class CategoriesComponent implements OnInit {
   public defaultSortOrder: "asc" | "desc" = "asc";
   defaultFilterColumn: string = "name";
   filterQuery?: string;
+  title : string = "Category"
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -90,15 +92,23 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  onDelete(id: number) {
-    if (confirm('Are you sure to delete this category?')) {
+
+onDelete( id:number) {
+  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    width: '40%',
+    data: {title: this.title},
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
       this.categoryService.delete(id).subscribe({
         next: () => {
-          this.toastr.error('Category Deleted Successfully');
+          this.toastr.error('StoreKeeper Deleted Successfully');
           this.loadData();
         },
-        error: (err) => console.log(err)
+        error: (err) => console.log(err),
       });
     }
+  });
   }
 }

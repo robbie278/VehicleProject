@@ -54,8 +54,8 @@
     },
     "Generals":{
       "Transaction":"Transaction Type",
-      "Transaction_Type":"Item Name",
-      "Item_Name":"የንጥል ስም",
+      "Transaction_Type":"Transaction type",
+      "Item_Name":"item name",
       "Store_Name":"Store Name",
       "Store_Keeper_Name":"Store Keeper Name"
     },

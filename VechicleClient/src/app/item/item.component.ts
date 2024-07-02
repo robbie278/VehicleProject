@@ -8,6 +8,7 @@ import { ItemEditComponent } from './item-edit.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
 
 @Component({
   selector: 'app-item',
@@ -23,6 +24,7 @@ export class ItemComponent implements OnInit {
  public defaultSortOrder: "asc" | "desc" = "asc";
  defaultFilterColumn: string = "name";
  filterQuery?: string;
+ title : string = "Item"
 
 
  @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -92,19 +94,23 @@ ngOnInit() {
   }
 
 
- 
-   onDelete(id:number){
-  if(confirm("Are you sure to delete this Item")){
 
-  this.itemService.delete(id).subscribe({
-  next: () => {
-    this.toastr.error("Item Deleted Successfully")
-    location.reload()
-    },
-  error: (err) => console.log(err)
-  })
+  onDelete( id:number) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '40%',
+      data: {title: this.title},
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.itemService.delete(id).subscribe({
+          next: () => {
+            this.toastr.error('StoreKeeper Deleted Successfully');
+            this.loadData();
+          },
+          error: (err) => console.log(err),
+        });
+      }
+    });
   }
-    }
-
-
-  }
+}

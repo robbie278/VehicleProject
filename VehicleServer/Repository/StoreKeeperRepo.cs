@@ -60,7 +60,14 @@ namespace VehicleServer.Repository
             return storeKeeper;
         }
 
-       
+        public async Task<ActionResult<IEnumerable<StoreKeeper>>> GetStoreKeeperByStore(int id)
+        {
+            var storeKepper = await _context.StoreKeepers.Where(c => c.StoreId == id).ToListAsync();
+
+            return storeKepper;
+        }
+
+
         public async Task<IActionResult> PutStoreKeeper(int id, StoreKeeper storeKeeper)
         {
             if (id != storeKeeper.StoreKeeperId)

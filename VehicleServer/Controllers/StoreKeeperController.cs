@@ -43,6 +43,12 @@ namespace VehicleServer.Controllers
             return await _storeKeeperRepo.GetStoreKeeper(id);
         }
 
+        [HttpGet("Store/{id}")]
+        public async Task<ActionResult<IEnumerable<StoreKeeper>>> GetStoreKeeperByStore(int id)
+        {
+            return await _storeKeeperRepo.GetStoreKeeperByStore(id);
+        }
+
         // PUT: api/StoreKeepers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

@@ -47,11 +47,22 @@ namespace VehicleServer.Controllers
         }
 
         [HttpGet("stockitems")]
-        public async Task<IActionResult> GetStockItemsDetail([FromQuery] int storeId, [FromQuery] int itemId, [FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10, [FromQuery] string? sortColumn = null, [FromQuery] string? sortOrder = null, string? filterColumn = null,
-              string? filterQuery = null)
+        public async Task<IActionResult> GetStockItemsDetail(
+            [FromQuery] int storeId, 
+            [FromQuery] int itemId, 
+            [FromQuery] int pageIndex = 0, 
+            [FromQuery] int pageSize = 5, 
+            [FromQuery] string? sortColumn = null, 
+            [FromQuery] string? sortOrder = null, 
+            string? filterColumn = null,
+            string? filterQuery = null)
         {
-            var result = await stockItemsDetailRepo.GetStockItemsDetailAsync(storeId, itemId, pageIndex, pageSize, sortColumn, sortOrder, filterColumn,
-                    filterQuery);
+            var result = await stockItemsDetailRepo.GetStockItemsDetailAsync(
+                storeId, itemId, 
+                pageIndex, pageSize, 
+                sortColumn, sortOrder, 
+                filterColumn, filterQuery
+                );
 
             return Ok(result);
         }

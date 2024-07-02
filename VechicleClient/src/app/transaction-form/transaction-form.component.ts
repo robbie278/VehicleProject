@@ -30,8 +30,8 @@ export class TransactionFormComponent implements OnInit {
   storeKeeper?: StoreKeeper[];
   user?: User[];
   form!: FormGroup;
-
   categoryId: number = 0;
+  storeId: number = 0;
 
   constructor(
     private transactionFormService: TransactionFormService,
@@ -102,7 +102,7 @@ export class TransactionFormComponent implements OnInit {
     // this.loadItems();
     this.loadCategories();
     this.loadStore();
-    this.loadStoreKeeper();
+    //this.loadStoreKeeper();
     this.loadUser();
   }
 
@@ -227,5 +227,12 @@ export class TransactionFormComponent implements OnInit {
     })
   }
 
+  getStoreKeeperByStore(id: number) {
+    console.log('The id is', id);
+    this.storeId = id
+    this.transactionFormService.getStoreKeeperByStore(id).subscribe(items => {
+      this.storeKeeper = items
+    })
+  }
 
 }

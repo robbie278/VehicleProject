@@ -10,6 +10,7 @@ import { EditStoreComponent } from './edit-store.component';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { Router } from '@angular/router';
+import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class StoreComponent implements OnInit {
   public defaultSortOrder: "asc" | "desc" = "asc";
   defaultFilterColumn: string = "name";
   filterQuery?: string;
+  title : string = "Store"
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort
@@ -61,16 +63,6 @@ export class StoreComponent implements OnInit {
   }
 
 
-  // getData() {
-  //   this.storeService.getData().subscribe({
-  //     next: (result) => {
-  //       this.stores = new MatTableDataSource<Store>(result);
-  //       this.stores.paginator = this.paginator;
-  //     },
-  //     error: (err) => console.log(err)
-  //   });
-  // }
-  // -------------------------
   getData(event: PageEvent) {
     var sortColumn = (this.sort) ? this.sort.active : this.defaultSortColumn
     var sortOrder = (this.sort) ? this.sort.direction : this.defaultSortOrder
@@ -110,18 +102,24 @@ export class StoreComponent implements OnInit {
     });
   }
 
-  onDelete(id: number) {
-    if (confirm('Are you sure to delete this Store?')) {
-      this.storeService.delete(id).subscribe({
-        next: () => {
-          this.toastr.error('Store Deleted Successfully');
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
-        },
-        error: (err) => console.log(err)
-      });
-    }
+
+  onDelete( id:number) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '40%',
+      data: {title: this.title},
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.storeService.delete(id).subscribe({
+          next: () => {
+            this.toastr.error('Store Deleted Successfully');
+            this.loadData();
+          },
+          error: (err) => console.log(err),
+        });
+      }
+    });
   }
 
 }
