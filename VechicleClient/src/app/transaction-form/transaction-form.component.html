@@ -12,7 +12,20 @@
         {{ 'Store.STORE_REQUIRED' | translate }}
       </mat-error>
     </mat-form-field>
-
+    <mat-form-field >
+      <mat-label>{{ 'Transaction.select_storekeeper' | translate }} :</mat-label>
+      <mat-select id="storeKeeperId" formControlName="storeKeeperId">
+        <mat-option
+          *ngFor="let storeKeeper of storeKeeper"
+          [value]="storeKeeper.storeKeeperId"
+        >
+          {{ storeKeeper.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['storeKeeperId'].errors?.['required']">
+        {{ 'Item.description_placeholder' | translate }}
+      </mat-error>
+    </mat-form-field>
     <mat-form-field *ngIf="categories">
       <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
       <mat-select id="categoryId" formControlName="categoryId">
@@ -48,22 +61,6 @@
        
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field >
-      <mat-label>{{ 'Transaction.select_storekeeper' | translate }} :</mat-label>
-      <mat-select id="storeKeeperId" formControlName="storeKeeperId">
-        <mat-option
-          *ngFor="let storeKeeper of storeKeeper"
-          [value]="storeKeeper.storeKeeperId"
-        >
-          {{ storeKeeper.name }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.controls['storeKeeperId'].errors?.['required']">
-        {{ 'Item.description_placeholder' | translate }}
-      </mat-error>
-    </mat-form-field>
-
     <mat-form-field>
       <mat-label>{{ 'Transaction.transaction_type' | translate }}:</mat-label>
       <input
