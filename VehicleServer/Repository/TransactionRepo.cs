@@ -138,6 +138,5 @@ namespace VehicleServer.Repository
             return _context.StockTransactions.Any(e => e.StockTransactionId == id);
         }
 
-
     }
 }

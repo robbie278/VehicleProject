@@ -70,6 +70,10 @@ export class TransactionService extends BaseService<Transaction> {
     var url = this.getUrl('api/StoreKeepers')
     return this.http.get<any>(url)
   }
+  getPadNumbers(quantity: number): Observable<any> {
+    var url = this.getUrl(`api/StockTransactionDetail/pad-numbers?quantity=${quantity}`)
+    return this.http.get<any>(url);
+  }
   
   //   getCategories(): Observable<ICategory[]>{
   //     var url = this.getUrl('api/Categories')
