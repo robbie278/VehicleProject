@@ -52,7 +52,7 @@
 
     <mat-form-field>
         <mat-label>{{ 'Transaction.quantity' | translate }} :</mat-label>
-        <input matInput formControlName="quantity" required>
+        <input  matInput id="quantity" name="quantity" formControlName="quantity" required>
         <mat-error *ngIf="form.controls['quantity'].errors?.['required']">
           {{ 'Quantity is required' | translate }}
         </mat-error>

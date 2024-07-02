@@ -66,7 +66,8 @@ export class StockDetailComponent implements OnInit {
        var sortOrder = (this.sort) ? this.sort.direction : this.defaultSortOrder
        var filterColumn = (this.filterQuery) ? this.defaultFilterColumn : null
        var filterQuery = (this.filterQuery) ? this.filterQuery : null
- 
+       this.defaultPageIndex = event.pageIndex;
+       this.defaultPageSize = event.pageSize;
        this.stockDetailService.getData2(this.storeId, this.itemId, event.pageIndex, event.pageSize, sortColumn, sortOrder,
      filterColumn, filterQuery).subscribe({
        next: (result) => {

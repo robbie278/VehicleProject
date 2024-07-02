@@ -20,7 +20,7 @@
           <!-- Index Column -->
           <ng-container matColumnDef="index">
             <th mat-header-cell *matHeaderCellDef> No </th>
-            <td mat-cell *matCellDef="let element let i = index;"> {{i+1}} </td>
+            <td mat-cell *matCellDef="let element let i = index;"> {{(defaultPageIndex * defaultPageSize) + i+1}} </td>
           </ng-container>
       
           <!-- StoreName Column -->

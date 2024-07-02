@@ -48,7 +48,7 @@ export class TransactionEditComponent {
       itemId: new FormControl('', Validators.required),
         storeId: new FormControl('', Validators.required),
         storeKeeperId: new FormControl('', Validators.required),
-        quantity: new FormGroup('', Validators.required )
+        quantity: new FormControl('', Validators.required )
     })
     console.log(this.id)
   }
@@ -58,6 +58,8 @@ export class TransactionEditComponent {
       next: (result) => {
         this.transaction = result;
         this.form.patchValue(this.transaction);
+        this.form.controls['quantity']?.setValue(result.quantity);
+        console.log(this.form.controls['quantity']?.value);
         console.log(result)
 
       },
