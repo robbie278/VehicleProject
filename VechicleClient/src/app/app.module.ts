@@ -27,6 +27,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TransactionEditComponent } from './transaction/transaction-edit.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -52,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TransactionComponent,
     HomeComponent,
     TransactionComponent,
+    TransactionEditComponent,
   ],
   imports: [
     BrowserModule,
