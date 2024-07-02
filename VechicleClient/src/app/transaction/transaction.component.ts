@@ -42,11 +42,10 @@ export class TransactionComponent implements OnInit {
   constructor(
     private transactionService: TransactionService,
     private toastr: ToastrService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
   ) { }
   ngOnInit() {
     this.loadData();

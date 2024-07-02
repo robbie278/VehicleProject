@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { StoreKeeperEditComponent } from './store-keeper-edit.component';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
 
 @Component({
   selector: 'app-store-keeper',
@@ -23,6 +24,7 @@ export class StoreKeeperComponent implements OnInit {
   public defaultSortOrder: "asc" | "desc" = "asc";
   defaultFilterColumn: string = "name";
   filterQuery?: string;
+  title : string = "StoreKeeper"
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -95,19 +97,23 @@ openDialog(id?: number): void {
   });
 }
 
-onDelete(id:number){
+onDelete( id:number) {
+  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    width: '40%',
+    data: {title: this.title},
+  });
 
-if(confirm("Are you sure to delete this StoreKeeper")){
-
-this.storeKeeperService.delete(id).subscribe({
-next: () => {
- this.toastr.error("StoreKeeper Deleted Successfully")
- this.loadData()
-  },
-    error: (err) => console.log(err)
-  })
-  }
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.storeKeeperService.delete(id).subscribe({
+        next: () => {
+          this.toastr.error('StoreKeeper Deleted Successfully');
+          this.loadData();
+        },
+        error: (err) => console.log(err),
+      });
+    }
+  });
 }
-
 
 }

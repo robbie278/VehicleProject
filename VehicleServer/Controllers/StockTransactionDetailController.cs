@@ -1,23 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VehicleServer.Entities;
 using VehicleServer.Services.StockTransactionDetailServices;
-
-namespace VehicleServer.Controllers
-{
+using VehicleServer.Repository;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using VehicleServer.DTOs;
     using VehicleServer.Entities;
+
+namespace VehicleServer.Controllers
+{
+
 
     [Route("api/[controller]")]
     [ApiController]
     public class StockTransactionDetailController : ControllerBase
     {
         private readonly IStockItemsDetailService _stockTransactionDetailService;
+        private readonly StockItemsDetailRepo stockItemsDetailRepo;
 
-        public StockTransactionDetailController(IStockItemsDetailService stockTransactionDetailService)
+        public StockTransactionDetailController(IStockItemsDetailService stockTransactionDetailService, StockItemsDetailRepo stockItemsDetailRepo)
         {
             _stockTransactionDetailService = stockTransactionDetailService;
+            this.stockItemsDetailRepo = stockItemsDetailRepo;
         }
 
         [HttpPost("validate")]
@@ -43,6 +47,27 @@ namespace VehicleServer.Controllers
             return Ok("Validation successful.");
         }
 
+        [HttpGet("stockitems")]
+        public async Task<IActionResult> GetStockItemsDetail(
+            [FromQuery] int storeId, 
+            [FromQuery] int itemId, 
+            [FromQuery] int pageIndex = 0, 
+            [FromQuery] int pageSize = 5, 
+            [FromQuery] string? sortColumn = null, 
+            [FromQuery] string? sortOrder = null, 
+            string? filterColumn = null,
+            string? filterQuery = null)
+        {
+            var result = await stockItemsDetailRepo.GetStockItemsDetailAsync(
+                storeId, itemId, 
+                pageIndex, pageSize, 
+                sortColumn, sortOrder, 
+                filterColumn, filterQuery
+                );
+
+            return Ok(result);
+        }
+
         [HttpGet("pad-numbers")]
         public async Task<ActionResult<PadNumberRangeDto>> GetPadNumbers([FromQuery] int quantity)
         {
@@ -61,7 +86,6 @@ namespace VehicleServer.Controllers
             return Ok(padNumbers);
         }
 
-
     }
 
     public class ValidationRequest
@@ -70,7 +94,7 @@ namespace VehicleServer.Controllers
         public int StoreId { get; set; }
         public int? UserId { get; set; }
         public int StoreKeeperId { get; set; }
-        public string TransactionType { get; set; } // Issue or Receipt
+        public string TransactionType { get; set; } 
         public int PadNumberStart { get; set; }
         public int PadNumberEnd { get; set; }
         public DateTime TransactionDate { get; set; } = DateTime.Now;

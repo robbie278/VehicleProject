@@ -31,8 +31,8 @@ namespace VehicleServer.Controllers
                   string? sortOrder = null,
                   string? filterColumn = null,
                   string? filterQuery = null)
-        {
-                return await itemRepo.GetItems(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+            {
+                  return await itemRepo.GetItems(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
             }
 
         [HttpGet("Category/{id}")]
@@ -40,6 +40,7 @@ namespace VehicleServer.Controllers
         {
             return await itemRepo.GetItemsByCategory(id);
         }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
         {

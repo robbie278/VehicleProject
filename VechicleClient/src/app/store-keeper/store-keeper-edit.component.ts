@@ -29,7 +29,7 @@ constructor(
 )
 {
   this.id = data.id;
-  this.title = this.id ? 'Edit StoreKeeper' : 'Create StoreKeeper';
+  this.title = this.id ? 'Edit Storekeeper' : 'Create Storekeeper';
 }
 
   ngOnInit() {

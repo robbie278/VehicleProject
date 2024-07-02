@@ -4,7 +4,7 @@
     <mat-form-field *ngIf="store">
       <mat-label>{{ 'Transaction.select_a_store' | translate }} :</mat-label>
       <mat-select id="storeId" formControlName="storeId">
-        <mat-option *ngFor="let store of store" [value]="store.storeId">
+        <mat-option *ngFor="let store of store" [value]="store.storeId" (onSelectionChange)="getStoreKeeperByStore(store.storeId)">
           {{ store.name }}
         </mat-option>
       </mat-select>
@@ -37,7 +37,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field *ngIf="TransactionType.Issue">
+    <mat-form-field *ngIf="TransactionType.Issue == transactionType">
       <mat-label>User</mat-label>
       <mat-select id="userId" formControlName="userId">
         <mat-option *ngFor="let user of user" [value]="user.userId">
@@ -49,7 +49,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field *ngIf="storeKeeper">
+    <mat-form-field >
       <mat-label>{{ 'Transaction.select_storekeeper' | translate }} :</mat-label>
       <mat-select id="storeKeeperId" formControlName="storeKeeperId">
         <mat-option

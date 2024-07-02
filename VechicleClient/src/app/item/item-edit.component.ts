@@ -50,6 +50,7 @@ fetchData() {
     next: (result) => {
       this.item = result;
       this.form.patchValue(this.item);
+      console.log(result);
     },
     error: (error) => console.error(error)
   });
