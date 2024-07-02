@@ -1,14 +1,14 @@
 <mat-card>
     <mat-card-header>
-      <mat-card-title></mat-card-title>
-      <mat-card-subtitle>Transaction</mat-card-subtitle>
+      <mat-card-title>{{ "Generals.Transaction" | translate }}</mat-card-title>
+      <mat-card-subtitle>{{ "Generals.Transaction" | translate }}</mat-card-subtitle>
       <mat-form-field [hidden]="!transactions" >
         <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
-                placeholder="Filter by name (or part of it)...">
+                placeholder="{{ 'others.Filter_By_Name' | translate }}">
       </mat-form-field>
     </mat-card-header>
     <mat-card-content>
-      <p *ngIf="!transactions"><em>Loading...</em></p>
+      <p *ngIf="!transactions"><em>{{ 'others.Loading' | translate }}...</em></p>
       <table mat-table [dataSource]="transactions" class="mat-elevation-z8" 
         matSort 
         (matSortChange)="loadData()"
@@ -16,7 +16,7 @@
         [matSortDirection]="defaultSortOrder" >
         <!-- Id Column -->
         <ng-container matColumnDef="index">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>No</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ "others.No" | translate }}</th>
           <td mat-cell *matCellDef="let transactions; let i = index;">{{i + 1}}</td>
         </ng-container>
   
@@ -49,7 +49,7 @@
         </ng-container>
         <!-- Quantity Column -->
         <ng-container matColumnDef="quantity">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'transaction.quantity' | translate }}</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'Transaction.quantity' | translate }}</th>
           <td mat-cell *matCellDef="let transaction">{{transaction.quantity}}</td>
         </ng-container>
 

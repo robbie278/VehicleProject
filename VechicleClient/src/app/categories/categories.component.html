@@ -1,18 +1,18 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Categories</mat-card-title>
-    <mat-card-subtitle>Categories</mat-card-subtitle>
+    <mat-card-title>{{ 'others.Categories' | translate }}</mat-card-title>
+    <mat-card-subtitle>{{ 'others.Categories' | translate }}</mat-card-subtitle>
 
     <mat-form-field [hidden]="!categories" >
       <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
-              placeholder="Filter by name">
+              placeholder="{{ 'others.Filter_By_Name' | translate }}">
     </mat-form-field>
 
   </mat-card-header>
 
   <mat-card-content>
-    <p *ngIf="!categories"><em>Loading...</em></p>
-    <button mat-flat-button color="primary" class="btn-add" (click)="openDialog()">Add a new Category</button>
+    <p *ngIf="!categories"><em>{{ 'others.Loading' | translate }}...</em></p>
+    <button mat-flat-button color="primary" class="btn-add" (click)="openDialog()">{{ 'others.Add_New' | translate }}</button>
 
     <table mat-table [dataSource]="categories" class="mat-elevation-z8"
     matSort
@@ -22,7 +22,7 @@
 
       <!-- Index Column -->
       <ng-container matColumnDef="No">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>No</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ "others.No" | translate }}</th>
         <td mat-cell *matCellDef="let category; let i = index">{{ i + 1 }}</td>
       </ng-container>
 
@@ -34,7 +34,7 @@
 
         <!--Description Column -->
       <ng-container matColumnDef="Description">
-        <th mat-header-cell *matHeaderCellDef>{{ 'Category.Category' | translate }}</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'FORM.DESCRIPTION' | translate }}</th>
         <td mat-cell *matCellDef="let category">{{ category.description }}</td>
       </ng-container>
 

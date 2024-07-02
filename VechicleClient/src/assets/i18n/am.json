@@ -61,9 +61,42 @@
       "Issue": "ጉዳይ",
       "Receipt": "መቀበያ",
       "Damaged": "ተበላሽቷል",
+      "Return": "ተመለስ",
       "Transaction": "ግብይት",
       "Loading": "በመችሃን ልይ",
-      "home":"በት"
+      "home":"በት",
+
+      "Stock_Report": "የአክሲዮን ሪፖርት",
+      "Quantity_In_Stock": "በአክሲዮን ውስጥ ያለው ብዛት",
+      "Last_Updated_Date": "የመጨረሻው የተሻሻለ ቀን",
+  
+
+
+  "Create_Store": "ሱቅ ፍጠር",
+  "Create_StoreKeeper": "የሱቅ እንክብካቤ ፍጠር",
+  "Create_Item": "እቃ ፍጠር",
+  "Create_Category": "ምድብ ፍጠር",
+  "Edit_Store": "ሱቅ አስተካክል",
+  "Edit_StoreKeeper": "የሱቅ እንክብካቤ አስተካክል",
+  "Edit_Item": "እቃ አስተካክል",
+  "Edit_Category": "ምድብ አስተካክል",
+
+  "Filter_By_Name":"በስም አጣራ",
+  "Add_New":"አዲስ ይጨምሩ",
+  "Availability":"ተገኝነት",
+
+  "Issuing_Goods":"ሸቀጦችን ማውጣት",
+  "Receiving_Goods":"ሸቀጦችን መቀበል",
+  "Damaged_Goods":"የተበላሹ ዕቃዎች",
+  "Return_Goods":"ተመለስ ሸቀጦች",
+
+  "No":"ቁጥር",
+  "Amharic":"አማርኛ",
+  "English":"እንግሊዝኛ",
+
+  "already_exist":"ቀድሞውኑም አለ"
+
+
     }
   }
   

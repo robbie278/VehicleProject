@@ -5,6 +5,7 @@ import { Store } from '../Models/Store';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StoreService } from '../Service/store.service';
 import { Observable, map, of } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-store',
@@ -22,11 +23,14 @@ export class EditStoreComponent implements OnInit {
     public dialogRef: MatDialogRef<EditStoreComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private toastr: ToastrService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private translateService: TranslateService
   ) {
     console.log(data)
     this.id = data.id;
     this.title = this.id ? 'Edit Store' : 'Create Store';
+    this.title = translateService.instant( this.id ? 'others.Edit_Store' : 'others.Create_Store');
+    
   }
 
   ngOnInit(): void {
@@ -91,6 +95,10 @@ export class EditStoreComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  getButtonLabel(): string {
+    return this.id ? 'FORM.UPDATE' : 'FORM.CREATE';
+  }
+
   isDupeStore(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
   
@@ -109,5 +117,4 @@ export class EditStoreComponent implements OnInit {
       }));
     }
   }
-
 }

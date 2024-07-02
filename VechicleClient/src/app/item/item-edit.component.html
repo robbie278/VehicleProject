@@ -5,7 +5,7 @@
     <p>
       <mat-error *ngIf=" form.invalid && form.hasError('isDupeItem')">
               <strong> ERROR </strong>:
-              A  with the same <i>Name</i>,  And <i>Category</i>  already exists
+              {{ "others.already_exist" | translate }}
       </mat-error>
   </p>
     <mat-form-field>

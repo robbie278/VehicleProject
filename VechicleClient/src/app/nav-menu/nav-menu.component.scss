@@ -76,4 +76,22 @@
         }
       }
 
-      
+      .language-select {
+        min-width: 200px; /* Ensure a minimum width for the select */
+    }
+    
+    .language-select .mat-select-trigger {
+        display: inline-block;
+        white-space: nowrap; /* Prevent text from wrapping inside the trigger */
+    }
+    
+    .language-select .mat-select-panel {
+        min-width: auto !important; /* Ensure the panel adjusts to the content width */
+        width: auto !important;
+        max-width: none !important;
+    }
+    
+    .language-select .mat-option-text {
+        white-space: nowrap; /* Prevent text from wrapping inside options */
+    }
+    

@@ -4,7 +4,7 @@
     <p>
       <mat-error *ngIf=" form.invalid && form.hasError('isDupeStore')">
               <strong> ERROR </strong>:
-              A Store with the same <i>Name</i>, <i>Address</i>  already exists
+              {{ "others.already_exist" | translate }}
       </mat-error>
   </p>
     <mat-form-field>
@@ -21,6 +21,6 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ id ? 'FORM.UPDATE' : 'FORM.CREATE' | translate }}</button>
+  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ getButtonLabel() | translate }}</button>
   <button mat-stroked-button (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
 </div>

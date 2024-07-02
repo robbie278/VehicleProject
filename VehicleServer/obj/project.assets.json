@@ -11865,23 +11865,37 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\rbnas\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\yeabsira\\.nuget\\packages\\": {},
+>>>>>>> language_translation
     "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+      "projectUniqueName": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
       "projectName": "VehicleServer",
+<<<<<<< HEAD
       "projectPath": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
       "packagesPath": "C:\\Users\\rbnas\\.nuget\\packages\\",
       "outputPath": "C:\\VehicleProject\\VehicleServer\\obj\\",
+=======
+      "projectPath": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+      "packagesPath": "C:\\Users\\yeabsira\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\obj\\",
+>>>>>>> language_translation
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\rbnas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\yeabsira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> language_translation
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -11981,7 +11995,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+>>>>>>> language_translation
       }
     }
   },
