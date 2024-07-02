@@ -3,7 +3,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/">
         <mat-icon>home</mat-icon>
-        {{'home' | translate}}
+        {{'others.home' | translate}}
       </a>
       <a mat-list-item routerLink="/categories">
         <mat-icon>category</mat-icon>
@@ -35,7 +35,7 @@
       </a>
       <a mat-list-item (click)="openTransactionDialog(transactionType.Return)">
         <mat-icon>Return</mat-icon>
-        {{ 'others.Damaged' | translate  }}
+        {{ 'others.Return' | translate  }}
       </a>
       <a mat-list-item routerLink="/transaction">
         <mat-icon>swap_horiz</mat-icon>
@@ -58,8 +58,8 @@
               <span class="spacer"></span>  
 
             <mat-select class="language-select" placeholder="Language" [(value)]="selectedLanguage" (selectionChange)="switchLanguage(selectedLanguage)">
-              <mat-option value="am">Amharic</mat-option>
-              <mat-option value="en">English</mat-option>
+              <mat-option value="am">{{ "others.Amharic" | translate }}</mat-option>
+              <mat-option value="en">{{ "others.English" | translate }}</mat-option>
               <mat-option value="or">Afan Oromo</mat-option>
             </mat-select>
 

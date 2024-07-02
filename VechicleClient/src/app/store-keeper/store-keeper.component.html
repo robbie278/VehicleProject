@@ -1,20 +1,20 @@
 <mat-card>
 
   <mat-card-header >
-    <mat-card-title>Store Keppers</mat-card-title>
-    <mat-card-subtitle>Store Keppers</mat-card-subtitle>
+    <mat-card-title>{{ 'FORM.Store_Keepers' | translate }}</mat-card-title>
+    <mat-card-subtitle>{{ 'others.Store_Keepers' | translate }}</mat-card-subtitle>
 
     <mat-form-field [hidden]="!storeKeeper" >
       <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
-              placeholder="Filter by name">
+              placeholder="{{ 'others.Filter_By_Name' | translate }}">
     </mat-form-field>
 
   </mat-card-header >
 
   <mat-card-content>
-  <p *ngIf="!storeKeeper"><em>Loading...</em></p>
+  <p *ngIf="!storeKeeper"><em>{{ 'others.Loading' | translate }}...</em></p>
   
-  <button mat-flat-button color="primary" class="btn-add" *ngIf="storeKeeper" (click)="openDialog()"> Add a new StoreKeeper</button>
+  <button mat-flat-button color="primary" class="btn-add" *ngIf="storeKeeper" (click)="openDialog()"> {{ "others.Add_New" | translate }}</button>
   
   <table mat-table [dataSource]="storeKeeper" class="mat-elevation-z8"
         matSort
@@ -24,7 +24,7 @@
   
     <!-- Index Column -->
     <ng-container matColumnDef="index">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header >No</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >{{ "others.No" | translate }}</th>
       <td mat-cell *matCellDef="let storeKeppers; let i = index;">{{i+1}}</td>
     </ng-container>
   
@@ -40,9 +40,9 @@
       <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.email}}</td>
     </ng-container>
   
-    <!-- StoreName Column -->
+    <!-- StoreName Column a-->
     <ng-container matColumnDef="storeName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header >{{ 'FORM.NAME' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >{{ 'Generals.Store_Name' | translate }}</th>
       <td mat-cell *matCellDef="let storeKeppers">{{storeKeppers.storeName}}</td>
     </ng-container>
     

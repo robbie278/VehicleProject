@@ -1,75 +1,107 @@
 {
-    "FORM": {
-      "TITLE": "Form Title",
-      "NAME": "Name",
-      "NAME_PLACEHOLDER": "Type a name",
-      "NAME_REQUIRED": "Name is required",
-      "DESCRIPTION": "Description",
-      "DESCRIPTION_PLACEHOLDER": "Type a description",
-      "DESCRIPTION_REQUIRED": "Description is required",
-      "ADDRESS": "Address",
-      "ADDRESS_PLACEHOLDER": "Type an address",
-      "ADDRESS_REQUIRED": "Address is required",
-      "EMAIL": "Email",
-      "EMAIL_PLACEHOLDER": "Type an email",
-      "EMAIL_REQUIRED": "Email is required",
-      "CREATE": "Create",
-      "UPDATE": "Update",
-      "CANCEL": "Cancel",
-      "STORE_REQUIRED": "Store is required",
-      "ACTION":"action"
-    },
-    "Item": {
-      "id": "ID",
-      "description": "Description",
-      "description_placeholder": "Enter description"
-    },
-    "Category": {
-      "Category": "Category",
-      "Category_Name": "Category Name",
-      "Category_Name_Placeholder": "Enter category name",
-      "EditCategory":"Edit Category",
-      "CreateCategory": "Create Category"
-    },
-    "StoreKeeper": {
-      "Address": "Address",
-      "Email": "Email",
-      "Address_Placeholder": "Enter address",
-      "Email_Placeholder": "Enter email"
-    },
-    "Store": {
-      "Address": "Address",
-      "Address_Placeholder": "Enter address",
-      "STORE_REQUIRED": "Store is required"
-    },
-    "Transaction": {
-      "select_a_store": "Select a store",
-      "select_a_category": "Select a category",
-      "select_an_item": "Select an item",
-      "select_storekeeper": "Select storekeeper",
-      "transaction_type": "Transaction type",
-      "pad_number_start": "Pad number start",
-      "pad_number_end": "Pad number end",
-      "quantity": "Quantity"
-    },
-    "Generals":{
-      "Transaction":"Transaction Type",
-      "Transaction_Type":"Item Name",
-      "Item_Name":"የንጥል ስም",
-      "Store_Name":"Store Name",
-      "Store_Keeper_Name":"Store Keeper Name"
-    },
-    "others": {
-      "Categories": "Categories",
-      "Items": "Items",
-      "Stores": "Stores",
-      "Store_Keepers": "Store Keepers",
-      "Issue": "Issue",
-      "Receipt": "Receipt",
-      "Damaged": "Damaged",
-      "Transaction": "Transaction",
-      "Loading": "Loading",
-      "home":"home"
-    }
+  "FORM": {
+    "TITLE": "Form Title",
+    "NAME": "Name",
+    "NAME_PLACEHOLDER": "Type a name",
+    "NAME_REQUIRED": "Name is required",
+    "DESCRIPTION": "Description",
+    "DESCRIPTION_PLACEHOLDER": "Type a description",
+    "DESCRIPTION_REQUIRED": "Description is required",
+    "ADDRESS": "Address",
+    "ADDRESS_PLACEHOLDER": "Type an address",
+    "ADDRESS_REQUIRED": "Address is required",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Type an email",
+    "EMAIL_REQUIRED": "Email is required",
+    "CREATE": "Create",
+    "UPDATE": "Update",
+    "CANCEL": "Cancel",
+    "STORE_REQUIRED": "Store is required",
+    "ACTION": "action"
+  },
+  "Item": {
+    "id": "ID",
+    "description": "Description",
+    "description_placeholder": "Enter description"
+  },
+  "Category": {
+    "Category": "Category",
+    "Category_Name": "Category Name",
+    "Category_Name_Placeholder": "Enter category name",
+    "EditCategory": "Edit Category",
+    "CreateCategory": "Create Category"
+  },
+  "StoreKeeper": {
+    "Address": "Address",
+    "Email": "Email",
+    "Address_Placeholder": "Enter address",
+    "Email_Placeholder": "Enter email"
+  },
+  "Store": {
+    "Address": "Address",
+    "Address_Placeholder": "Enter address",
+    "STORE_REQUIRED": "Store is required"
+  },
+  "Transaction": {
+    "select_a_store": "Select a store",
+    "select_a_category": "Select a category",
+    "select_an_item": "Select an item",
+    "select_storekeeper": "Select storekeeper",
+    "transaction_type": "Transaction type",
+    "pad_number_start": "Pad number start",
+    "pad_number_end": "Pad number end",
+    "quantity": "Quantity"
+  },
+  "Generals": {
+    "Transaction": "Transaction",
+    "Transaction_Type": "Transaction Type",
+    "Item_Name": "Item Name",
+    "Store_Name": "Store Name",
+    "Store_Keeper_Name": "Store Keeper Name"
+  },
+  "others": {
+    "Categories": "Categories",
+    "Items": "Items",
+    "Stores": "Stores",
+    "Store_Keepers": "Store Keepers",
+    "Issue": "Issue",
+    "Receipt": "Receipt",
+    "Damaged": "Damaged",
+    "Return": "Return",
+    "Transaction": "Transaction",
+    "Loading": "Loading",
+    "home": "home",
+
+    "Stock_Report": "Stock Report",
+    "Quantity_In_Stock": "Quantity In Stock",
+    "Last_Updated_Date": "Updated Date",
+
+    "Issuing_Goods": "Issuing Goods",
+    "Receiving_Goods": "Receiving Goods",
+    "Damaged_Goods": "Damaged Goods",
+    "Return_Goods": "Return Goods",
+
+
+    "Create_Store": "Create Store",
+    "Create_StoreKeeper": "Create StoreKeeper",
+    "Create_Item": "Create Item",
+    "Create_Category": "Create Category",
+    "Edit_Store": "Edit Store",
+    "Edit_StoreKeeper": "Edit StoreKeeper",
+    "Edit_Item": "Edit Item",
+    "Edit_Category": "Edit Category",
+
+     "Filter_By_Name":"Filter By Name",
+     "Add_New":"Add New",
+     "Availability":"Availability",
+
+     "No":"No",
+       "Amharic":"Amharic",
+  "English":"English",
+
+  "already_exist":"Already Exist",
+  "Successfully_Added":"በተሳካ ሁኔታ ተጨመረ"
+ 
+
   }
-  
+}

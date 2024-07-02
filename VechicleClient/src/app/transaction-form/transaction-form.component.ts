@@ -12,6 +12,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TransactionType } from '../enums/transaction-type.enum';
 import { Observable, map } from 'rxjs';
 import { ICategory } from '../Models/Category';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-transaction-form',
@@ -38,12 +39,15 @@ export class TransactionFormComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<TransactionFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private translate: TranslateService
   ) {
     this.transactionType = data.transactionType || TransactionType.Issue;
   }
 
   ngOnInit() {
+    const translatedTransactionType = this.translate.instant(`others.${this.transactionType}`);
+
     this.form = new FormGroup(
       {
         categoryId: new FormControl('', Validators.required),
@@ -51,7 +55,7 @@ export class TransactionFormComponent implements OnInit {
         storeId: new FormControl('', Validators.required),
         storeKeeperId: new FormControl('', Validators.required),
         userId: new FormControl(''),
-        transactionType: new FormControl(this.transactionType, Validators.required),
+        transactionType: new FormControl(translatedTransactionType, Validators.required),
         singleItem: new FormControl(false),
         padNumberStart: new FormControl('', [
           Validators.required,
@@ -84,19 +88,19 @@ export class TransactionFormComponent implements OnInit {
   }
 
   loadData() {
-    switch(this.transactionType){
-      case TransactionType.Issue: 
-          this.title = 'Issuing Goods'
-          break
-      case TransactionType.Receipt: 
-          this.title = 'Receiving Goods'
-          break
-      case TransactionType.Damaged: 
-          this.title = 'Damaged Goods'
-          break
-          case TransactionType.Return: 
-          this.title = 'Returning Goods'
-          break
+    switch (this.transactionType) {
+      case TransactionType.Issue:
+        this.title = this.translate.instant('others.Issuing_Goods');
+        break;
+      case TransactionType.Receipt:
+        this.title = this.translate.instant('others.Receiving_Goods');
+        break;
+      case TransactionType.Damaged:
+        this.title = this.translate.instant('others.Damaged_Goods');
+        break;
+      case TransactionType.Return:
+        this.title = this.translate.instant('others.Return_Goods');
+        break;
     }
 
     // this.loadItems();

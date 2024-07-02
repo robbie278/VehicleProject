@@ -27,7 +27,7 @@ export class CategoriesEditComponent implements OnInit {
     private translateService: TranslateService
   ) {
     this.id = data.id;
-    this.title = translateService.instant( this.id ? 'Category.EditCategory' : 'Category.CreateCategory');
+    this.title = translateService.instant( this.id ? 'others.Edit_Category' : 'others.Create_Category');
   }
 
   ngOnInit(): void {
@@ -81,6 +81,10 @@ export class CategoriesEditComponent implements OnInit {
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  getButtonLabel(): string {
+    return this.id ? 'FORM.UPDATE' : 'FORM.CREATE';
   }
 
   isDupeCategory(): AsyncValidatorFn {

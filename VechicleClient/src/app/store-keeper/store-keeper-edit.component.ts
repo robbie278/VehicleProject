@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-store-keeper-edit',
@@ -25,11 +26,13 @@ constructor(
   public dialogRef: MatDialogRef<StoreKeeperEditComponent>,
   @Inject(MAT_DIALOG_DATA) public data: any,
   private storeKeeperService: StoreKeeperService,
-  private toastr: ToastrService          
+  private toastr: ToastrService,
+  private translateService: TranslateService       
 )
 {
   this.id = data.id;
   this.title = this.id ? 'Edit StoreKeeper' : 'Create StoreKeeper';
+  this.title = translateService.instant( this.id ? 'others.Edit_StoreKeeper' : 'others.Create_StoreKeeper');
 }
 
   ngOnInit() {
@@ -97,6 +100,10 @@ constructor(
 
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  getButtonLabel(): string {
+    return this.id ? 'FORM.UPDATE' : 'FORM.CREATE';
   }
 
   isDupeStoreKeeper(): AsyncValidatorFn {

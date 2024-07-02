@@ -6,6 +6,7 @@ import { ItemService } from '../Service/item.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -24,10 +25,12 @@ constructor(
   public dialogRef: MatDialogRef<ItemEditComponent>,
   @Inject(MAT_DIALOG_DATA) public data: any,
   private itemService: ItemService,
-  private toastr: ToastrService     
+  private toastr: ToastrService,
+  private translateService: TranslateService,  
 ){
   this.id = data.id;
-  this.title = this.id ? 'Edit Item' : 'Create Item';
+  
+  this.title = translateService.instant( this.id ? 'others.Edit_Item' : 'others.Create_Item');
 }
 
 ngOnInit() {
