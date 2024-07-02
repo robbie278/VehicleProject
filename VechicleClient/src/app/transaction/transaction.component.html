@@ -30,7 +30,6 @@
             {{transaction.transactionType}}
           </td>
         </ng-container>
-  
         <!-- Item Name Column -->
         <ng-container matColumnDef="itemName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ "Generals.Item_Name" | translate }}</th>
@@ -48,7 +47,6 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ "Generals.Store_Keeper_Name" | translate }}</th>
           <td mat-cell *matCellDef="let transaction">{{transaction.storeKeeperName}}</td>
         </ng-container>
-  
         <!-- Quantity Column -->
         <ng-container matColumnDef="quantity">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'transaction.quantity' | translate }}</th>
@@ -59,16 +57,14 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef>{{ 'FORM.ACTION' | translate }}</th>
           <td mat-cell *matCellDef="let transaction">
-            <button mat-stroked-button type="submit" color="primary" [routerLink]="['/transaction', transaction.transactionId]">
+            <button mat-stroked-button type="submit" color="primary" (click)="openDialog(transaction.stockTransactionId)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-stroked-button type="submit" color="warn" (click)="onDelete()">
+            <button mat-stroked-button type="submit" color="warn" (click)="onDelete(transaction.stockTransactionId)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
         </ng-container>
-  
-  
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>

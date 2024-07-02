@@ -8,6 +8,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { TransactionEditComponent } from './transaction-edit.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-transaction',
@@ -39,10 +41,11 @@ export class TransactionComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
+    private toastr: ToastrService,
+    private dialog: MatDialog,
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
   ) { }
   ngOnInit() {
     this.loadData();
@@ -85,20 +88,33 @@ export class TransactionComponent implements OnInit {
 
   }
 
-  onDelete() {
-    // retrieve the ID from the 'id' parameter
-    var idParam = this.activatedRoute.snapshot.paramMap.get('id');
-    var id = idParam ? +idParam : 0;
 
-    if (confirm('Are you sure to delete this Item')) {
-      this.transactionService.delete(id).subscribe({
-        next: () => {
-          this.toastr.error('Transaction Deleted Successfully');
-          this.router.navigate(['/transactions']);
-        },
-        error: (err) => console.log(err),
-      });
-    }
+  openDialog(id?: number): void {
+    const dialogRef = this.dialog.open(TransactionEditComponent, {
+      width: '60%',
+      disableClose: true,
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data: { id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadData();
+      }
+    });
   }
+
+  onDelete(id:number){
+    if(confirm("Are you sure to delete this Item")){
   
+    this.transactionService.delete(id).subscribe({
+    next: () => {
+      this.toastr.error("Item Deleted Successfully")
+      location.reload()
+      },
+    error: (err) => console.log(err)
+    })
+    }
+      }
 }

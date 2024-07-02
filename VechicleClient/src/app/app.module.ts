@@ -29,6 +29,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StockDetailComponent } from './stock-detail/stock-detail.component';
 import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialog-component.component';
+import { TransactionEditComponent } from './transaction/transaction-edit.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -56,6 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TransactionComponent,
     StockDetailComponent,
     ConfirmDialogComponent,
+    TransactionEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VehicleServer.DTOs;
 using VehicleServer.Entities;
 using VehicleServer.Enums;
 
@@ -148,5 +149,39 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 await _context.SaveChangesAsync();
         }
 
-    }
+        public async Task<PadNumberRangeDto> GetAvailablePadNumbers(int quantity)
+        {
+            // Logic to find the available pad numbers based on quantity
+            
+            var availablePadNumbers = _context.StockItemsDetail
+                .Where(st => st.TransactionType == TransactionType.Receipt) 
+                .Select(st => st.PadNumber)
+                .OrderBy(pn => pn)
+                .ToList();
+
+            if (availablePadNumbers.Count < quantity)
+            {
+                return null; // Not enough pad numbers available
+            }
+
+            var start = availablePadNumbers.First();
+            var end = start + quantity - 1;
+
+            // Ensure the range is valid
+            if (availablePadNumbers.Take(quantity).Last() != end)
+            {
+                return null; // Not a contiguous range
+            }
+
+            var padNumberRangeDto = new PadNumberRangeDto
+            {
+                Start = start,
+                End = end
+            };
+
+            return await Task.FromResult(padNumberRangeDto);
+        }
+    
+
+}
 }

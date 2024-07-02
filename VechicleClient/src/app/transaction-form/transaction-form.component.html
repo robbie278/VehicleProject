@@ -79,7 +79,6 @@
     </mat-form-field>
 
     <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
-
     <mat-form-field>
       <mat-label>{{ 'Transaction.pad_number_start' | translate }}:</mat-label>
       <input
@@ -95,7 +94,6 @@
         {{ 'Item.description_placeholder' | translate }}
       </mat-error>
     </mat-form-field>
-
     <mat-form-field *ngIf="!form.controls['singleItem'].value">
       <mat-label>{{ 'Transaction.pad_number_end' | translate }}:</mat-label>
       <input
@@ -107,14 +105,13 @@
         {{ 'Item.description_placeholder' | translate }}
       </mat-error>
     </mat-form-field>
-
     <mat-form-field>
       <mat-label>{{ 'Transaction.quantity' | translate }}:</mat-label>
       <input
         matInput
         formControlName="quantity"
         placeholder="0"
-        readonly
+        (change)="onQuantityChange()"
       />
     </mat-form-field>
   </form>

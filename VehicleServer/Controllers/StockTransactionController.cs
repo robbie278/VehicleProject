@@ -126,14 +126,17 @@ namespace VehicleServer.Controllers
 
         }
 
-        // DELETE: api/StockTransaction/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStockTransaction(int id)
         {
-            return await _StockTransactionRepo.DeleteStockTransaction(id);
+            var result = await _StockTransactionRepo.DeleteStockTransaction(id);
+            if (result == null)
+            {
+                return BadRequest(result);
+            }
+            return Ok(result);
         }
 
-        
 
     }
 }

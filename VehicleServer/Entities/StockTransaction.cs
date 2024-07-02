@@ -14,6 +14,8 @@ namespace VehicleServer.Entities
         public int Quantity { get; set; }
         public int PadNumberStart { get; set; }
         public int PadNumberEnd { get; set; }
+        public bool? IsDeleted { get; set; }
+
         public DateTime TransactionDate { get; set; } = DateTime.Now;
         public virtual Item? Items { get; set; }
         public virtual Store? Stores { get; set; }

@@ -1,5 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors, AsyncValidatorFn } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Issue } from '../Models/Issue';
@@ -10,8 +17,8 @@ import { User } from '../Models/User';
 import { TransactionFormService } from '../Service/transaction-form.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TransactionType } from '../enums/transaction-type.enum';
-import { Observable, map } from 'rxjs';
 import { ICategory } from '../Models/Category';
+import { TransactionService } from '../Service/transaction.service';
 
 @Component({
   selector: 'app-transaction-form',
@@ -20,7 +27,7 @@ import { ICategory } from '../Models/Category';
 })
 export class TransactionFormComponent implements OnInit {
   transactionType: TransactionType = TransactionType.Issue;
-  TransactionType = TransactionType
+  TransactionType = TransactionType;
   title?: string;
   id?: number;
   issue?: Issue;
@@ -35,6 +42,7 @@ export class TransactionFormComponent implements OnInit {
 
   constructor(
     private transactionFormService: TransactionFormService,
+    private transactionService: TransactionService,
     private router: Router,
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<TransactionFormComponent>,
@@ -51,16 +59,17 @@ export class TransactionFormComponent implements OnInit {
         storeId: new FormControl('', Validators.required),
         storeKeeperId: new FormControl('', Validators.required),
         userId: new FormControl(''),
-        transactionType: new FormControl(this.transactionType, Validators.required),
+        transactionType: new FormControl(
+          this.transactionType,
+          Validators.required
+        ),
         singleItem: new FormControl(false),
         padNumberStart: new FormControl('', [
           Validators.required,
           Validators.pattern(/^\d+$/),
         ]),
-        padNumberEnd: new FormControl('', [
-          Validators.pattern(/^\d+$/),
-        ]),
-        quantity: new FormControl({ value: 0, disabled: true },),
+        padNumberEnd: new FormControl('', [Validators.pattern(/^\d+$/)]),
+        quantity: new FormControl('', Validators.required),
       },
       { validators: this.padNumberValidator() }
     );
@@ -71,35 +80,40 @@ export class TransactionFormComponent implements OnInit {
         this.form.get('padNumberEnd')?.updateValueAndValidity();
         this.form.get('quantity')?.setValue(1);
       } else {
-        this.form.get('padNumberEnd')?.setValidators([Validators.required, Validators.pattern(/^\d+$/)]);
+        this.form
+          .get('padNumberEnd')
+          ?.setValidators([Validators.required, Validators.pattern(/^\d+$/)]);
         this.form.get('padNumberEnd')?.updateValueAndValidity();
         this.calculateQuantity();
       }
     });
 
-    this.form.get('padNumberStart')?.valueChanges.subscribe(() => this.calculateQuantity());
-    this.form.get('padNumberEnd')?.valueChanges.subscribe(() => this.calculateQuantity());
+    this.form
+      .get('padNumberStart')
+      ?.valueChanges.subscribe(() => this.calculateQuantity());
+    this.form
+      .get('padNumberEnd')
+      ?.valueChanges.subscribe(() => this.calculateQuantity());
 
     this.loadData();
   }
 
   loadData() {
-    switch(this.transactionType){
-      case TransactionType.Issue: 
-          this.title = 'Issuing Goods'
-          break
-      case TransactionType.Receipt: 
-          this.title = 'Receiving Goods'
-          break
-      case TransactionType.Damaged: 
-          this.title = 'Damaged Goods'
-          break
-          case TransactionType.Return: 
-          this.title = 'Returning Goods'
-          break
+    switch (this.transactionType) {
+      case TransactionType.Issue:
+        this.title = 'Issuing Goods';
+        break;
+      case TransactionType.Receipt:
+        this.title = 'Receiving Goods';
+        break;
+      case TransactionType.Damaged:
+        this.title = 'Damaged Goods';
+        break;
+      case TransactionType.Return:
+        this.title = 'Returning Goods';
+        break;
     }
 
-    // this.loadItems();
     this.loadCategories();
     this.loadStore();
     //this.loadStoreKeeper();
@@ -161,6 +175,23 @@ export class TransactionFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  onQuantityChange() {
+    const quantity = this.form.get('quantity')?.value;
+    if (quantity) {
+      this.transactionService.getPadNumbers(quantity).subscribe({
+        next: (response) => {
+          const padNumbers = response.data;
+          this.form.get('padNumberStart')?.setValue(padNumbers.start);
+          this.form.get('padNumberEnd')?.setValue(padNumbers.end);
+        },
+        error: (err) => {
+          console.log(err);
+          this.toastr.error(err.error);
+        },
+      });
+    }
+  }
+
   padNumberValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const singleItem = control.get('singleItem')?.value;
@@ -213,18 +244,19 @@ export class TransactionFormComponent implements OnInit {
       this.form.get('quantity')?.setValue('');
     }
   }
+
   loadCategories() {
-    this.transactionFormService.getAllCategory().subscribe(categories => {
+    this.transactionFormService.getAllCategory().subscribe((categories) => {
       this.categories = categories.data;
-    })
+    });
   }
 
   getItemsByCategory(id: number) {
     console.log('The id is', id);
-    this.categoryId = id
-    this.transactionFormService.getItemsByCategory(id).subscribe(items => {
-      this.item = items
-    })
+    this.categoryId = id;
+    this.transactionFormService.getItemsByCategory(id).subscribe((items) => {
+      this.item = items;
+    });
   }
 
   getStoreKeeperByStore(id: number) {

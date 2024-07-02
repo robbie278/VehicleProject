@@ -2,13 +2,14 @@
 using VehicleServer.Entities;
 using VehicleServer.Services.StockTransactionDetailServices;
 using VehicleServer.Repository;
-
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using VehicleServer.DTOs;
+    using VehicleServer.Entities;
 
 namespace VehicleServer.Controllers
 {
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using VehicleServer.Entities;
+
 
     [Route("api/[controller]")]
     [ApiController]
@@ -65,6 +66,24 @@ namespace VehicleServer.Controllers
                 );
 
             return Ok(result);
+        }
+
+        [HttpGet("pad-numbers")]
+        public async Task<ActionResult<PadNumberRangeDto>> GetPadNumbers([FromQuery] int quantity)
+        {
+            if (quantity < 1)
+            {
+                return BadRequest("Quantity must be at least 1.");
+            }
+
+            var padNumbers = await _stockTransactionDetailService.GetAvailablePadNumbers(quantity);
+
+            if (padNumbers == null || padNumbers.Start == 0 || padNumbers.End == 0)
+            {
+                return NotFound("No available pad numbers found for the requested quantity.");
+            }
+
+            return Ok(padNumbers);
         }
 
     }
