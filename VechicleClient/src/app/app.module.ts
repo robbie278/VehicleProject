@@ -32,6 +32,7 @@ import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialo
 import { TransactionEditComponent } from './transaction/transaction-edit.component';
 import { FormsModule } from '@angular/forms';
 
+import { TransactionViewComponent } from './transaction/transaction-view.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -60,6 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StockDetailComponent,
     ConfirmDialogComponent,
     TransactionEditComponent,
+    TransactionViewComponent,
   ],
   imports: [
     BrowserModule,

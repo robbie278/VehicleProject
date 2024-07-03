@@ -48,7 +48,7 @@ export class TransactionService extends BaseService<Transaction> {
   }
 
   override put(transaction: Transaction): Observable<Transaction> {
-    var url = this.getUrl("api/StockTransaction/" + transaction.transactionId)
+    var url = this.getUrl("api/StockTransaction/" + transaction.stockTransactionId)
     return this.http.put<Transaction>(url, transaction)
 
   }

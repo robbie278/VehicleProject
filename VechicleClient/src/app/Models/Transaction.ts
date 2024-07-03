@@ -1,5 +1,5 @@
 export interface Transaction{
-    transactionId:number;
+    stockTransactionId:number;
     transactionType:string;
     storeName:string;
     userName:string;
@@ -8,6 +8,8 @@ export interface Transaction{
     storeId:number;
     userId:number;
     quantity:number;
+    padNumberStart:number;
+    padNumberEnd:number
     itemId:number;
     storeKeeperId:number;
     transactionDate: Date;

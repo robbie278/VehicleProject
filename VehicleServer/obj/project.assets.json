@@ -11865,49 +11865,35 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\rbnas\\.nuget\\packages\\": {},
-=======
-    "C:\\Users\\yeabsira\\.nuget\\packages\\": {},
->>>>>>> language_translation
-    "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
+      "projectUniqueName": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
       "projectName": "VehicleServer",
-<<<<<<< HEAD
       "projectPath": "C:\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
-      "packagesPath": "C:\\Users\\rbnas\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
       "outputPath": "C:\\VehicleProject\\VehicleServer\\obj\\",
-=======
-      "projectPath": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\VehicleServer.csproj",
-      "packagesPath": "C:\\Users\\yeabsira\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\obj\\",
->>>>>>> language_translation
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
+        "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\rbnas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-        "C:\\Users\\yeabsira\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> language_translation
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11920,11 +11906,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -11995,15 +11976,17 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
->>>>>>> language_translation
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\VehicleProject\\VehicleServer\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",

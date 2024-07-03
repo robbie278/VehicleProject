@@ -50,13 +50,45 @@ namespace VehicleServer.Controllers
 
         // PUT: api/StockTransaction/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStockTransaction(int id, StockTransactionDto StockTransactionDto)
+        public async Task<ActionResult<bool>> PutStockTransaction(int id, StockTransaction request)
         {
-            return await _StockTransactionRepo.PutStockTransaction(id, StockTransactionDto);
+            // Fetch the existing transaction
+            var existingTransaction = await _StockTransactionRepo.GetStockTransaction(id);
+            if (existingTransaction == null)
+            {
+                return NotFound();
+            }
+
+            // Validate the updated transaction
+            var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockItemsDetail
+            {
+                ItemId = request.ItemId,
+                StoreId = request.StoreId,
+                UserId = request.UserId,
+                StoreKeeperId = request.StoreKeeperId,
+                TransactionType = request.TransactionType
+            }, request.PadNumberStart, request.PadNumberEnd);
+
+            if (!isValid)
+            {
+                return BadRequest("Validation failed.");
+            }
+
+            // Update the transaction details
+            if (request.TransactionType == TransactionType.Receipt)
+            {
+                await _stockTransactionDetailService.BulkInsertTransactionsAsync(request);
+            }
+            else
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(request);
+            }
+
+            return Ok(true);
         }
 
         // POST: api/StockTransaction
-       
+
 
         [HttpPost]
         public async Task<IActionResult> PostStockTransaction(StockTransaction request)

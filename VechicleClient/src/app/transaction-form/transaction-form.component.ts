@@ -67,7 +67,7 @@ export class TransactionFormComponent implements OnInit {
           this.transactionType,
           Validators.required
         ),
-        singleItem: new FormControl(false),
+        singleItem: new FormControl(false), 
         padNumberStart: new FormControl('', [
           Validators.required,
           Validators.pattern(/^\d+$/),

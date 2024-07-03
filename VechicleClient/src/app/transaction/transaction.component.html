@@ -65,6 +65,9 @@
             <button mat-stroked-button type="submit" color="primary" (click)="openDialog(transaction.stockTransactionId)">
               <mat-icon>edit</mat-icon>
             </button>
+            <button mat-icon-button color="black" (click)="onRead(transaction.stockTransactionId)">
+              <mat-icon>visibility</mat-icon>
+            </button>
             <button mat-stroked-button type="submit" color="warn" (click)="onDelete(transaction.stockTransactionId)">
               <mat-icon>delete</mat-icon>
             </button>

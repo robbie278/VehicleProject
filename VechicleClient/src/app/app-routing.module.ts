@@ -12,6 +12,7 @@ import { ItemEditComponent } from './item/item-edit.component';
 import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
+import { TransactionViewComponent } from './transaction/transaction-view.component';
 
 const routes: Routes = [
 
@@ -31,6 +32,10 @@ const routes: Routes = [
   // newly created route
   {path:'transaction-form', component: TransactionFormComponent},
   {path:'transaction', component: TransactionComponent},
+  { path: 'transaction/:id', component: TransactionViewComponent },
+  { path: 'transactions/view/:id', component: TransactionViewComponent },
+
+
 
 ]
 
