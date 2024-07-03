@@ -29,11 +29,18 @@ namespace VehicleServer.Repository
                 string? sortColumn = null,
                 string? sortOrder = null,
                 string? filterColumn = null,
-                string? filterQuery = null)
+                string? filterQuery = null,
+                 string? transactionType = null)
         {
+            var query = _context.StockTransactions.AsNoTracking().Where(ct => ct.IsDeleted != true);
+
+            if (!string.IsNullOrEmpty(transactionType))
+            {
+                query = query.Where(c => c.TransactionType == transactionType);
+            }
 
             return await ApiResult<StockTransactionDto>.CreateAsync(
-                    _context.StockTransactions.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(c => new StockTransactionDto()
+                    query.Select(c => new StockTransactionDto()
                     {
                         StockTransactionId = c.StockTransactionId,
                         TransactionType = c.TransactionType,

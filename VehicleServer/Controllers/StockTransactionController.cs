@@ -34,9 +34,10 @@ namespace VehicleServer.Controllers
         string? sortColumn = null,
         string? sortOrder = null,
         string? filterColumn = null,
-        string? filterQuery = null)
+        string? filterQuery = null,
+        string? transactionType = null)
         {
-            return await _StockTransactionRepo.GetStockTransactions(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+            return await _StockTransactionRepo.GetStockTransactions(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery, transactionType);
         }
 
 

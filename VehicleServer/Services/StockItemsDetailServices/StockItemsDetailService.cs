@@ -13,6 +13,9 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         {
             _context = context;
         }
+
+       
+
         public async Task<bool> ValidateTransactionAsync(StockItemsDetail transactionDetail, int padNumberStart, int padNumberEnd)
         {
             if (padNumberEnd < padNumberStart)
@@ -69,6 +72,8 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
         public async Task BulkInsertTransactionsAsync(StockTransaction transaction)
         {
+            
+
             var transactionDetails = new List<StockItemsDetail>();
 
             for (int padNumber = transaction.PadNumberStart; padNumber <= transaction.PadNumberEnd; padNumber++)
@@ -94,7 +99,8 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
         public async Task BulkUpdateItemDetailsTransactionAsync(StockTransaction transaction)
         {
-             
+            
+
             var transactionsToUpdate = _context.StockItemsDetail
                 .Where(t => t.PadNumber >= transaction.PadNumberStart && t.PadNumber <= transaction.PadNumberEnd)
                 .ToList();

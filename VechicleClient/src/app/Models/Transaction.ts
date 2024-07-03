@@ -10,4 +10,5 @@ export interface Transaction{
     quantity:number;
     itemId:number;
     storeKeeperId:number;
+    transactionDate: Date;
 }

@@ -74,6 +74,8 @@ export class TransactionFormComponent implements OnInit {
         ]),
         padNumberEnd: new FormControl('', [Validators.pattern(/^\d+$/)]),
         quantity: new FormControl('', Validators.required),
+        transactionDate: new FormControl(new Date(), [Validators.required, this.futureDateValidator()])
+
       },
       { validators: this.padNumberValidator() }
     );
@@ -124,6 +126,16 @@ export class TransactionFormComponent implements OnInit {
     this.loadUser();
   }
 
+  futureDateValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const date = control.value;
+      if (date && new Date(date) > new Date()) {
+        return { futureDate: true };
+      }
+      return null;
+    };
+  }
+  
   loadItems() {
     this.transactionFormService.getItem().subscribe({
       next: (result) => {
@@ -165,6 +177,7 @@ export class TransactionFormComponent implements OnInit {
 
     this.transactionFormService.post(issue).subscribe({
       next: (response) => {
+        console.log(issue);
         this.toastr.info(response);
         this.dialogRef.close(true);
       },
