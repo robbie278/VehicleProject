@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic.Core;
 using System.Reflection;
+using VehicleServer.Enums;
 
 namespace VehicleServer.Repository
 {
@@ -15,7 +16,8 @@ namespace VehicleServer.Repository
             string? sortColumn,
             string? sortOrder,
             string? filterColumn = null,
-            string? filterQuery = null)
+            string? filterQuery = null,
+            string? transactionType = null)
         {
             Data = data;
             PageIndex = pageIndex;
@@ -26,6 +28,8 @@ namespace VehicleServer.Repository
             SortOrder = sortOrder;
             FilterColumn = filterColumn;
             FilterQuery = filterQuery;
+            TransactionType = transactionType;
+
         }
 
 
@@ -36,7 +40,8 @@ namespace VehicleServer.Repository
             string? sortColumn = null,
             string? sortOrder = null,
             string? filterColumn = null,
-            string? filterQuery = null)
+            string? filterQuery = null,
+            string? transactionType = null)
         {
             if (!string.IsNullOrEmpty(filterColumn)
                 && !string.IsNullOrEmpty(filterQuery)
@@ -47,6 +52,12 @@ namespace VehicleServer.Repository
                     filterColumn),
                     filterQuery);
             }
+
+            if (!string.IsNullOrEmpty(transactionType))
+            {
+                source = source.Where(t => EF.Property<string>(t, "TransactionType") == transactionType);
+            }
+
 
             var count = await source.CountAsync();
             if (!string.IsNullOrEmpty(sortColumn)
@@ -78,7 +89,8 @@ namespace VehicleServer.Repository
                 sortColumn,
                 sortOrder,
                 filterColumn,
-                filterQuery);
+                filterQuery,
+                transactionType);
         }
 
 
@@ -141,6 +153,8 @@ namespace VehicleServer.Repository
 
 
         public string? FilterQuery { get; set; }
+        public string? TransactionType { get; set; }
+
 
     }
 }

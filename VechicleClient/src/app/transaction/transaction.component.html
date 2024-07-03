@@ -9,6 +9,11 @@
     </mat-card-header>
     <mat-card-content>
       <p *ngIf="!transactions"><em>{{ 'others.Loading' | translate }}...</em></p>
+
+      <mat-radio-group [(ngModel)]="selectedTransactionType" (change)="onTransactionTypeChanged()">
+        <mat-radio-button *ngFor="let type of transactionTypes" [value]="type">{{ type }}</mat-radio-button>
+      </mat-radio-group>
+      
       <table mat-table [dataSource]="transactions" class="mat-elevation-z8" 
         matSort 
         (matSortChange)="loadData()"

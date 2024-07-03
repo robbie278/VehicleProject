@@ -75,6 +75,20 @@
       </mat-error>
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>{{ 'Transaction.transaction_date' | translate }}:</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="transactionDate" placeholder="Choose a date" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="form.controls['transactionDate'].errors?.['required']">
+        {{ 'Transaction.transaction_date_required' | translate }}
+      </mat-error>
+      <mat-error *ngIf="form.controls['transactionDate'].errors?.['futureDate']">
+        {{ 'Transaction.transaction_date_future' | translate }}
+      </mat-error>
+    </mat-form-field>
+    
+
     <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
     <mat-form-field>
       <mat-label>{{ 'Transaction.pad_number_start' | translate }}:</mat-label>

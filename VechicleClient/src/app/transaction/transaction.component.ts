@@ -1,6 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';;
 import { ToastrService } from 'ngx-toastr';
 import { TransactionService } from '../Service/transaction.service';
 import { Transaction } from '../Models/Transaction';
@@ -29,10 +27,14 @@ export class TransactionComponent implements OnInit {
   public transactions!: MatTableDataSource<Transaction>;
   defaultPageIndex: number = 0;
   defaultPageSize: number = 10;
-  public defaultSortColumn: string = "transactionType";
+  public defaultSortColumn: string = "itemName";
   public defaultSortOrder: "asc" | "desc" = "asc";
-  defaultFilterColumn: string = "transactionType";
+  defaultFilterColumn: string = "itemName";
   filterQuery?: string;
+  public transactionTypes: string[] = ["All", "Issue", "Receipt", "Damaged", "Return"];
+  public selectedTransactionType: string = "All";
+
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -43,9 +45,7 @@ export class TransactionComponent implements OnInit {
     private transactionService: TransactionService,
     private toastr: ToastrService,
     private dialog: MatDialog,
-    private http: HttpClient,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
+  
   ) { }
   ngOnInit() {
     this.loadData();
@@ -60,7 +60,9 @@ export class TransactionComponent implements OnInit {
     }
     this.filterTextChanged.next(filterText)
   }
-
+  onTransactionTypeChanged() {
+    this.loadData();
+  }
   loadData(query?: string) {
     var pageEvent = new PageEvent();
     pageEvent.pageIndex = this.defaultPageIndex;
@@ -75,8 +77,10 @@ export class TransactionComponent implements OnInit {
     var filterColumn = (this.filterQuery) ? this.defaultFilterColumn : null
     var filterQuery = (this.filterQuery) ? this.filterQuery : null
 
+    let selectedType = this.selectedTransactionType !== "All" ? this.selectedTransactionType : null;
+
     this.transactionService.getData2(event.pageIndex, event.pageSize, sortColumn, sortOrder,
-      filterColumn, filterQuery).subscribe({
+      filterColumn, filterQuery, selectedType).subscribe({
         next: (result) => {
           this.paginator.length = result.totalCount;
           this.paginator.pageIndex = result.pageIndex;

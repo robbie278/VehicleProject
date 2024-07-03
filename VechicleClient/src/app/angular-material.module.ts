@@ -15,6 +15,12 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio';
+
+
+
 
 
 
@@ -37,6 +43,9 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     MatCardModule,
     MatPaginator,
     MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
   
 
   ],
@@ -57,7 +66,9 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     MatCardModule,
     MatPaginator,
     MatSortModule,
-   
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
 
   ],
 })
