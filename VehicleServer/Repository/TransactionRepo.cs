@@ -64,26 +64,48 @@ namespace VehicleServer.Repository
         [HttpGet("{id}")]
         public async Task<ActionResult<StockTransactionDto>> GetStockTransaction(int id)
         {
-            var StockTransaction = await _context.StockTransactions.FindAsync(id);
+            var stockTransaction = await _context.StockTransactions
+         .Where(t => t.StockTransactionId == id)
+         .Select(c => new StockTransactionDto
+         {
+             StockTransactionId = c.StockTransactionId,
+             TransactionType = c.TransactionType,
+             Quantity = c.Quantity,
+             ItemId = c.Items!.ItemId,
+             ItemName = c.Items!.Name,
+             StoreId = c.Stores!.StoreId,
+             StoreName = c.Stores!.Name,
+             PadNumberStart = c.PadNumberStart!,
+             PadNumberEnd = c.PadNumberEnd!,
+             StoreKeeperId = c.StoreKeeper!.StoreKeeperId,
+             StoreKeeperName = c.StoreKeeper!.Name,
+             UserId = c.User!.UserId,
+             UserName = c.User!.UserName,
+         })
+         .FirstOrDefaultAsync();  // Use FirstOrDefaultAsync to get a single result
 
-            if (StockTransaction == null)
+            // Check if the transaction exists
+            if (stockTransaction == null)
             {
                 throw new Exception("No Data Found!");
             }
 
-            return _mapper.Map<StockTransactionDto>(StockTransaction);
+            // Map the result to StockTransactionDto
+            return (stockTransaction);
+
+
+
         }
 
         // PUT: api/StockTransaction/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStockTransaction(int id, StockTransactionDto StockTransactionDto)
+        public async Task<ActionResult<Boolean>> PutStockTransaction(int id, StockTransactionDto stockTransactionDto)
         {
-            if (id != StockTransactionDto.StockTransactionId)
+            if (id != stockTransactionDto.StockTransactionId)
             {
                 throw new Exception("No id!");
             }
 
-            var StockTransaction = _mapper.Map<StockTransaction>(StockTransactionDto);
+            var StockTransaction = _mapper.Map<StockTransaction>(stockTransactionDto);
             _context.Entry(StockTransaction).State = EntityState.Modified;
 
             try

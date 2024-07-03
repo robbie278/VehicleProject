@@ -48,7 +48,10 @@ export class TransactionEditComponent {
       itemId: new FormControl('', Validators.required),
         storeId: new FormControl('', Validators.required),
         storeKeeperId: new FormControl('', Validators.required),
-        quantity: new FormControl('', Validators.required )
+        quantity: new FormControl('', Validators.required ),
+        padNumberStart: new FormControl('', Validators.required ),
+        padNumberEnd: new FormControl('', Validators.required ),
+        transactionType: new FormControl('', Validators.required )
     })
     console.log(this.id)
   }
@@ -59,7 +62,11 @@ export class TransactionEditComponent {
         this.transaction = result;
         this.form.patchValue(this.transaction);
         this.form.controls['quantity']?.setValue(result.quantity);
+        this.form.controls['padNumberStart']?.setValue(result.padNumberStart);
+        this.form.controls['padNumberEnd']?.setValue(result.padNumberEnd);
         console.log(this.form.controls['quantity']?.value);
+        console.log(this.form.controls['padNumberStart']?.value);
+        console.log(this.form.controls['padNumberEnd']?.value);
         console.log(result)
 
       },
@@ -107,7 +114,9 @@ export class TransactionEditComponent {
           transaction.storeId = this.form.controls['storeId'].value
           transaction.storeKeeperId = this.form.controls['storeKeeperId'].value
           transaction.quantity = this.form.controls['quantity'].value
-
+          transaction.padNumberStart = this.form.controls['padNumberStart'].value
+          transaction.padNumberEnd = this.form.controls['padNumberEnd'].value
+                    
       
           if (this.id) {
             this.transactionService.put(transaction).subscribe({

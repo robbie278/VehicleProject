@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { TransactionEditComponent } from './transaction-edit.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TransactionViewComponent } from './transaction-view.component';
 
 @Component({
   selector: 'app-transaction',
@@ -91,7 +92,7 @@ export class TransactionComponent implements OnInit {
 
   openDialog(id?: number): void {
     const dialogRef = this.dialog.open(TransactionEditComponent, {
-      width: '60%',
+      width: '40%',
       disableClose: true,
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
@@ -103,7 +104,25 @@ export class TransactionComponent implements OnInit {
         this.loadData();
       }
     });
+  }  
+  onRead(id?: number): void{
+    const dialogRef = this.dialog.open(TransactionViewComponent, {
+      width: '40%',
+      // disableClose: true,
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data: { id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadData();
+      }
+    });
   }
+  // toggleDetails(stockTransactionId: number) {
+  //   console.log('Details clicked for stock transaction ID:', stockTransactionId);
+  // }
 
   onDelete(id:number){
     if(confirm("Are you sure to delete this Item")){
