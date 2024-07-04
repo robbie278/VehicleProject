@@ -53,7 +53,7 @@
             </button>
         
             <span class="mx-2" >
-              <h3 style="font-size:20px" >Stock Mangement </h3>
+              <h3 style="font-size:20px" >{{ "others.Stock_Mangement" | translate }}</h3>
             </span>
 
               <span class="spacer"></span>  
@@ -71,11 +71,11 @@
             <mat-menu #profileMenu="matMenu">
               <button mat-menu-item [routerLink]="['/profile']">
                 <mat-icon>person</mat-icon>
-                <span>Profile</span>
+                <span>{{ "others.Profile" | translate }}</span>
               </button>
               <button mat-menu-item (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
-                <span>Logout</span>
+                <span>{{ "others.Logout" | translate }}</span>
               </button>
             </mat-menu>
             

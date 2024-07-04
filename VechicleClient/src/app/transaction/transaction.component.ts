@@ -10,6 +10,7 @@ import { TransactionEditComponent } from './transaction-edit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TransactionViewComponent } from './transaction-view.component';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
+import { TranslateService } from '@ngx-translate/core'
 
 @Component({
   selector: 'app-transaction',
@@ -49,6 +50,7 @@ export class TransactionComponent implements OnInit {
     private transactionService: TransactionService,
     private toastr: ToastrService,
     private dialog: MatDialog,
+    private translateService:TranslateService
   
   ) { }
   ngOnInit() {
@@ -81,7 +83,7 @@ export class TransactionComponent implements OnInit {
     var filterColumn = (this.filterQuery) ? this.defaultFilterColumn : null
     var filterQuery = (this.filterQuery) ? this.filterQuery : null
 
-    let selectedType = this.selectedTransactionType !== "All" ? this.selectedTransactionType : null;
+    let selectedType = this.selectedTransactionType !== this.translateService.instant('others.all') ? this.selectedTransactionType : null;
 
     this.transactionService.getData2(event.pageIndex, event.pageSize, sortColumn, sortOrder,
       filterColumn, filterQuery, selectedType).subscribe({

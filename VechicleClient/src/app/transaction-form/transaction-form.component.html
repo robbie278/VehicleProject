@@ -19,6 +19,7 @@
           *ngFor="let storeKeeper of storeKeeper"
           [value]="storeKeeper.storeKeeperId"
         >
+
           {{ storeKeeper.name }}
         </mat-option>
       </mat-select>
@@ -90,6 +91,12 @@
     
 
     <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
+
+    <mat-checkbox formControlName="singleItem" (change)="onCheckboxChange($event)">
+      Single Item
+    </mat-checkbox>
+    <!-- <mat-checkbox class="example-margin" [(ngModel)]="isBulk">Checked</mat-checkbox> -->
+
     <mat-form-field>
       <mat-label>{{ 'Transaction.pad_number_start' | translate }}:</mat-label>
       <input
