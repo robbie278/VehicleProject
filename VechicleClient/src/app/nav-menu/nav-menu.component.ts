@@ -26,7 +26,6 @@ export class NavMenuComponent {
   openTransactionDialog( transactionType: TransactionType) {
     const dialogRef = this.dialog.open(TransactionFormComponent, {
       width:'70%',
-     // height:'80%',
       disableClose: true,
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',

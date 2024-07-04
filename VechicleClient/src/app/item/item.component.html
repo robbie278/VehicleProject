@@ -58,10 +58,10 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef>{{ 'FORM.ACTION' | translate }}</th>
           <td mat-cell *matCellDef="let item">
-            <button mat-stroked-button type="submit" color="primary" (click)="openDialog(item.itemId)">
+            <button mat-icon-button type="submit" color="primary" (click)="openDialog(item.itemId)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-stroked-button type="submit" color="warn" (click)="onDelete(item.itemId)">
+            <button mat-icon-button type="submit" color="warn" (click)="onDelete(item.itemId)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>

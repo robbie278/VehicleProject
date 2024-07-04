@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Transaction } from '../Models/Transaction';
 import { ActivatedRoute } from '@angular/router';
 import { TransactionService } from '../Service/transaction.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,7 @@ export class TransactionViewComponent implements OnInit {
 
 
   constructor(
-    private route: ActivatedRoute,
+    public dialogRef: MatDialogRef<TransactionViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private transactionService: TransactionService
   ) {
@@ -47,5 +47,9 @@ export class TransactionViewComponent implements OnInit {
       },
       error: (error) => console.error(error)
     });}
+
+    onCancel(): void {
+      this.dialogRef.close();
+    }
   }
     

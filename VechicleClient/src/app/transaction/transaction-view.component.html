@@ -8,7 +8,7 @@
         <label> <b> Item Name: </b></label> {{transaction.itemName}}
     </div>
     <div>
-        <label> <b> Store Name: </b></label> {{transaction.storeKeeperName}}
+        <label> <b> Store Name: </b></label> {{transaction.storeName}}
     </div>
     <div>
         <label> <b> Store Keeper Name: </b></label> {{transaction.storeKeeperName}}
@@ -22,4 +22,5 @@
     <div>
       <label> <b> Quantity: </b></label> {{transaction.quantity}}
   </div>
+  <button mat-flat-button color="accent" (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
 </div>

@@ -64,7 +64,7 @@ export class TransactionFormComponent implements OnInit {
         storeKeeperId: new FormControl('', Validators.required),
         userId: new FormControl(''),
         transactionType: new FormControl(
-          this.transactionType,
+          translatedTransactionType,
           Validators.required
         ),
         singleItem: new FormControl(false), 
@@ -79,6 +79,12 @@ export class TransactionFormComponent implements OnInit {
       },
       { validators: this.padNumberValidator() }
     );
+
+    // if (this.transactionType === TransactionType.Issue) {
+    //   this.form.get('userId')?.setValidators(Validators.required);
+    // } else {
+    //   this.form.get('userId')?.setValue(null);  
+    // }
 
     this.form.get('singleItem')?.valueChanges.subscribe((isSingleItem) => {
       if (isSingleItem) {
@@ -173,8 +179,13 @@ export class TransactionFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const issue: Issue = this.form.getRawValue();
-
+    const formValue = this.form.getRawValue();
+    const issue: Issue = {
+      ...formValue,
+      userId: formValue.userId || null,
+      transactionType: this.transactionType  // Explicitly set userId to null if it is not defined
+    };
+    
     this.transactionFormService.post(issue).subscribe({
       next: (response) => {
         console.log(issue);

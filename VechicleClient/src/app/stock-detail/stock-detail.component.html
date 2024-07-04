@@ -1,7 +1,6 @@
 <mat-card>
     <mat-card-header>
-
-        <mat-card-title>Store Keppers</mat-card-title>
+      <h1 mat-dialog-title>Stock </h1>
         <mat-form-field [hidden]="!stockDetail" >
             <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
                     placeholder="Filter by name">
@@ -49,6 +48,7 @@
         </table>
     </mat-card-content>
   </mat-card>
+<button mat-button class="btn"  (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
 
   <!-- Pagination directive -->
 <mat-paginator [hidden]="stockDetail"
@@ -56,4 +56,3 @@
 [pageSize]="5"
 [pageSizeOptions]="[5, 10, 20, 50]"
 showFirstLastButtons></mat-paginator> 
-<button mat-stroked-button class="btn" (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>

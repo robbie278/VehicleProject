@@ -104,8 +104,13 @@ namespace VehicleServer.Repository
 
         }
 
+        public async Task<StockTransaction?> GetStockTransactionEntity(int id)
+        {
+            return await _context.StockTransactions.FindAsync(id);
+        }
+
         // PUT: api/StockTransaction/5
-        public async Task<ActionResult<Boolean>> PutStockTransaction(int id, StockTransactionDto stockTransactionDto)
+        public async Task<ActionResult<Boolean>> PutStockTransaction(int id, StockTransaction stockTransactionDto)
         {
             if (id != stockTransactionDto.StockTransactionId)
             {

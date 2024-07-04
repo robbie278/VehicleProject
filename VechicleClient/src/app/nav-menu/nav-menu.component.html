@@ -2,7 +2,7 @@
   <mat-sidenav #sidenav mode="side" [(opened)]="isSidenavOpen">
     <mat-nav-list>
       <a mat-list-item routerLink="/">
-        <mat-icon>home</mat-icon>
+        <mat-icon>dashboard</mat-icon>
         {{'others.home' | translate}}
       </a>
       <a mat-list-item routerLink="/categories">
@@ -34,11 +34,12 @@
         {{ 'others.Damaged' | translate  }}
       </a>
       <a mat-list-item (click)="openTransactionDialog(transactionType.Return)">
-        <mat-icon>Return</mat-icon>
+        <mat-icon>restore</mat-icon>
         {{ 'others.Return' | translate  }}
       </a>
       <a mat-list-item routerLink="/transaction">
-        <mat-icon>swap_horiz</mat-icon>
+        <mat-icon>swap_vertial_circle 
+        </mat-icon>
         {{ 'others.Transaction' | translate  }}
       </a>
     </mat-nav-list>
