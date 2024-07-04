@@ -50,7 +50,8 @@
     "transaction_type": "Transaction type",
     "pad_number_start": "Pad number start",
     "pad_number_end": "Pad number end",
-    "quantity": "Quantity"
+    "quantity": "Quantity",
+    "transaction_time":"transaction_date"
   },
   "Generals": {
     "Transaction": "Transaction",
@@ -100,7 +101,10 @@
   "English":"English",
 
   "already_exist":"Already Exist",
-  "Successfully_Added":"በተሳካ ሁኔታ ተጨመረ"
+  "Successfully_Added":"Successfully Added",
+  "Stock_Mangement":"Stock Mangement System",
+  "all":"all"
+
  
 
   }

@@ -53,6 +53,11 @@ export class TransactionFormComponent implements OnInit {
     this.transactionType = data.transactionType || TransactionType.Issue;
   }
 
+  isBulk = false
+
+ 
+
+
   ngOnInit() {
     const translatedTransactionType = this.translate.instant(`others.${this.transactionType}`);
 
@@ -251,6 +256,20 @@ export class TransactionFormComponent implements OnInit {
 
       return isValid ? null : { invalidPadNumbers: true };
     };
+  }
+
+  onCheckboxChange(event: any) {
+    const isChecked = event.checked;
+    if (isChecked) {
+      this.form.get('padNumberEnd')?.clearValidators();
+      this.form.get('padNumberEnd')?.updateValueAndValidity();
+      this.form.get('quantity')?.setValue(1);
+      this.calculateQuantity();
+    } else {
+      this.form.get('padNumberEnd')?.setValidators([Validators.pattern(/^\d+$/)]);
+      this.form.get('padNumberEnd')?.updateValueAndValidity();
+      this.calculateQuantity();
+    }
   }
 
   private calculateQuantity() {
