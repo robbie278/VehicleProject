@@ -14,7 +14,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
             _context = context;
         }
 
-       
+
 
         public async Task<bool> ValidateTransactionAsync(StockItemsDetail transactionDetail, int padNumberStart, int padNumberEnd)
         {
@@ -43,7 +43,37 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 {
                     return false;
                 }
-            } 
+            }
+
+            return true;
+        }
+
+        public async Task<bool> ValidateSingleTransactionAsync(StockItemsDetail transactionDetail, int padNumber)
+        {
+            if (padNumber == 0 || padNumber == null)
+            {
+                return false;
+            }
+
+                if (transactionDetail.TransactionType == TransactionType.Receipt && await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber))
+                {
+                    return false;
+                }
+
+                if ((transactionDetail.TransactionType == TransactionType.Issue || transactionDetail.TransactionType == TransactionType.Damaged) && !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber))
+                {
+                    return false;
+                }
+
+                if (transactionDetail.TransactionType == TransactionType.Receipt && !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber))
+                {
+                    return false;
+                }
+                if (transactionDetail.TransactionType == TransactionType.Return && !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber))
+                {
+                    return false;
+                }
+           
 
             return true;
         }
@@ -91,6 +121,28 @@ namespace VehicleServer.Services.StockTransactionDetailServices
             }
 
             await _context.StockItemsDetail.AddRangeAsync(transactionDetails);
+            await _context.StockTransactions.AddAsync(transaction);
+            await _context.SaveChangesAsync();
+
+            await UpdateStockAsync(transaction.ItemId, transaction.StoreId, transaction.TransactionType != TransactionType.Return ? transaction.Quantity : -transaction.Quantity);
+        }
+
+        public async Task SingleInsertTransactionsAsync(StockTransaction transaction)
+        {
+
+            var transactionDetail = new StockItemsDetail();
+
+
+            transactionDetail.ItemId = transaction.ItemId;
+            transactionDetail.StoreId = transaction.StoreId;
+            transactionDetail.UserId = transaction.UserId;
+            transactionDetail.StoreKeeperId = transaction.StoreKeeperId;
+            transactionDetail.TransactionType = transaction.TransactionType;
+            transactionDetail.PadNumber = transaction.PadNumberStart;
+            transactionDetail.TransactionDate = transaction.TransactionDate;
+    
+
+            await _context.StockItemsDetail.AddAsync(transactionDetail);
             await _context.StockTransactions.AddAsync(transaction);
             await _context.SaveChangesAsync();
 
