@@ -1,18 +1,22 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>{{ 'others.Categories' | translate }}</mat-card-title>
-    <mat-card-subtitle>{{ 'others.Categories' | translate }}</mat-card-subtitle>
-
-    <mat-form-field [hidden]="!categories" >
-      <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
-              placeholder="{{ 'others.Filter_By_Name' | translate }}">
-    </mat-form-field>
-
+  <mat-card-header class="header-container">
+    <div class="header-content">
+      <mat-card-subtitle class="subtitle">{{ 'others.Categories' | translate }}</mat-card-subtitle>
+      
+      <mat-form-field class="search-field custom-form-field" [hidden]="!categories">
+        <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
+               placeholder="{{ 'others.Filter_By_Name' | translate }}" class="inp">
+        <mat-icon matPrefix class="my-icon">search</mat-icon>
+      </mat-form-field>    
+      
+      <button mat-flat-button color="primary" class="btn-add" (click)="openDialog()">
+        {{ 'others.Add_New' | translate }}
+      </button>
+    </div>
   </mat-card-header>
 
   <mat-card-content>
     <p *ngIf="!categories"><em>{{ 'others.Loading' | translate }}...</em></p>
-    <button mat-flat-button color="primary" class="btn-add" (click)="openDialog()">{{ 'others.Add_New' | translate }}</button>
 
     <table mat-table [dataSource]="categories" class="mat-elevation-z8"
     matSort
