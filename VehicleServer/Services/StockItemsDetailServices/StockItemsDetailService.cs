@@ -43,7 +43,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 {
                     return false;
                 }
-            }
+            } 
 
             return true;
         }
