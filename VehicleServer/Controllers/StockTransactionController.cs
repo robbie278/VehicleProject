@@ -191,6 +191,75 @@ namespace VehicleServer.Controllers
 
         }
 
+        [HttpPost("/single")]
+        public async Task<IActionResult> PostSingleStockTransaction(StockTransaction request)
+        {
+            var transaction = new StockTransaction
+            {
+                ItemId = request.ItemId,
+                StoreId = request.StoreId,
+                UserId = request.UserId,
+                StoreKeeperId = request.StoreKeeperId,
+                TransactionType = request.TransactionType,
+                Quantity = request.Quantity,
+                PadNumberStart = request.PadNumberStart,
+                PadNumberEnd = request.PadNumberEnd,
+                TransactionDate = request.TransactionDate
+            };
+            if (transaction.TransactionType == "Issue")
+            {
+                var canIssueTransaction = await _stockService.CanIssueTransactionAsync(transaction.ItemId, transaction.StoreId, transaction.Quantity);
+                if (!canIssueTransaction)
+                {
+                    return BadRequest("Not enough Stock!");
+                }
+            }
+
+            var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockItemsDetail
+            {
+                ItemId = request.ItemId,
+                StoreId = request.StoreId,
+                UserId = request.UserId,
+                StoreKeeperId = request.StoreKeeperId,
+                TransactionType = request.TransactionType
+            }, request.PadNumberStart, request.PadNumberEnd);
+
+            if (!isValid)
+            {
+                return BadRequest("Validation failed.");
+            }
+
+            if (transaction.TransactionType == TransactionType.Receipt)
+            {
+                await _stockTransactionDetailService.SingleInsertTransactionsAsync(transaction);
+                return Ok("Transacion insertion and stock update successful.");
+            }
+
+            else if (transaction.TransactionType == TransactionType.Issue)
+            {
+                await _stockTransactionDetailService.SingleInsertTransactionsAsync(transaction);
+                return Ok("Transacion Issue and stock update successful.");
+
+            }
+            else if (transaction.TransactionType == TransactionType.Damaged)
+            {
+                await _stockTransactionDetailService.SingleInsertTransactionsAsync(transaction);
+                return Ok("Transacion Damage and stock update successful.");
+
+            }
+            else if (transaction.TransactionType == TransactionType.Return)
+            {
+                await _stockTransactionDetailService.SingleInsertTransactionsAsync(transaction);
+                return Ok("Transacion Return and stock update successful.");
+            }
+            else
+            {
+                return BadRequest("Something went wrong");
+            }
+
+
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStockTransaction(int id)
         {
