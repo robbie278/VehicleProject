@@ -1,7 +1,7 @@
 
 <h1 mat-dialog-title>{{ title }}</h1>
 <div mat-dialog-content>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
     <mat-form-field>
       <mat-label>{{ 'Transaction.transactionType' | translate }}:</mat-label>
       <input
@@ -14,20 +14,8 @@
         {{ 'Item.description_placeholder' | translate }}
       </mat-error>
     </mat-form-field>
-    
-    <mat-form-field *ngIf="items">
-        <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
-        <mat-select id="itemId" formControlName="itemId">
-            <mat-option *ngFor="let item of items" [value]="item.itemId">
-                {{item.name}}
-            </mat-option>
-        </mat-select>
-        <mat-error *ngIf=" form.controls['itemId'].errors?.['required']">
-          {{ 'Category.Category_Name_Placeholder' | translate }}
-        </mat-error>
-    </mat-form-field>
 
-    <mat-form-field *ngIf="stores">
+     <mat-form-field *ngIf="stores">
         <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
         <mat-select id="storeId" formControlName="storeId">
             <mat-option *ngFor="let store of stores" [value]="store.storeId">
@@ -51,6 +39,18 @@
         </mat-error>
     </mat-form-field>
 
+    <mat-form-field *ngIf="items">
+        <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
+        <mat-select id="itemId" formControlName="itemId">
+            <mat-option *ngFor="let item of items" [value]="item.itemId">
+                {{item.name}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf=" form.controls['itemId'].errors?.['required']">
+          {{ 'Category.Category_Name_Placeholder' | translate }}
+        </mat-error>
+    </mat-form-field>
+
     <mat-form-field>
       <mat-label>{{ 'Transaction.pad_number_start' | translate }}:</mat-label>
       <input
@@ -66,14 +66,6 @@
         {{ 'Item.description_placeholder' | translate }}
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>{{ 'Transaction.quantity' | translate }} :</mat-label>
-        <input  matInput id="quantity" name="quantity" formControlName="quantity" required>
-        <mat-error *ngIf="form.controls['quantity'].errors?.['required']">
-          {{ 'Quantity is required' | translate }}
-        </mat-error>
-      </mat-form-field>
     
       <mat-form-field>
         <mat-label>{{ 'Transaction.pad_number_end' | translate }}:</mat-label>
@@ -87,9 +79,17 @@
         </mat-error>
       </mat-form-field>
 
+    <mat-form-field>
+        <mat-label>{{ 'Transaction.quantity' | translate }} :</mat-label>
+        <input  matInput id="quantity" name="quantity" formControlName="quantity" required>
+        <mat-error *ngIf="form.controls['quantity'].errors?.['required']">
+          {{ 'Quantity is required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ getButtonLabel() | translate }}</button>
-  <button mat-stroked-button (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
+  <button mat-button class="btn" (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
 </div>

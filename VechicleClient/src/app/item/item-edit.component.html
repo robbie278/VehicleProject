@@ -39,5 +39,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ getButtonLabel() | translate }}</button>
-  <button mat-stroked-button (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
+  <button mat-button class="btn" (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
 </div>

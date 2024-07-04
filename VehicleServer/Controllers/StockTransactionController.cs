@@ -53,43 +53,75 @@ namespace VehicleServer.Controllers
         public async Task<ActionResult<bool>> PutStockTransaction(int id, StockTransaction request)
         {
             // Fetch the existing transaction
-            var existingTransaction = await _StockTransactionRepo.GetStockTransaction(id);
+            var existingTransaction = await _StockTransactionRepo.GetStockTransactionEntity(id);
             if (existingTransaction == null)
             {
-                return NotFound();
+                return NotFound("Transaction not found.");
             }
 
-            // Validate the updated transaction
+            // Update existing transaction details
+            existingTransaction.ItemId = request.ItemId;
+            existingTransaction.StoreId = request.StoreId;
+            existingTransaction.UserId = request.UserId;
+            existingTransaction.StoreKeeperId = request.StoreKeeperId;
+            existingTransaction.TransactionType = request.TransactionType;
+            existingTransaction.Quantity = request.Quantity;
+            existingTransaction.PadNumberStart = request.PadNumberStart;
+            existingTransaction.PadNumberEnd = request.PadNumberEnd;
+            existingTransaction.TransactionDate = request.TransactionDate;
+
+            if (existingTransaction.TransactionType == TransactionType.Issue)
+            {
+                var canIssueTransaction = await _stockService.CanIssueTransactionAsync(existingTransaction.ItemId, existingTransaction.StoreId, existingTransaction.Quantity);
+                if (!canIssueTransaction)
+                {
+                    return BadRequest("Not enough Stock!");
+                }
+            }
+
             var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockItemsDetail
             {
-                ItemId = request.ItemId,
-                StoreId = request.StoreId,
-                UserId = request.UserId,
-                StoreKeeperId = request.StoreKeeperId,
-                TransactionType = request.TransactionType
-            }, request.PadNumberStart, request.PadNumberEnd);
+                ItemId = existingTransaction.ItemId,
+                StoreId = existingTransaction.StoreId,
+                UserId = existingTransaction.UserId,
+                StoreKeeperId = existingTransaction.StoreKeeperId,
+                TransactionType = existingTransaction.TransactionType
+            }, existingTransaction.PadNumberStart, existingTransaction.PadNumberEnd);
 
             if (!isValid)
             {
                 return BadRequest("Validation failed.");
             }
 
-            // Update the transaction details
-            if (request.TransactionType == TransactionType.Receipt)
+            if (existingTransaction.TransactionType == TransactionType.Receipt)
             {
-                await _stockTransactionDetailService.BulkInsertTransactionsAsync(request);
+                await _stockTransactionDetailService.BulkInsertTransactionsAsync(existingTransaction);
+                return Ok("Bulk insertion and stock update successful.");
+            }
+            else if (existingTransaction.TransactionType == TransactionType.Issue)
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(existingTransaction);
+                return Ok("Bulk Issue and stock update successful.");
+            }
+            else if (existingTransaction.TransactionType == TransactionType.Damaged)
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(existingTransaction);
+                return Ok("Bulk Damage and stock update successful.");
+            }
+            else if (existingTransaction.TransactionType == TransactionType.Return)
+            {
+                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(existingTransaction);
+                return Ok("Bulk Return and stock update successful.");
             }
             else
             {
-                await _stockTransactionDetailService.BulkUpdateItemDetailsTransactionAsync(request);
+                return BadRequest("Something went wrong");
             }
-
-            return Ok(true);
         }
 
+
+
         // POST: api/StockTransaction
-
-
         [HttpPost]
         public async Task<IActionResult> PostStockTransaction(StockTransaction request)
         {

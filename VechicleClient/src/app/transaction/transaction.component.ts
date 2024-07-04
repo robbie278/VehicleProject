@@ -9,6 +9,7 @@ import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { TransactionEditComponent } from './transaction-edit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TransactionViewComponent } from './transaction-view.component';
+import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
 
 @Component({
   selector: 'app-transaction',
@@ -34,6 +35,8 @@ export class TransactionComponent implements OnInit {
   filterQuery?: string;
   public transactionTypes: string[] = ["All", "Issue", "Receipt", "Damaged", "Return"];
   public selectedTransactionType: string = "All";
+  title : string = "Transaction"
+
 
 
 
@@ -96,7 +99,7 @@ export class TransactionComponent implements OnInit {
 
   openDialog(id?: number): void {
     const dialogRef = this.dialog.open(TransactionEditComponent, {
-      width: '40%',
+      width: '70%',
       disableClose: true,
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
@@ -112,7 +115,7 @@ export class TransactionComponent implements OnInit {
   onRead(id?: number): void{
     const dialogRef = this.dialog.open(TransactionViewComponent, {
       width: '40%',
-      // disableClose: true,
+       disableClose: true,
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
       data: { id }
@@ -124,20 +127,23 @@ export class TransactionComponent implements OnInit {
       }
     });
   }
-  // toggleDetails(stockTransactionId: number) {
-  //   console.log('Details clicked for stock transaction ID:', stockTransactionId);
-  // }
 
-  onDelete(id:number){
-    if(confirm("Are you sure to delete this Item")){
-  
-    this.transactionService.delete(id).subscribe({
-    next: () => {
-      this.toastr.error("Item Deleted Successfully")
-      location.reload()
-      },
-    error: (err) => console.log(err)
-    })
-    }
+      onDelete( id:number) {
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+          width: '40%',
+          data: {title: this.title},
+        });
+      
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            this.transactionService.delete(id).subscribe({
+              next: () => {
+                this.toastr.error('Transaction Deleted Successfully');
+                this.loadData();
+              },
+              error: (err) => console.log(err),
+            });
+          }
+        });
       }
 }
