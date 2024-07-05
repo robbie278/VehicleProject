@@ -86,7 +86,7 @@ namespace VehicleServer.Controllers
                 UserId = existingTransaction.UserId,
                 StoreKeeperId = existingTransaction.StoreKeeperId,
                 TransactionType = existingTransaction.TransactionType
-            }, existingTransaction.PadNumberStart, existingTransaction.PadNumberEnd);
+            }, existingTransaction.PadNumberStart, existingTransaction.PadNumberEnd ?? default(int));
 
             if (!isValid)
             {
@@ -153,7 +153,7 @@ namespace VehicleServer.Controllers
                 UserId = request.UserId,
                 StoreKeeperId = request.StoreKeeperId,
                 TransactionType = request.TransactionType
-            }, request.PadNumberStart, request.PadNumberEnd);
+            }, request.PadNumberStart, request.PadNumberEnd ?? default(int));
 
             if (!isValid)
             {
@@ -191,7 +191,8 @@ namespace VehicleServer.Controllers
 
         }
 
-        [HttpPost("/single")]
+        [HttpPost]
+        [Route("single")]
         public async Task<IActionResult> PostSingleStockTransaction(StockTransaction request)
         {
             var transaction = new StockTransaction
@@ -215,14 +216,14 @@ namespace VehicleServer.Controllers
                 }
             }
 
-            var isValid = await _stockTransactionDetailService.ValidateTransactionAsync(new StockItemsDetail
+            var isValid = await _stockTransactionDetailService.ValidateSingleTransactionAsync(new StockItemsDetail
             {
                 ItemId = request.ItemId,
                 StoreId = request.StoreId,
                 UserId = request.UserId,
                 StoreKeeperId = request.StoreKeeperId,
                 TransactionType = request.TransactionType
-            }, request.PadNumberStart, request.PadNumberEnd);
+            }, request.PadNumberStart);
 
             if (!isValid)
             {

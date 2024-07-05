@@ -1,108 +1,106 @@
 {
-    "FORM": {
-      "TITLE": "የቅጽ ርዕስ",
-      "NAME": "ስም",
-      "NAME_PLACEHOLDER": "ስም ይጻፉ",
-      "NAME_REQUIRED": "ስም ያስፈልጋል",
-      "DESCRIPTION": "መግለጫ",
-      "DESCRIPTION_PLACEHOLDER": "መግለጫ ይጻፉ",
-      "DESCRIPTION_REQUIRED": "መግለጫ ያስፈልጋል",
-      "CREATE": "አስካምጥ",
-      "UPDATE": "አዘምን",
-      "CANCEL": "ሰርዝ",
-      "ACTION":"ድርጊት"
-    },
-    "Item": {
-      "id": "መለያ ቁጥር",
-      "description": "መግለጫ",
-      "description_placeholder": "መግለጫ ያስገቡ"
-    },
-    "Category": {
-      "Category": "ምድብ",
-      "Category_Name": "የምድብ ስም",
-      "Category_Name_Placeholder": "የምድብ ስም ያስገቡ",
-      "EditCategory":"ምድብ አስተካክል",
-      "CreateCategory": "ምድብ ፍጠር"
-    },
-    "StoreKeeper": {
-      "Address": "አድራሻ",
-      "Email": "ኢሜይል",
-      "Address_Placeholder": "አድራሻ ያስገቡ",
-      "Email_Placeholder": "ኢሜይል ያስገቡ"
-    },
-    "Store": {
-      "Address": "አድራሻ",
-      "Address_Placeholder": "አድራሻ ያስገቡ",
-      "Address_Placeholder_REQUIRED":"አድራሻ ያስፋልጋል",
-      "STORE_REQUIRED": "ጣቢያ ያስፈልጋል"
-    },
-    "Transaction": {
-      "select_a_store": "ጣቢያ ይምረጡ",
-      "select_a_category": "አንድ ምድብ ይምረጡ",
-      "select_an_item": "እቃ ይምረጡ",
-      "select_storekeeper": "የጣቢያ አስተዳዳሪ ይምረጡ",
-      "transaction_type": "የዝውውር አይነት",
-      "pad_number_start": "ፓድ ቁጥር ይጀምራል",
-      "pad_number_end": "የፓድ ቁጥር መጨረሻ",
-      "quantity": "ብዛት",
-      "transaction_date":"የዝውውር ቀን"
-    },
-    "Generals":{
-      "Transaction":"ዝውውር",
-      "Transaction_Type":"የዝውውር አይነት",
-      "Item_Name":"የእቃ ስም",
-      "Store_Name":"ጣቢያ ስም",
-      "Store_Keeper_Name":"የጣቢያ አስተዳዳሪ"
-    },
-    "others": {
-      "Categories": "ምድቦች",
-      "Items": "እቃዎች",
-      "Stores": "ጣቢያ",
-      "Store_Keepers": "ጣቢያ አስተዳዳሪዎች",
-      "Issue": "ማውጫ",
-      "Receipt": "መቀበያ",
-      "Damaged": "የተበላሸ",
-      "Return": "የተመለሰ",
-      "Transaction": "ዝውውር",
-      "Loading": "በመጫን ላይ",
-      "home":"መግቢያ",
+  "FORM": {
+    "TITLE": "የቅጽ ርዕስ",
+    "NAME": "ስም",
+    "NAME_PLACEHOLDER": "ስም ይጻፉ",
+    "NAME_REQUIRED": "ስም ያስፈልጋል",
+    "DESCRIPTION": "መግለጫ",
+    "DESCRIPTION_PLACEHOLDER": "መግለጫ ይጻፉ",
+    "DESCRIPTION_REQUIRED": "መግለጫ ያስፈልጋል",
+    "CREATE": "አስካምጥ",
+    "UPDATE": "አዘምን",
+    "CANCEL": "ዝጋ",
+    "ACTION": "ድርጊት"
+  },
+  "Item": {
+    "id": "መለያ ቁጥር",
+    "description": "መግለጫ",
+    "description_placeholder": "መግለጫ ያስገቡ"
+  },
+  "Category": {
+    "Category": "ምድብ",
+    "Category_Name": "የምድብ ስም",
+    "Category_Name_Placeholder": "የምድብ ስም ያስገቡ",
+    "EditCategory": "ምድብ አስተካክል",
+    "CreateCategory": "ምድብ ፍጠር"
+  },
+  "StoreKeeper": {
+    "Address": "አድራሻ",
+    "Email": "ኢሜይል",
+    "Address_Placeholder": "አድራሻ ያስገቡ",
+    "Email_Placeholder": "ኢሜይል ያስገቡ"
+  },
+  "Store": {
+    "Address": "አድራሻ",
+    "Address_Placeholder": "አድራሻ ያስገቡ",
+    "Address_Placeholder_REQUIRED": "አድራሻ ያስፋልጋል",
+    "STORE_REQUIRED": "ጣቢያ ያስፈልጋል"
+  },
+  "Transaction": {
+    "select_a_store": "ጣቢያ ይምረጡ",
+    "select_a_category": "አንድ ምድብ ይምረጡ",
+    "select_an_item": "እቃ ይምረጡ",
+    "select_storekeeper": "የጣቢያ አስተዳዳሪ ይምረጡ",
+    "transaction_type": "የዝውውር አይነት",
+    "pad_number_start": "ፓድ ቁጥር ይጀምራል",
+    "pad_number_end": "የፓድ ቁጥር መጨረሻ",
+    "pad_number": "የፓድ ቁጥር",
+    "quantity": "ብዛት",
+    "transaction_date": "የዝውውር ቀን"
+  },
+  "Generals": {
+    "Transaction": "ዝውውር",
+    "Transaction_Type": "የዝውውር አይነት",
+    "Item_Name": "የእቃ ስም",
+    "Store_Name": "ጣቢያ ስም",
+    "Store_Keeper_Name": "የጣቢያ አስተዳዳሪ"
+  },
+  "others": {
+    "Categories": "ምድቦች",
+    "Items": "እቃዎች",
+    "Stores": "ጣቢያ",
+    "Store_Keepers": "ጣቢያ አስተዳዳሪዎች",
+    "Issue": "ማውጫ",
+    "Receipt": "መቀበያ",
+    "Damaged": "የተበላሸ",
+    "Return": "የተመለሰ",
+    "Transaction": "ዝውውር",
+    "Loading": "በመጫን ላይ",
+    "home": "ዳሽቦርድ",
 
-      "Stock_Report": "ክምችት ሪፖርት",
-      "Quantity_In_Stock": "ክምችት ውስጥ ያለው ብዛት",
-      "Last_Updated_Date": "የመጨረሻው የተሻሻለ ቀን",
+    "Stock_Report": "ክምችት ሪፖርት",
+    "Quantity_In_Stock": "ክምችት ውስጥ ያለው ብዛት",
+    "Last_Updated_Date": "የመጨረሻው የተሻሻለ ቀን",
+
+    "Create_Store": "ጣቢያ ፍጠር",
+    "Create_StoreKeeper": "የጣቢያ አስተዳዳሪ",
+    "Create_Item": "እቃ ፍጠር",
+    "Create_Category": "ምድብ ፍጠር",
+    "Edit_Store": "ጣቢያ አስተካክል",
+    "Edit_StoreKeeper": "ጣቢያ አስተዳዳሪ አስተካክል",
+    "Edit_Item": "እቃ አስተካክል",
+    "Edit_Category": "ምድብ አስተካክል",
+
+    "Filter_By_Name": "በስም ፈልግ",
+    "Add_New": "አዲስ ይጨምሩ",
+    "Availability": "መገኘት",
+
+    "Issuing_Goods": "እቃዎችን ማውጣት",
+    "Receiving_Goods": "እቃዎችን መቀበል",
+    "Damaged_Goods": "የተበላሹ ዕቃዎች",
+    "Return_Goods": "ተመለስ ሸቀጦች",
+
+    "No": "ቁጥር",
+    "Amharic": "አማርኛ",
+    "English": "እንግሊዝኛ",
+
+    "already_exist": "ቀድሞውኑም አለ",
+    "Stock_Mangement": "ክምችት አስተዳደር ሥርዓት",
+    "Profile": "ሰለ እኔ",
+    "Logout": "ውጣ",
+    "all": "ሁሉንም"
+  },
+
+    "items_per_page": "ብዛት በግጽ"
   
-
-
-  "Create_Store": "ጣቢያ ፍጠር",
-  "Create_StoreKeeper": "የጣቢያ አስተዳዳሪ",
-  "Create_Item": "እቃ ፍጠር",
-  "Create_Category": "ምድብ ፍጠር",
-  "Edit_Store": "ጣቢያ አስተካክል",
-  "Edit_StoreKeeper": "ጣቢያ አስተዳዳሪ አስተካክል",
-  "Edit_Item": "እቃ አስተካክል",
-  "Edit_Category": "ምድብ አስተካክል",
-
-  "Filter_By_Name":"በስም ፈልግ",
-  "Add_New":"አዲስ ይጨምሩ",
-  "Availability":"መገኘት",
-
-  "Issuing_Goods":"እቃዎችን ማውጣት",
-  "Receiving_Goods":"እቃዎችን መቀበል",
-  "Damaged_Goods":"የተበላሹ ዕቃዎች",
-  "Return_Goods":"ተመለስ ሸቀጦች",
-
-  "No":"ቁጥር",
-  "Amharic":"አማርኛ",
-  "English":"እንግሊዝኛ",
-
-  "already_exist":"ቀድሞውኑም አለ",
-  "Stock_Mangement":"ክምችት አስተዳደር ሥርዓት",
-  "Profile":"ሰለ እኔ",
-  "Logout":"ውጣ",
-  "all":"ሁሉንም"
-
-
-
-    }
-  }
-  
+}

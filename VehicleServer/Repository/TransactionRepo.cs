@@ -34,7 +34,7 @@ namespace VehicleServer.Repository
         {
             var query = _context.StockTransactions.AsNoTracking().Where(ct => ct.IsDeleted != true);
 
-            if (!string.IsNullOrEmpty(transactionType))
+            if (!string.IsNullOrEmpty(transactionType) && transactionType!= "All")
             {
                 query = query.Where(c => c.TransactionType == transactionType);
             }
@@ -83,7 +83,7 @@ namespace VehicleServer.Repository
              StoreId = c.Stores!.StoreId,
              StoreName = c.Stores!.Name,
              PadNumberStart = c.PadNumberStart!,
-             PadNumberEnd = c.PadNumberEnd!,
+             PadNumberEnd = c.PadNumberEnd?? 0,
              StoreKeeperId = c.StoreKeeper!.StoreKeeperId,
              StoreKeeperName = c.StoreKeeper!.Name,
              UserId = c.User!.UserId,
