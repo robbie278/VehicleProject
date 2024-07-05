@@ -33,6 +33,9 @@ import { TransactionEditComponent } from './transaction/transaction-edit.compone
 import { FormsModule } from '@angular/forms';
 
 import { TransactionViewComponent } from './transaction/transaction-view.component';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomPaginator } from './custom-paginator/CustomPaginatorConfiguration';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -80,9 +83,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
 
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [provideClientHydration(), provideAnimationsAsync(),
+  { provide: MatPaginatorIntl, useClass: CustomPaginator }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
 
 

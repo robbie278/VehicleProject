@@ -1,16 +1,23 @@
 <mat-card>
-    <mat-card-header >
-      <mat-card-title>{{ 'others.Items' | translate }}</mat-card-title>
-      <mat-card-subtitle>{{ 'others.Items' | translate }}</mat-card-subtitle>
-      <mat-form-field [hidden]="!items" >
-        <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
-                placeholder="{{ 'others.Filter_By_Name' | translate }}">
-      </mat-form-field>
+    <mat-card-header class="header-container">
+      <div class="header-content">
+        <mat-card-subtitle class="subtitle">{{ 'others.Items' | translate }}</mat-card-subtitle>
+        
+        <mat-form-field class="search-field custom-form-field" [hidden]="!items">
+          <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"
+                 placeholder="{{ 'others.Filter_By_Name' | translate }}" class="inp">
+          <mat-icon matPrefix class="my-icon">search</mat-icon>
+        </mat-form-field>    
+        
+        <button mat-flat-button color="primary" class="btn-add" (click)="openDialog()" >
+          <mat-icon>person_add</mat-icon>
+          {{ 'others.Add_New' | translate }}
+        </button>
+      </div>
     </mat-card-header>
+    
     <mat-card-content>
         <p *ngIf="!items"><em>{{ 'others.Loading' | translate }}...</em></p>
-        <button mat-flat-button color="primary" class="btn-add" *ngIf="items" (click)="openDialog()">{{ "others.Add_New" | translate }}</button>
-  
       <table mat-table [dataSource]="items" class="mat-elevation-z8" 
         matSort
         (matSortChange)="loadData()"

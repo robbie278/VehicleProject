@@ -50,8 +50,9 @@
     "transaction_type": "Transaction type",
     "pad_number_start": "Pad number start",
     "pad_number_end": "Pad number end",
+    "pad_number": "Pad Number",
     "quantity": "Quantity",
-    "transaction_time":"transaction_date"
+    "transaction_time": "transaction_date"
   },
   "Generals": {
     "Transaction": "Transaction",
@@ -71,7 +72,7 @@
     "Return": "Return",
     "Transaction": "Transaction",
     "Loading": "Loading",
-    "home": "home",
+    "home": "Dashboard",
 
     "Stock_Report": "Stock Report",
     "Quantity_In_Stock": "Quantity In Stock",
@@ -82,7 +83,6 @@
     "Damaged_Goods": "Damaged Goods",
     "Return_Goods": "Return Goods",
 
-
     "Create_Store": "Create Store",
     "Create_StoreKeeper": "Create StoreKeeper",
     "Create_Item": "Create Item",
@@ -92,20 +92,21 @@
     "Edit_Item": "Edit Item",
     "Edit_Category": "Edit Category",
 
-     "Filter_By_Name":"Filter By Name",
-     "Add_New":"Add New",
-     "Availability":"Availability",
+    "Filter_By_Name": "Filter By Name",
+    "Add_New": "Add New",
+    "Availability": "Availability",
 
-     "No":"No",
-       "Amharic":"Amharic",
-  "English":"English",
+    "No": "No",
+    "Amharic": "Amharic",
+    "English": "English",
 
-  "already_exist":"Already Exist",
-  "Successfully_Added":"Successfully Added",
-  "Stock_Mangement":"Stock Mangement System",
-  "all":"all"
+    "already_exist": "Already Exist",
+    "Successfully_Added": "Successfully Added",
+    "Stock_Mangement": "Stock Mangement System",
+    "all": "all"
+  },
 
- 
 
-  }
+    "items_per_page": "Items per page"
+  
 }

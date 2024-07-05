@@ -40,7 +40,7 @@ export class TransactionFormComponent implements OnInit {
   form!: FormGroup;
   categoryId: number = 0;
   storeId: number = 0;
-
+  isChecked: boolean = false;
   constructor(
     private transactionFormService: TransactionFormService,
     private transactionService: TransactionService,
@@ -55,7 +55,7 @@ export class TransactionFormComponent implements OnInit {
 
   isBulk = false
 
- 
+
 
 
   ngOnInit() {
@@ -72,7 +72,7 @@ export class TransactionFormComponent implements OnInit {
           translatedTransactionType,
           Validators.required
         ),
-        singleItem: new FormControl(false), 
+        singleItem: new FormControl(false),
         padNumberStart: new FormControl('', [
           Validators.required,
           Validators.pattern(/^\d+$/),
@@ -146,7 +146,7 @@ export class TransactionFormComponent implements OnInit {
       return null;
     };
   }
-  
+
   loadItems() {
     this.transactionFormService.getItem().subscribe({
       next: (result) => {
@@ -188,20 +188,34 @@ export class TransactionFormComponent implements OnInit {
     const issue: Issue = {
       ...formValue,
       userId: formValue.userId || null,
-      transactionType: this.transactionType  // Explicitly set userId to null if it is not defined
+      padNumberEnd: formValue.padNumberEnd || null,
+      transactionType: this.transactionType,
+      // Explicitly set userId to null if it is not defined
     };
-    
-    this.transactionFormService.post(issue).subscribe({
-      next: (response) => {
-        console.log(issue);
-        this.toastr.info(response);
-        this.dialogRef.close(true);
-      },
-      error: (err) => {
-        console.log(err);
-        this.toastr.error(err.error);
-      },
-    });
+    if (!this.isChecked)
+      this.transactionFormService.post(issue).subscribe({
+        next: (response) => {
+          console.log(issue);
+          this.toastr.info(response);
+          this.dialogRef.close(true);
+        },
+        error: (err) => {
+          console.log(err);
+          this.toastr.error(err.error);
+        },
+      });
+    if (this.isChecked)
+      this.transactionFormService.postSingle(issue).subscribe({
+        next: (response) => {
+          console.log(issue);
+          this.toastr.info(response);
+          this.dialogRef.close(true);
+        },
+        error: (err) => {
+          console.log(err);
+          this.toastr.error(err.error);
+        },
+      });
   }
 
   onCancel(): void {
@@ -259,8 +273,8 @@ export class TransactionFormComponent implements OnInit {
   }
 
   onCheckboxChange(event: any) {
-    const isChecked = event.checked;
-    if (isChecked) {
+    this.isChecked = event.checked;
+    if (this.isChecked) {
       this.form.get('padNumberEnd')?.clearValidators();
       this.form.get('padNumberEnd')?.updateValueAndValidity();
       this.form.get('quantity')?.setValue(1);
