@@ -8,6 +8,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         Task SingleInsertTransactionsAsync(StockTransaction transaction);
         Task BulkInsertTransactionsAsync(StockTransaction transaction);
         Task BulkUpdateItemDetailsTransactionAsync(StockTransaction transaction);
+        Task SingleUpdateItemDetailsTransactionAsync(StockTransaction transaction);
         Task UpdateStockAsync(int itemId, int storeId, int quantityChange);
         Task<bool> ValidateTransactionAsync(StockItemsDetail transactionDetail, int padNumberStart, int padNumberEnd);
         Task<bool> ValidateSingleTransactionAsync(StockItemsDetail transactionDetail, int padNumber);

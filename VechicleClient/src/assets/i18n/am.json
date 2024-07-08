@@ -63,7 +63,7 @@
     "Issue": "ማውጫ",
     "Receipt": "መቀበያ",
     "Damaged": "የተበላሸ",
-    "Return": "የተመለሰ",
+    "Return": "ተመላሽ",
     "Transaction": "ዝውውር",
     "Loading": "በመጫን ላይ",
     "home": "ዳሽቦርድ",
@@ -80,6 +80,7 @@
     "Edit_StoreKeeper": "ጣቢያ አስተዳዳሪ አስተካክል",
     "Edit_Item": "እቃ አስተካክል",
     "Edit_Category": "ምድብ አስተካክል",
+    "Edit_Transaction":"ዝውውር አስተካክል",
 
     "Filter_By_Name": "በስም ፈልግ",
     "Add_New": "አዲስ ይጨምሩ",
@@ -98,9 +99,18 @@
     "Stock_Mangement": "ክምችት አስተዳደር ሥርዓት",
     "Profile": "ሰለ እኔ",
     "Logout": "ውጣ",
-    "all": "ሁሉንም"
+    "all": "ሁሉንም",
+    "View_Transaction_Details":"የዝውውር ዝርዝሮችን ይመልከቱ",
+    "User":"ተጠቃሚ",
+    "Single_Item":"ንጥል እቃ"
   },
 
-    "items_per_page": "ብዛት በግጽ"
+    "items_per_page": "ብዛት በግጽ",
+
+    "All": "ሁሉም",
+    "Issue": "መጥቀስ",
+    "Receipt": "መቀበል",
+    "Damaged": "የተበላሽ",
+    "Return": "መመለስ"
   
 }

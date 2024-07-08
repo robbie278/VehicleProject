@@ -177,6 +177,31 @@ namespace VehicleServer.Services.StockTransactionDetailServices
             await UpdateStockAsync(transaction.ItemId, transaction.StoreId, transaction.TransactionType == TransactionType.Return ? transaction.Quantity : -transaction.Quantity);
         }
 
+        public async Task SingleUpdateItemDetailsTransactionAsync(StockTransaction transaction)
+        {
+            var transactionToUpdate = await _context.StockItemsDetail
+                .FirstOrDefaultAsync(t => t.PadNumber == transaction.PadNumberStart && t.StoreId == transaction.StoreId && t.ItemId == transaction.ItemId);
+
+            if (transactionToUpdate != null)
+            {
+                if (transaction.TransactionType == TransactionType.Return)
+                {
+                    transactionToUpdate.TransactionType = TransactionType.Receipt;
+                }
+                else
+                {
+                    transactionToUpdate.TransactionType = transaction.TransactionType;
+                }
+
+                _context.StockItemsDetail.Update(transactionToUpdate);
+            }
+
+            await _context.StockTransactions.AddAsync(transaction);
+            await _context.SaveChangesAsync();
+            await UpdateStockAsync(transaction.ItemId, transaction.StoreId, transaction.TransactionType == TransactionType.Return ? transaction.Quantity : -transaction.Quantity);
+        }
+
+
 
         public async Task UpdateStockAsync(int itemId, int storeId, int quantityChange)
         {
