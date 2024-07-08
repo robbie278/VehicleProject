@@ -52,7 +52,7 @@
     </mat-form-field>
 
     <mat-form-field *ngIf="TransactionType.Issue == transactionType">
-      <mat-label>User</mat-label>
+      <mat-label>{{ "others.User" | translate }}</mat-label>
       <mat-select id="userId" formControlName="userId">
         <mat-option *ngFor="let user of user" [value]="user.userId">
           {{ user.userName }}
@@ -93,7 +93,7 @@
     <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
 
     <mat-checkbox formControlName="singleItem" (change)="onCheckboxChange($event)">
-      Single Item
+      {{ "others.Single_Item" | translate }}
     </mat-checkbox>
     <!-- <mat-checkbox class="example-margin" [(ngModel)]="isBulk">Checked</mat-checkbox> -->
 

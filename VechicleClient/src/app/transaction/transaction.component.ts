@@ -35,6 +35,8 @@ export class TransactionComponent implements OnInit {
   defaultFilterColumn: string = "itemName";
   filterQuery?: string;
   public transactionTypes: string[] = ["All", "Issue", "Receipt", "Damaged", "Return"];
+  public translatedTransactionTypes: string[] = [];
+
   public selectedTransactionType: string = "All";
   title : string = "Transaction"
 
@@ -55,6 +57,12 @@ export class TransactionComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.loadData();
+    this.translateTransactionTypes()
+  }
+
+  translateTransactionTypes() {
+    this.translatedTransactionTypes = this.transactionTypes.map(type => this.translateService.instant(type));
+    this.selectedTransactionType = this.translatedTransactionTypes[0]; // Initialize with the translated 'All'
   }
 
 
@@ -83,7 +91,9 @@ export class TransactionComponent implements OnInit {
     var filterColumn = (this.filterQuery) ? this.defaultFilterColumn : null
     var filterQuery = (this.filterQuery) ? this.filterQuery : null
 
-    let selectedType = this.selectedTransactionType !== this.translateService.instant('others.all') ? this.selectedTransactionType : null;
+    //let selectedType = this.selectedTransactionType !== this.translateService.instant('others.all') ? this.selectedTransactionType : null;
+    let selectedType = this.selectedTransactionType !== this.translateService.instant('All') ? this.selectedTransactionType : null;
+
 
     this.transactionService.getData2(event.pageIndex, event.pageSize, sortColumn, sortOrder,
       filterColumn, filterQuery, selectedType).subscribe({

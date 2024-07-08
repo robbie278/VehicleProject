@@ -8,6 +8,7 @@ import { Transaction } from '../Models/Transaction';
 import { Item } from '../Models/item';
 import { Store } from '../Models/Store';
 import { StoreKeeper } from '../Models/Store-keeper';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-transaction-edit',
@@ -27,10 +28,12 @@ export class TransactionEditComponent {
     public dialogRef: MatDialogRef<TransactionEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private transactionService: TransactionService,
-    private toastr: ToastrService     
+    private toastr: ToastrService,
+    private translateService: TranslateService,   
   ){
     this.id = data.id;
-    this.title = this.id ? 'Edit Transaction' : 'Create Transaction';
+    
+    this.title = translateService.instant(this.id ? 'others.Edit_Transaction' : 'others.Create_Item');
   }
   
   ngOnInit() {

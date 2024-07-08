@@ -21,7 +21,7 @@ namespace VehicleServer.Repository
 
         public async Task<IEnumerable<StockDto>> GetStocks()
         {
-            var Stock = _context.Stocks.Select(c => new StockDto()
+            var Stock = _context.Stocks.Where(c => c.QuantityInStock > 0).Select(c => new StockDto()
             {
                 StockId = c.StockId,
                 QuantityInStock = c.QuantityInStock,

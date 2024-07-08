@@ -91,6 +91,7 @@
     "Edit_StoreKeeper": "Edit StoreKeeper",
     "Edit_Item": "Edit Item",
     "Edit_Category": "Edit Category",
+    "Edit_Transaction":"Edit Transaction",
 
     "Filter_By_Name": "Filter By Name",
     "Add_New": "Add New",
@@ -103,10 +104,18 @@
     "already_exist": "Already Exist",
     "Successfully_Added": "Successfully Added",
     "Stock_Mangement": "Stock Mangement System",
-    "all": "all"
+    "all": "all",
+    "View_Transaction_Details":"View Transaction Details",
+    "User":"User",
+    "Single_Item":"Single Item"
   },
 
 
-    "items_per_page": "Items per page"
+    "items_per_page": "Items per page",
+    "All": "All",
+    "Issue": "Issue",
+    "Receipt": "Receipt",
+    "Damaged": "Damaged",
+    "Return": "Return"
   
 }

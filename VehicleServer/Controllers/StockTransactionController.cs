@@ -153,7 +153,7 @@ namespace VehicleServer.Controllers
                 UserId = request.UserId,
                 StoreKeeperId = request.StoreKeeperId,
                 TransactionType = request.TransactionType
-            }, request.PadNumberStart, request.PadNumberEnd ?? default(int));
+            }, request.PadNumberStart, request.PadNumberEnd ?? default(int) );
 
             if (!isValid)
             {
@@ -238,19 +238,19 @@ namespace VehicleServer.Controllers
 
             else if (transaction.TransactionType == TransactionType.Issue)
             {
-                await _stockTransactionDetailService.SingleInsertTransactionsAsync(transaction);
+                await _stockTransactionDetailService.SingleUpdateItemDetailsTransactionAsync(transaction);
                 return Ok("Transacion Issue and stock update successful.");
 
             }
             else if (transaction.TransactionType == TransactionType.Damaged)
             {
-                await _stockTransactionDetailService.SingleInsertTransactionsAsync(transaction);
+                await _stockTransactionDetailService.SingleUpdateItemDetailsTransactionAsync(transaction);
                 return Ok("Transacion Damage and stock update successful.");
 
             }
             else if (transaction.TransactionType == TransactionType.Return)
             {
-                await _stockTransactionDetailService.SingleInsertTransactionsAsync(transaction);
+                await _stockTransactionDetailService.SingleUpdateItemDetailsTransactionAsync(transaction);
                 return Ok("Transacion Return and stock update successful.");
             }
             else
