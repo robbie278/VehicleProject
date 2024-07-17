@@ -6,6 +6,7 @@ VehicleServer/.vs/VehicleServer/v17/DocumentLayout.json
 VehicleServer/.vs/VehicleServer/DesignTimeBuild/.dtbcache.v2
 VehicleServer/.vs/VehicleServer/v17/.suo
 VehicleServer/.vs/VehicleServer/v17/DocumentLayout.json
+# Ignore appsettings.json
 VehicleServer/appsettings.json
 
 
