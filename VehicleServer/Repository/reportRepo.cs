@@ -47,7 +47,7 @@ namespace VehicleServer.Repository
                 var item = items.FirstOrDefault(i => i.ItemId == stock.ItemId);
                 if (item != null)
                 {
-                    stock.ItemId = item.Name;
+                    stock.ItemId = item.ItemId;
                 }
             }
 
