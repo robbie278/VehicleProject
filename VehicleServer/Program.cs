@@ -26,6 +26,7 @@ builder.Services.AddScoped<UserRepo>();
 builder.Services.AddScoped<StockService>();
 builder.Services.AddScoped<IStockItemsDetailService, StockItemsDetailService>();
 builder.Services.AddScoped<StockItemsDetailRepo>();
+builder.Services.AddScoped<reportRepo>();
 
 
 
