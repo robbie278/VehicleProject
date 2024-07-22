@@ -2,6 +2,25 @@
   <mat-card-header class="header-container">
     <div class="header-content">
       <mat-card-subtitle class="subtitle">{{ 'others.Items' | translate }}</mat-card-subtitle>
+
+
+      <!-- the filter with store and  items then update the table based o the store and items-->
+
+      <mat-form-field>
+        <mat-label>{{ "Transaction.select_a_store" | translate }}</mat-label>
+        <mat-select [(ngModel)]="storeId" (selectionChange)="onStoreOrItemChange()">
+          <mat-option *ngFor="let store of stores" [value]="store.storeId">{{ store.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ "Transaction.select_an_item" | translate }}</mat-label>
+        <mat-select [(ngModel)]="itemId" (selectionChange)="onStoreOrItemChange()">
+          <mat-option *ngFor="let item of items" [value]="item.itemId">{{ item.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!--end of filters store and item-->
       
       <mat-form-field class="search-field custom-form-field" [hidden]="!transactions">
         <input matInput #filter (keyup)="onFilterTextChanged(filter.value)"

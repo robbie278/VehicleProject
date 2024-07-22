@@ -16,7 +16,7 @@ export class TransactionService extends BaseService<Transaction> {
 
 
   getData2(pageIndex: number, pageSize: number, sortColumn: string, sortOrder: string,
-    filterColumn: string | null, filterQuery: string | null ,transactionType?: string| null): Observable<ApiResult<Transaction>> {
+    filterColumn: string | null, filterQuery: string | null ,transactionType?: string| null,itemId?: number,storeId?: number): Observable<ApiResult<Transaction>> {
     var url = this.getUrl("api/StockTransaction")
     var params = new HttpParams()
       .set("pageIndex", pageIndex.toString())
@@ -32,6 +32,14 @@ export class TransactionService extends BaseService<Transaction> {
 
     if (transactionType) {
       params = params.set('transactionType', transactionType);
+    }
+
+    if (itemId !== undefined && itemId !== null) {
+      params = params.set('itemId', itemId.toString());
+    }
+
+    if (storeId !== undefined && storeId !== null) {
+      params = params.set('storeId', storeId.toString());
     }
     
     return this.http.get<ApiResult<Transaction>>(url, { params })
