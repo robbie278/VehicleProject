@@ -14,6 +14,4 @@ export class ReportService {
   getTotalQuantityByItem(): Observable<Report[]> {
     return this.http.get<Report[]>(`${this.apiUrl}/total-quantity-by-item`);
   }
-
-  
 }
