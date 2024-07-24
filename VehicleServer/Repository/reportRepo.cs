@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using VehicleServer.DTOs;
 using VehicleServer.Entities;
 
 namespace VehicleServer.Repository
@@ -20,38 +21,40 @@ namespace VehicleServer.Repository
             return await _context.Stocks.FindAsync(id);
         }
 
-        public async Task<List<Stock>> GetAllStocks()
+        public async Task<List<StockDto>> GetTotalQuantityByStore()
         {
-            return await _context.Stocks.ToListAsync();
+            var results = await (from stock in _context.Stocks
+                                 join store in _context.Stores
+                                 on stock.StoreId equals store.StoreId
+                                 group stock by new { stock.StoreId, store.Name } into g
+                                 select new StockDto
+                                 {
+                                     StoreId = g.Key.StoreId,
+                                     StoreName = g.Key.Name,
+                                     QuantityInStock = g.Sum(s => s.QuantityInStock),
+                                     LastUpdatedDate = g.Max(s => s.LastUpdatedDate) // or DateTime.Now if you want current date
+                                 }).ToListAsync();
+
+            return results;
         }
 
+
         // Add a method to get the total quantity of each item in stock
-        public async Task<List<Stock>> GetTotalQuantityByItem()
+        public async Task<List<StockDto>> GetTotalQuantityByItem()
         {
-            var result = await _context.Stocks
-                .GroupBy(s => s.ItemId)
-                .Select(g => new Stock
-                {
-                    
-                    ItemId = g.Key,
-                    QuantityInStock = g.Sum(s => s.QuantityInStock),
-                    
-                })
-                .ToListAsync();
+            var results = await (from stock in _context.Stocks
+                                 join item in _context.Items
+                                 on stock.ItemId equals item.ItemId
+                                 group stock by new { stock.ItemId, item.Name } into g
+                                 select new StockDto
+                                 {
+                                     ItemId = g.Key.ItemId,
+                                     ItemName = g.Key.Name,
+                                     QuantityInStock = g.Sum(s => s.QuantityInStock),
+                                     LastUpdatedDate = g.Max(s => s.LastUpdatedDate) // or DateTime.Now if you want current date
+                                 }).ToListAsync();
 
-            // Now join with Items to get Item names
-            var items = await _context.Items.ToListAsync(); // Fetch all items (adjust as per your needs)
-
-            foreach (var stock in result)
-            {
-                var item = items.FirstOrDefault(i => i.ItemId == stock.ItemId);
-                if (item != null)
-                {
-                    stock.ItemId = item.ItemId;
-                }
-            }
-
-            return result;
+            return results;
         }
 
     }
