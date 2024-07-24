@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VehicleServer.DTOs;
 using VehicleServer.Entities;
 using VehicleServer.Repository;
 
@@ -27,14 +28,14 @@ public class ReportController : ControllerBase
     }
 
     [HttpGet("total-quantity-by-store")]
-    public async Task<ActionResult<List<Stock>>> GetAllStocks()
+    public async Task<ActionResult<List<StockDto>>> GetAllStocks()
     {
         return await _repository.GetTotalQuantityByStore();
     }
 
     // Add an endpoint to get the total quantity of each item in stock
     [HttpGet("total-quantity-by-item")]
-    public async Task<ActionResult<List<Stock>>> GetTotalQuantityByItem()
+    public async Task<ActionResult<List<StockDto>>> GetTotalQuantityByItem()
     {
         return await _repository.GetTotalQuantityByItem();
     }

@@ -3,24 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\world2\\vehicleproject\\vehicleserver\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\world2\\vehicleproject\\vehicleserver\\repository\\reportrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\reportrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\world2\\vehicleproject\\vehicleserver\\repository\\transactionrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\transactionrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\world2\\vehicleproject\\vehicleserver\\controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\stocktransactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\world2\\vehicleproject\\vehicleserver\\repository\\apiresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:repository\\apiresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,65 +38,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ReportController.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Controllers\\ReportController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ReportController.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Controllers\\ReportController.cs*",
-              "RelativeToolTip": "Controllers\\ReportController.cs*",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAkwBwAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-23T10:34:05.333Z",
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AQIAAIoVAAAAAAAAAADwv5sVAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-07-24T11:14:25.94Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ReportController.cs",
+              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Controllers\\ReportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReportController.cs",
+              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Controllers\\ReportController.cs",
+              "RelativeToolTip": "Controllers\\ReportController.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAACQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-24T11:13:19.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "reportRepo.cs",
               "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Repository\\reportRepo.cs",
               "RelativeDocumentMoniker": "Repository\\reportRepo.cs",
               "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Repository\\reportRepo.cs",
               "RelativeToolTip": "Repository\\reportRepo.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAowBAAAAAAAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAgwCAAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-23T08:25:27.025Z",
+              "WhenOpened": "2024-07-24T11:12:19.932Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StockTransactionController.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StockTransactionController.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Controllers\\StockTransactionController.cs",
-              "RelativeToolTip": "Controllers\\StockTransactionController.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAgwCkAAACrAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T09:28:11.915Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TransactionRepo.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Repository\\TransactionRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\TransactionRepo.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Repository\\TransactionRepo.cs",
-              "RelativeToolTip": "Repository\\TransactionRepo.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAgwB0AAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T09:18:22.153Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApiResult.cs",
-              "DocumentMoniker": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Repository\\ApiResult.cs",
-              "RelativeDocumentMoniker": "Repository\\ApiResult.cs",
-              "ToolTip": "C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Repository\\ApiResult.cs",
-              "RelativeToolTip": "Repository\\ApiResult.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAowEoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T09:14:08.03Z"
             }
           ]
         }

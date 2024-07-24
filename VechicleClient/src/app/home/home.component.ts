@@ -5,6 +5,7 @@ import { Stock } from '../Models/Stock';
 import { Report } from '../Models/Report';
 import { MatDialog } from '@angular/material/dialog';
 import { StockDetailComponent } from '../stock-detail/stock-detail.component';
+import { TranslateService } from '@ngx-translate/core'
 
 
 @Component({
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
   storeOptions:any;
 
   constructor(private stockService: StockService,private reportService: ReportService,
-             private dialog: MatDialog
+             private dialog: MatDialog, private translate: TranslateService
 
   ) { 
     
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
       console.log('Raw response:', response);  
   
       if (response && response.length > 0) {  
-        const labels = response.map(report => `Item ${report.itemId}`);  
+        const labels = response.map(report => `Item ${report.itemName}`);  
         const quantities = response.map(report => report.quantityInStock);  
   
         console.log('Labels:', labels);  
@@ -60,7 +61,7 @@ export class HomeComponent implements OnInit {
   
         // Create a dataset with varying colors for each quantity  
         const datasets = quantities.map((quantity, index) => ({  
-          label: `Total Quantity for Item ${response[index].itemId}`,  
+          label: `Total Quantity for Item ${response[index].itemName}`,  
           backgroundColor: colors[index % colors.length], // Cycle through colors  
           borderColor: colors[index % colors.length],  
           data: [quantity] // Each bar represents one quantity  
@@ -79,14 +80,14 @@ export class HomeComponent implements OnInit {
               display: true,  
               title: {  
                 display: true,  
-                text: 'Items'  
+                text: this.translate.instant('others.Items')  
               }  
             },  
             y: {  
               display: true,  
               title: {  
                 display: true,  
-                text: 'Quantity'  
+                text: this.translate.instant('Transaction.quantity')  
               }  
             }  
           }  
@@ -104,7 +105,7 @@ export class HomeComponent implements OnInit {
         console.log('Raw response:', response);  
   
         if (response && response.length > 0) {  
-            const labels = response.map(report => `Store ${report.storeId}`);  
+            const labels = response.map(report => `Store ${report.storeName}`);  
             const quantities = response.map(report => report.quantityInStock);  
   
             console.log('Labels:', labels);  
@@ -128,20 +129,20 @@ export class HomeComponent implements OnInit {
   
             this.storeOptions = {  
                 responsive: true,  
-                maintainAspectRatio: true,  
+                maintainAspectRatio: false,  
                 scales: {  
                     x: {  
                         display: true,  
                         title: {  
                             display: true,  
-                            text: 'Store'  
+                            text: this.translate.instant('others.Stores')  
                         }  
                     },  
                     y: {  
                         display: true,  
                         title: {  
                             display: true,  
-                            text: 'Quantity'  
+                            text: this.translate.instant('Transaction.quantity')  
                         }  
                     }  
                 }  
