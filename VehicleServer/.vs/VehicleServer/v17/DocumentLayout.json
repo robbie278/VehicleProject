@@ -30,8 +30,8 @@
       "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:services\\stockitemsdetailservices\\stockitemsdetailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yeabsira\\Documents\\world1\\world2\\VehicleProject\\VehicleServer\\Controllers\\ReportController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\ReportController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|c:\\users\\yeabsira\\documents\\world1\\world2\\vehicleproject\\vehicleserver\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EAEDB87-3450-471A-B76D-407436CB4BCA}|VehicleServer.csproj|solutionrelative:controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -65,8 +65,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T12:17:32.251Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T12:17:32.251Z"
             },
             {
               "$type": "Document",
@@ -103,8 +102,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-16T11:50:20.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T11:50:20.992Z"
             },
             {
               "$type": "Document",
@@ -116,8 +114,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ViewState": "AQIAAIkVAAAAAAAAAIAwwJ4VAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-07-16T11:43:44.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T11:43:44.089Z"
             },
             {
               "$type": "Document",
