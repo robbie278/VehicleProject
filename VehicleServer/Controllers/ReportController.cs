@@ -26,10 +26,10 @@ public class ReportController : ControllerBase
         return stock;
     }
 
-    [HttpGet]
+    [HttpGet("total-quantity-by-store")]
     public async Task<ActionResult<List<Stock>>> GetAllStocks()
     {
-        return await _repository.GetAllStocks();
+        return await _repository.GetTotalQuantityByStore();
     }
 
     // Add an endpoint to get the total quantity of each item in stock

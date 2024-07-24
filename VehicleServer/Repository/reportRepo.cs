@@ -20,9 +20,17 @@ namespace VehicleServer.Repository
             return await _context.Stocks.FindAsync(id);
         }
 
-        public async Task<List<Stock>> GetAllStocks()
+        public async Task<List<Stock>> GetTotalQuantityByStore()
         {
-            return await _context.Stocks.ToListAsync();
+            var results = _context.Stocks
+                .GroupBy(s => s.StoreId)
+                .Select(g => new Stock { 
+                    StoreId = g.Key,
+                    QuantityInStock = g.Sum(s => s.QuantityInStock)
+                })
+                .ToList();
+
+            return results;
         }
 
         // Add a method to get the total quantity of each item in stock
