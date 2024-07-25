@@ -77,3 +77,20 @@ $RECYCLE.BIN/
 *.pf
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,visualstudio,visualstudiocode
+
+# Ignore Visual Studio files
+.vs/
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.user
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.sourcelink.json
+*.apphost.exe
+*.dll
+*.pdb
+*.ref
+*.refint
