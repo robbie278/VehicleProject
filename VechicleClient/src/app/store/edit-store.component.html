@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-error *ngIf=" form.invalid && form.hasError('isDupeStore')">
+              <strong> ERROR </strong>:
+              {{ "others.already_exist" | translate }}
+      </mat-error>
+  </p>
+    <mat-form-field>
+      <mat-label>{{ 'FORM.NAME' | translate }}</mat-label>
+      <input matInput formControlName="name" required placeholder="{{ 'FORM.NAME_PLACEHOLDER' | translate }}" />
+      <mat-error *ngIf="form.controls['name'].errors?.['required']">{{ 'FORM.DESCRIPTION_REQUIRED' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'Store.Address' | translate }}</mat-label>
+      <input matInput formControlName="address" required placeholder="{{ 'Store.Address_Placeholder_REQUIRED' | translate }}" />
+      <mat-error *ngIf="form.controls['address'].errors?.['required']">{{ 'Store.Address_Placeholder_REQUIRED' | translate }}</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">{{ getButtonLabel() | translate }}</button>
+  <button mat-button class="btn" (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
+</div>

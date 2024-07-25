@@ -1,0 +1,16 @@
+mat-form-field { 
+  display: block; 
+  margin: 10px 0; 
+  }  
+.button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn {
+  background-color: #cfcdcd;
+
+  &:hover {
+    background-color: #999999;
+  }
+}

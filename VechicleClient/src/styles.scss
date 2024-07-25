@@ -1,0 +1,398 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+// @import '@angular/material/theming';
+// @import '~material-design-icons/iconfont/material-icons.css';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+// Plus imports for other components in your app.
+//@import '~material-icons/iconfont/material-icons.css';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+$custom-typography: mat.define-typography-config($font-family: 'Noto Sans Ethiopic,Roboto, "Helvetica Neue", sans-serif');
+@include mat.all-component-typographies($custom-typography);
+// @include mat.core($custom-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Web-primary: mat.define-palette(mat.$indigo-palette,400);
+$Web-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$Web-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$Web-theme: mat.define-light-theme($Web-primary, $Web-accent, $Web-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($Web-theme);
+@import "../node_modules/ngx-toastr/toastr.css";
+// @import "./app/common/styles/_spaces";
+// @import "./app/common/styles/base";
+// @import "./app/common/styles/font-sizes";
+
+$primary: mat.define-palette(mat.$light-blue-palette, 700,400);
+$accent: mat.define-palette(mat.$deep-orange-palette, 600, A400, 900);
+$warn: mat.define-palette(mat.$red-palette, 600);
+
+$theme: mat.define-light-theme($primary, $accent, $warn);
+
+@include mat.all-component-themes($theme);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-primary {
+  background-color:  mat.get-color-from-palette($primary) !important;
+}
+
+.primary-color {
+  color: mat.get-color-from-palette($primary) !important;
+}
+
+.accent-color {
+  color: mat.get-color-from-palette($accent) !important;
+}
+
+.warn-color {
+  color: mat.get-color-from-palette($warn) !important;
+}
+
+.error {
+  background-color: #b63333;
+  color: #fff;
+}
+
+.page-content {
+  padding: 0 2em;
+}
+
+mat-divider {
+  position: relative;
+  margin-bottom: 10px;
+  border-top-color: mat.get-color-from-palette($primary) !important;
+}
+
+.white-border {
+  border: 2px solid white !important;
+}.white-divider {
+  border: 1px solid white !important;
+}
+.blue-border {
+  border: 2px solid #0288d1 !important;
+}
+
+.blue-top-border {
+  border-top: 2px solid #0288d1 !important;
+}
+
+.blue-bottom-border {
+  border-bottom: 1px solid #0288d1 !important;
+}
+
+.mat-tab-body.mat-tab-body-active {
+  min-height: 300px;
+}
+
+.mat-tab-body-content {
+  height: auto !important;
+  padding: 1%;
+}
+
+
+// background color for dialog backdrop
+.custom-backdrop {
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+
+
+// custom mat-card header style
+.custom-small-mat-card-header, .custom-mat-card-header {
+  mat-card-title, mat-card-subtitle {
+    color: #fff;
+  }
+
+  border-radius: 3px;
+  top: -42px;
+  padding: 8px;
+  background: linear-gradient(60deg, #0288d1, #134978);
+  margin: 0 15px;
+  position: relative;
+  z-index: 3 !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px #134978;
+}
+
+.custom-small-mat-card-header {
+  width: 50%;
+}
+
+
+.custom-mat-list {
+  mat-list-item {
+
+    height: auto !important;
+
+    .mat-list-item-content {
+      border-left: 4px solid #0288d1!important;
+      min-height: 3rem !important;
+    }
+
+    mat-list-item:hover {
+      background-color: rgba(43, 151, 138, 0.16) !important;
+      cursor: pointer;
+    }
+  }
+}
+
+.mat-tab-label-active {
+  background-color: #0288d1;
+  border-radius: 3px;
+
+  .mat-tab-label-content {
+    color: #fff;
+
+    .custom-mat-icon-for-tab {
+      color: #fff;
+    }
+  }
+}
+
+.custom-mat-icon-for-tab {
+  border: 2px solid;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  margin-right: 4px;
+}
+
+.white-font {
+  color: #fff;
+}
+.blue-font {
+  color: #0288d1 !important;
+}
+.black-font {
+  color: #242424 !important;
+}
+
+
+.custom-backdrop {
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+.blue-bg {
+  background-color: #0288d1;
+}
+
+.blue-gradient-bg{
+ background: linear-gradient(60deg, #0288d1, #548fd2);
+}
+.red-gradient-bg{
+  background: linear-gradient(60deg, #e53535b0, #e53935e8) !important;
+}
+
+.white-bg {
+  background: white!important;
+}
+.white-smoke-bg {
+  background-color: #e3e3e3;
+}
+
+.red-font {
+  color: #ae0013;
+}
+
+.light {
+  font-weight: normal !important;
+  margin: 1%;
+}
+
+mat-card-header,
+mat-card-title,
+mat-card-subtitle,
+.white {
+  color: #fff ;
+}
+
+.full-width {
+  width: 100% !important;
+}
+.full-height {
+  height: 100% !important;
+}
+
+.notificationDialog {
+  min-height: 250px;
+  height: auto;
+  width: 600px !important;
+  overflow-y: auto;
+}
+
+.title:after {
+  background-color: #0288d1;
+}
+
+.white-title:after {
+  background-color: #fff;
+}
+
+.white-title:after, .title:after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 40px;
+  margin: 10px auto 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #e3e3e3;
+    height: 100%;
+}
+
+.custom-card:hover {
+  transition: all .2s ease-in-out;
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px -1px #0288d16b, 0px 4px 5px 0px #0288d18f, 0px 1px 10px 0px #0288d194;
+  z-index: 9000;
+}
+
+.mat-table .mat-row:nth-child(odd) {
+ // background: #f7f7f7
+ background: #f7f7f736;
+}
+
+.mat-table .mat-row:nth-child(even) {
+  background: #FFF
+}
+
+// responsive table style
+.mobile-label {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .mat-table {
+    border: 0;
+    vertical-align: middle
+  }
+  .mobile-label {
+    display: block;
+  }
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+
+  .mat-table .mat-header-cell {
+
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .mat-table .mat-row {
+    border-bottom: 3px solid #0288d1;
+    display: block;
+  }
+
+
+
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    height: 75px;
+    padding: 10px;
+  }
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+
+    font-size: .85em;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+  .mat-table .mat-cell:first-child {
+    //margin-top: 4%;
+  }
+  .mat-header-row {
+    display: none !important;
+  }
+  mat-footer-row::after, mat-header-row::after, mat-row::after {
+    min-height: 20px !important;
+  }
+}
+
+
+
+//custom green mat-card-header
+.blue-mat-card-header {
+  border-radius: 3px;
+  top: -42px;
+  padding: 8px;
+  background: linear-gradient(60deg, #0288d1, #134978);
+  margin: 0 15px;
+  position: relative;
+  z-index: 3 !important;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px #134978;
+}
+.white-mat-card-header {
+  border-radius: 3px;
+  top: -42px;
+  padding: 8px;
+  background: #fff;
+  margin: 0 15px;
+  position: relative;
+  z-index: 3 !important;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(45, 42, 46, 0.95);
+}
+
+.blue-mat-card-header,
+.blue-mat-card-title,
+.blue-mat-card-subtitle,
+.white {
+  color: #fff !important;
+}
+
+.info{
+  background-color: #3f94b5;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+.basicInfo-div {
+  background-color: rgba(96, 163, 217,0.2);
+  color:black;
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 100px;
+ margin-bottom: 20px;
+ font-size: medium;
+ font-weight: 400;
+
+
+}

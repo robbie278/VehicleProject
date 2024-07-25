@@ -1,0 +1,116 @@
+{
+  "FORM": {
+    "TITLE": "የቅጽ ርዕስ",
+    "NAME": "ስም",
+    "NAME_PLACEHOLDER": "ስም ይጻፉ",
+    "NAME_REQUIRED": "ስም ያስፈልጋል",
+    "DESCRIPTION": "መግለጫ",
+    "DESCRIPTION_PLACEHOLDER": "መግለጫ ይጻፉ",
+    "DESCRIPTION_REQUIRED": "መግለጫ ያስፈልጋል",
+    "CREATE": "አስቀምጥ",
+    "UPDATE": "አዘምን",
+    "CANCEL": "ዝጋ",
+    "ACTION": "ድርጊት"
+  },
+  "Item": {
+    "id": "መለያ ቁጥር",
+    "description": "መግለጫ",
+    "description_placeholder": "መግለጫ ያስገቡ"
+  },
+  "Category": {
+    "Category": "ምድብ",
+    "Category_Name": "የምድብ ስም",
+    "Category_Name_Placeholder": "የምድብ ስም ያስገቡ",
+    "EditCategory": "ምድብ አስተካክል",
+    "CreateCategory": "ምድብ ፍጠር"
+  },
+  "StoreKeeper": {
+    "Address": "አድራሻ",
+    "Email": "ኢሜይል",
+    "Address_Placeholder": "አድራሻ ያስገቡ",
+    "Email_Placeholder": "ኢሜይል ያስገቡ"
+  },
+  "Store": {
+    "Address": "አድራሻ",
+    "Address_Placeholder": "አድራሻ ያስገቡ",
+    "Address_Placeholder_REQUIRED": "አድራሻ ያስፋልጋል",
+    "STORE_REQUIRED": "ጣቢያ ያስፈልጋል"
+  },
+  "Transaction": {
+    "select_a_store": "ጣቢያ ይምረጡ",
+    "select_a_category": "አንድ ምድብ ይምረጡ",
+    "select_an_item": "ንብረቶች ይምረጡ",
+    "select_storekeeper": "የጣቢያ አስተዳዳሪ ይምረጡ",
+    "transaction_type": "የዝውውር አይነት",
+    "pad_number_start": "ፓድ ቁጥር ይጀምራል",
+    "pad_number_end": "የፓድ ቁጥር መጨረሻ",
+    "pad_number": "የፓድ ቁጥር",
+    "quantity": "ብዛት",
+    "transaction_date": "የዝውውር ቀን"
+  },
+  "Generals": {
+    "Transaction": "ዝውውር",
+    "Transaction_Type": "የዝውውር አይነት",
+    "Item_Name": "የንብረት ስም",
+    "Store_Name": "ጣቢያ ስም",
+    "Store_Keeper_Name": "የጣቢያ አስተዳዳሪ"
+  },
+  "others": {
+    "Categories": "ምድቦች",
+    "Items": "ንብረቶች",
+    "Stores": "ጣቢያ",
+    "Store_Keepers": "ጣቢያ አስተዳዳሪዎች",
+    "Issue": "ማውጫ",
+    "Receipt": "መቀበያ",
+    "Damaged": "የተበላሸ",
+    "Return": "ተመላሽ",
+    "Transaction": "ዝውውር",
+    "Loading": "በመጫን ላይ",
+    "home": "ዳሽቦርድ",
+
+    "Stock_Report": "ክምችት ሪፖርት",
+    "Quantity_In_Stock": "ክምችት ውስጥ ያለው ብዛት",
+    "Last_Updated_Date": "የመጨረሻው የተሻሻለ ቀን",
+
+    "Create_Store": "ጣቢያ ፍጠር",
+    "Create_StoreKeeper": "የጣቢያ አስተዳዳሪ",
+    "Create_Item": "ንብረት ፍጠር",
+    "Create_Category": "ምድብ ፍጠር",
+    "Edit_Store": "ጣቢያ አስተካክል",
+    "Edit_StoreKeeper": "ጣቢያ አስተዳዳሪ አስተካክል",
+    "Edit_Item": "ንብረት አስተካክል",
+    "Edit_Category": "ምድብ አስተካክል",
+    "Edit_Transaction":"ዝውውር አስተካክል",
+
+    "Filter_By_Name": "በስም ፈልግ",
+    "Add_New": "አዲስ ይጨምሩ",
+    "Availability": "መገኘት",
+
+    "Issuing_Goods": "ንብረቶችን ማውጣት",
+    "Receiving_Goods": "ንብረቶችን መቀበል",
+    "Damaged_Goods": "የተበላሹ ዕቃዎች",
+    "Return_Goods": "ተመለስ ሸቀጦች",
+
+    "No": "ቁጥር",
+    "Amharic": "አማርኛ",
+    "English": "እንግሊዝኛ",
+
+    "already_exist": "ቀድሞውኑም አለ",
+    "Stock_Mangement": "ክምችት አስተዳደር ሥርዓት",
+    "Profile": "ሰለ እኔ",
+    "Logout": "ውጣ",
+    "all": "ሁሉንም",
+    "View_Transaction_Details":"የዝውውር ዝርዝሮችን ይመልከቱ",
+    "User":"ተጠቃሚ",
+    "Single_Item":"ንጥል ንብረት"
+  },
+
+    "items_per_page": "ብዛት በግጽ",
+
+    "All": "ሁሉም",
+    "Issue": "መጥቀስ",
+    "Receipt": "መቀበል",
+    "Damaged": "የተበላሽ",
+    "Return": "መመለስ"
+  
+}
