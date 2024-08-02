@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { PlatePool } from '../Models/PlatePool';
 
 
 @Component({
@@ -45,14 +46,31 @@ ngOnInit() {
   this.form = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    categoryId: new FormControl('', Validators.required)
+    categoryId: new FormControl('', Validators.required),
+    majorId: new FormControl('', Validators.required),
+    minorId: new FormControl('', Validators.required),
+    plateNumber: new FormControl('', Validators.required),
+    plateSizeId: new FormControl('', Validators.required),
+    plateRegionId: new FormControl('', Validators.required),
   },null, this.isDupeItem())}
 
 fetchData() {
   this.itemService.get(this.id).subscribe({
     next: (result) => {
       this.item = result;
-      this.form.patchValue(this.item);
+    
+        this.form.patchValue({
+          name: this.item.name,
+          description: this.item.description,
+          categoryId: this.item.categoryId,
+          // plate related fields
+          majorId: this.item.platePool?.majorId,
+          minorId: this.item.platePool?.minorId,
+          plateNumber: this.item.platePool?.plateNumber,
+          plateSizeId: this.item.platePool?.plateSizeId,
+          plateRegionId: this.item.platePool?.plateRegionId,
+          
+    });
       console.log(result);
     },
     error: (error) => console.error(error)
@@ -76,7 +94,15 @@ fetchData() {
         item.name = this.form.controls['name'].value
         item.description = this.form.controls['description'].value
         item.categoryId = this.form.controls['categoryId'].value
-    
+        if (!item.platePool) {
+          item.platePool = <PlatePool>{};
+        }
+        item.platePool.majorId = this.form.controls['majorId'].value;
+        item.platePool.minorId = this.form.controls['minorId'].value;
+        item.platePool.plateSizeId = this.form.controls['plateSizeId'].value;
+        item.platePool.plateNumber = this.form.controls['plateNumber'].value;
+        item.platePool.plateRegionId = this.form.controls['plateRegionId'].value;
+
         if (this.id) {
           this.itemService.put(item).subscribe({
             next: () => {

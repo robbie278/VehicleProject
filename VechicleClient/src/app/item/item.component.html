@@ -38,6 +38,10 @@
           <th mat-header-cell *matHeaderCellDef>{{ 'FORM.NAME' | translate }}</th>
           <td mat-cell *matCellDef="let item">{{item.name}}</td>
         </ng-container>
+
+        <!-- major id Column -->
+   <!-- Conditionally display majorId form field based on platePool presence -->
+
   
         <!-- Description Column -->
         <ng-container matColumnDef="description">
@@ -62,12 +66,39 @@
           <th mat-header-cell *matHeaderCellDef>{{ 'Category.Category_Name' | translate }}</th>
           <td mat-cell *matCellDef="let item">{{item.categoryName}}</td>
         </ng-container>
+
+        <!-- plate related fields -->
+        <ng-container *ngIf="plate" matColumnDef="majorId">
+          <th mat-header-cell *matHeaderCellDef>{{ "others.No" | translate }} major</th>
+          <td mat-cell *matCellDef="let items; let i = index;">{{ items.platePool.majorId }}</td>
+        </ng-container>
+
+        <ng-container *ngIf="plate" matColumnDef="minorId">
+          <th mat-header-cell *matHeaderCellDef>{{ "others.No" | translate }} minor</th>
+          <td mat-cell *matCellDef="let items; let i = index;">{{ items.platePool.minorId }}</td>
+        </ng-container>
+
+        <ng-container *ngIf="plate" matColumnDef="plateNumber">
+          <th mat-header-cell *matHeaderCellDef>{{ "others.No" | translate }} plate number</th>
+          <td mat-cell *matCellDef="let items; let i = index;">{{ items.platePool.plateNumber }}</td>
+        </ng-container>
+
+        <ng-container *ngIf="plate" matColumnDef="plateSizeId">
+          <th mat-header-cell *matHeaderCellDef>{{ "others.No" | translate }} plate size</th>
+          <td mat-cell *matCellDef="let items; let i = index;">{{ items.platePool.plateSizeId }}</td>
+        </ng-container>
+
+        <ng-container *ngIf="plate" matColumnDef="plateRegionId">
+          <th mat-header-cell *matHeaderCellDef>{{ "others.No" | translate }} plate region</th>
+          <td mat-cell *matCellDef="let items; let i = index;">{{ items.platePool.plateRegionId }}</td>
+        </ng-container>
   
         <!-- Actions Column -->
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef>{{ 'FORM.ACTION' | translate }}</th>
           <td mat-cell *matCellDef="let item">
             <button mat-icon-button type="submit" color="primary" (click)="openDialog(item.itemId)">
+              {{ item.id }}
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button type="submit" color="warn" (click)="onDelete(item.itemId)">

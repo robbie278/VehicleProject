@@ -16,8 +16,11 @@ namespace VehicleServer.Profiles
 
                 CreateMap<Category, CategoryDto>().ReverseMap();
 
-            CreateMap<Item, ItemDto>();
-            CreateMap<ItemDto, Item>();
+            // modifing the item to include plate pool
+            CreateMap<Item, ItemDto>()
+                .ForMember(dest => dest.PlatePool, opt => opt.MapFrom(src => src.PlatePool))
+                .ReverseMap()
+                .ForMember(dest => dest.PlatePool, opt => opt.MapFrom(src => src.PlatePool)); 
 
             CreateMap<CategoryDto, Category>();
             CreateMap<Category, CategoryDto>();
@@ -28,6 +31,11 @@ namespace VehicleServer.Profiles
 
             CreateMap<StockTransaction, StockTransactionDto>();
             CreateMap<StockTransactionDto, StockTransaction>();
+
+            // plate mapping
+            CreateMap<PlatePool, PlatePoolDto>()
+                .ReverseMap();
+
         }
     }
 }

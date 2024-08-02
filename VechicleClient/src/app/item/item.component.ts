@@ -9,6 +9,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
+import { PlatePool } from '../Models/PlatePool';
 
 @Component({
   selector: 'app-item',
@@ -16,7 +17,7 @@ import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dial
   styleUrl: './item.component.scss'
 })
 export class ItemComponent implements OnInit {
-  public displayedColumns: string[] = ['index', 'name', 'description','categoryName', 'action'];
+  public displayedColumns: string[] = ['index', 'name', 'description','categoryName','majorId','minorId','plateSizeId','plateNumber','plateRegionId','action'];
  public items!:MatTableDataSource<Item>
  defaultPageIndex: number = 0;
  defaultPageSize: number = 10;
@@ -25,6 +26,7 @@ export class ItemComponent implements OnInit {
  defaultFilterColumn: string = "name";
  filterQuery?: string;
  title : string = "Item"
+ plate: any[] = []
 
 
  @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -72,6 +74,9 @@ ngOnInit() {
         this.paginator.pageIndex = result.pageIndex;
         this.paginator.pageSize = result.pageSize;
         this.items = new MatTableDataSource<Item>(result.data);
+        this.plate = result.data.map(i => i.platePool )
+        console.log(this.plate)
+      
       },
       error: (error) => console.error(error)
     });

@@ -19,6 +19,14 @@ namespace VehicleServer.Configuration
             .HasForeignKey(y => y.CategoryId)
             .OnDelete(DeleteBehavior.Restrict);
 
+
+            // new configuration with plate pool
+
+            builder.HasOne(e => e.PlatePool)
+                      .WithOne(i => i.Item)
+                      .HasForeignKey<Item>(e => e.PlatePoolId);
+
+
         }
     }
 }

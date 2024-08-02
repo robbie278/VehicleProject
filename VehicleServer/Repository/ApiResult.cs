@@ -68,9 +68,7 @@ namespace VehicleServer.Repository
             // for item and store check from the front 
             if (itemId.HasValue)
             {
-                 
-                source = source.Where(t => EF.Property<int>(t, "ItemId") == itemId);
-                
+                source = source.Where(t => EF.Property<int>(t, "ItemId") == itemId);            
             }
 
             if (storeId.HasValue)

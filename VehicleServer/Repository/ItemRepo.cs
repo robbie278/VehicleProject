@@ -21,7 +21,7 @@ namespace VehicleServer.Repository
             this._mapper = mapper;
             this._context = context;
         }
-        public async Task<ActionResult<ApiResult<ItemDto>>> GetItems(
+        public async Task<ApiResult<ItemDto>> GetItems(
                 int pageIndex = 0,
               int pageSize = 10,
               string? sortColumn = null,
@@ -32,11 +32,35 @@ namespace VehicleServer.Repository
                 return await ApiResult<ItemDto>.CreateAsync(
                     _context.Items.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(c => new ItemDto()
                     {
+                        
                         ItemId = c.ItemId,
                         Name = c.Name,
                         Description = c.Description,
                         CategoryId = c.Category!.CategoryId,
                         CategoryName = c.Category!.Name,
+                        
+                        PlatePool = c.PlatePool != null ? new PlatePoolDto
+                        {
+                            PlatePoolId = c.PlatePool.PlatePoolId,
+                            AssignStatus = c.PlatePool.AssignStatus,
+                            PlateNumber = c.PlatePool.PlateNumber,
+                            MajorId = c.PlatePool.MajorId,
+                            MinorId = c.PlatePool.MinorId,
+                            PlateSizeId = c.PlatePool.PlateSizeId,
+                            VehicleCategoryId = c.PlatePool.VehicleCategoryId,
+                            PlateRegionId = c.PlatePool.PlateRegionId,
+                            CreatedDate = c.PlatePool.CreatedDate,
+                            CreatedByUsername = c.PlatePool.CreatedByUsername,
+                            CreatedByUserId = c.PlatePool.CreatedByUserId,
+                            LastModifiedDate = c.PlatePool.LastModifiedDate,
+                            LastModifiedByUsername = c.PlatePool.LastModifiedByUsername,
+                            LastModifiedByUserId = c.PlatePool.LastModifiedByUserId,
+                            IsDeleted = c.PlatePool.IsDeleted,
+                            DeletedDate = c.PlatePool.DeletedDate,
+                            DeletedByUsername = c.PlatePool.DeletedByUsername,
+                            DeletedByUserId = c.PlatePool.DeletedByUserId,
+                            IsActive = c.PlatePool.IsActive
+                        } : null
                     }),
 
             pageIndex,
@@ -50,6 +74,7 @@ namespace VehicleServer.Repository
         {
             var items = await _context.Items
                                           .Where(it => it.CategoryId == id)
+                                           .Include(i => i.PlatePool)
                                           .ToListAsync();
             return items;
 
@@ -65,14 +90,16 @@ namespace VehicleServer.Repository
 
             return item;
         }
-        public async Task<IActionResult> PutItem(int id, Item item)
+        public async Task<IActionResult> PutItem(int id, ItemDto item)
         {
             if (id != item.ItemId)
             {
                 return BadRequest();
             }
-
-            _context.Entry(item).State = EntityState.Modified;
+            // this is for including the plates data in the item
+            var mappedItem = _mapper.Map<Item>(item);
+            
+            _context.Entry(mappedItem).State = EntityState.Modified;
 
             try
             {

@@ -9,8 +9,16 @@
         public Category? Category { get; set; }
         public bool? IsDeleted { get; set; }
 
+        // New navigation properties
         public ICollection<Stock>? Stock { get; set; }
         public ICollection<StockTransaction>? StockTransactions { get; set; }
+
+        // a plate related properties
+         // Foreign key
+        public int PlatePoolId { get; set; }
+
+    // Navigation property
+        public PlatePool PlatePool { get; set; }
 
     }
 

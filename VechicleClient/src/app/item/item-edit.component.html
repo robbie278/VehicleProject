@@ -35,6 +35,47 @@
           {{ 'Category.Category_Name_Placeholder' | translate }}
         </mat-error>
     </mat-form-field>
+     <!-- plate data display here -->
+    <mat-form-field>
+      <mat-label>{{ 'FORM.NAME' | translate }}: major</mat-label>
+      <input matInput formControlName="majorId" placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+      <mat-error *ngIf="form.controls['majorId'].errors?.['required']">
+        {{ 'FORM.NAME_REQUIRED' | translate }}
+      </mat-error>
+  </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'FORM.NAME' | translate }}: minor</mat-label>
+      <input matInput formControlName="minorId" placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+      <mat-error *ngIf="form.controls['minorId'].errors?.['required']">
+        {{ 'FORM.NAME_REQUIRED' | translate }}
+      </mat-error>
+  </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'FORM.NAME' | translate }}: plateNumber </mat-label>
+      <input matInput formControlName="plateNumber" placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+      <mat-error *ngIf="form.controls['plateNumber'].errors?.['required']">
+        {{ 'FORM.NAME_REQUIRED' | translate }}
+      </mat-error>
+  </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'FORM.NAME' | translate }}: plateSizeId </mat-label>
+      <input matInput formControlName="plateSizeId"  placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+      <mat-error *ngIf="form.controls['plateSizeId'].errors?.['required']">
+        {{ 'FORM.NAME_REQUIRED' | translate }}
+      </mat-error>
+  </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'FORM.NAME' | translate }}: plateRegionId </mat-label>
+      <input matInput formControlName="plateRegionId"  placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+      <mat-error *ngIf="form.controls['plateRegionId'].errors?.['required']">
+        {{ 'FORM.NAME_REQUIRED' | translate }}
+      </mat-error>
+  </mat-form-field>
+
   </form>
 </div>
 <div mat-dialog-actions>

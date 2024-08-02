@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VehicleServer;
 
@@ -11,9 +12,11 @@ using VehicleServer;
 namespace VehicleServer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240801083027_AddPlatePoolToItem")]
+    partial class AddPlatePoolToItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,15 +73,14 @@ namespace VehicleServer.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<int>("PlatePoolId")
+                    b.Property<int?>("PlatePoolId")
                         .HasColumnType("int");
 
                     b.HasKey("ItemId");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("PlatePoolId")
-                        .IsUnique();
+                    b.HasIndex("PlatePoolId");
 
                     b.ToTable("Items");
                 });
@@ -362,10 +364,9 @@ namespace VehicleServer.Migrations
                         .IsRequired();
 
                     b.HasOne("VehicleServer.Entities.PlatePool", "PlatePool")
-                        .WithOne("Item")
-                        .HasForeignKey("VehicleServer.Entities.Item", "PlatePoolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Items")
+                        .HasForeignKey("PlatePoolId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Category");
 
@@ -482,8 +483,7 @@ namespace VehicleServer.Migrations
 
             modelBuilder.Entity("VehicleServer.Entities.PlatePool", b =>
                 {
-                    b.Navigation("Item")
-                        .IsRequired();
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("VehicleServer.Entities.Store", b =>

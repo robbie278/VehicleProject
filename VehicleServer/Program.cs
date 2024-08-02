@@ -36,6 +36,13 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
         )
 );
 
+//builder.Services.AddControllers()
+//           .AddJsonOptions(options =>
+//           {
+//               options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+//               options.JsonSerializerOptions.WriteIndented = true; // Optional: for better readability
+//           });
+
 
 var app = builder.Build();
 
