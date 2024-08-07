@@ -17,7 +17,7 @@ import { PlatePool } from '../Models/PlatePool';
   styleUrl: './item.component.scss'
 })
 export class ItemComponent implements OnInit {
-  public displayedColumns: string[] = ['index', 'name', 'description','categoryName','majorId','minorId','plateSizeId','plateNumber','plateRegionId','action'];
+  public displayedColumns: string[] = ['index', 'name', 'description','categoryName','action'];
  public items!:MatTableDataSource<Item>
  defaultPageIndex: number = 0;
  defaultPageSize: number = 10;
@@ -74,7 +74,7 @@ ngOnInit() {
         this.paginator.pageIndex = result.pageIndex;
         this.paginator.pageSize = result.pageSize;
         this.items = new MatTableDataSource<Item>(result.data);
-        this.plate = result.data.map(i => i.platePool )
+        
         console.log(this.plate)
       
       },

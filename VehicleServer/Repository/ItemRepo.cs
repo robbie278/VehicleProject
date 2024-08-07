@@ -35,35 +35,16 @@ namespace VehicleServer.Repository
                         
                         ItemId = c.ItemId,
                         Name = c.Name,
+                        IsPlate=c.IsPlate,
                         Description = c.Description,
                         CategoryId = c.Category!.CategoryId,
-                        CategoryName = c.Category!.Name,
+                        CategoryName = c.Category.Name,
                         
-                        PlatePool = c.PlatePool != null ? new PlatePoolDto
-                        {
-                            PlatePoolId = c.PlatePool.PlatePoolId,
-                            AssignStatus = c.PlatePool.AssignStatus,
-                            PlateNumber = c.PlatePool.PlateNumber,
-                            MajorId = c.PlatePool.MajorId,
-                            MinorId = c.PlatePool.MinorId,
-                            PlateSizeId = c.PlatePool.PlateSizeId,
-                            VehicleCategoryId = c.PlatePool.VehicleCategoryId,
-                            PlateRegionId = c.PlatePool.PlateRegionId,
-                            CreatedDate = c.PlatePool.CreatedDate,
-                            CreatedByUsername = c.PlatePool.CreatedByUsername,
-                            CreatedByUserId = c.PlatePool.CreatedByUserId,
-                            LastModifiedDate = c.PlatePool.LastModifiedDate,
-                            LastModifiedByUsername = c.PlatePool.LastModifiedByUsername,
-                            LastModifiedByUserId = c.PlatePool.LastModifiedByUserId,
-                            IsDeleted = c.PlatePool.IsDeleted,
-                            DeletedDate = c.PlatePool.DeletedDate,
-                            DeletedByUsername = c.PlatePool.DeletedByUsername,
-                            DeletedByUserId = c.PlatePool.DeletedByUserId,
-                            IsActive = c.PlatePool.IsActive
-                        } : null
+                        
+
                     }),
 
-            pageIndex,
+                    pageIndex,
                     pageSize,
                     sortColumn,
                     sortOrder,
@@ -74,7 +55,7 @@ namespace VehicleServer.Repository
         {
             var items = await _context.Items
                                           .Where(it => it.CategoryId == id)
-                                           .Include(i => i.PlatePool)
+                                           
                                           .ToListAsync();
             return items;
 
@@ -90,16 +71,16 @@ namespace VehicleServer.Repository
 
             return item;
         }
-        public async Task<IActionResult> PutItem(int id, ItemDto item)
+        public async Task<IActionResult> PutItem(int id, Item item)
         {
             if (id != item.ItemId)
             {
                 return BadRequest();
             }
-            // this is for including the plates data in the item
-            var mappedItem = _mapper.Map<Item>(item);
+          
+           
             
-            _context.Entry(mappedItem).State = EntityState.Modified;
+            _context.Entry(item).State = EntityState.Modified;
 
             try
             {
@@ -122,13 +103,45 @@ namespace VehicleServer.Repository
 
         public async Task<ActionResult<ItemDto>> PostItem(ItemDto itemDto)
         {
+            // Check if the itemDto has a valid CategoryId
+            if (itemDto.CategoryId == 0)
+            {
+                return BadRequest("CategoryId cannot be zero.");
+            }
+
+            // Find the category in the database
+            var category = await _context.Categories.FindAsync(itemDto.CategoryId);
+            if (category == null)
+            {
+                return BadRequest("Category does not exist.");
+            }
+
+            // Ensure the category has a valid Name
+            if (string.IsNullOrEmpty(category.Name))
+            {
+                return BadRequest("Category Name cannot be null or empty.");
+            }
+
+            // Map ItemDto to Item entity
             var item = _mapper.Map<Item>(itemDto);
 
+            // Set the category navigation property
+            item.Category = category;
+
+            // Add the item to the context
             _context.Items.Add(item);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetItem", new { id = item.ItemId }, item);
+            // Map the saved item back to ItemDto
+            var result = _mapper.Map<ItemDto>(item);
+
+            // Set the CategoryName property in the result
+            result.CategoryName = category.Name;
+
+            // Return the created item
+            return CreatedAtAction(nameof(GetItem), new { id = item.ItemId }, result);
         }
+
         public async Task<IActionResult> DeleteItem(int id)
         {
             var item = await _context.Items.FindAsync(id);

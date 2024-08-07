@@ -29,8 +29,8 @@
     </mat-form-field>
     <mat-form-field *ngIf="categories">
       <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
-      <mat-select id="categoryId" formControlName="categoryId">
-        <mat-option *ngFor="let category of categories" [value]="category.categoryId" (onSelectionChange)="getItemsByCategory(category.categoryId)">
+      <mat-select id="categoryId" formControlName="categoryId" (selectionChange)="onCategoryChange($event)">
+        <mat-option *ngFor="let category of categories" [value]="category.categoryId">
           {{ category.name }}
         </mat-option>
       </mat-select>
@@ -38,6 +38,10 @@
         {{ 'Category.Category_Name_Placeholder' | translate }}
       </mat-error>
     </mat-form-field>
+
+
+    <!-- is plate check box -->
+    <!-- <mat-checkbox formControlName="isPlate" (change)="isSingleBoxChage($event)">Is Plate</mat-checkbox> -->
 
     <mat-form-field>
       <mat-label>{{ 'Transaction.select_an_item' | translate }} :</mat-label>
@@ -62,6 +66,43 @@
        
       </mat-error>
     </mat-form-field>
+
+    <!-- plate related input fields -->
+    
+    <mat-form-field *ngIf="itIsPlate">
+      <mat-label>{{ 'FORM.NAME' | translate }}major:</mat-label>
+      <input matInput formControlName="majorId" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+      <mat-error *ngIf=" form.controls['majorId'].errors?.['required']">
+        {{ 'FORM.NAME_REQUIRED' | translate }}
+      </mat-error>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="itIsPlate">
+    <mat-label>{{ 'FORM.NAME' | translate }}minor:</mat-label>
+    <input matInput formControlName="minorId" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+    <mat-error *ngIf=" form.controls['minorId'].errors?.['required']">
+      {{ 'FORM.NAME_REQUIRED' | translate }}
+    </mat-error>
+</mat-form-field>
+
+  <mat-form-field *ngIf="itIsPlate">
+    <mat-label>{{ 'FORM.NAME' | translate }}plateSizeId:</mat-label>
+    <input matInput formControlName="plateSizeId" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+    <mat-error *ngIf=" form.controls['plateSizeId'].errors?.['required']">
+      {{ 'FORM.NAME_REQUIRED' | translate }}
+    </mat-error>
+</mat-form-field>
+
+<mat-form-field *ngIf="itIsPlate">
+  <mat-label>{{ 'FORM.NAME' | translate }}plateRegionId:</mat-label>
+  <input matInput formControlName="plateRegionId" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+  <mat-error *ngIf=" form.controls['plateRegionId'].errors?.['required']">
+    {{ 'FORM.NAME_REQUIRED' | translate }}
+  </mat-error>
+</mat-form-field>
+
+
+
     <mat-form-field>
       <mat-label>{{ 'Transaction.transaction_type' | translate }}:</mat-label>
       <input
@@ -92,12 +133,12 @@
 
     <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
 
-    <mat-checkbox formControlName="singleItem" (change)="onCheckboxChange($event)">
+    <mat-checkbox *ngIf="!itIsPlate" formControlName="singleItem" (change)="onCheckboxChange($event)">
       {{ "others.Single_Item" | translate }}
     </mat-checkbox>
     <!-- <mat-checkbox class="example-margin" [(ngModel)]="isBulk">Checked</mat-checkbox> -->
 
-    <mat-form-field>
+    <mat-form-field *ngIf="!itIsPlate">
       <mat-label>{{ 'Transaction.pad_number_start' | translate }}:</mat-label>
       <input
         matInput
@@ -112,6 +153,8 @@
         {{ 'Item.description_placeholder' | translate }}
       </mat-error>
     </mat-form-field>
+
+
     <mat-form-field *ngIf="!form.controls['singleItem'].value">
       <mat-label>{{ 'Transaction.pad_number_end' | translate }}:</mat-label>
       <input
@@ -145,7 +188,7 @@
   <button
     mat-flat-button
     color="primary"
-    [disabled]="!form.valid"
+    
     (click)="onSubmit()"
   >
     {{ "FORM.CREATE" | translate }}

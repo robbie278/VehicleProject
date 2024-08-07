@@ -49,7 +49,7 @@ namespace VehicleServer.Controllers
         // PUT: api/Countries/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItem(int id, ItemDto item)
+        public async Task<IActionResult> PutItem(int id, Item item)
         {
             return await itemRepo.PutItem(id, item);
         }

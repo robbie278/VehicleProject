@@ -35,6 +35,7 @@ namespace VehicleServer.Repository
                         CategoryId = c.CategoryId,
                         Name = c.Name,
                         Description = c.Description,
+                        
                     }),
                     pageIndex,
                     pageSize,

@@ -68,7 +68,30 @@ namespace VehicleServer.Repository
                         StoreKeeperName = c.StoreKeeper!.Name,
                         UserId = c.User!.UserId,
                         UserName = c.User!.UserName,
-                        
+
+                        PlatePool = c.PlatePools != null ? new PlatePoolDto
+                        {
+                            PlatePoolId = c.PlatePools.PlatePoolId,
+                            AssignStatus = c.PlatePools.AssignStatus,
+                            PlateNumber = c.PlatePools.PlateNumber,
+                            MajorId = c.PlatePools.MajorId,
+                            MinorId = c.PlatePools.MinorId,
+                            PlateSizeId = c.PlatePools.PlateSizeId,
+                            VehicleCategoryId = c.PlatePools.VehicleCategoryId,
+                            PlateRegionId = c.PlatePools.PlateRegionId,
+                            CreatedDate = c.PlatePools.CreatedDate,
+                            CreatedByUsername = c.PlatePools.CreatedByUsername,
+                            CreatedByUserId = c.PlatePools.CreatedByUserId,
+                            LastModifiedDate = c.PlatePools.LastModifiedDate,
+                            LastModifiedByUsername = c.PlatePools.LastModifiedByUsername,
+                            LastModifiedByUserId = c.PlatePools.LastModifiedByUserId,
+                            IsDeleted = c.PlatePools.IsDeleted,
+                            DeletedDate = c.PlatePools.DeletedDate,
+                            DeletedByUsername = c.PlatePools.DeletedByUsername,
+                            DeletedByUserId = c.PlatePools.DeletedByUserId,
+                            IsActive = c.PlatePools.IsActive
+                        } : null
+
                     }),
                     pageIndex,
                     pageSize,

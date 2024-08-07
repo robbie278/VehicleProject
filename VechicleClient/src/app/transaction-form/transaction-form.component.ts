@@ -41,6 +41,10 @@ export class TransactionFormComponent implements OnInit {
   categoryId: number = 0;
   storeId: number = 0;
   isChecked: boolean = false;
+  isPlateChecked: boolean = false;
+  itIsPlate:boolean = false;
+  
+
   constructor(
     private transactionFormService: TransactionFormService,
     private transactionService: TransactionService,
@@ -55,7 +59,37 @@ export class TransactionFormComponent implements OnInit {
 
   isBulk = false
 
+  isSingleBoxChage(event: any) {
+    this.itIsPlate = event.checked;
+    this.form.get('majorId')?.updateValueAndValidity();
+    this.form.get('minorId')?.updateValueAndValidity();
+    this.form.get('plateSizeId')?.updateValueAndValidity();
+    this.form.get('plateRegionId')?.updateValueAndValidity();
+  }
 
+  // onCategoryChange(event: any){
+  //   const selectedCategoryId = event.value;
+  //   const selectedCategory = this.categories?.find(category => category.categoryId == selectedCategoryId);
+  //    if (selectedCategory?.name.toLowerCase() == 'plate'){
+  //     this.itIsPlate = true
+  //   }else{
+  //      this.itIsPlate = false
+
+  //    }
+  // }
+  
+  onCategoryChange(event: any){
+    const selectedCategoryId = event.value;
+    const selectedCategory = this.categories?.find(category => category.categoryId == selectedCategoryId);
+     if (selectedCategory?.isPlate){
+      this.itIsPlate = true
+    }else{
+       this.itIsPlate = false
+
+     }
+
+  }
+  
 
 
   ngOnInit() {
@@ -73,13 +107,21 @@ export class TransactionFormComponent implements OnInit {
           Validators.required
         ),
         singleItem: new FormControl(false),
+        isPlate: new FormControl(false),
         padNumberStart: new FormControl('', [
           Validators.required,
           Validators.pattern(/^\d+$/),
         ]),
         padNumberEnd: new FormControl('', [Validators.pattern(/^\d+$/)]),
         quantity: new FormControl('', Validators.required),
-        transactionDate: new FormControl(new Date(), [Validators.required, this.futureDateValidator()])
+        transactionDate: new FormControl(new Date(), [Validators.required, this.futureDateValidator()]),
+
+        // plate related fields
+        majorId: new FormControl('', Validators.required),
+        minorId: new FormControl('', Validators.required),
+        plateNumber: new FormControl('', Validators.required),
+        plateSizeId: new FormControl('', Validators.required),
+        plateRegionId: new FormControl('', Validators.required),
 
       },
       { validators: this.padNumberValidator() }
@@ -90,20 +132,21 @@ export class TransactionFormComponent implements OnInit {
     // } else {
     //   this.form.get('userId')?.setValue(null);  
     // }
-
-    this.form.get('singleItem')?.valueChanges.subscribe((isSingleItem) => {
-      if (isSingleItem) {
+    this.form.get('isPlate')?.valueChanges.subscribe((isPlate) => {
+      if (this.itIsPlate) {
         this.form.get('padNumberEnd')?.clearValidators();
         this.form.get('padNumberEnd')?.updateValueAndValidity();
         this.form.get('quantity')?.setValue(1);
+        this.calculateQuantity();
       } else {
-        this.form
-          .get('padNumberEnd')
-          ?.setValidators([Validators.required, Validators.pattern(/^\d+$/)]);
+        this.form.get('padNumberEnd')?.setValidators([Validators.pattern(/^\d+$/)]);
         this.form.get('padNumberEnd')?.updateValueAndValidity();
         this.calculateQuantity();
       }
     });
+    
+
+ 
 
     this.form
       .get('padNumberStart')
@@ -135,6 +178,7 @@ export class TransactionFormComponent implements OnInit {
     this.loadStore();
     //this.loadStoreKeeper();
     this.loadUser();
+    this.loadItems();
   }
 
   futureDateValidator(): ValidatorFn {
@@ -151,6 +195,7 @@ export class TransactionFormComponent implements OnInit {
     this.transactionFormService.getItem().subscribe({
       next: (result) => {
         this.item = result.data as Item[];
+        console.log("this is items: " + this.item)
       },
       error: (err) => console.log(err),
     });
@@ -190,7 +235,15 @@ export class TransactionFormComponent implements OnInit {
       userId: formValue.userId || null,
       padNumberEnd: formValue.padNumberEnd || null,
       transactionType: this.transactionType,
-      // Explicitly set userId to null if it is not defined
+      // plate related fields
+      majorId: this.form.controls['majorId'].value,
+      minorId: this.form.controls['minorId'].value,
+      plateRegionId: this.form.controls['plateRegionId'].value
+      // plateSizeId: this.form.controls['plateSizeId'].value,
+      // plateNumber: this.form.controls['plateNumber'].value
+      // if (!item.platePool) {
+      //   item.platePool = <PlatePool>{};
+      // }
     };
     if (!this.isChecked)
       this.transactionFormService.post(issue).subscribe({
@@ -272,8 +325,11 @@ export class TransactionFormComponent implements OnInit {
     };
   }
 
+  
+
   onCheckboxChange(event: any) {
     this.isChecked = event.checked;
+    
     if (this.isChecked) {
       this.form.get('padNumberEnd')?.clearValidators();
       this.form.get('padNumberEnd')?.updateValueAndValidity();

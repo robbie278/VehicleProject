@@ -5,5 +5,5 @@ export interface Item {
     name: string;
     description: string;
     categoryId: number;
-    platePool?: PlatePool; // Made optional in case it might not be present
+    isPlate: boolean 
   }

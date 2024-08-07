@@ -9,9 +9,7 @@ namespace VehicleServer.DTOs
         public int CategoryId { get; set; }
         public string? CategoryName { get; set; }
 
-        // this is plate relation
-    
-        public PlatePoolDto? PlatePool { get; set; }
+        public bool? IsPlate { get; set; }
 
 
     }

@@ -23,6 +23,6 @@
         public bool IsActive { get; set; }
 
         // Navigation properties
-        public Item Item { get; set; }
+        public StockTransaction? StockTransactions { get; set; }
     }
 }
