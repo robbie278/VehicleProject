@@ -78,13 +78,17 @@ export class TransactionFormComponent implements OnInit {
   //    }
   // }
   
-  onCategoryChange(event: any){
-    const selectedCategoryId = event.value;
-    const selectedCategory = this.categories?.find(category => category.categoryId == selectedCategoryId);
-     if (selectedCategory?.isPlate){
+  onItemChange(event: any){
+    const selectedItemId = event.value;
+    const selectedItem = this.item?.find(item => item.itemId == selectedItemId);
+    
+     if (selectedItem?.isPlate){
       this.itIsPlate = true
+      alert('Plate Mode!' )
+      console.log(selectedItem.isPlate)
     }else{
        this.itIsPlate = false
+       console.log(selectedItem?.isPlate)
 
      }
 

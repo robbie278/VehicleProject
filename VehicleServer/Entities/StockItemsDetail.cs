@@ -18,6 +18,11 @@ namespace VehicleServer.Entities
         public virtual User? User { get; set; }
         public virtual StoreKeeper? StoreKeeper { get; set; }
 
+
+        // navigation for plate pool
+        public int PlatePoolId { get; set; }  // Foreign key to PlatePool
+        public virtual PlatePool? PlatePool { get; set; }
+
     }
 
 }
