@@ -12,7 +12,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         Task UpdateStockAsync(int itemId, int storeId, int quantityChange);
         Task<bool> ValidateTransactionAsync(StockItemsDetail transactionDetail, int padNumberStart, int padNumberEnd);
         Task<bool> ValidateSingleTransactionAsync(StockItemsDetail transactionDetail, int padNumber);
-        Task<bool> IsDuplicateEntryAsync(int itemId, int padNumber);
+        Task<bool> IsDuplicateEntryAsync(int itemId, int padNumber, bool? IsPlate, int? PlateRegionId, int? MajorId, int? MinorId);
         Task<bool> CanIssueTransactionAsync(int itemId, int padNumber);
         Task<bool> CanReceiveTransactionAsync(int itemId, int padNumber);
         Task<bool> CanReturnTransactionAsync(int itemId, int padNumber);

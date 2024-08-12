@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
           '#66BB6A', // Color for item 2  
           '#FFCA28', // Color for item 3  
           '#EF5350', // Color for item 4  
-          // Add more colors as needed, or make it dynamic  
+        
         ];  
   
         // Create a dataset with varying colors for each quantity  

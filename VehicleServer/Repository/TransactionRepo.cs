@@ -36,6 +36,7 @@ namespace VehicleServer.Repository
         {
             var query = _context.StockTransactions.AsNoTracking().Where(ct => ct.IsDeleted != true);
 
+
             // getting transactions by store id from db
             if (storeId.HasValue)
             {
@@ -67,6 +68,7 @@ namespace VehicleServer.Repository
                         StoreKeeperName = c.StoreKeeper!.Name,
                         UserId = c.User!.UserId,
                         UserName = c.User!.UserName,
+
                     }),
                     pageIndex,
                     pageSize,

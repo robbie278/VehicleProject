@@ -102,7 +102,12 @@
     "all": "ሁሉንም",
     "View_Transaction_Details":"የዝውውር ዝርዝሮችን ይመልከቱ",
     "User":"ተጠቃሚ",
-    "Single_Item":"ንጥል ንብረት"
+    "Single_Item":"ንጥል ንብረት",
+    "Plate":"ታርጋ",
+    "major":"ዋና",
+    "minor":"አነስተኛ",
+    "Plate_Size":"ታርጋ መጠን",
+    "Plate_Region":"ታርጋ ክልል"
   },
 
     "items_per_page": "ብዛት በግጽ",

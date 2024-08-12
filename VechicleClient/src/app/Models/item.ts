@@ -1,7 +1,9 @@
-export interface Item{
-    itemId:number;
-    name:string;
-    description:string;
-    categoryName:string;
-    categoryId:number;
-}
+import { PlatePool } from "./PlatePool";
+
+export interface Item {
+    itemId: number;
+    name: string;
+    description: string;
+    categoryId: number;
+    isPlate: boolean 
+  }

@@ -12,5 +12,7 @@ namespace VehicleServer.DTOs
         public string? ItemName { get; set; }
         public string? StoreName { get; set; }
 
+
+
     }
 }

@@ -30,5 +30,9 @@ namespace VehicleServer
         public DbSet<User> Users { get; set; }
         public DbSet<StockItemsDetail> StockItemsDetail { get; set;}
 
+        // plate pool table
+        public DbSet<PlatePool> PlatePools { get; set; }
+
+
     }
 }

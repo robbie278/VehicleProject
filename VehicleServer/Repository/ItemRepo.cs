@@ -21,7 +21,7 @@ namespace VehicleServer.Repository
             this._mapper = mapper;
             this._context = context;
         }
-        public async Task<ActionResult<ApiResult<ItemDto>>> GetItems(
+        public async Task<ApiResult<ItemDto>> GetItems(
                 int pageIndex = 0,
               int pageSize = 10,
               string? sortColumn = null,
@@ -32,14 +32,19 @@ namespace VehicleServer.Repository
                 return await ApiResult<ItemDto>.CreateAsync(
                     _context.Items.AsNoTracking().Where(ct => ct.IsDeleted != true).Select(c => new ItemDto()
                     {
+                        
                         ItemId = c.ItemId,
                         Name = c.Name,
+                        IsPlate=c.IsPlate,
                         Description = c.Description,
                         CategoryId = c.Category!.CategoryId,
-                        CategoryName = c.Category!.Name,
+                        CategoryName = c.Category.Name,
+                        
+                        
+
                     }),
 
-            pageIndex,
+                    pageIndex,
                     pageSize,
                     sortColumn,
                     sortOrder,
@@ -50,6 +55,7 @@ namespace VehicleServer.Repository
         {
             var items = await _context.Items
                                           .Where(it => it.CategoryId == id)
+                                           
                                           .ToListAsync();
             return items;
 
@@ -71,7 +77,9 @@ namespace VehicleServer.Repository
             {
                 return BadRequest();
             }
-
+          
+           
+            
             _context.Entry(item).State = EntityState.Modified;
 
             try
@@ -95,13 +103,45 @@ namespace VehicleServer.Repository
 
         public async Task<ActionResult<ItemDto>> PostItem(ItemDto itemDto)
         {
+            // Check if the itemDto has a valid CategoryId
+            if (itemDto.CategoryId == 0)
+            {
+                return BadRequest("CategoryId cannot be zero.");
+            }
+
+            // Find the category in the database
+            var category = await _context.Categories.FindAsync(itemDto.CategoryId);
+            if (category == null)
+            {
+                return BadRequest("Category does not exist.");
+            }
+
+            // Ensure the category has a valid Name
+            if (string.IsNullOrEmpty(category.Name))
+            {
+                return BadRequest("Category Name cannot be null or empty.");
+            }
+
+            // Map ItemDto to Item entity
             var item = _mapper.Map<Item>(itemDto);
 
+            // Set the category navigation property
+            item.Category = category;
+
+            // Add the item to the context
             _context.Items.Add(item);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetItem", new { id = item.ItemId }, item);
+            // Map the saved item back to ItemDto
+            var result = _mapper.Map<ItemDto>(item);
+
+            // Set the CategoryName property in the result
+            result.CategoryName = category.Name;
+
+            // Return the created item
+            return CreatedAtAction(nameof(GetItem), new { id = item.ItemId }, result);
         }
+
         public async Task<IActionResult> DeleteItem(int id)
         {
             var item = await _context.Items.FindAsync(id);

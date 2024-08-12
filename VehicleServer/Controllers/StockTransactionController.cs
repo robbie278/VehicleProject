@@ -137,8 +137,15 @@ namespace VehicleServer.Controllers
                 Quantity = request.Quantity,
                 PadNumberStart = request.PadNumberStart,
                 PadNumberEnd = request.PadNumberEnd,
-                TransactionDate = request.TransactionDate
+                TransactionDate = request.TransactionDate,
+                IsPlate = request.IsPlate,
+                MajorId = request.MajorId,
+                MinorId = request.MinorId,
+                PlateSizeId = request.PlateSizeId,
+                VehicleCategoryId = request.VehicleCategoryId,
+                PlateRegionId = request.PlateRegionId
             };
+
             if(transaction.TransactionType == "Issue")
             {
                 var canIssueTransaction = await _stockService.CanIssueTransactionAsync(transaction.ItemId, transaction.StoreId, transaction.Quantity);
@@ -154,7 +161,13 @@ namespace VehicleServer.Controllers
                 StoreId = request.StoreId,
                 UserId = request.UserId,
                 StoreKeeperId = request.StoreKeeperId,
-                TransactionType = request.TransactionType
+                TransactionType = request.TransactionType,
+                IsPlate = request.IsPlate,
+                MajorId = request.MajorId,
+                MinorId = request.MinorId,
+                PlateSizeId = request.PlateSizeId,
+                VehicleCategoryId = request.VehicleCategoryId,
+                PlateRegionId = request.PlateRegionId
             }, request.PadNumberStart, request.PadNumberEnd ?? default(int) );
 
             if (!isValid)
