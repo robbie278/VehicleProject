@@ -1,3 +1,5 @@
+import { PlatePool } from "./PlatePool";
+
 export interface Transaction{
     stockTransactionId:number;
     transactionType:string;
@@ -13,4 +15,6 @@ export interface Transaction{
     itemId:number;
     storeKeeperId:number;
     transactionDate: Date;
+
+    platePool?: PlatePool; // Made optional in case it might not be present
 }

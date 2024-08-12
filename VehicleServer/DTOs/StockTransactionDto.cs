@@ -18,5 +18,9 @@ namespace VehicleServer.DTOs
         public string? UserName { get; set; }
         public string? ItemName { get; set; }
 
+        // this is plate relation
+
+        public PlatePoolDto? PlatePool { get; set; } = null;
+
     }
 }

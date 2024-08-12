@@ -1,23 +1,23 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" [(opened)]="isSidenavOpen">
     <mat-nav-list>
-      <a mat-list-item routerLink="/">
+      <a mat-list-item routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
         <mat-icon>dashboard</mat-icon>
         {{'others.home' | translate}}
       </a>
-      <a mat-list-item routerLink="/categories">
+      <a mat-list-item routerLink="/categories" routerLinkActive="active-link">
         <mat-icon>category</mat-icon>
         {{ 'others.Categories' | translate  }}
       </a>
-      <a mat-list-item routerLink="/items">
+      <a mat-list-item routerLink="/items" routerLinkActive="active-link">
         <mat-icon>inventory</mat-icon>
         {{ 'others.Items' | translate  }}
       </a>
-      <a mat-list-item routerLink="/store">
+      <a mat-list-item routerLink="/store" routerLinkActive="active-link">
         <mat-icon>store</mat-icon>
         {{ 'others.Stores' | translate  }}
       </a>
-      <a mat-list-item routerLink="/storekeppers">
+      <a mat-list-item routerLink="/storekeppers" routerLinkActive="active-link">
         <mat-icon>person</mat-icon>
         {{ 'others.Store_Keepers' | translate  }}
       </a>

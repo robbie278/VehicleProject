@@ -96,3 +96,18 @@
         white-space: nowrap; /* Prevent text from wrapping inside options */
     }
     
+    .active-link {
+      color: #1976d2; /* Change this to your desired active color */
+      font-weight: bold; /* Optional: Make the active link bold */
+    }
+
+    /* Add the following SCSS */
+.active-link {
+  background-color: #d3d3d3; /* Light grey background */
+  color: #d21919; /* Change this to your desired active color */
+  font-weight: bold;
+
+  mat-icon {
+    color: #34bcf1; /* Ensure the icon color changes too */
+  }
+}

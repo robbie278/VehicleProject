@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VehicleServer;
 
@@ -11,9 +12,11 @@ using VehicleServer;
 namespace VehicleServer.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240801111926_pool")]
+    partial class pool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,17 +68,20 @@ namespace VehicleServer.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsPlate")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
+                    b.Property<int>("PlatePoolId")
+                        .HasColumnType("int");
+
                     b.HasKey("ItemId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("PlatePoolId")
+                        .IsUnique();
 
                     b.ToTable("Items");
                 });
@@ -240,9 +246,6 @@ namespace VehicleServer.Migrations
                     b.Property<int>("PadNumberStart")
                         .HasColumnType("int");
 
-                    b.Property<int>("PlatePoolId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -265,9 +268,6 @@ namespace VehicleServer.Migrations
                     b.HasKey("StockTransactionId");
 
                     b.HasIndex("ItemId");
-
-                    b.HasIndex("PlatePoolId")
-                        .IsUnique();
 
                     b.HasIndex("StoreId");
 
@@ -364,7 +364,15 @@ namespace VehicleServer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("VehicleServer.Entities.PlatePool", "PlatePool")
+                        .WithOne("Item")
+                        .HasForeignKey("VehicleServer.Entities.Item", "PlatePoolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
+
+                    b.Navigation("PlatePool");
                 });
 
             modelBuilder.Entity("VehicleServer.Entities.Stock", b =>
@@ -427,12 +435,6 @@ namespace VehicleServer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("VehicleServer.Entities.PlatePool", "PlatePools")
-                        .WithOne("StockTransactions")
-                        .HasForeignKey("VehicleServer.Entities.StockTransaction", "PlatePoolId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("VehicleServer.Entities.Store", "Stores")
                         .WithMany("StocksTransactions")
                         .HasForeignKey("StoreId")
@@ -450,8 +452,6 @@ namespace VehicleServer.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("Items");
-
-                    b.Navigation("PlatePools");
 
                     b.Navigation("StoreKeeper");
 
@@ -485,7 +485,8 @@ namespace VehicleServer.Migrations
 
             modelBuilder.Entity("VehicleServer.Entities.PlatePool", b =>
                 {
-                    b.Navigation("StockTransactions");
+                    b.Navigation("Item")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("VehicleServer.Entities.Store", b =>

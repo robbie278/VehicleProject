@@ -30,9 +30,24 @@ namespace VehicleServer.Repository
                 string? sortOrder = null,
                 string? filterColumn = null,
                 string? filterQuery = null,
-                 string? transactionType = null)
+                string? transactionType = null,
+                int? storeId = null,
+                int? itemId = null)
         {
             var query = _context.StockTransactions.AsNoTracking().Where(ct => ct.IsDeleted != true);
+
+
+            // getting transactions by store id from db
+            if (storeId.HasValue)
+            {
+                query = query.Where(c => c.StoreId == storeId);
+            }
+
+            //getting transaction by item it
+            if (itemId.HasValue)
+            {
+                query = query.Where(c => c.ItemId == itemId);
+            }
 
             if (!string.IsNullOrEmpty(transactionType) && transactionType!= "All")
             {
@@ -53,6 +68,7 @@ namespace VehicleServer.Repository
                         StoreKeeperName = c.StoreKeeper!.Name,
                         UserId = c.User!.UserId,
                         UserName = c.User!.UserName,
+
                     }),
                     pageIndex,
                     pageSize,

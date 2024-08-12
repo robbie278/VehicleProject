@@ -39,7 +39,7 @@
   "Transaction": {
     "select_a_store": "ጣቢያ ይምረጡ",
     "select_a_category": "አንድ ምድብ ይምረጡ",
-    "select_an_item": "እቃ ይምረጡ",
+    "select_an_item": "ንብረቶች ይምረጡ",
     "select_storekeeper": "የጣቢያ አስተዳዳሪ ይምረጡ",
     "transaction_type": "የዝውውር አይነት",
     "pad_number_start": "ፓድ ቁጥር ይጀምራል",
@@ -51,13 +51,13 @@
   "Generals": {
     "Transaction": "ዝውውር",
     "Transaction_Type": "የዝውውር አይነት",
-    "Item_Name": "የእቃ ስም",
+    "Item_Name": "የንብረት ስም",
     "Store_Name": "ጣቢያ ስም",
     "Store_Keeper_Name": "የጣቢያ አስተዳዳሪ"
   },
   "others": {
     "Categories": "ምድቦች",
-    "Items": "እቃዎች",
+    "Items": "ንብረቶች",
     "Stores": "ጣቢያ",
     "Store_Keepers": "ጣቢያ አስተዳዳሪዎች",
     "Issue": "ማውጫ",
@@ -74,11 +74,11 @@
 
     "Create_Store": "ጣቢያ ፍጠር",
     "Create_StoreKeeper": "የጣቢያ አስተዳዳሪ",
-    "Create_Item": "እቃ ፍጠር",
+    "Create_Item": "ንብረት ፍጠር",
     "Create_Category": "ምድብ ፍጠር",
     "Edit_Store": "ጣቢያ አስተካክል",
     "Edit_StoreKeeper": "ጣቢያ አስተዳዳሪ አስተካክል",
-    "Edit_Item": "እቃ አስተካክል",
+    "Edit_Item": "ንብረት አስተካክል",
     "Edit_Category": "ምድብ አስተካክል",
     "Edit_Transaction":"ዝውውር አስተካክል",
 
@@ -86,8 +86,8 @@
     "Add_New": "አዲስ ይጨምሩ",
     "Availability": "መገኘት",
 
-    "Issuing_Goods": "እቃዎችን ማውጣት",
-    "Receiving_Goods": "እቃዎችን መቀበል",
+    "Issuing_Goods": "ንብረቶችን ማውጣት",
+    "Receiving_Goods": "ንብረቶችን መቀበል",
     "Damaged_Goods": "የተበላሹ ዕቃዎች",
     "Return_Goods": "ተመለስ ሸቀጦች",
 
@@ -102,7 +102,12 @@
     "all": "ሁሉንም",
     "View_Transaction_Details":"የዝውውር ዝርዝሮችን ይመልከቱ",
     "User":"ተጠቃሚ",
-    "Single_Item":"ንጥል እቃ"
+    "Single_Item":"ንጥል ንብረት",
+    "Plate":"ታርጋ",
+    "major":"ዋና",
+    "minor":"አነስተኛ",
+    "Plate_Size":"ታርጋ መጠን",
+    "Plate_Region":"ታርጋ ክልል"
   },
 
     "items_per_page": "ብዛት በግጽ",

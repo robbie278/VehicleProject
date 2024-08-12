@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic.Core;
 using System.Reflection;
+using VehicleServer.Entities;
 using VehicleServer.Enums;
 
 namespace VehicleServer.Repository
@@ -17,7 +18,9 @@ namespace VehicleServer.Repository
             string? sortOrder,
             string? filterColumn = null,
             string? filterQuery = null,
-            string? transactionType = null)
+            string? transactionType = null,
+            int? itemId = null,
+            int? storeId = null)
         {
             Data = data;
             PageIndex = pageIndex;
@@ -29,6 +32,8 @@ namespace VehicleServer.Repository
             FilterColumn = filterColumn;
             FilterQuery = filterQuery;
             TransactionType = transactionType;
+            ItemId = itemId;
+            StoreId = storeId;
 
         }
 
@@ -41,7 +46,9 @@ namespace VehicleServer.Repository
             string? sortOrder = null,
             string? filterColumn = null,
             string? filterQuery = null,
-            string? transactionType = null)
+            string? transactionType = null,
+            int? itemId = null,
+            int? storeId = null)
         {
             if (!string.IsNullOrEmpty(filterColumn)
                 && !string.IsNullOrEmpty(filterQuery)
@@ -56,6 +63,17 @@ namespace VehicleServer.Repository
             if (!string.IsNullOrEmpty(transactionType))
             {
                 source = source.Where(t => EF.Property<string>(t, "TransactionType") == transactionType);
+            }
+
+            // for item and store check from the front 
+            if (itemId.HasValue)
+            {
+                source = source.Where(t => EF.Property<int>(t, "ItemId") == itemId);            
+            }
+
+            if (storeId.HasValue)
+            {
+                source = source.Where(t => EF.Property<int>(t, "StoreId") == storeId);
             }
 
 
@@ -90,7 +108,9 @@ namespace VehicleServer.Repository
                 sortOrder,
                 filterColumn,
                 filterQuery,
-                transactionType);
+                transactionType,
+                 itemId,
+                storeId);
         }
 
 
@@ -154,6 +174,9 @@ namespace VehicleServer.Repository
 
         public string? FilterQuery { get; set; }
         public string? TransactionType { get; set; }
+
+        public int? ItemId { get; set; }
+        public int? StoreId { get; set; }
 
 
     }

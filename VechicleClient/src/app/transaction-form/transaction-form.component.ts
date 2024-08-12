@@ -41,6 +41,9 @@ export class TransactionFormComponent implements OnInit {
   categoryId: number = 0;
   storeId: number = 0;
   isChecked: boolean = false;
+  isPlateChecked: boolean = false;
+  itIsPlate: boolean = false;
+
   constructor(
     private transactionFormService: TransactionFormService,
     private transactionService: TransactionService,
@@ -53,13 +56,37 @@ export class TransactionFormComponent implements OnInit {
     this.transactionType = data.transactionType || TransactionType.Issue;
   }
 
-  isBulk = false
+  isBulk = false;
 
+  isSingleBoxChage(event: any) {
+    this.itIsPlate = event.checked;
+    this.form.get('majorId')?.updateValueAndValidity();
+    this.form.get('minorId')?.updateValueAndValidity();
+    this.form.get('plateSizeId')?.updateValueAndValidity();
+    this.form.get('plateRegionId')?.updateValueAndValidity();
+  }
 
+  onItemChange(event: any) {
+    const selectedItemId = event.value;
+    const selectedItem = this.item?.find(
+      (item) => item.itemId == selectedItemId
+    );
 
+    if (selectedItem?.isPlate) {
+      this.itIsPlate = true;
+      alert('Plate Mode!');
+      this.form.get('isPlate')?.setValue(true);
+      console.log(selectedItem.isPlate);
+    } else {
+      this.itIsPlate = false;
+      console.log(selectedItem?.isPlate);
+    }
+  }
 
   ngOnInit() {
-    const translatedTransactionType = this.translate.instant(`others.${this.transactionType}`);
+    const translatedTransactionType = this.translate.instant(
+      `others.${this.transactionType}`
+    );
 
     this.form = new FormGroup(
       {
@@ -73,14 +100,23 @@ export class TransactionFormComponent implements OnInit {
           Validators.required
         ),
         singleItem: new FormControl(false),
+        isPlate: new FormControl(false),
         padNumberStart: new FormControl('', [
           Validators.required,
           Validators.pattern(/^\d+$/),
         ]),
         padNumberEnd: new FormControl('', [Validators.pattern(/^\d+$/)]),
         quantity: new FormControl('', Validators.required),
-        transactionDate: new FormControl(new Date(), [Validators.required, this.futureDateValidator()])
+        transactionDate: new FormControl(new Date(), [
+          Validators.required,
+          this.futureDateValidator(),
+        ]),
 
+        // plate related fields
+        majorId: new FormControl('', Validators.required),
+        minorId: new FormControl('', Validators.required),
+        plateSizeId: new FormControl('', Validators.required),
+        plateRegionId: new FormControl('', Validators.required),
       },
       { validators: this.padNumberValidator() }
     );
@@ -88,18 +124,18 @@ export class TransactionFormComponent implements OnInit {
     // if (this.transactionType === TransactionType.Issue) {
     //   this.form.get('userId')?.setValidators(Validators.required);
     // } else {
-    //   this.form.get('userId')?.setValue(null);  
+    //   this.form.get('userId')?.setValue(null);
     // }
-
-    this.form.get('singleItem')?.valueChanges.subscribe((isSingleItem) => {
-      if (isSingleItem) {
+    this.form.get('isPlate')?.valueChanges.subscribe((isPlate) => {
+      if (this.itIsPlate) {
         this.form.get('padNumberEnd')?.clearValidators();
         this.form.get('padNumberEnd')?.updateValueAndValidity();
         this.form.get('quantity')?.setValue(1);
+        this.calculateQuantity();
       } else {
         this.form
           .get('padNumberEnd')
-          ?.setValidators([Validators.required, Validators.pattern(/^\d+$/)]);
+          ?.setValidators([Validators.pattern(/^\d+$/)]);
         this.form.get('padNumberEnd')?.updateValueAndValidity();
         this.calculateQuantity();
       }
@@ -135,6 +171,7 @@ export class TransactionFormComponent implements OnInit {
     this.loadStore();
     //this.loadStoreKeeper();
     this.loadUser();
+    this.loadItems();
   }
 
   futureDateValidator(): ValidatorFn {
@@ -151,6 +188,7 @@ export class TransactionFormComponent implements OnInit {
     this.transactionFormService.getItem().subscribe({
       next: (result) => {
         this.item = result.data as Item[];
+        console.log('this is items: ' + this.item);
       },
       error: (err) => console.log(err),
     });
@@ -190,7 +228,14 @@ export class TransactionFormComponent implements OnInit {
       userId: formValue.userId || null,
       padNumberEnd: formValue.padNumberEnd || null,
       transactionType: this.transactionType,
-      // Explicitly set userId to null if it is not defined
+      // plate related fields
+      majorId: this.form.controls['majorId'].value,
+      minorId: this.form.controls['minorId'].value,
+      plateRegionId: this.form.controls['plateRegionId'].value,
+      // plateSizeId: this.form.controls['plateSizeId'].value,
+      // if (!item.platePool) {
+      //   item.platePool = <PlatePool>{};
+      // }
     };
     if (!this.isChecked)
       this.transactionFormService.post(issue).subscribe({
@@ -274,13 +319,16 @@ export class TransactionFormComponent implements OnInit {
 
   onCheckboxChange(event: any) {
     this.isChecked = event.checked;
+
     if (this.isChecked) {
       this.form.get('padNumberEnd')?.clearValidators();
       this.form.get('padNumberEnd')?.updateValueAndValidity();
       this.form.get('quantity')?.setValue(1);
       this.calculateQuantity();
     } else {
-      this.form.get('padNumberEnd')?.setValidators([Validators.pattern(/^\d+$/)]);
+      this.form
+        .get('padNumberEnd')
+        ?.setValidators([Validators.pattern(/^\d+$/)]);
       this.form.get('padNumberEnd')?.updateValueAndValidity();
       this.calculateQuantity();
     }
@@ -322,10 +370,9 @@ export class TransactionFormComponent implements OnInit {
 
   getStoreKeeperByStore(id: number) {
     console.log('The id is', id);
-    this.storeId = id
-    this.transactionFormService.getStoreKeeperByStore(id).subscribe(items => {
-      this.storeKeeper = items
-    })
+    this.storeId = id;
+    this.transactionFormService.getStoreKeeperByStore(id).subscribe((items) => {
+      this.storeKeeper = items;
+    });
   }
-
 }

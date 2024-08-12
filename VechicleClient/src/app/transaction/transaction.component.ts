@@ -11,6 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { TransactionViewComponent } from './transaction-view.component';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
 import { TranslateService } from '@ngx-translate/core'
+import { Store } from '../Models/Store';
+import { Item } from '../Models/item';
 
 @Component({
   selector: 'app-transaction',
@@ -38,7 +40,11 @@ export class TransactionComponent implements OnInit {
   public translatedTransactionTypes: string[] = [];
 
   public selectedTransactionType: string = "All";
-  title : string = "Transaction"
+  title : string = "Transaction";
+  stores?: Store[];
+  items?: Item[];
+  storeId?: number
+  itemId?: number
 
 
 
@@ -56,8 +62,25 @@ export class TransactionComponent implements OnInit {
   
   ) { }
   ngOnInit() {
-    this.loadData();
+    this.loadData()
+    this.loadStores()
+    this.loadItems()
     this.translateTransactionTypes()
+  }
+
+  loadStores(){
+    this.transactionService.getStore().subscribe(data => 
+      this.stores = data.data)
+  }
+
+  loadItems(){
+    this.transactionService.getItem().subscribe(data => 
+      this.items = data.data)
+  }
+
+  onStoreOrItemChange() {
+    this.loadData();
+    
   }
 
   translateTransactionTypes() {
@@ -85,7 +108,7 @@ export class TransactionComponent implements OnInit {
     this.getData(pageEvent);
   }
   
-  getData(event: PageEvent) {
+  getData(event: PageEvent,) {
     var sortColumn = (this.sort) ? this.sort.active : this.defaultSortColumn
     var sortOrder = (this.sort) ? this.sort.direction : this.defaultSortOrder
     var filterColumn = (this.filterQuery) ? this.defaultFilterColumn : null
@@ -93,11 +116,14 @@ export class TransactionComponent implements OnInit {
 
     //let selectedType = this.selectedTransactionType !== this.translateService.instant('others.all') ? this.selectedTransactionType : null;
     let selectedType = this.selectedTransactionType !== this.translateService.instant('All') ? this.selectedTransactionType : null;
+    
+   
 
 
     this.transactionService.getData2(event.pageIndex, event.pageSize, sortColumn, sortOrder,
-      filterColumn, filterQuery, selectedType).subscribe({
+      filterColumn, filterQuery, selectedType, this.itemId, this.storeId).subscribe({
         next: (result) => {
+          console.log(result.data);
           this.paginator.length = result.totalCount;
           this.paginator.pageIndex = result.pageIndex;
           this.paginator.pageSize = result.pageSize;
@@ -107,6 +133,8 @@ export class TransactionComponent implements OnInit {
       });
 
   }
+
+
 
 
   openDialog(id?: number): void {

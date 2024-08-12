@@ -14,8 +14,13 @@ namespace VehicleServer.Entities
         public int Quantity { get; set; }
         public int PadNumberStart { get; set; }
         public int? PadNumberEnd { get; set; }
+        public bool? IsPlate { get; set; } = false;
+        public int? MajorId { get; set; }
+        public int? MinorId { get; set; }
+        public int? PlateSizeId { get; set; }
+        public int? VehicleCategoryId { get; set; }
+        public int? PlateRegionId { get; set; }
         public bool? IsDeleted { get; set; }
-
         public DateTime TransactionDate { get; set; } = DateTime.Now;
         public virtual Item? Items { get; set; }
         public virtual Store? Stores { get; set; }

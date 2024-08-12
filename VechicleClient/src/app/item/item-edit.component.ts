@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { PlatePool } from '../Models/PlatePool';
 
 
 @Component({
@@ -45,14 +46,25 @@ ngOnInit() {
   this.form = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    categoryId: new FormControl('', Validators.required)
+    categoryId: new FormControl('', Validators.required),
+    isPlate: new FormControl(false, Validators.required),
+
   },null, this.isDupeItem())}
 
 fetchData() {
   this.itemService.get(this.id).subscribe({
     next: (result) => {
       this.item = result;
-      this.form.patchValue(this.item);
+    
+        this.form.patchValue({
+          name: this.item.name,
+          description: this.item.description,
+          categoryId: this.item.categoryId,
+          isPlate: this.item.isPlate
+          
+ 
+          
+    });
       console.log(result);
     },
     error: (error) => console.error(error)
@@ -76,7 +88,9 @@ fetchData() {
         item.name = this.form.controls['name'].value
         item.description = this.form.controls['description'].value
         item.categoryId = this.form.controls['categoryId'].value
-    
+        item.isPlate = this.form.controls['isPlate'].value
+
+
         if (this.id) {
           this.itemService.put(item).subscribe({
             next: () => {
