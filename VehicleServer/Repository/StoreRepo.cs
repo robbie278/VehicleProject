@@ -131,11 +131,10 @@ namespace VehicleServer.Repository
 
         public bool isDupeStore(StoreDto store)
         {
-            return _context.Stores.AsNoTracking().Any(
-                 e => e.Name == store.Name
-             && e.Address == store.address
-             && e.StoreId != store.StoreId
-                );
+            return _context.Stores.AsNoTracking()
+                .AsEnumerable() // Forces client-side evaluation
+                .Any(e => string.Equals(e.Name, store.Name, StringComparison.Ordinal)
+                       && e.StoreId != store.StoreId);
         }
     }
 }

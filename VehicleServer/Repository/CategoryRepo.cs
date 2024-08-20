@@ -127,10 +127,13 @@ namespace VehicleServer.Repository
 
         public bool isDupeCategory(CategoryDto category)
         {
-            return _context.Categories.AsNoTracking().Any(
-                 e => e.Name == category.Name
-                && e.CategoryId != category.CategoryId
-                );
+            return _context.Categories.AsNoTracking()
+                .AsEnumerable() // Forces client-side evaluation
+                .Any(e => string.Equals(e.Name, category.Name, StringComparison.Ordinal)
+                       && e.CategoryId != category.CategoryId);
         }
+
+
+
     }
 }

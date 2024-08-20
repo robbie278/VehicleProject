@@ -186,8 +186,6 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
         public async Task BulkUpdateItemDetailsTransactionAsync(StockTransaction transaction)
         {
-            
-
             var transactionsToUpdate = _context.StockItemsDetail
                 .Where(t => t.PadNumber >= transaction.PadNumberStart && t.PadNumber <= transaction.PadNumberEnd)
                 .ToList();
