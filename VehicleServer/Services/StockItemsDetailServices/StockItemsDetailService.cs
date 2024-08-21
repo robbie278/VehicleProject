@@ -26,21 +26,27 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
             for (int padNumber = padNumberStart; padNumber <= padNumberEnd; padNumber++)
             {
-                if (transactionDetail.TransactionType == TransactionType.Receipt && await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                // Use the refactored IsDuplicateEntryAsync method
+                if (transactionDetail.TransactionType == TransactionType.Receipt &&
+                    await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
                 {
                     return false;
                 }
 
-                if ((transactionDetail.TransactionType == TransactionType.Issue || transactionDetail.TransactionType == TransactionType.Damaged) && !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber))
+                if ((transactionDetail.TransactionType == TransactionType.Issue || transactionDetail.TransactionType == TransactionType.Damaged) &&
+                    !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
                 {
                     return false;
                 }
 
-                if (transactionDetail.TransactionType == TransactionType.Receipt && !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber))
+                if (transactionDetail.TransactionType == TransactionType.Receipt &&
+                    !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
                 {
                     return false;
                 }
-                if (transactionDetail.TransactionType == TransactionType.Return && !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber))
+
+                if (transactionDetail.TransactionType == TransactionType.Return &&
+                    !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
                 {
                     return false;
                 }
@@ -49,35 +55,42 @@ namespace VehicleServer.Services.StockTransactionDetailServices
             return true;
         }
 
+
         public async Task<bool> ValidateSingleTransactionAsync(StockItemsDetail transactionDetail, int padNumber)
         {
-            if (padNumber == 0 || padNumber == null)
+            if (padNumber == 0)
             {
                 return false;
             }
 
-                if (transactionDetail.TransactionType == TransactionType.Receipt && await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
-                {
-                    return false;
-                }
+            // Use the refactored IsDuplicateEntryAsync method
+            if (transactionDetail.TransactionType == TransactionType.Receipt &&
+                await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+            {
+                return false;
+            }
 
-                if ((transactionDetail.TransactionType == TransactionType.Issue || transactionDetail.TransactionType == TransactionType.Damaged) && !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber))
-                {
-                    return false;
-                }
+            if ((transactionDetail.TransactionType == TransactionType.Issue || transactionDetail.TransactionType == TransactionType.Damaged) &&
+                !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+            {
+                return false;
+            }
 
-                if (transactionDetail.TransactionType == TransactionType.Receipt && !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber))
-                {
-                    return false;
-                }
-                if (transactionDetail.TransactionType == TransactionType.Return && !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber))
-                {
-                    return false;
-                }
-           
+            if (transactionDetail.TransactionType == TransactionType.Receipt &&
+                !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+            {
+                return false;
+            }
+
+            if (transactionDetail.TransactionType == TransactionType.Return &&
+                !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+            {
+                return false;
+            }
 
             return true;
         }
+
 
         public async Task<bool> IsDuplicateEntryAsync(int itemId, int padNumber, bool? IsPlate, int? PlateRegionId, int? MajorId, int? MinorId)
         {
@@ -91,22 +104,68 @@ namespace VehicleServer.Services.StockTransactionDetailServices
             }
         }
 
-        public async Task<bool> CanIssueTransactionAsync(int itemId, int padNumber)
+        public async Task<bool> CanIssueTransactionAsync(int itemId, int padNumber, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
         {
-            var transaction = await _context.StockItemsDetail.FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
-            return transaction != null && transaction.TransactionType == TransactionType.Receipt;
+            var transaction = await _context.StockItemsDetail
+                .FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+
+            if (transaction == null)
+            {
+                return false;
+            }
+
+            // If it's a plate transaction, ensure the region, major, and minor IDs match
+            if ((bool)isPlate)
+            {
+                return transaction.TransactionType == TransactionType.Receipt &&
+                       transaction.PlateRegionId == plateRegionId &&
+                       transaction.MajorId == majorId &&
+                       transaction.MinorId == minorId;
+            }
+            else
+            {
+                return transaction.TransactionType == TransactionType.Receipt;
+            }
         }
 
-        public async Task<bool> CanReceiveTransactionAsync(int itemId, int padNumber)
+        public async Task<bool> CanReceiveTransactionAsync(int itemId, int padNumber, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
         {
-            return !await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+            if ((bool)isPlate)
+            {
+                return !await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber &&
+                                                                      s.PlateRegionId == plateRegionId && s.MajorId == majorId && s.MinorId == minorId);
+            }
+            else
+            {
+                return !await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+            }
         }
 
-        public async Task<bool> CanReturnTransactionAsync(int itemId, int padNumber)
+
+        public async Task<bool> CanReturnTransactionAsync(int itemId, int padNumber, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
         {
-            var transaction = await _context.StockItemsDetail.FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
-            return transaction != null && transaction.TransactionType == TransactionType.Issue;
+            var transaction = await _context.StockItemsDetail
+                .FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+
+            if (transaction == null)
+            {
+                return false;
+            }
+
+            // If it's a plate transaction, ensure the region, major, and minor IDs match
+            if ((bool)isPlate)
+            {
+                return transaction.TransactionType == TransactionType.Issue &&
+                       transaction.PlateRegionId == plateRegionId &&
+                       transaction.MajorId == majorId &&
+                       transaction.MinorId == minorId;
+            }
+            else
+            {
+                return transaction.TransactionType == TransactionType.Issue;
+            }
         }
+
 
         public async Task BulkInsertTransactionsAsync(StockTransaction transaction)
         {
