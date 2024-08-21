@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace VehicleServer.Entities
 {
@@ -14,7 +15,9 @@ namespace VehicleServer.Entities
         public int Quantity { get; set; }
         public int PadNumberStart { get; set; }
         public int? PadNumberEnd { get; set; }
-        public bool? IsPlate { get; set; } = false;
+        
+        [DefaultValue("false")]
+        public bool IsPlate { get; set; }
         public int? MajorId { get; set; }
         public int? MinorId { get; set; }
         public int? PlateSizeId { get; set; }
