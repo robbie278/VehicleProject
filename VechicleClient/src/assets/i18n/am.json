@@ -107,7 +107,8 @@
     "major": "ዋና",
     "minor": "አነስተኛ",
     "Plate_Size": "ታርጋ መጠን",
-    "Plate_Region": "ታርጋ ክልል"
+    "Plate_Region": "ታርጋ ክልል",
+    "prefix": "ፊደል"
   },
 
   "Company": {

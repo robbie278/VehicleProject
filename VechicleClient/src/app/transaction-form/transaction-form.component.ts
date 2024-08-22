@@ -43,7 +43,7 @@ export class TransactionFormComponent implements OnInit {
   isChecked: boolean = false;
   isPlateChecked: boolean = false;
   itIsPlate: boolean = false;
-
+  prefixList: string[] = ['','A', 'B', 'C', 'D'];
   constructor(
     private transactionFormService: TransactionFormService,
     private transactionService: TransactionService,
@@ -112,10 +112,11 @@ export class TransactionFormComponent implements OnInit {
         ]),
 
         // plate related fields
-        majorId: new FormControl('', Validators.required),
-        minorId: new FormControl('', Validators.required),
-        plateSizeId: new FormControl('', Validators.required),
-        plateRegionId: new FormControl('', Validators.required),
+        majorId: new FormControl(),
+        minorId: new FormControl(),
+        plateSizeId: new FormControl(),
+        plateRegionId: new FormControl(),
+        prefix: new FormControl()
       },
       { validators: this.padNumberValidator() }
     );

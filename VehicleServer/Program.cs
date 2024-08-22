@@ -48,7 +48,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHealthChecks("/health");
 app.UseRouting();
 app.UseCors("CorsPolicy");
 app.UseDefaultFiles();

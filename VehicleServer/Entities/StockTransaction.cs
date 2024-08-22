@@ -13,9 +13,11 @@ namespace VehicleServer.Entities
         public int StoreKeeperId { get; set; }
         public string TransactionType { get; set; } // Issue or Receipt
         public int Quantity { get; set; }
+
         public int PadNumberStart { get; set; }
         public int? PadNumberEnd { get; set; }
-        
+        public string? Prefix { get; set; }
+
         [DefaultValue("false")]
         public bool IsPlate { get; set; }
         public int? MajorId { get; set; }

@@ -114,7 +114,8 @@
     "major": "major",
     "minor": "minor",
     "Plate_Size": "Plate Size",
-    "Plate_Region": "Plate Region"
+    "Plate_Region": "Plate Region",
+    "prefix": "prefix"
   },
 
   "Company": {

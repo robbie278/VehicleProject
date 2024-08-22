@@ -28,25 +28,25 @@ namespace VehicleServer.Services.StockTransactionDetailServices
             {
                 // Use the refactored IsDuplicateEntryAsync method
                 if (transactionDetail.TransactionType == TransactionType.Receipt &&
-                    await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                    await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber, transactionDetail.Prefix, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
                 {
                     return false;
                 }
 
                 if ((transactionDetail.TransactionType == TransactionType.Issue || transactionDetail.TransactionType == TransactionType.Damaged) &&
-                    !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                    !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.Prefix, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
                 {
                     return false;
                 }
 
                 if (transactionDetail.TransactionType == TransactionType.Receipt &&
-                    !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                    !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.Prefix, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
                 {
                     return false;
                 }
 
                 if (transactionDetail.TransactionType == TransactionType.Return &&
-                    !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                    !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.Prefix, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
                 {
                     return false;
                 }
@@ -54,7 +54,6 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
             return true;
         }
-
 
         public async Task<bool> ValidateSingleTransactionAsync(StockItemsDetail transactionDetail, int padNumber)
         {
@@ -65,25 +64,25 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
             // Use the refactored IsDuplicateEntryAsync method
             if (transactionDetail.TransactionType == TransactionType.Receipt &&
-                await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                await IsDuplicateEntryAsync(transactionDetail.ItemId, padNumber, transactionDetail.Prefix, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
             {
                 return false;
             }
 
             if ((transactionDetail.TransactionType == TransactionType.Issue || transactionDetail.TransactionType == TransactionType.Damaged) &&
-                !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                !await CanIssueTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.Prefix, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
             {
                 return false;
             }
 
             if (transactionDetail.TransactionType == TransactionType.Receipt &&
-                !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                !await CanReceiveTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.Prefix, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
             {
                 return false;
             }
 
             if (transactionDetail.TransactionType == TransactionType.Return &&
-                !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
+                !await CanReturnTransactionAsync(transactionDetail.ItemId, padNumber, transactionDetail.Prefix, transactionDetail.IsPlate, transactionDetail.PlateRegionId, transactionDetail.MajorId, transactionDetail.MinorId))
             {
                 return false;
             }
@@ -92,22 +91,23 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         }
 
 
-        public async Task<bool> IsDuplicateEntryAsync(int itemId, int padNumber, bool? IsPlate, int? PlateRegionId, int? MajorId, int? MinorId)
+
+        public async Task<bool> IsDuplicateEntryAsync(int itemId, int padNumber, string? prefix, bool? IsPlate, int? PlateRegionId, int? MajorId, int? MinorId)
         {
             if ((bool)IsPlate)
             {
-                return await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber && s.PlateRegionId == PlateRegionId && s.MajorId == MajorId && s.MinorId == MinorId);
+                return await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber && s.Prefix == prefix && s.PlateRegionId == PlateRegionId && s.MajorId == MajorId && s.MinorId == MinorId);
             }
             else
             {
-                return await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+                return await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber && s.Prefix == prefix);
             }
         }
 
-        public async Task<bool> CanIssueTransactionAsync(int itemId, int padNumber, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
+        public async Task<bool> CanIssueTransactionAsync(int itemId, int padNumber, string? prefix, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
         {
             var transaction = await _context.StockItemsDetail
-                .FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+                .FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber && s.Prefix == prefix);
 
             if (transaction == null)
             {
@@ -128,24 +128,26 @@ namespace VehicleServer.Services.StockTransactionDetailServices
             }
         }
 
-        public async Task<bool> CanReceiveTransactionAsync(int itemId, int padNumber, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
+
+        public async Task<bool> CanReceiveTransactionAsync(int itemId, int padNumber, string? prefix, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
         {
             if ((bool)isPlate)
             {
                 return !await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber &&
-                                                                      s.PlateRegionId == plateRegionId && s.MajorId == majorId && s.MinorId == minorId);
+                                                                      s.Prefix == prefix && s.PlateRegionId == plateRegionId && s.MajorId == majorId && s.MinorId == minorId);
             }
             else
             {
-                return !await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+                return !await _context.StockItemsDetail.AnyAsync(s => s.ItemId == itemId && s.PadNumber == padNumber && s.Prefix == prefix);
             }
         }
 
 
-        public async Task<bool> CanReturnTransactionAsync(int itemId, int padNumber, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
+
+        public async Task<bool> CanReturnTransactionAsync(int itemId, int padNumber, string? prefix, bool? isPlate, int? plateRegionId, int? majorId, int? minorId)
         {
             var transaction = await _context.StockItemsDetail
-                .FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber);
+                .FirstOrDefaultAsync(s => s.ItemId == itemId && s.PadNumber == padNumber && s.Prefix == prefix);
 
             if (transaction == null)
             {
@@ -165,6 +167,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 return transaction.TransactionType == TransactionType.Issue;
             }
         }
+
 
 
         public async Task BulkInsertTransactionsAsync(StockTransaction transaction)
@@ -189,14 +192,15 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                     MinorId = transaction.MinorId,
                     PlateSizeId = transaction.PlateSizeId,
                     VehicleCategoryId = transaction.VehicleCategoryId,
-                    PlateRegionId = transaction.PlateRegionId
+                    PlateRegionId = transaction.PlateRegionId,
+                    Prefix = transaction.Prefix
                 });
 
                 if ((bool)transaction.IsPlate)
                 {
                     platePoolItems.Add(new PlatePool
                     {
-                        PlateNumber = padNumber + "",
+                        PlateNumber = transaction.Prefix + padNumber,
                         AssignStatus = 1,
                         MajorId = transaction.MajorId ?? 0,  
                         MinorId = transaction.MinorId ?? 0,  
@@ -229,7 +233,8 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 StoreKeeperId = transaction.StoreKeeperId,
                 TransactionType = transaction.TransactionType,
                 PadNumber = transaction.PadNumberStart,
-                TransactionDate = transaction.TransactionDate
+                TransactionDate = transaction.TransactionDate,
+                Prefix = transaction.Prefix
             };
 
 
