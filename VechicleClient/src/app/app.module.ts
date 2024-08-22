@@ -20,7 +20,7 @@ import { StoreComponent } from './store/store.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditStoreComponent } from './store/edit-store.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIcon } from '@angular/material/icon'
+import { MatIcon } from '@angular/material/icon';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { TransactionComponent } from './transaction/transaction.component';
@@ -35,15 +35,15 @@ import { FormsModule } from '@angular/forms';
 import { TransactionViewComponent } from './transaction/transaction-view.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginator } from './custom-paginator/CustomPaginatorConfiguration';
+import { LoginComponent } from './login/login.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
-
-
-
 
 @NgModule({
   declarations: [
@@ -64,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConfirmDialogComponent,
     TransactionEditComponent,
     TransactionViewComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,15 +78,16 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
-
+        deps: [HttpClient],
+      },
+    }),
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync(),
-  { provide: MatPaginatorIntl, useClass: CustomPaginator }],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: MatPaginatorIntl, useClass: CustomPaginator },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
-
-
+export class AppModule {}

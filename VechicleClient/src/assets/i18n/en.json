@@ -104,6 +104,8 @@
     "already_exist": "Already Exist",
     "Successfully_Added": "Successfully Added",
     "Stock_Management": "Stock Management System",
+    "Profile": "ሰለ እኔ",
+    "Logout": "ውጣ",
     "all": "all",
     "View_Transaction_Details": "View Transaction Details",
     "User": "User",
@@ -118,7 +120,6 @@
   "Company": {
     "CompanyName": "City Government of Addis Ababa Driver, Vehicle, Permit, and Control Authority"
   },
-
 
   "items_per_page": "Items per page",
   "All": "All",

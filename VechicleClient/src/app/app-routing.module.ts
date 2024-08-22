@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesComponent } from './categories/categories.component';
-import {CategoriesEditComponent} from './categories/categories-edit.component';
+import { CategoriesEditComponent } from './categories/categories-edit.component';
 import { StoreKeeperComponent } from './store-keeper/store-keeper.component';
 import { StoreKeeperEditComponent } from './store-keeper/store-keeper-edit.component';
 import { StoreComponent } from './store/store.component';
@@ -13,36 +13,34 @@ import { TransactionFormComponent } from './transaction-form/transaction-form.co
 import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionViewComponent } from './transaction/transaction-view.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth/auth.guard'; 
+
 
 const routes: Routes = [
-
-  { path: '', component: HomeComponent },
-  { path: 'storekeppers', component: StoreKeeperComponent },
-  {path:'storeKeeper/:id', component: StoreKeeperEditComponent},
-  {path:'storeKeeper', component: StoreKeeperEditComponent},
-  {path: 'store', component: StoreComponent},
-  { path: 'storeEdit/:id', component: EditStoreComponent },
-  {path:'navMenu',component: NavMenuComponent },
-  { path: 'categories', component: CategoriesComponent },
-  { path: 'category/:id', component: CategoriesEditComponent },
-  { path: 'category', component: CategoriesEditComponent },
-  { path: 'items', component: ItemComponent },
-  {path:'item/:id', component: ItemEditComponent},
-  {path:'item', component: ItemEditComponent},
+  { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'storekeppers', component: StoreKeeperComponent, canActivate: [AuthGuard] },
+  { path: 'storeKeeper/:id', component: StoreKeeperEditComponent, canActivate: [AuthGuard] },
+  { path: 'storeKeeper', component: StoreKeeperEditComponent, canActivate: [AuthGuard] },
+  { path: 'store', component: StoreComponent, canActivate: [AuthGuard] },
+  { path: 'storeEdit/:id', component: EditStoreComponent, canActivate: [AuthGuard] },
+  { path: 'navMenu', component: NavMenuComponent, canActivate: [AuthGuard] },
+  { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] },
+  { path: 'category/:id', component: CategoriesEditComponent, canActivate: [AuthGuard] },
+  { path: 'category', component: CategoriesEditComponent, canActivate: [AuthGuard] },
+  { path: 'items', component: ItemComponent, canActivate: [AuthGuard] },
+  { path: 'item/:id', component: ItemEditComponent, canActivate: [AuthGuard] },
+  { path: 'item', component: ItemEditComponent, canActivate: [AuthGuard] },
   // newly created route
-  {path:'transaction-form', component: TransactionFormComponent},
-  {path:'transaction', component: TransactionComponent},
-  { path: 'transaction/:id', component: TransactionViewComponent },
-  { path: 'transactions/view/:id', component: TransactionViewComponent },
-
-
-
-]
-
+  { path: 'transaction-form', component: TransactionFormComponent, canActivate: [AuthGuard] },
+  { path: 'transaction', component: TransactionComponent, canActivate: [AuthGuard] },
+  { path: 'transaction/:id', component: TransactionViewComponent, canActivate: [AuthGuard] },
+  { path: 'transactions/view/:id', component: TransactionViewComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}
