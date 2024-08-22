@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Store } from '../Models/Store';
+import { Store } from '../models/Store';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { StoreService } from '../Service/store.service';
+import { StoreService } from '../services/store.service';
 import { Observable, map, of } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 

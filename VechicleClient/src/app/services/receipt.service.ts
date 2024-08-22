@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Item } from '../Models/item';
-import { Receipt } from '../Models/Receipt';
-import { Store } from '../Models/Store';
-import { StoreKeeper } from '../Models/Store-keeper';
-import { User } from '../Models/User';
+import { Item } from '../models/item';
+import { Receipt } from '../models/Receipt';
+import { Store } from '../models/Store';
+import { StoreKeeper } from '../models/Store-keeper';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'

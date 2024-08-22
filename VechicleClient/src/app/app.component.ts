@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'VechicleClient';
+  title = 'Stock Management';
   constructor(private translate: TranslateService) {
     this.translate.setDefaultLang('am');
   }

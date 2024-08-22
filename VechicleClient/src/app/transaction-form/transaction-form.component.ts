@@ -9,16 +9,16 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Issue } from '../Models/Issue';
-import { Item } from '../Models/item';
-import { Store } from '../Models/Store';
-import { StoreKeeper } from '../Models/Store-keeper';
-import { User } from '../Models/User';
-import { TransactionFormService } from '../Service/transaction-form.service';
+import { Issue } from '../models/Issue';
+import { Item } from '../models/item';
+import { Store } from '../models/Store';
+import { StoreKeeper } from '../models/Store-keeper';
+import { User } from '../models/User';
+import { TransactionFormService } from '../services/transaction-form.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TransactionType } from '../enums/transaction-type.enum';
-import { ICategory } from '../Models/Category';
-import { TransactionService } from '../Service/transaction.service';
+import { ICategory } from '../models/Category';
+import { TransactionService } from '../services/transaction.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -74,7 +74,6 @@ export class TransactionFormComponent implements OnInit {
 
     if (selectedItem?.isPlate) {
       this.itIsPlate = true;
-      alert('Plate Mode!');
       this.form.get('isPlate')?.setValue(true);
       console.log(selectedItem.isPlate);
     } else {

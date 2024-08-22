@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ApiResult, BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ICategory } from '../Models/Category';
-import { Item } from '../Models/item';
+import { ICategory } from '../models/Category';
+import { Item } from '../models/item';
 
 @Injectable({
   providedIn: 'root'

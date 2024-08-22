@@ -34,7 +34,7 @@
     </mat-form-field>
     <mat-form-field *ngIf="categories">
       <mat-label>{{ "Transaction.select_a_category" | translate }} :</mat-label>
-      <mat-select id="categoryId" formControlName="categoryId">
+      <mat-select id="categoryId" formControlName="categoryId" (selectionChange)="getItemsByCategory($event.value)">
         <mat-option
           *ngFor="let category of categories"
           [value]="category.categoryId"

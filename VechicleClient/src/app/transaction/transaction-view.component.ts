@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Transaction } from '../Models/Transaction';
+import { Transaction } from '../models/Transaction';
 import { ActivatedRoute } from '@angular/router';
-import { TransactionService } from '../Service/transaction.service';
+import { TransactionService } from '../services/transaction.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 

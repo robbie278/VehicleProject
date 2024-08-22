@@ -60,7 +60,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     TransactionFormComponent,
     TransactionComponent,
     HomeComponent,
-    TransactionComponent,
     StockDetailComponent,
     ConfirmDialogComponent,
     TransactionEditComponent,

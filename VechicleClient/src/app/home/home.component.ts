@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StockService } from '../Service/stock.service';
-import { ReportService } from '../Service/report.service';
-import { Stock } from '../Models/Stock';
-import { Report } from '../Models/Report';
+import { StockService } from '../services/stock.service';
+import { ReportService } from '../services/report.service';
+import { Stock } from '../models/Stock';
+import { Report } from '../models/Report';
 import { MatDialog } from '@angular/material/dialog';
 import { StockDetailComponent } from '../stock-detail/stock-detail.component';
 import { TranslateService } from '@ngx-translate/core'

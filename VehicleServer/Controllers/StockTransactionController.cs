@@ -35,11 +35,11 @@ namespace VehicleServer.Controllers
             string? sortOrder = null,
             string? filterColumn = null,
             string? filterQuery = null,
-            string? transactionType = null,
+            string? transactionTypes = null,
             int? itemId = null,
             int? storeId = null)
         {
-            return await _stockTransactionRepo.GetStockTransactions(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery, transactionType, storeId, itemId);
+            return await _stockTransactionRepo.GetStockTransactions(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery, transactionTypes, storeId, itemId);
         }
 
         [HttpGet("{id}")]

@@ -91,7 +91,7 @@
     "Edit_StoreKeeper": "Edit StoreKeeper",
     "Edit_Item": "Edit Item",
     "Edit_Category": "Edit Category",
-    "Edit_Transaction":"Edit Transaction",
+    "Edit_Transaction": "Edit Transaction",
 
     "Filter_By_Name": "Filter By Name",
     "Add_New": "Add New",
@@ -103,24 +103,27 @@
 
     "already_exist": "Already Exist",
     "Successfully_Added": "Successfully Added",
-    "Stock_Mangement": "Stock Mangement System",
+    "Stock_Management": "Stock Management System",
     "all": "all",
-    "View_Transaction_Details":"View Transaction Details",
-    "User":"User",
-    "Single_Item":"Single Item",
-    "Plate":"Plate",
-    "major":"major",
-    "minor":"minor",
-    "Plate_Size":"Plate Size",
-    "Plate_Region":"Plate Region"
+    "View_Transaction_Details": "View Transaction Details",
+    "User": "User",
+    "Single_Item": "Single Item",
+    "Plate": "Plate",
+    "major": "major",
+    "minor": "minor",
+    "Plate_Size": "Plate Size",
+    "Plate_Region": "Plate Region"
+  },
+
+  "Company": {
+    "CompanyName": "City Government of Addis Ababa Driver, Vehicle, Permit, and Control Authority"
   },
 
 
-    "items_per_page": "Items per page",
-    "All": "All",
-    "Issue": "Issue",
-    "Receipt": "Receipt",
-    "Damaged": "Damaged",
-    "Return": "Return"
-  
+  "items_per_page": "Items per page",
+  "All": "All",
+  "Issue": "Issue",
+  "Receipt": "Receipt",
+  "Damaged": "Damaged",
+  "Return": "Return"
 }
