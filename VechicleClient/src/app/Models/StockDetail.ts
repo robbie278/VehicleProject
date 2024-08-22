@@ -5,4 +5,5 @@ export interface StockDetail{
       padNumber : number,
       itemName : string,
       storeName: string,
+      prefix: string
 }

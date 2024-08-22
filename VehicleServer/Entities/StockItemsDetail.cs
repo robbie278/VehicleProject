@@ -12,6 +12,7 @@ namespace VehicleServer.Entities
         public int? UserId { get; set; }
         public int StoreKeeperId { get; set; }
         public string TransactionType { get; set; } // Issue or Receipt
+        public string? Prefix { get; set; }
         public int PadNumber { get; set; }
 
         [DefaultValue("false")]

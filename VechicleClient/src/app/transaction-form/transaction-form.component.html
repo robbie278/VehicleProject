@@ -34,7 +34,11 @@
     </mat-form-field>
     <mat-form-field *ngIf="categories">
       <mat-label>{{ "Transaction.select_a_category" | translate }} :</mat-label>
-      <mat-select id="categoryId" formControlName="categoryId">
+      <mat-select
+        id="categoryId"
+        formControlName="categoryId"
+        (selectionChange)="getItemsByCategory($event.value)"
+      >
         <mat-option
           *ngFor="let category of categories"
           [value]="category.categoryId"
@@ -170,14 +174,31 @@
     </mat-form-field>
 
     <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
+    <div class="flex justify-center">
+      <div class="w-3/5">
+        <mat-checkbox
+          class="ml-3"
+          formControlName="singleItem"
+          (change)="onCheckboxChange($event)"
+        >
+          {{ "others.Single_Item" | translate }}
+        </mat-checkbox>
+      </div>
 
-    <mat-checkbox
-      formControlName="singleItem"
-      (change)="onCheckboxChange($event)"
-    >
-      {{ "others.Single_Item" | translate }}
-    </mat-checkbox>
-    <!-- <mat-checkbox class="example-margin" [(ngModel)]="isBulk">Checked</mat-checkbox> -->
+      <div class="w-2/5">
+        <mat-form-field *ngIf="itIsPlate" class="w-full" >
+          <mat-label>{{ "others.prefix" | translate }}:</mat-label>
+          <mat-select id="prefix" formControlName="prefix">
+            <mat-option *ngFor="let prefix of prefixList" [value]="prefix">
+              {{ prefix }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf=" form.controls['prefix'].errors?.['required']">
+            {{ "FORM.NAME_REQUIRED" | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
 
     <mat-form-field>
       <mat-label>{{ "Transaction.pad_number_start" | translate }}:</mat-label>

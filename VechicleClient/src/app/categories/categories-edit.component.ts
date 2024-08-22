@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CategoryService } from '../Service/category.service';
-import { ICategory } from '../Models/Category';
+import { CategoryService } from '../services/category.service';
+import { ICategory } from '../models/Category';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, map } from 'rxjs';

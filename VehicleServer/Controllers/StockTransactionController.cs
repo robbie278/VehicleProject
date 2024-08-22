@@ -35,11 +35,11 @@ namespace VehicleServer.Controllers
             string? sortOrder = null,
             string? filterColumn = null,
             string? filterQuery = null,
-            string? transactionType = null,
+            string? transactionTypes = null,
             int? itemId = null,
             int? storeId = null)
         {
-            return await _stockTransactionRepo.GetStockTransactions(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery, transactionType, storeId, itemId);
+            return await _stockTransactionRepo.GetStockTransactions(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery, transactionTypes, storeId, itemId);
         }
 
         [HttpGet("{id}")]
@@ -136,7 +136,8 @@ namespace VehicleServer.Controllers
                 MajorId = transaction.MajorId,
                 MinorId = transaction.MinorId,
                 PlateSizeId = transaction.PlateSizeId,
-                VehicleCategoryId = transaction.VehicleCategoryId
+                VehicleCategoryId = transaction.VehicleCategoryId,
+                Prefix = transaction.Prefix
             }, transaction.PadNumberStart, transaction.PadNumberEnd ?? default(int));
         }
 
@@ -154,7 +155,8 @@ namespace VehicleServer.Controllers
                 MajorId = transaction.MajorId,
                 MinorId = transaction.MinorId,
                 PlateSizeId = transaction.PlateSizeId,
-                VehicleCategoryId = transaction.VehicleCategoryId
+                VehicleCategoryId = transaction.VehicleCategoryId,
+                Prefix = transaction.Prefix
 
             }, transaction.PadNumberStart);
         }

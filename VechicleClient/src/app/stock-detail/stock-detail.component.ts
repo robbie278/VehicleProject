@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { StockDetailService } from '../Service/stock-detail.service';
+import { StockDetailService } from '../services/stock-detail.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { StockDetail } from '../Models/StockDetail';
+import { StockDetail } from '../models/StockDetail';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';

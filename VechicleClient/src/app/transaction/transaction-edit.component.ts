@@ -3,11 +3,11 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators }
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
-import { TransactionService } from '../Service/transaction.service';
-import { Transaction } from '../Models/Transaction';
-import { Item } from '../Models/item';
-import { Store } from '../Models/Store';
-import { StoreKeeper } from '../Models/Store-keeper';
+import { TransactionService } from '../services/transaction.service';
+import { Transaction } from '../models/Transaction';
+import { Item } from '../models/item';
+import { Store } from '../models/Store';
+import { StoreKeeper } from '../models/Store-keeper';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

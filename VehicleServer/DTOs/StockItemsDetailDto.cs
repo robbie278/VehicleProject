@@ -8,5 +8,6 @@
         public int PadNumber { get; set; }
         public string? ItemName { get; set; }
         public string? StoreName { get; set; }
+        public string? Prefix { get; set; }
     }
 }

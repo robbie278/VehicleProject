@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiResult, BaseService } from './base.service';
-import { StoreKeeper } from '../Models/Store-keeper';
+import { StoreKeeper } from '../models/Store-keeper';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Store } from '../Models/Store';
+import { Store } from '../models/Store';
 
 @Injectable({
   providedIn: 'root'

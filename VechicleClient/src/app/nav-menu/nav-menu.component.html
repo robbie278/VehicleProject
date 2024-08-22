@@ -1,86 +1,125 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="isSidenavOpen">
+  <mat-sidenav
+    #sidenav
+    style="max-width: min-content;"
+    mode="side"
+    [opened]="isSidenavOpen"
+    [attr.disabled]="isSidenavDisabled ? true : null"
+  >
+    <!-- Sidebar Header with Logo and Company Name -->
+    <div class="sidebar-header">
+      <img src="assets/images/aavms.jpg" alt="Company Logo" class="logo" />
+      <span class="pt-4 text-center text-black text-sm">{{
+        "others.Stock_Management" | translate
+      }}</span>
+    </div>
+
+    <mat-divider></mat-divider>
+
     <mat-nav-list>
-      <a mat-list-item routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <a
+        mat-list-item
+        routerLink="/dashboard"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <mat-icon>dashboard</mat-icon>
-        {{'others.home' | translate}}
+        {{ "others.home" | translate }}
       </a>
       <a mat-list-item routerLink="/categories" routerLinkActive="active-link">
         <mat-icon>category</mat-icon>
-        {{ 'others.Categories' | translate  }}
+        {{ "others.Categories" | translate }}
       </a>
       <a mat-list-item routerLink="/items" routerLinkActive="active-link">
         <mat-icon>inventory</mat-icon>
-        {{ 'others.Items' | translate  }}
+        {{ "others.Items" | translate }}
       </a>
       <a mat-list-item routerLink="/store" routerLinkActive="active-link">
         <mat-icon>store</mat-icon>
-        {{ 'others.Stores' | translate  }}
+        {{ "others.Stores" | translate }}
       </a>
-      <a mat-list-item routerLink="/storekeppers" routerLinkActive="active-link">
+      <a
+        mat-list-item
+        routerLink="/storekeppers"
+        routerLinkActive="active-link"
+      >
         <mat-icon>person</mat-icon>
-        {{ 'others.Store_Keepers' | translate  }}
+        {{ "others.Store_Keepers" | translate }}
       </a>
-      <a mat-list-item (click)="openTransactionDialog(transactionType.Issue)" >
+      <a mat-list-item (click)="openTransactionDialog(transactionType.Issue)">
         <mat-icon>assignment_return</mat-icon>
-        {{ 'others.Issue' | translate  }}
+        {{ "others.Issue" | translate }}
       </a>
       <a mat-list-item (click)="openTransactionDialog(transactionType.Receipt)">
         <mat-icon>receipt</mat-icon>
-        {{ 'others.Receipt' | translate  }}
+        {{ "others.Receipt" | translate }}
       </a>
       <a mat-list-item (click)="openTransactionDialog(transactionType.Damaged)">
-        <mat-icon>Damaged</mat-icon>
-        {{ 'others.Damaged' | translate  }}
+        <mat-icon>block</mat-icon>
+        {{ "others.Damaged" | translate }}
       </a>
       <a mat-list-item (click)="openTransactionDialog(transactionType.Return)">
         <mat-icon>restore</mat-icon>
-        {{ 'others.Return' | translate  }}
+        {{ "others.Return" | translate }}
       </a>
       <a mat-list-item routerLink="/transaction">
-        <mat-icon>swap_vertial_circle 
-        </mat-icon>
-        {{ 'others.Transaction' | translate  }}
+        <mat-icon>swap_vertical_circle</mat-icon>
+        {{ "others.Transaction" | translate }}
       </a>
     </mat-nav-list>
   </mat-sidenav>
-  
-  <mat-sidenav-content>
+
+  <mat-sidenav-content style="width: 100%">
     <header>
-      <mat-toolbar color="primary" >
-            <button mat-icon-button (click)="toggleSidenav()">
-              <mat-icon>menu</mat-icon>
+      <mat-toolbar color="primary">
+        <div class="">
+          <button
+            mat-icon-button
+            (click)="toggleSidenav()"
+            [disabled]="isSidenavDisabled"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span class="toolbar-title">
+            {{ "Company.CompanyName" | translate }}
+          </span>
+        </div>
+        <div class="" style="margin-right: 68px">
+          <mat-select
+            class=""
+            placeholder="Language"
+            [(value)]="selectedLanguage"
+            (selectionChange)="switchLanguage(selectedLanguage)"
+          >
+            <mat-option value="am">{{
+              "others.Amharic" | translate
+            }}</mat-option>
+            <mat-option value="en">{{
+              "others.English" | translate
+            }}</mat-option>
+          </mat-select>
+
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="profileMenu"
+            class="profile-menu-trigger"
+          >
+            <mat-icon>account_circle</mat-icon>
+          </button>
+
+          <mat-menu #profileMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/profile']">
+              <mat-icon>person</mat-icon>
+              <span>{{ "others.Profile" | translate }}</span>
             </button>
-        
-            <span class="mx-2" >
-              <h3 style="font-size:20px" >{{ "others.Stock_Mangement" | translate }}</h3>
-            </span>
-
-              <span class="spacer"></span>  
-
-            <mat-select class="language-select" placeholder="Language" [(value)]="selectedLanguage" (selectionChange)="switchLanguage(selectedLanguage)">
-              <mat-option value="am">{{ "others.Amharic" | translate }}</mat-option>
-              <mat-option value="en">{{ "others.English" | translate }}</mat-option>
-            </mat-select>
-
-            <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-menu-trigger">
-              <mat-icon>account_circle</mat-icon>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon>
+              <span>{{ "others.Logout" | translate }}</span>
             </button>
-
-            <mat-menu #profileMenu="matMenu">
-              <button mat-menu-item [routerLink]="['/profile']">
-                <mat-icon>person</mat-icon>
-                <span>{{ "others.Profile" | translate }}</span>
-              </button>
-              <button mat-menu-item (click)="logout()">
-                <mat-icon>exit_to_app</mat-icon>
-                <span>{{ "others.Logout" | translate }}</span>
-              </button>
-            </mat-menu>
-            
+          </mat-menu>
+        </div>
       </mat-toolbar>
     </header>
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
-       
