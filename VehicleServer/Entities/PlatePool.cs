@@ -1,7 +1,12 @@
-﻿namespace VehicleServer.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace VehicleServer.Entities
 {
     public class PlatePool
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PlatePoolId { get; set; }
         public int AssignStatus { get; set; }
         public string PlateNumber { get; set; } = string.Empty;
@@ -22,7 +27,5 @@
         public Guid? DeletedByUserId { get; set; }
         public bool IsActive { get; set; }
 
-        // Navigation properties
-        public StockTransaction? StockTransactions { get; set; }
     }
 }

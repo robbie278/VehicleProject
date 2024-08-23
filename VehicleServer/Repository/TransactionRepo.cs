@@ -24,85 +24,60 @@ namespace VehicleServer.Repository
         }
 
         public async Task<ActionResult<ApiResult<StockTransactionDto>>> GetStockTransactions(
-                int pageIndex = 0,
-                int pageSize = 10,
-                string? sortColumn = null,
-                string? sortOrder = null,
-                string? filterColumn = null,
-                string? filterQuery = null,
-                string? transactionType = null,
-                int? storeId = null,
-                int? itemId = null)
+          int pageIndex = 0,
+          int pageSize = 10,
+          string? sortColumn = null,
+          string? sortOrder = null,
+          string? filterColumn = null,
+          string? filterQuery = null,
+          string? transactionTypes = null,  // Accept a comma-separated string of transaction types
+          int? storeId = null,
+          int? itemId = null
+          )
         {
             var query = _context.StockTransactions.AsNoTracking().Where(ct => ct.IsDeleted != true);
 
-
-            // getting transactions by store id from db
+            // Filter by store ID
             if (storeId.HasValue)
             {
                 query = query.Where(c => c.StoreId == storeId);
             }
 
-            //getting transaction by item it
+            // Filter by item ID
             if (itemId.HasValue)
             {
                 query = query.Where(c => c.ItemId == itemId);
             }
 
-            if (!string.IsNullOrEmpty(transactionType) && transactionType!= "All")
+            // Handle multiple transaction types
+            if (!string.IsNullOrEmpty(transactionTypes) && transactionTypes != "All")
             {
-                query = query.Where(c => c.TransactionType == transactionType);
+                var transactionTypeList = transactionTypes.Split(',');  // Split the string into an array of transaction types
+                query = query.Where(c => transactionTypeList.Contains(c.TransactionType));
             }
 
             return await ApiResult<StockTransactionDto>.CreateAsync(
-                    query.Select(c => new StockTransactionDto()
-                    {
-                        StockTransactionId = c.StockTransactionId,
-                        TransactionType = c.TransactionType,
-                        Quantity = c.Quantity,
-                        ItemId = c.Items!.ItemId,
-                        ItemName = c.Items!.Name,
-                        StoreId = c.Stores!.StoreId,
-                        StoreName = c.Stores!.Name,
-                        StoreKeeperId = c.StoreKeeper!.StoreKeeperId,
-                        StoreKeeperName = c.StoreKeeper!.Name,
-                        UserId = c.User!.UserId,
-                        UserName = c.User!.UserName,
-
-                        PlatePool = c.PlatePools != null ? new PlatePoolDto
-                        {
-                            PlatePoolId = c.PlatePools.PlatePoolId,
-                            AssignStatus = c.PlatePools.AssignStatus,
-                            PlateNumber = c.PlatePools.PlateNumber,
-                            MajorId = c.PlatePools.MajorId,
-                            MinorId = c.PlatePools.MinorId,
-                            PlateSizeId = c.PlatePools.PlateSizeId,
-                            VehicleCategoryId = c.PlatePools.VehicleCategoryId,
-                            PlateRegionId = c.PlatePools.PlateRegionId,
-                            CreatedDate = c.PlatePools.CreatedDate,
-                            CreatedByUsername = c.PlatePools.CreatedByUsername,
-                            CreatedByUserId = c.PlatePools.CreatedByUserId,
-                            LastModifiedDate = c.PlatePools.LastModifiedDate,
-                            LastModifiedByUsername = c.PlatePools.LastModifiedByUsername,
-                            LastModifiedByUserId = c.PlatePools.LastModifiedByUserId,
-                            IsDeleted = c.PlatePools.IsDeleted,
-                            DeletedDate = c.PlatePools.DeletedDate,
-                            DeletedByUsername = c.PlatePools.DeletedByUsername,
-                            DeletedByUserId = c.PlatePools.DeletedByUserId,
-                            IsActive = c.PlatePools.IsActive
-                        } : null
-
-                    }),
-                    pageIndex,
-                    pageSize,
-                    sortColumn,
-                    sortOrder,
-                    filterColumn,
-                    filterQuery);
-
-
+                query.Select(c => new StockTransactionDto()
+                {
+                    StockTransactionId = c.StockTransactionId,
+                    TransactionType = c.TransactionType,
+                    Quantity = c.Quantity,
+                    ItemId = c.Items!.ItemId,
+                    ItemName = c.Items!.Name,
+                    StoreId = c.Stores!.StoreId,
+                    StoreName = c.Stores!.Name,
+                    StoreKeeperId = c.StoreKeeper!.StoreKeeperId,
+                    StoreKeeperName = c.StoreKeeper!.Name,
+                    UserId = c.User!.UserId,
+                    UserName = c.User!.UserName,
+                }),
+                pageIndex,
+                pageSize,
+                sortColumn,
+                sortOrder,
+                filterColumn,
+                filterQuery);
         }
-
 
 
 

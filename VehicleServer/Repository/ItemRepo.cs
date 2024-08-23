@@ -164,11 +164,10 @@ namespace VehicleServer.Repository
         }
         public bool isDupeItem(ItemDto item)
         {
-            return _context.Items.AsNoTracking().Any(
-                 e => e.Name == item.Name
-                && e.ItemId != item.ItemId
-                && e.CategoryId == item.CategoryId
-                );
+            return _context.Items.AsNoTracking()
+                .AsEnumerable() // Forces client-side evaluation
+                .Any(e => string.Equals(e.Name, item.Name, StringComparison.Ordinal)
+                       && e.CategoryId != item.ItemId);
         }
     }
 }

@@ -35,7 +35,8 @@ namespace VehicleServer.Repository
                                     StoreId = c.StoreId,
                                     PadNumber = c.PadNumber,
                                     ItemName = c.Items!.Name,
-                                    StoreName = c.Stores!.Name
+                                    StoreName = c.Stores!.Name,
+                                    Prefix = c.Prefix
                                         
                                 });
 

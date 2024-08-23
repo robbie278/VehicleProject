@@ -27,16 +27,9 @@ namespace VehicleServer.Configuration
            .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(y => y.Items)
-         .WithMany(y => y.StockTransactions)
-         .HasForeignKey(y => y.ItemId)
-         .OnDelete(DeleteBehavior.Restrict);
-
-
-            builder.HasOne(st => st.PlatePools)
-            .WithOne(pp => pp.StockTransactions)
-            .HasForeignKey<StockTransaction>(st => st.PlatePoolId)
-            .OnDelete(DeleteBehavior.Restrict);
-
+             .WithMany(y => y.StockTransactions)
+             .HasForeignKey(y => y.ItemId)
+             .OnDelete(DeleteBehavior.Restrict);
 
 
         }

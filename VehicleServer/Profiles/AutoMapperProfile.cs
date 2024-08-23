@@ -28,11 +28,6 @@ namespace VehicleServer.Profiles
 
             CreateMap<Stock, StockDto>().ReverseMap();
 
-            CreateMap<StockTransaction, StockTransactionDto>()
-                // this for plate pool relation while casting z dto
-                .ForMember(dest => dest.PlatePool, opt => opt.MapFrom(src => src.PlatePools))
-                .ReverseMap()
-                .ForMember(dest => dest.PlatePools, opt => opt.MapFrom(src => src.PlatePool));
 
 
             CreateMap<StockTransactionDto, StockTransaction>();

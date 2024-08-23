@@ -17,68 +17,112 @@ table.mat-table {
   width: 100%;
 }
 
-mat-form-field {
-  font-size: 14px;
-  width: 100%;
+.clear-button {
+  align-self: center; /* Align button in the center */
+  margin-top: -13px;
+  color: #3f51b5; /* Primary color for the button text */
+  border-color: #3f51b5; /* Border matches the primary color */
+  transition: background-color 0.3s ease;
 }
-:host ::ng-deep .mat-form-field-wrapper{
-  margin: 0 !important;
-  padding: 0;
+
+.clear-button:hover {
+  background-color: #f8dcdc; /* Light blue background on hover */
 }
-.header-container {
+
+.clear-icon {
   display: flex;
+  justify-items: start;
   justify-content: space-between;
-  align-items: center;
-  padding-left: 24px;
-  padding-right: 24px;
+}
+
+
+.header-container {
+  background-color: #ffffff; /* Light grey background */
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .header-content {
   display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .subtitle {
-  font-size: 21px;
+  font-size: 20px;
   font-weight: bold;
-  color: black;
+  color: #333; /* Darker grey for subtitle */
+  margin-bottom: 16px;
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.custom-form-field {
+  flex: 1;
+  min-width: 250px; /* Ensures fields are large enough */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #3f51b5; /* Custom color for the outline */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  border-width: 2px;
+  border-color: #3f51b5; /* Custom border color */
+}
+
+.mat-select-placeholder, .mat-select-value-text {
+  color: #555; /* Medium grey for placeholder and selected value */
+}
+
+/* Ensure there’s no border line between the placeholder and arrow */
+.mat-select-arrow {
+  color: #3f51b5; /* Custom arrow color */
+  justify-self: left;
+}
+
+.mat-select-value {
+  display: flex;
+  align-items: center;
+}
+
+.mat-select-trigger {
+  padding-right: 0px; /* Remove padding to eliminate the border gap */
+}
+
+.mat-form-field.mat-focused .mat-form-field-outline-thick {
+  border-color: #3f51b5; /* Custom border color on focus */
+}
+
+.mat-icon.my-icon {
+  color: #555; /* Grey color for the search icon */
+}
+
+.inp {
+  color: #333; /* Dark grey text */
+}
+
+.inp::placeholder {
+  color: #aaa; /* Light grey placeholder */
 }
 
 .search-field {
-  max-width: fit-content;
-  flex: 2;
-  margin: 0 16px;
-  border-radius: 12px; /* Rounded corners */
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  overflow: hidden; /* Ensures rounded corners */
-
+  position: relative;
+  width: 100%; /* Full width for search field */
 }
 
-
-
-.my-icon {
-  color: black;
-  margin-right: 8px;
-  font-size: 24px; /* Adjust icon size if needed */
+.search-field mat-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px; /* Padding for search icon */
 }
 
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-  padding: 0; /* Removes padding for better alignment */
-}
-
-.mat-form-field-appearance-legacy .mat-form-field-wrapper {
-  padding: 0; /* Removes padding for better alignment */
-}
-
-.mat-form-field.search-field.mat-mdc-form-field-subscript-wrapper,
-.mat-form-field.search-field.mat-mdc-form-field-bottom-align {
-  /* Override any unwanted styles here */
-  padding-bottom: 0; /* Example of overriding padding */
-  margin-bottom: 0; /* Example of overriding margin */
-}
-
-.btn-add {
-  white-space: nowrap;
+.search-field input {
+  padding-left: 40px; /* Padding to avoid overlap with icon */
 }

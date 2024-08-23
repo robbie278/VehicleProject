@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StockService } from '../Service/stock.service';
-import { ReportService } from '../Service/report.service';
+import { StockService } from '../services/stock.service';
+import { ReportService } from '../services/report.service';
 import { Stock } from '../Models/Stock';
 import { Report } from '../Models/Report';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,7 +16,7 @@ import { TranslateService } from '@ngx-translate/core'
 export class HomeComponent implements OnInit {
   stockReport: Stock[] = [];
   displayedColumns: string[] = ['itemName', 'storeName', 'quantityInStock', 'lastUpdatedDate', 'action'];
-  
+
   storeBalance: Stock[] = [];
   itemBalance: Stock[] = [];
 

@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ItemService } from '../Service/item.service';
-import { Item } from '../Models/item';
+import { ItemService } from '../services/item.service';
+import { Item } from '../models/item';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ItemEditComponent } from './item-edit.component';
@@ -9,7 +9,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
-import { PlatePool } from '../Models/PlatePool';
+import { PlatePool } from '../models/PlatePool';
 
 @Component({
   selector: 'app-item',

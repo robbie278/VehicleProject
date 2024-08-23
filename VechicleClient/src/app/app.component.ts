@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './services/language.service'; 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'] 
 })
 export class AppComponent {
-  title = 'VechicleClient';
-  constructor(private translate: TranslateService) {
-    this.translate.setDefaultLang('am');
+  title = 'Stock Management';
+
+  constructor(private languageService: LanguageService) {
+    // LanguageService handles language initialization
   }
 }

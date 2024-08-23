@@ -1,13 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ICategory } from '../Models/Category';
-import { Item } from '../Models/item';
+import { ICategory } from '../models/Category';
+import { Item } from '../models/item';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ItemService } from '../Service/item.service';
+import { ItemService } from '../services/item.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { PlatePool } from '../Models/PlatePool';
+import { PlatePool } from '../models/PlatePool';
 
 
 @Component({

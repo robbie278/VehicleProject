@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { StoreKeeper } from '../Models/Store-keeper';
-import { Store } from '../Models/Store';
+import { StoreKeeper } from '../models/Store-keeper';
+import { Store } from '../models/Store';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
-import { StoreKeeperService } from '../Service/store-keeper.service';
+import { StoreKeeperService } from '../services/store-keeper.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';

@@ -79,7 +79,8 @@ namespace VehicleServer.Controllers
         [Route("isDupeCategory")]
         public bool isDupeCategory(CategoryDto category)
         {
-            return categoryRepo.isDupeCategory(category);
+           var resp = categoryRepo.isDupeCategory(category);
+            return resp;
         }
 
 

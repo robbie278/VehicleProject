@@ -2,56 +2,71 @@
 <div mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
     <mat-form-field *ngIf="store">
-      <mat-label>{{ 'Transaction.select_a_store' | translate }} :</mat-label>
+      <mat-label>{{ "Transaction.select_a_store" | translate }} :</mat-label>
       <mat-select id="storeId" formControlName="storeId">
-        <mat-option *ngFor="let store of store" [value]="store.storeId" (onSelectionChange)="getStoreKeeperByStore(store.storeId)">
+        <mat-option
+          *ngFor="let store of store"
+          [value]="store.storeId"
+          (onSelectionChange)="getStoreKeeperByStore(store.storeId)"
+        >
           {{ store.name }}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls['storeId'].errors?.['required']">
-        {{ 'Store.STORE_REQUIRED' | translate }}
+        {{ "Store.STORE_REQUIRED" | translate }}
       </mat-error>
     </mat-form-field>
-    <mat-form-field >
-      <mat-label>{{ 'Transaction.select_storekeeper' | translate }} :</mat-label>
+    <mat-form-field>
+      <mat-label
+        >{{ "Transaction.select_storekeeper" | translate }} :</mat-label
+      >
       <mat-select id="storeKeeperId" formControlName="storeKeeperId">
         <mat-option
           *ngFor="let storeKeeper of storeKeeper"
           [value]="storeKeeper.storeKeeperId"
         >
-
           {{ storeKeeper.name }}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls['storeKeeperId'].errors?.['required']">
-        {{ 'Item.description_placeholder' | translate }}
+        {{ "Item.description_placeholder" | translate }}
       </mat-error>
     </mat-form-field>
     <mat-form-field *ngIf="categories">
-      <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
-      <mat-select id="categoryId" formControlName="categoryId">
-        <mat-option *ngFor="let category of categories" [value]="category.categoryId">
+      <mat-label>{{ "Transaction.select_a_category" | translate }} :</mat-label>
+      <mat-select
+        id="categoryId"
+        formControlName="categoryId"
+        (selectionChange)="getItemsByCategory($event.value)"
+      >
+        <mat-option
+          *ngFor="let category of categories"
+          [value]="category.categoryId"
+        >
           {{ category.name }}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls['categoryId'].errors?.['required']">
-        {{ 'Category.Category_Name_Placeholder' | translate }}
+        {{ "Category.Category_Name_Placeholder" | translate }}
       </mat-error>
     </mat-form-field>
-
 
     <!-- is plate check box -->
     <!-- <mat-checkbox formControlName="isPlate" (change)="isSingleBoxChage($event)">Is Plate</mat-checkbox> -->
 
     <mat-form-field>
-      <mat-label>{{ 'Transaction.select_an_item' | translate }} :</mat-label>
-      <mat-select id="itemId" formControlName="itemId" (selectionChange)="onItemChange($event)">
+      <mat-label>{{ "Transaction.select_an_item" | translate }} :</mat-label>
+      <mat-select
+        id="itemId"
+        formControlName="itemId"
+        (selectionChange)="onItemChange($event)"
+      >
         <mat-option *ngFor="let item of item" [value]="item.itemId">
           {{ item.name }}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls['itemId'].errors?.['required']">
-        {{ 'Item.description_placeholder' | translate }}
+        {{ "Item.description_placeholder" | translate }}
       </mat-error>
     </mat-form-field>
 
@@ -63,49 +78,68 @@
         </mat-option>
       </mat-select>
       <mat-error *ngIf="form.controls['userId'].errors?.['required']">
-       
       </mat-error>
     </mat-form-field>
 
-
     <!-- plate related input fields -->
-    
+
     <mat-form-field *ngIf="itIsPlate">
-      <mat-label>{{ 'others.major' | translate }}:</mat-label>
-      <input matInput formControlName="majorId" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
-      <mat-error *ngIf=" form.controls['majorId'].errors?.['required']">
-        {{ 'FORM.NAME_REQUIRED' | translate }}
+      <mat-label>{{ "others.Plate_Region" | translate }}:</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="plateRegionId"
+        required
+        placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
+      />
+      <mat-error *ngIf=" form.controls['plateRegionId'].errors?.['required']">
+        {{ "FORM.NAME_REQUIRED" | translate }}
       </mat-error>
-  </mat-form-field>
+    </mat-form-field>
 
-  <mat-form-field *ngIf="itIsPlate">
-    <mat-label>{{ 'others.minor' | translate }}:</mat-label>
-    <input matInput formControlName="minorId" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
-    <mat-error *ngIf=" form.controls['minorId'].errors?.['required']">
-      {{ 'FORM.NAME_REQUIRED' | translate }}
-    </mat-error>
-</mat-form-field>
+    <mat-form-field *ngIf="itIsPlate">
+      <mat-label>{{ "others.major" | translate }}:</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="majorId"
+        required
+        placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
+      />
+      <mat-error *ngIf=" form.controls['majorId'].errors?.['required']">
+        {{ "FORM.NAME_REQUIRED" | translate }}
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field *ngIf="itIsPlate">
-    <mat-label>{{ 'others.Plate_Size' | translate }}:</mat-label>
-    <input matInput formControlName="plateSizeId" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
-    <mat-error *ngIf=" form.controls['plateSizeId'].errors?.['required']">
-      {{ 'FORM.NAME_REQUIRED' | translate }}
-    </mat-error>
-</mat-form-field>
+    <mat-form-field *ngIf="itIsPlate">
+      <mat-label>{{ "others.minor" | translate }}:</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="minorId"
+        required
+        placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
+      />
+      <mat-error *ngIf=" form.controls['minorId'].errors?.['required']">
+        {{ "FORM.NAME_REQUIRED" | translate }}
+      </mat-error>
+    </mat-form-field>
 
-<mat-form-field *ngIf="itIsPlate">
-  <mat-label>{{ 'others.Plate_Region' | translate }}:</mat-label>
-  <input matInput formControlName="plateRegionId" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
-  <mat-error *ngIf=" form.controls['plateRegionId'].errors?.['required']">
-    {{ 'FORM.NAME_REQUIRED' | translate }}
-  </mat-error>
-</mat-form-field>
-
-
+    <mat-form-field *ngIf="itIsPlate">
+      <mat-label>{{ "others.Plate_Size" | translate }}:</mat-label>
+      <input
+        matInput
+        formControlName="plateSizeId"
+        required
+        placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
+      />
+      <mat-error *ngIf=" form.controls['plateSizeId'].errors?.['required']">
+        {{ "FORM.NAME_REQUIRED" | translate }}
+      </mat-error>
+    </mat-form-field>
 
     <mat-form-field>
-      <mat-label>{{ 'Transaction.transaction_type' | translate }}:</mat-label>
+      <mat-label>{{ "Transaction.transaction_type" | translate }}:</mat-label>
       <input
         matInput
         formControlName="transactionType"
@@ -114,33 +148,60 @@
         readonly
       />
       <mat-error *ngIf="form.controls['transactionType'].errors?.['required']">
-        {{ 'Item.description_placeholder' | translate }}
+        {{ "Item.description_placeholder" | translate }}
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>{{ 'Transaction.transaction_date' | translate }}:</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="transactionDate" placeholder="Choose a date" required>
+      <mat-label>{{ "Transaction.transaction_date" | translate }}:</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="transactionDate"
+        placeholder="Choose a date"
+        required
+      />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="form.controls['transactionDate'].errors?.['required']">
-        {{ 'Transaction.transaction_date_required' | translate }}
+        {{ "Transaction.transaction_date_required" | translate }}
       </mat-error>
-      <mat-error *ngIf="form.controls['transactionDate'].errors?.['futureDate']">
-        {{ 'Transaction.transaction_date_future' | translate }}
+      <mat-error
+        *ngIf="form.controls['transactionDate'].errors?.['futureDate']"
+      >
+        {{ "Transaction.transaction_date_future" | translate }}
       </mat-error>
     </mat-form-field>
-    
 
     <!-- <mat-checkbox formControlName="singleItem">Single Item</mat-checkbox> -->
+    <div class="flex justify-center">
+      <div class="w-3/5">
+        <mat-checkbox
+          class="ml-3"
+          formControlName="singleItem"
+          (change)="onCheckboxChange($event)"
+        >
+          {{ "others.Single_Item" | translate }}
+        </mat-checkbox>
+      </div>
 
-    <mat-checkbox formControlName="singleItem" (change)="onCheckboxChange($event)">
-      {{ "others.Single_Item" | translate }}
-    </mat-checkbox>
-    <!-- <mat-checkbox class="example-margin" [(ngModel)]="isBulk">Checked</mat-checkbox> -->
+      <div class="w-2/5">
+        <mat-form-field *ngIf="itIsPlate" class="w-full" >
+          <mat-label>{{ "others.prefix" | translate }}:</mat-label>
+          <mat-select id="prefix" formControlName="prefix">
+            <mat-option *ngFor="let prefix of prefixList" [value]="prefix">
+              {{ prefix }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf=" form.controls['prefix'].errors?.['required']">
+            {{ "FORM.NAME_REQUIRED" | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
 
     <mat-form-field>
-      <mat-label>{{ 'Transaction.pad_number_start' | translate }}:</mat-label>
+      <mat-label>{{ "Transaction.pad_number_start" | translate }}:</mat-label>
       <input
         matInput
         formControlName="padNumberStart"
@@ -148,27 +209,26 @@
         placeholder="{{ 'Transaction.pad_number_start' | translate }}"
       />
       <mat-error *ngIf="form.controls['padNumberStart'].errors?.['required']">
-        {{ 'Item.description_placeholder' | translate }}
+        {{ "Item.description_placeholder" | translate }}
       </mat-error>
       <mat-error *ngIf="form.controls['padNumberStart'].errors?.['pattern']">
-        {{ 'Item.description_placeholder' | translate }}
+        {{ "Item.description_placeholder" | translate }}
       </mat-error>
     </mat-form-field>
 
-
     <mat-form-field *ngIf="!form.controls['singleItem'].value">
-      <mat-label>{{ 'Transaction.pad_number_end' | translate }}:</mat-label>
+      <mat-label>{{ "Transaction.pad_number_end" | translate }}:</mat-label>
       <input
         matInput
         formControlName="padNumberEnd"
         placeholder="{{ 'Transaction.pad_number_end' | translate }}"
       />
       <mat-error *ngIf="form.controls['padNumberEnd'].errors?.['pattern']">
-        {{ 'Item.description_placeholder' | translate }}
+        {{ "Item.description_placeholder" | translate }}
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>{{ 'Transaction.quantity' | translate }}:</mat-label>
+      <mat-label>{{ "Transaction.quantity" | translate }}:</mat-label>
       <input
         matInput
         formControlName="quantity"
@@ -179,20 +239,25 @@
     </mat-form-field>
   </form>
 </div>
-<div style="border-left: 5px; color: red;" *ngIf="form.errors?.['invalidPadNumbers']" class="error-message">
-  {{ 'Item.description_placeholder' | translate }}
+<div
+  style="border-left: 5px; color: red"
+  *ngIf="form.errors?.['invalidPadNumbers']"
+  class="error-message"
+>
+  {{ "Item.description_placeholder" | translate }}
 </div>
-<div style="border-left: 5px; color: red;" *ngIf="form.errors?.['negativePadNumbers']" class="error-message">
-  {{ 'Item.description_placeholder' | translate }}
+<div
+  style="border-left: 5px; color: red"
+  *ngIf="form.errors?.['negativePadNumbers']"
+  class="error-message"
+>
+  {{ "Item.description_placeholder" | translate }}
 </div>
 <div mat-dialog-actions>
-  <button
-    mat-flat-button
-    color="primary"
-    
-    (click)="onSubmit()"
-  >
+  <button mat-flat-button color="primary" (click)="onSubmit()">
     {{ "FORM.CREATE" | translate }}
   </button>
-  <button mat-button class="btn" (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
+  <button mat-button class="btn" (click)="onCancel()">
+    {{ "FORM.CANCEL" | translate }}
+  </button>
 </div>
