@@ -14,18 +14,21 @@ public class ReportController : ControllerBase
         _repository = repository;
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Stock>> GetStock(int id)
+
+    // balance by store
+    [HttpGet("total-balance-by-store")]
+    public async Task<ActionResult<List<StockDto>>> BalanceByStore()
     {
-        var stock = await _repository.GetStockById(id);
-
-        if (stock == null)
-        {
-            return NotFound();
-        }
-
-        return stock;
+        return await _repository.GetBalanceByStore();
     }
+
+    // balance by item
+    [HttpGet("total-balance-by-item")]
+    public async Task<ActionResult<List<StockDto>>> BalanceByItem()
+    {
+        return await _repository.GetBalanceByItem();
+    }
+
 
     [HttpGet("total-quantity-by-store")]
     public async Task<ActionResult<List<StockDto>>> GetAllStocks()

@@ -129,48 +129,62 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
         public async Task SingleInsertTransactionsAsync(StockTransaction transaction)
         {
-            var transactionDetail = new StockItemsDetail
-            {
-                ItemId = transaction.ItemId,
-                StoreId = transaction.StoreId,
-                UserId = transaction.UserId,
-                StoreKeeperId = transaction.StoreKeeperId,
-                TransactionType = transaction.TransactionType,
-                PadNumber = transaction.PadNumberStart,
-                TransactionDate = transaction.TransactionDate
-            };
 
-            if (transaction.PlatePoolId != null)
-            {
-                // Fill the PlatePool fields directly from the transaction's PlatePools relation
-                var platePool = transaction.PlatePools;
+            var transactionDetail = new StockItemsDetail();
 
-                var newPlatePool = new PlatePool
-                {
-                    MajorId = platePool.MajorId,
-                    MinorId = platePool.MinorId,
-                    PlateRegionId = platePool.PlateRegionId,
-                    PlateSizeId = platePool.PlateSizeId,
-                    // Copy other necessary fields
-                };
 
-                // Save the new PlatePool record
-                await _context.PlatePool.AddAsync(newPlatePool);
-                await _context.SaveChangesAsync(); // Save to generate the PlatePoolId
+            
 
-                // Associate the new PlatePool with the transactionDetail
-                transactionDetail.PlatePoolId = newPlatePool.PlatePoolId;
+
+
+
+
+            if (transactionDetail.PlatePool != null) {
+
+                transactionDetail.ItemId = transaction.ItemId;
+
+                // filling the plate pool table if it existes
+                transactionDetail.PlatePool.MajorId = transaction.PlatePools.MajorId;
+                transactionDetail.PlatePool.MinorId = transaction.PlatePools.MinorId;
+                transactionDetail.PlatePool.PlateRegionId = transaction.PlatePools.MajorId;
+                transactionDetail.PlatePool.PlateSizeId = transaction.PlatePools.MajorId;
+
+
+                transactionDetail.StoreId = transaction.StoreId;
+                transactionDetail.UserId = transaction.UserId;
+                transactionDetail.StoreKeeperId = transaction.StoreKeeperId;
+                transactionDetail.TransactionType = transaction.TransactionType;
+                transactionDetail.PadNumber = transaction.PadNumberStart;
+                transactionDetail.TransactionDate = transaction.TransactionDate;
+
+                transactionDetail.PlatePool.MajorId = transaction.PlatePools.MajorId;
+                transactionDetail.PlatePool.MinorId = transaction.PlatePools.MinorId;
+                transactionDetail.PlatePool.PlateRegionId = transaction.PlatePools.MajorId;
+                transactionDetail.PlatePool.PlateSizeId = transaction.PlatePools.MajorId;
+
             }
+            else {
 
-            // Add the transactionDetail and transaction to their respective tables
+                // filling transaction detail without the plate information
+                transactionDetail.ItemId = transaction.ItemId;
+
+                transactionDetail.StoreId = transaction.StoreId;
+                transactionDetail.UserId = transaction.UserId;
+                transactionDetail.StoreKeeperId = transaction.StoreKeeperId;
+                transactionDetail.TransactionType = transaction.TransactionType;
+                transactionDetail.PadNumber = transaction.PadNumberStart;
+                transactionDetail.TransactionDate = transaction.TransactionDate;
+
+            }
+            
+    
+
             await _context.StockItemsDetail.AddAsync(transactionDetail);
             await _context.StockTransactions.AddAsync(transaction);
             await _context.SaveChangesAsync();
 
-            // Update the stock quantity
             await UpdateStockAsync(transaction.ItemId, transaction.StoreId, transaction.TransactionType != TransactionType.Return ? transaction.Quantity : -transaction.Quantity);
         }
-
 
         public async Task BulkUpdateItemDetailsTransactionAsync(StockTransaction transaction)
         {

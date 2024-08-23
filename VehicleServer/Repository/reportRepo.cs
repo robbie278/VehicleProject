@@ -16,10 +16,42 @@ namespace VehicleServer.Repository
 
         }
 
-        public async Task<Stock> GetStockById(int id)
+        // getting balance by store
+        public async Task<List<StockDto>> GetBalanceByStore()
         {
-            return await _context.Stocks.FindAsync(id);
+            var results = await (from detail in _context.StockItemsDetail
+                                 join store in _context.Stores
+                                 on detail.StoreId equals store.StoreId
+                                 group detail by new { detail.StoreId, store.Name } into g
+                                 select new StockDto
+                                 {
+                                     StoreId = g.Key.StoreId,
+                                     StoreName = g.Key.Name,
+                                     QuantityInStock = g.Sum(d => d.TransactionType == "Receipt" ? d.PadNumber : -d.PadNumber),
+                                     LastUpdatedDate = g.Max(d => d.TransactionDate)
+                                 }).ToListAsync();
+
+            return results;
         }
+
+        //getting balance by item
+        public async Task<List<StockDto>> GetBalanceByItem()
+        {
+            var results = await (from detail in _context.StockItemsDetail
+                                 join item in _context.Items
+                                 on detail.ItemId equals item.ItemId
+                                 group detail by new { detail.ItemId, item.Name } into g
+                                 select new StockDto
+                                 {
+                                     ItemId = g.Key.ItemId,
+                                     ItemName = g.Key.Name,
+                                     QuantityInStock = g.Sum(d => d.TransactionType == "Receipt" ? d.PadNumber : -d.PadNumber),
+                                     LastUpdatedDate = g.Max(d => d.TransactionDate)
+                                 }).ToListAsync();
+
+            return results;
+        }
+
 
         public async Task<List<StockDto>> GetTotalQuantityByStore()
         {

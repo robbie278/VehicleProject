@@ -16,6 +16,9 @@ import { TranslateService } from '@ngx-translate/core'
 export class HomeComponent implements OnInit {
   stockReport: Stock[] = [];
   displayedColumns: string[] = ['itemName', 'storeName', 'quantityInStock', 'lastUpdatedDate', 'action'];
+  
+  storeBalance: Stock[] = [];
+  itemBalance: Stock[] = [];
 
   
   data:any;
@@ -35,8 +38,14 @@ export class HomeComponent implements OnInit {
     this.stockService.getData().subscribe((data: Stock[]) => {
       this.stockReport = data;
     });
+    this.reportService.getBalanceByStore().subscribe((data: Stock[]) => this.storeBalance = data)
+    this.reportService.getBalanceByItem().subscribe((data: Stock[]) => this.itemBalance = data)
     this.totalQuantityByItem()
     this.totalQuantityByStore()
+  }
+
+  loadBalance(){
+    
   }
 
   totalQuantityByItem(): void {  
