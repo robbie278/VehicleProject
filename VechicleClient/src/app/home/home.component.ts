@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from '../services/stock.service';
 import { ReportService } from '../services/report.service';
-import { Stock } from '../models/Stock';
-import { Report } from '../models/Report';
+import { Stock } from '../Models/Stock';
+import { Report } from '../Models/Report';
 import { MatDialog } from '@angular/material/dialog';
 import { StockDetailComponent } from '../stock-detail/stock-detail.component';
 import { TranslateService } from '@ngx-translate/core'
@@ -16,6 +16,9 @@ import { TranslateService } from '@ngx-translate/core'
 export class HomeComponent implements OnInit {
   stockReport: Stock[] = [];
   displayedColumns: string[] = ['itemName', 'storeName', 'quantityInStock', 'lastUpdatedDate', 'action'];
+
+  storeBalance: Stock[] = [];
+  itemBalance: Stock[] = [];
 
   
   data:any;
@@ -35,8 +38,14 @@ export class HomeComponent implements OnInit {
     this.stockService.getData().subscribe((data: Stock[]) => {
       this.stockReport = data;
     });
+    this.reportService.getBalanceByStore().subscribe((data: Stock[]) => this.storeBalance = data)
+    this.reportService.getBalanceByItem().subscribe((data: Stock[]) => this.itemBalance = data)
     this.totalQuantityByItem()
     this.totalQuantityByStore()
+  }
+
+  loadBalance(){
+    
   }
 
   totalQuantityByItem(): void {  

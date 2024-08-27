@@ -20,6 +20,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ChartModule } from 'primeng/chart';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 
@@ -46,7 +48,9 @@ import { ChartModule } from 'primeng/chart';
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
-    ChartModule
+    ChartModule,
+    MatTabsModule,
+    MatGridListModule
     
     
   
@@ -73,7 +77,9 @@ import { ChartModule } from 'primeng/chart';
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
-    ChartModule
+    ChartModule,
+    MatTabsModule,
+    MatGridListModule
     
     
 

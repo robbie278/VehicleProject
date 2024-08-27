@@ -3,9 +3,10 @@
     #sidenav
     style="max-width: min-content;"
     mode="side"
-    [opened]="isSidenavOpen"
-    [attr.disabled]="isSidenavDisabled ? true : null"
+    [opened]="true"
   >
+  <!-- [attr.disabled]="isSidenavDisabled ? true : null" -->
+
     <!-- Sidebar Header with Logo and Company Name -->
     <div class="sidebar-header">
       <img src="assets/images/aavms.jpg" alt="Company Logo" class="logo" />
@@ -76,7 +77,7 @@
           <button
             mat-icon-button
             (click)="toggleSidenav()"
-            [disabled]="isSidenavDisabled"
+            [disabled]="false"
           >
             <mat-icon>menu</mat-icon>
           </button>
