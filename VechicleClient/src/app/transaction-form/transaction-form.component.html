@@ -85,13 +85,11 @@
 
     <mat-form-field *ngIf="itIsPlate">
       <mat-label>{{ "others.Plate_Region" | translate }}:</mat-label>
-      <input
-        type="number"
-        matInput
-        formControlName="plateRegionId"
-        required
-        placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
-      />
+      <mat-select id="plateRegionId" formControlName="plateRegionId">
+        <mat-option *ngFor="let region of regionList" [value]="region.AddressLookUpId">
+          {{ (languageService.getStoredLanguage() == 'en') ? region.DescriptionEng : region.DescriptionAmh}}
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf=" form.controls['plateRegionId'].errors?.['required']">
         {{ "FORM.NAME_REQUIRED" | translate }}
       </mat-error>
@@ -99,13 +97,11 @@
 
     <mat-form-field *ngIf="itIsPlate">
       <mat-label>{{ "others.major" | translate }}:</mat-label>
-      <input
-        type="number"
-        matInput
-        formControlName="majorId"
-        required
-        placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
-      />
+      <mat-select id="majorId" formControlName="majorId" (selectionChange)="loadMinorData()">
+        <mat-option *ngFor="let major of majorList" [value]="major.majorId">
+          {{ (languageService.getStoredLanguage() == 'en') ? major.descriptionEng : major.descriptionAmh}}
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf=" form.controls['majorId'].errors?.['required']">
         {{ "FORM.NAME_REQUIRED" | translate }}
       </mat-error>
@@ -113,13 +109,11 @@
 
     <mat-form-field *ngIf="itIsPlate">
       <mat-label>{{ "others.minor" | translate }}:</mat-label>
-      <input
-        type="number"
-        matInput
-        formControlName="minorId"
-        required
-        placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
-      />
+      <mat-select id="minorId" formControlName="minorId">
+        <mat-option *ngFor="let minor of minorList" [value]="minor.minorId">
+          {{ (languageService.getStoredLanguage() == 'en') ? minor.descriptionEng : minor.descriptionAmh}}
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf=" form.controls['minorId'].errors?.['required']">
         {{ "FORM.NAME_REQUIRED" | translate }}
       </mat-error>
@@ -127,12 +121,11 @@
 
     <mat-form-field *ngIf="itIsPlate">
       <mat-label>{{ "others.Plate_Size" | translate }}:</mat-label>
-      <input
-        matInput
-        formControlName="plateSizeId"
-        required
-        placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
-      />
+      <mat-select id="plateSizeId" formControlName="plateSizeId">
+        <mat-option *ngFor="let plateSize of plateSizeList" [value]="plateSize.plateSizeId">
+          {{ (languageService.getStoredLanguage() == 'en') ? plateSize.descriptionEng : plateSize.descriptionAmh}}
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf=" form.controls['plateSizeId'].errors?.['required']">
         {{ "FORM.NAME_REQUIRED" | translate }}
       </mat-error>
@@ -254,7 +247,7 @@
   {{ "Item.description_placeholder" | translate }}
 </div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="primary" (click)="onSubmit()">
+  <button mat-flat-button [disabled]="form.invalid" color="primary" (click)="onSubmit()">
     {{ "FORM.CREATE" | translate }}
   </button>
   <button mat-button class="btn" (click)="onCancel()">

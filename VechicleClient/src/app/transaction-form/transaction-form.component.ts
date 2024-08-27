@@ -20,6 +20,9 @@ import { TransactionType } from '../enums/transaction-type.enum';
 import { ICategory } from '../models/Category';
 import { TransactionService } from '../services/transaction.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LookupService } from '../services/lookup.service';
+import { LanguageService } from '../services/language.service';
+import { IVSMSService } from '../services/ivsms.service';
 
 @Component({
   selector: 'app-transaction-form',
@@ -43,7 +46,19 @@ export class TransactionFormComponent implements OnInit {
   isChecked: boolean = false;
   isPlateChecked: boolean = false;
   itIsPlate: boolean = false;
-  prefixList: string[] = ['','A', 'B', 'C', 'D'];
+  prefixList: string[] = ['', 'A', 'B', 'C', 'D'];
+
+  regionList: any[] = [];
+  majorList: any[] = [];
+  minorList: any[] = [];
+  plateSizeList: any[] = [];
+
+  selectedVehicleCategoryId?: number;
+  selectedVehicleRegionId?: number;
+  selectedVehiclePlateSizeId?: number;
+  selectedVehicleMajorId?: number;
+  selectedVehicleMinorId?: number;
+
   constructor(
     private transactionFormService: TransactionFormService,
     private transactionService: TransactionService,
@@ -51,7 +66,10 @@ export class TransactionFormComponent implements OnInit {
     private toastr: ToastrService,
     public dialogRef: MatDialogRef<TransactionFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private translate: TranslateService
+    public translate: TranslateService,
+    public languageService: LanguageService,
+    private lookupService: LookupService,
+    private ivsmsService: IVSMSService
   ) {
     this.transactionType = data.transactionType || TransactionType.Issue;
   }
@@ -73,6 +91,7 @@ export class TransactionFormComponent implements OnInit {
     );
 
     if (selectedItem?.isPlate) {
+      this.loadPlateRelatedData();
       this.itIsPlate = true;
       this.form.get('isPlate')?.setValue(true);
       console.log(selectedItem.isPlate);
@@ -116,7 +135,7 @@ export class TransactionFormComponent implements OnInit {
         minorId: new FormControl(),
         plateSizeId: new FormControl(),
         plateRegionId: new FormControl(),
-        prefix: new FormControl()
+        prefix: new FormControl(),
       },
       { validators: this.padNumberValidator() }
     );
@@ -374,5 +393,58 @@ export class TransactionFormComponent implements OnInit {
     this.transactionFormService.getStoreKeeperByStore(id).subscribe((items) => {
       this.storeKeeper = items;
     });
+  }
+
+  loadPlateRelatedData() {
+    this.loadRegionsData();
+    this.loadMajorData();
+    this.loadMinorData();
+    this.loadPlatSizeData();
+  }
+
+  loadRegionsData() {
+    this.lookupService.setParams({ addressType: 1 });
+    this.lookupService
+      .getLookupData<any[]>('AddressTableLookUp/type', 'route')
+      .subscribe((res: any[]) => {
+        console.log('the res is', res);
+        this.regionList = res;
+      });
+  }
+
+  loadMajorData() {
+    this.ivsmsService.setParams({});
+    this.ivsmsService
+      .getLookupData<any[]>('MajorPlate/GetAll', 'route')
+      .subscribe((res: any[]) => {
+        this.majorList = res;
+      });
+  }
+
+  loadMinorData() {
+    if (this.form.get('majorId')?.value) {
+      this.ivsmsService.setParams({ majorId: this.form.get('majorId')?.value });
+      this.ivsmsService
+        .getLookupData<any[]>('MinorPlate/GetMinorByMajorId', 'route')
+        .subscribe((res: any[]) => {
+          this.minorList = res;
+        });
+    } else {
+      this.ivsmsService.setParams({});
+      this.ivsmsService
+        .getLookupData<any[]>('MinorPlate/GetAll', 'route')
+        .subscribe((res: any[]) => {
+          this.minorList = res;
+        });
+    }
+  }
+
+  loadPlatSizeData() {
+    this.ivsmsService.setParams({});
+    this.ivsmsService
+      .getLookupData<any[]>('PlateSize/GetAll', 'route')
+      .subscribe((res: any[]) => {
+        this.plateSizeList = res;
+      });
   }
 }
