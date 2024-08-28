@@ -108,7 +108,8 @@
     "minor": "አነስተኛ",
     "Plate_Size": "ታርጋ መጠን",
     "Plate_Region": "ታርጋ ክልል",
-    "prefix": "ፊደል"
+    "prefix": "ፊደል",
+    "Vehicle_category": "የተሽከርካሪ ምድብ"
   },
 
   "Company": {

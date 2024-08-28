@@ -1,5 +1,8 @@
-﻿namespace VehicleServer.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace VehicleServer.Entities
 {
+    [Table("StockItems")]
     public class Item
     {
         public int ItemId { get; set; }

@@ -205,7 +205,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                         MajorId = transaction.MajorId ?? 0,  
                         MinorId = transaction.MinorId ?? 0,  
                         PlateSizeId = transaction.PlateSizeId ?? 0,  
-                        VehicleCategoryId = transaction.VehicleCategoryId ?? 0,  
+                        VehicleCategoryId = transaction.VehicleCategoryId ?? 1,  
                         PlateRegionId = transaction.PlateRegionId ?? 0, 
                         IsDeleted = false,
                         IsActive = true

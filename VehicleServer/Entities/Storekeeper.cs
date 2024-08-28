@@ -1,5 +1,8 @@
-﻿namespace VehicleServer.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace VehicleServer.Entities
 {
+    [Table("StockStoreKeepers")]
     public class StoreKeeper
     {
         public int StoreKeeperId { get; set; }
