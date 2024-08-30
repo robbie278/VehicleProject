@@ -1,0 +1,29 @@
+<div class="stock-status-card">
+    <!-- Dropdown for site selection -->
+    <div class="site-selector">
+      <label for="siteSelect">Select Site:</label>
+      <select id="siteSelect" (change)="onSiteChange($event)">
+        <option [value]="null">All Sites</option>
+        <option *ngFor="let site of sites" [value]="site.id">{{ site.name }}</option>
+      </select>
+    </div>
+  
+    <!-- Stock Balance Card -->
+    <div class="balance-card">
+      <h3>Total Issue Stock Balance</h3>
+      <p>{{ totalIssueBalance | number }}</p>
+    </div>
+  
+    <!-- Existing Stock Status Cards -->
+    <div class="status-cards">
+      <div *ngFor="let status of stockStatus" class="status-card">
+        <h4>{{ status.status }}</h4>
+        <ul>
+          <li *ngFor="let item of status.items">
+            {{ item.itemName }}: {{ item.quantityInStock }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

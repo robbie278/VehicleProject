@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using VehicleServer.DTOs;
 
 namespace VehicleServer.Entities
 {
@@ -18,8 +19,6 @@ namespace VehicleServer.Entities
         // New navigation properties
         public ICollection<Stock>? Stock { get; set; }
         public ICollection<StockTransaction>? StockTransactions { get; set; }
-
-        
 
     }
 

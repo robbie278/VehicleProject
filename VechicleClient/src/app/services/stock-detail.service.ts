@@ -8,6 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class StockDetailService extends BaseService<StockDetail> {
+  apiUrl = this.getUrl('api/StockTransactionDetail');
   constructor(http: HttpClient) {
     super(http);
   }
@@ -21,7 +22,6 @@ export class StockDetailService extends BaseService<StockDetail> {
     filterColumn: string | null,
     filterQuery: string | null
   ): Observable<ApiResult<StockDetail>> {
-    var url = this.getUrl('api/StockTransactionDetail/stockitems');
     var params = new HttpParams()
       .set('storeId', storeId)
       .set('itemId', itemId)
@@ -36,7 +36,23 @@ export class StockDetailService extends BaseService<StockDetail> {
         .set('filterQuery', filterQuery);
     }
 
-    return this.http.get<ApiResult<StockDetail>>(url, { params });
+    return this.http.get<ApiResult<StockDetail>>(this.apiUrl + '/stockitems', { params });
+  }
+
+  getStockItemsDetails(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
+  getStockItemsDetailsByStoreId(storeId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/${storeId}`);
+  }
+
+  getStockItemsDetailsByTransactionType(
+    transactionType: string
+  ): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.apiUrl}/transaction/${transactionType}`
+    );
   }
 
   override getData(): Observable<StockDetail[]> {

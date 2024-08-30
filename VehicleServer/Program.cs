@@ -4,6 +4,7 @@ using VehicleServer.Entities;
 using VehicleServer.Profiles;
 using VehicleServer.Repository;
 using VehicleServer.Services;
+using VehicleServer.Services.ReportServices;
 using VehicleServer.Services.StockTransactionDetailServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,8 +23,11 @@ builder.Services.AddScoped<StoreKeeperRepo>();
 builder.Services.AddScoped<UserRepo>();
 builder.Services.AddScoped<StockService>();
 builder.Services.AddScoped<IStockItemsDetailService, StockItemsDetailService>();
-builder.Services.AddScoped<StockItemsDetailRepo>();
+builder.Services.AddScoped<IStockReportService, StockReportService>();
+builder.Services.AddScoped<IStockItemsDetailRepository, StockItemsDetailRepo>();
 builder.Services.AddScoped<reportRepo>();
+//builder.Services.AddScoped<>
+
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))

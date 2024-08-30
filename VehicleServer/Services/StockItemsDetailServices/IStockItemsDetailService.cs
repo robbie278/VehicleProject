@@ -1,5 +1,6 @@
 ﻿using VehicleServer.DTOs;
 using VehicleServer.Entities;
+using VehicleServer.Repository;
 
 namespace VehicleServer.Services.StockTransactionDetailServices
 {
@@ -25,6 +26,10 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
         Task<PadNumberRangeDto> GetAvailablePadNumbers(int quantity);
 
+        Task<ApiResult<StockItemsDetailDto>> GetStockItemsDetailAsync(int storeId, int itemId, int pageIndex, int pageSize, string? sortColumn = null, string? sortOrder = null, string? filterColumn = null, string? filterQuery = null    );
+        Task<IEnumerable<StockItemsDetail>> GetAllStockItemsDetailsAsync();
+        Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByStoreIdAsync(int storeId);
+        Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByTransactionTypeAsync(string transactionType);
 
     }
 }
