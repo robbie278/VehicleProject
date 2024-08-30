@@ -5,7 +5,6 @@
   <mat-card-content>
 
 
-
     <!-- this is a card for balance by item and by store -->
     <mat-tab-group>
       <mat-tab label="Balace by Store">
@@ -49,7 +48,7 @@
     <!-- balance end here -->
     
     
-    <div *ngIf="!data" style="display: flex; flex-direction: column; align-items: center;">
+    <div *ngIf="!chart" style="display: flex; flex-direction: column; align-items: center;">
     <p><em>{{ 'others.Loading' | translate }}...</em>
         <img src="assets/images/loading2.gif" alt="loading image">
         
@@ -57,19 +56,14 @@
     </div>
     <div style="display: flex; flex-direction: column; align-items: center;">
       <div style="width: 100%; height: auto;">
-        <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+        <div [chart]="chart"></div>
       </div>
     </div>
 
-    <div *ngIf="!storeData" style="display: flex; flex-direction: column; align-items: center;">
-      <p><em>{{ 'others.Loading' | translate }}...
-        <img src="assets/images/loading2.gif" alt="loading image">
-      </em></p>
-
-    </div>
+    
     <div style="display: flex; flex-direction: column; align-items: center;">
       <div style="width: 100%; height: auto;">
-        <p-chart type="doughnut" [data]="storeData" [options]="storeOptions"></p-chart>
+        <div [chart]="storeChart"></div>
       </div>
     </div>
   

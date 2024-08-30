@@ -40,6 +40,7 @@ import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -65,6 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TransactionEditComponent,
     TransactionViewComponent,
     LoginComponent,
+    
   ],
   imports: [
     BrowserModule,

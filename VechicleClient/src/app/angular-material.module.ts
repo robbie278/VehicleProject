@@ -19,9 +19,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { ChartModule } from 'primeng/chart';
+
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ChartModule } from 'angular-highcharts';
 
 
 
@@ -50,7 +51,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCheckboxModule,
     ChartModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    ChartModule
     
     
   
@@ -79,7 +81,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCheckboxModule,
     ChartModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    ChartModule
     
     
 

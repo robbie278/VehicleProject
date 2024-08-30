@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard'; 
 
 
+
+
 const routes: Routes = [
   { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'storekeppers', component: StoreKeeperComponent, canActivate: [AuthGuard] },

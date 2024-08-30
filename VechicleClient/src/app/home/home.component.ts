@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { StockService } from '../services/stock.service';
 import { ReportService } from '../services/report.service';
 import { Stock } from '../Models/Stock';
@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { StockDetailComponent } from '../stock-detail/stock-detail.component';
 import { TranslateService } from '@ngx-translate/core'
 
+// high chart libs import
+import { Chart } from 'angular-highcharts';
 
 @Component({
   selector: 'app-home',
@@ -21,14 +23,18 @@ export class HomeComponent implements OnInit {
   itemBalance: Stock[] = [];
 
   
-  data:any;
+  
   options: any; 
 
   storeData:any;
   storeOptions:any;
 
+  chart: Chart | undefined;
+  storeChart : Chart | undefined;
+
   constructor(private stockService: StockService,private reportService: ReportService,
-             private dialog: MatDialog, private translate: TranslateService
+             private dialog: MatDialog, private translate: TranslateService,
+             @Inject(PLATFORM_ID) private platformId: Object
 
   ) { 
     
@@ -48,122 +54,131 @@ export class HomeComponent implements OnInit {
     
   }
 
-  totalQuantityByItem(): void {  
-    this.reportService.getTotalQuantityByItem().subscribe((response: any[]) => {  
-      console.log('Raw response:', response);  
+  totalQuantityByItem(): void {
+    this.reportService.getTotalQuantityByItem().subscribe((response: any[]) => {
+      console.log('Raw response:', response);
   
-      if (response && response.length > 0) {  
-        const labels = response.map(report => `Item ${report.itemName}`);  
-        const quantities = response.map(report => report.quantityInStock);  
+      if (response && response.length > 0) {
+        const labels = response.map(report => `Item ${report.itemName}`);
+        const quantities = response.map(report => report.quantityInStock);
   
-        console.log('Labels:', labels);  
-        console.log('Quantities:', quantities);  
+        console.log('Labels:', labels);
+        console.log('Quantities:', quantities);
   
-        // Define an array of colors for each bar  
-        const colors = [  
-          '#42A5F5', // Color for item 1  
-          '#66BB6A', // Color for item 2  
-          '#FFCA28', // Color for item 3  
-          '#EF5350', // Color for item 4  
-        
-        ];  
+        this.chart = new Chart({
+          chart: {
+            type: 'column',
+            options3d: {
+              enabled: true,
+              alpha: 15,
+              beta: 15,
+              viewDistance: 25,
+              depth: 40
+            }
+          },
+          title: {
+            text: 'Total Quantity by Item',
+            align: 'left'
+          },
+          xAxis: {
+            categories: labels,
+            labels: {
+              skew3d: true,
+              style: {
+                fontSize: '16px'
+              }
+            }
+          },
+          yAxis: {
+            allowDecimals: false,
+            min: 0,
+            title: {
+              text: this.translate.instant('Transaction.quantity'),
+              skew3d: true,
+              style: {
+                fontSize: '16px'
+              }
+            }
+          },
+          tooltip: {
+            headerFormat: '<b>{point.key}</b><br>',
+            pointFormat: '<span style="color:{series.color}">\u25CF</span> ' +
+              '{series.name}: {point.y}'
+          },
+          plotOptions: {
+            column: {
+              stacking: 'normal',
+              depth: 40
+            }
+          },
+          series: response.map(report => ({
+            type: 'column',  // Specify the type here
+            name: report.itemName,
+            data: [report.quantityInStock],
+            stack: 'Items'
+          }))
+        });
   
-        // Create a dataset with varying colors for each quantity  
-        const datasets = quantities.map((quantity, index) => ({  
-          label: `Total Quantity for Item ${response[index].itemName}`,  
-          backgroundColor: colors[index % colors.length], // Cycle through colors  
-          borderColor: colors[index % colors.length],  
-          data: [quantity] // Each bar represents one quantity  
-        }));  
+      } else {
+        console.warn('No data available');
+      }
+    }, (error) => {
+      console.error('Error fetching report:', error);
+    });
+  }
   
-        this.data = {  
-          labels: labels,  
-          datasets: datasets  
-        };  
   
-        this.options = {  
-          responsive: true,  
-          maintainAspectRatio: true,  
-          scales: {  
-            x: {  
-              display: true,  
-              title: {  
-                display: true,  
-                text: this.translate.instant('others.Items')  
-              }  
-            },  
-            y: {  
-              display: true,  
-              title: {  
-                display: true,  
-                text: this.translate.instant('Transaction.quantity')  
-              }  
-            }  
-          }  
-        };  
-      } else {  
-        console.warn('No data available');  
-      }  
-    }, (error) => {  
-      console.error('Error fetching report:', error);  
-    });  
-  }  
   
-  totalQuantityByStore(): void {  
-    this.reportService.getTotalQuantityByStore().subscribe((response: any[]) => {  
-        console.log('Raw response:', response);  
+  totalQuantityByStore(): void {
+    this.reportService.getTotalQuantityByStore().subscribe((response: any[]) => {
+      console.log('Raw response:', response);
   
-        if (response && response.length > 0) {  
-            const labels = response.map(report => `Store ${report.storeName}`);  
-            const quantities = response.map(report => report.quantityInStock);  
+      if (response && response.length > 0) {
+        const labels = response.map(report => `Store ${report.storeName}`);
+        const quantities = response.map(report => report.quantityInStock);
   
-            console.log('Labels:', labels);  
-            console.log('Quantities:', quantities);  
+        console.log('Labels:', labels);
+        console.log('Quantities:', quantities);
   
-            // Define an array of colors for each bar  
-            const colors = ['#42A5F5', '#66BB6A', '#FFCA28', '#EF5350'];  
+        this.storeChart = new Chart({
+          chart: {
+            type: 'pie', // Change chart type to 'pie'
+            options3d: {
+              enabled: true,
+              alpha: 15
+            }
+          },
+          title: {
+            text: 'Total Quantity by Store',
+            align: 'left'
+          },
+          tooltip: {
+            pointFormat: '<b>{point.name}</b>: {point.y}'
+          },
+          plotOptions: {
+            pie: {
+              innerSize: 100, // Adjust as needed for a 3D effect
+              depth: 45,
+              dataLabels: {
+                format: '{point.name}: {point.y}'
+              }
+            }
+          },
+          series: [{
+            type: 'pie', // Specify the type here
+            name: 'Stores',
+            data: response.map(report => [report.storeName, report.quantityInStock])
+          }]
+        });
+      } else {
+        console.warn('No data available');
+      }
+    }, (error) => {
+      console.error('Error fetching report:', error);
+    });
+  }
   
-            // Create a dataset with varying colors for each quantity  
-            const datasets = [{
-                label: 'Total Quantity by Store',
-                backgroundColor: quantities.map((_, index) => colors[index % colors.length]),
-                borderColor: quantities.map((_, index) => colors[index % colors.length]),
-                data: quantities // Use quantities directly for all bars
-            }];  
   
-            this.storeData = {  
-                labels: labels,  
-                datasets: datasets  
-            };  
-  
-            this.storeOptions = {  
-                responsive: true,  
-                maintainAspectRatio: false,  
-                scales: {  
-                    x: {  
-                        display: true,  
-                        title: {  
-                            display: true,  
-                            text: this.translate.instant('others.Stores')  
-                        }  
-                    },  
-                    y: {  
-                        display: true,  
-                        title: {  
-                            display: true,  
-                            text: this.translate.instant('Transaction.quantity')  
-                        }  
-                    }  
-                }  
-            };  
-        } else {  
-            console.warn('No data available');  
-        }  
-    }, (error) => {  
-        console.error('Error fetching report:', error);  
-    });  
-}
-
 
   openDialog(storeId?: number, itemId?:number): void {
    
