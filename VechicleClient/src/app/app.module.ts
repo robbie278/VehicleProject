@@ -48,6 +48,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StockStatusCardComponent } from './components/stock-status-card/stock-status-card.component';
 
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -73,12 +74,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     TransactionEditComponent,
     TransactionViewComponent,
     LoginComponent,
+
     StockSummaryChartComponent,
     StockTransactionChartComponent,
     StorePerformanceChartComponent,
     ItemTransactionHistoryChartComponent,
     DashboardComponent,
     StockStatusCardComponent,
+
   ],
   imports: [
     BrowserModule,
