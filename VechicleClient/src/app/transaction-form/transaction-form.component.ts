@@ -253,7 +253,7 @@ export class TransactionFormComponent implements OnInit {
       majorId: this.form.controls['majorId'].value,
       minorId: this.form.controls['minorId'].value,
       plateRegionId: this.form.controls['plateRegionId'].value,
-      vehicleCategoryId: this.form.controls['VehicleCategoryId'].value,
+      vehicleCategoryId: this.form.controls['vehicleCategoryId'].value,
       // plateSizeId: this.form.controls['plateSizeId'].value,
       // if (!item.platePool) {
       //   item.platePool = <PlatePool>{};
