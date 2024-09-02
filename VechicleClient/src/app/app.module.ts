@@ -39,6 +39,14 @@ import { LoginComponent } from './login/login.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { StockSummaryChartComponent } from './components/stock-summary-chart/stock-summary-chart.component';
+import { StockTransactionChartComponent } from './components/stock-transaction-chart/stock-transaction-chart.component';
+import { StorePerformanceChartComponent } from './components/store-performance-chart/store-performance-chart.component';
+import { ItemTransactionHistoryChartComponent } from './components/item-transaction-history-chart/item-transaction-history-chart.component';
+
+import { HighchartsChartModule } from 'highcharts-angular';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { StockStatusCardComponent } from './components/stock-status-card/stock-status-card.component';
 
 
 // AoT requires an exported function for factories
@@ -66,7 +74,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     TransactionEditComponent,
     TransactionViewComponent,
     LoginComponent,
-    
+
+    StockSummaryChartComponent,
+    StockTransactionChartComponent,
+    StorePerformanceChartComponent,
+    ItemTransactionHistoryChartComponent,
+    DashboardComponent,
+    StockStatusCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -75,6 +90,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    HighchartsChartModule,
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

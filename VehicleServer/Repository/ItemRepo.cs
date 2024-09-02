@@ -54,7 +54,7 @@ namespace VehicleServer.Repository
         public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory(int id)
         {
             var items = await _context.Items
-                                          .Where(it => it.CategoryId == id)
+                                          .Where(it => it.CategoryId == id && (it.IsDeleted == false || it.IsDeleted == null))
                                            
                                           .ToListAsync();
             return items;

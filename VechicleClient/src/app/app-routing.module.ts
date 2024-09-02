@@ -15,11 +15,13 @@ import { HomeComponent } from './home/home.component';
 import { TransactionViewComponent } from './transaction/transaction-view.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard'; 
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
 
 const routes: Routes = [
+  // { path: '/', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'storekeppers', component: StoreKeeperComponent, canActivate: [AuthGuard] },
   { path: 'storeKeeper/:id', component: StoreKeeperEditComponent, canActivate: [AuthGuard] },

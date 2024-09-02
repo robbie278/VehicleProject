@@ -41,6 +41,12 @@
       </ng-container>
 
       <!-- PadNumber Column -->
+      <ng-container matColumnDef="prefix">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'others.prefix' | translate}}</th>
+        <td mat-cell *matCellDef="let element">{{ element.prefix }}</td>
+      </ng-container>
+            
+      <!-- PadNumber Column -->
       <ng-container matColumnDef="padNumber">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'Transaction.pad_number' | translate}}</th>
         <td mat-cell *matCellDef="let element">{{ element.padNumber }}</td>

@@ -104,18 +104,19 @@
     "already_exist": "Already Exist",
     "Successfully_Added": "Successfully Added",
     "Stock_Management": "Stock Management System",
-    "Profile": "ሰለ እኔ",
-    "Logout": "ውጣ",
-    "all": "all",
+    "Profile": "Profile",
+    "Logout": "Logout",
+    "all": "All",
     "View_Transaction_Details": "View Transaction Details",
     "User": "User",
     "Single_Item": "Single Item",
     "Plate": "Plate",
-    "major": "major",
-    "minor": "minor",
+    "major": "Major",
+    "minor": "Minor",
     "Plate_Size": "Plate Size",
     "Plate_Region": "Plate Region",
-    "prefix": "prefix"
+    "prefix": "Prefix",
+    "Vehicle_category": "Vehicle category"
   },
 
   "Company": {

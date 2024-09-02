@@ -84,6 +84,18 @@
     <!-- plate related input fields -->
 
     <mat-form-field *ngIf="itIsPlate">
+      <mat-label>{{ "others.Vehicle_category" | translate }}:</mat-label>
+      <mat-select id="vehicleCategoryId" formControlName="vehicleCategoryId">
+        <mat-option *ngFor="let plateCategory of plateCategoryList" [value]="plateCategory.vehicleCategoryId">
+          {{ (languageService.getStoredLanguage() == 'en') ? plateCategory.descriptionEng : plateCategory.descriptionAmh}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf=" form.controls['vehicleCategoryId'].errors?.['required']">
+        {{ "FORM.NAME_REQUIRED" | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="itIsPlate">
       <mat-label>{{ "others.Plate_Region" | translate }}:</mat-label>
       <mat-select id="plateRegionId" formControlName="plateRegionId">
         <mat-option *ngFor="let region of regionList" [value]="region.AddressLookUpId">

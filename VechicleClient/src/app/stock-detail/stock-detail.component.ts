@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class StockDetailComponent implements OnInit {
 
-  public displayedColumns: string[] = ['index', 'storeName', 'itemName','padNumber'];
+  public displayedColumns: string[] = ['index', 'storeName', 'itemName', 'prefix','padNumber'];
   public stockDetail!:MatTableDataSource<StockDetail>
   defaultPageIndex: number = 0;
   defaultPageSize: number = 10  ;

@@ -5,7 +5,21 @@ using VehicleServer.Entities;
 
 namespace VehicleServer.Repository
 {
-    public class StockItemsDetailRepo
+    public interface IStockItemsDetailRepository
+    {
+        Task<IEnumerable<StockItemsDetail>> GetAllAsync();
+        Task<IEnumerable<StockItemsDetail>> GetByStoreIdAsync(int storeId);
+        Task<IEnumerable<StockItemsDetail>> GetByTransactionTypeAsync(string transactionType);
+        Task<ApiResult<StockItemsDetailDto>> GetStockItemsDetailAsync(int storeId, int itemId,
+            int pageIndex,
+            int pageSize,
+            string? sortColumn = null,
+            string? sortOrder = null,
+            string? filterColumn = null,
+            string? filterQuery = null
+            );
+    }
+    public class StockItemsDetailRepo : IStockItemsDetailRepository
     {
         private readonly ApplicationContext _context;
 
@@ -49,6 +63,38 @@ namespace VehicleServer.Repository
                 filterColumn,
                 filterQuery
             );
+        }
+
+        public async Task<IEnumerable<StockItemsDetail>> GetAllAsync()
+        {
+            return await _context.StockItemsDetail
+                .Include(sid => sid.Items)
+                .Include(sid => sid.Stores)
+                .Include(sid => sid.User)
+                //.Include(sid => sid.StoreKeeper)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<StockItemsDetail>> GetByStoreIdAsync(int storeId)
+        {
+            return await _context.StockItemsDetail
+                .Include(sid => sid.Items)
+                .Include(sid => sid.Stores)
+                .Include(sid => sid.User)
+                //.Include(sid => sid.StoreKeeper)
+                .Where(sid => sid.StoreId == storeId)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<StockItemsDetail>> GetByTransactionTypeAsync(string transactionType)
+        {
+            return await _context.StockItemsDetail
+                .Include(sid => sid.Items)
+                .Include(sid => sid.Stores)
+                .Include(sid => sid.User)
+                //.Include(sid => sid.StoreKeeper)
+                .Where(sid => sid.TransactionType == transactionType)
+                .ToListAsync();
         }
 
     }

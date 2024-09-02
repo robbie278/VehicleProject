@@ -1,18 +1,22 @@
 ﻿using Azure.Core;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Core.Types;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
 using VehicleServer.Enums;
+using VehicleServer.Repository;
 
 namespace VehicleServer.Services.StockTransactionDetailServices
 {
     public class StockItemsDetailService : IStockItemsDetailService
     {
         private readonly ApplicationContext _context;
+        private readonly IStockItemsDetailRepository _repository;
         //private TransactionType 
-        public StockItemsDetailService(ApplicationContext context)
+        public StockItemsDetailService(ApplicationContext context, IStockItemsDetailRepository repository)
         {
             _context = context;
+            _repository = repository;
         }
 
 
@@ -205,7 +209,7 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                         MajorId = transaction.MajorId ?? 0,  
                         MinorId = transaction.MinorId ?? 0,  
                         PlateSizeId = transaction.PlateSizeId ?? 0,  
-                        VehicleCategoryId = transaction.VehicleCategoryId ?? 0,  
+                        VehicleCategoryId = transaction.VehicleCategoryId ?? 1,  
                         PlateRegionId = transaction.PlateRegionId ?? 0, 
                         IsDeleted = false,
                         IsActive = true
@@ -361,7 +365,29 @@ namespace VehicleServer.Services.StockTransactionDetailServices
 
             return await Task.FromResult(padNumberRangeDto);
         }
-    
 
-}
+        public async Task<ApiResult<StockItemsDetailDto>> GetStockItemsDetailAsync(int storeId, int itemId, int pageIndex, int pageSize, string? sortColumn = null, string? sortOrder = null, string? filterColumn = null, string? filterQuery = null)
+        {
+            return await _repository.GetStockItemsDetailAsync(storeId, itemId, pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+        }
+
+
+
+        public async Task<IEnumerable<StockItemsDetail>> GetAllStockItemsDetailsAsync()
+        {
+            return await _repository.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByStoreIdAsync(int storeId)
+        {
+            return await _repository.GetByStoreIdAsync(storeId);
+        }
+
+        public async Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByTransactionTypeAsync(string transactionType)
+        {
+            return await _repository.GetByTransactionTypeAsync(transactionType);
+        }
+
+
+    }
 }

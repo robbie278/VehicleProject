@@ -12,4 +12,7 @@ export class AppComponent {
   constructor(private languageService: LanguageService) {
     // LanguageService handles language initialization
   }
+  ngOnInit() {
+    debugger;
+  }
 }
