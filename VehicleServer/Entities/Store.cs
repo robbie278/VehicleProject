@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using VehicleServer.DTOs;
 
 namespace VehicleServer.Entities
 {
+    [Table("StockStores")]
     public class Store
     {
         [Key]

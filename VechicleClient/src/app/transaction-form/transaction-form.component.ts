@@ -48,6 +48,7 @@ export class TransactionFormComponent implements OnInit {
   itIsPlate: boolean = false;
   prefixList: string[] = ['', 'A', 'B', 'C', 'D'];
 
+  plateCategoryList: any[] = [];
   regionList: any[] = [];
   majorList: any[] = [];
   minorList: any[] = [];
@@ -131,11 +132,12 @@ export class TransactionFormComponent implements OnInit {
         ]),
 
         // plate related fields
-        majorId: new FormControl(),
+        majorId: new FormControl(''),
         minorId: new FormControl(),
         plateSizeId: new FormControl(),
         plateRegionId: new FormControl(),
         prefix: new FormControl(),
+        vehicleCategoryId: new FormControl(),
       },
       { validators: this.padNumberValidator() }
     );
@@ -251,6 +253,7 @@ export class TransactionFormComponent implements OnInit {
       majorId: this.form.controls['majorId'].value,
       minorId: this.form.controls['minorId'].value,
       plateRegionId: this.form.controls['plateRegionId'].value,
+      vehicleCategoryId: this.form.controls['vehicleCategoryId'].value,
       // plateSizeId: this.form.controls['plateSizeId'].value,
       // if (!item.platePool) {
       //   item.platePool = <PlatePool>{};
@@ -400,6 +403,16 @@ export class TransactionFormComponent implements OnInit {
     this.loadMajorData();
     this.loadMinorData();
     this.loadPlatSizeData();
+    this.loadPlateCategoryData();
+  }
+
+  loadPlateCategoryData() {
+    this.ivsmsService.setParams({})
+    this.ivsmsService
+      .getLookupData<any[]>('VehiclePlateCategory/GetAll', 'route')
+      .subscribe((res: any[]) => {
+        this.plateCategoryList = res;
+      });
   }
 
   loadRegionsData() {
@@ -407,7 +420,6 @@ export class TransactionFormComponent implements OnInit {
     this.lookupService
       .getLookupData<any[]>('AddressTableLookUp/type', 'route')
       .subscribe((res: any[]) => {
-        console.log('the res is', res);
         this.regionList = res;
       });
   }

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VehicleServer.Entities
 {
+    [Table("PlatePools")]
     public class PlatePool
     {
         [Key]

@@ -16,12 +16,10 @@ namespace VehicleServer.Controllers
     public class StockTransactionDetailController : ControllerBase
     {
         private readonly IStockItemsDetailService _stockTransactionDetailService;
-        private readonly StockItemsDetailRepo stockItemsDetailRepo;
 
-        public StockTransactionDetailController(IStockItemsDetailService stockTransactionDetailService, StockItemsDetailRepo stockItemsDetailRepo)
+        public StockTransactionDetailController(IStockItemsDetailService stockTransactionDetailService)
         {
             _stockTransactionDetailService = stockTransactionDetailService;
-            this.stockItemsDetailRepo = stockItemsDetailRepo;
         }
 
         [HttpPost("validate")]
@@ -58,7 +56,7 @@ namespace VehicleServer.Controllers
             string? filterColumn = null,
             string? filterQuery = null)
         {
-            var result = await stockItemsDetailRepo.GetStockItemsDetailAsync(
+            var result = await _stockTransactionDetailService.GetStockItemsDetailAsync(
                 storeId, itemId, 
                 pageIndex, pageSize, 
                 sortColumn, sortOrder, 
@@ -84,6 +82,27 @@ namespace VehicleServer.Controllers
             }
 
             return Ok(padNumbers);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<StockItemsDetail>>> GetAllStockItemsDetails()
+        {
+            var stockItemsDetails = await _stockTransactionDetailService.GetAllStockItemsDetailsAsync();
+            return Ok(stockItemsDetails);
+        }
+
+        [HttpGet("{storeId}")]
+        public async Task<ActionResult<IEnumerable<StockItemsDetail>>> GetStockItemsDetailsByStoreId(int storeId)
+        {
+            var stockItemsDetails = await _stockTransactionDetailService.GetStockItemsDetailsByStoreIdAsync(storeId);
+            return Ok(stockItemsDetails);
+        }
+
+        [HttpGet("transaction/{transactionType}")]
+        public async Task<ActionResult<IEnumerable<StockItemsDetail>>> GetStockItemsDetailsByTransactionType(string transactionType)
+        {
+            var stockItemsDetails = await _stockTransactionDetailService.GetStockItemsDetailsByTransactionTypeAsync(transactionType);
+            return Ok(stockItemsDetails);
         }
 
     }
