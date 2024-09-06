@@ -3,7 +3,7 @@ import { ApiResult, BaseService } from './base.service';
 import { StoreKeeper } from '../models/Store-keeper';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 
 @Injectable({
   providedIn: 'root'

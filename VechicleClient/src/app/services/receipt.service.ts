@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from '../models/item';
 import { Receipt } from '../models/Receipt';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 import { StoreKeeper } from '../models/Store-keeper';
 import { User } from '../models/User';
 

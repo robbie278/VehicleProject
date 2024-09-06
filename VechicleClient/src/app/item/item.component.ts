@@ -9,7 +9,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
-import { PlatePool } from '../models/PlatePool';
+// import { PlatePool } from '../models/PlatePool';
 
 @Component({
   selector: 'app-item',

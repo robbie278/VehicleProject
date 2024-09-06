@@ -142,8 +142,27 @@ namespace VehicleServer.Controllers
         }
 
         private async Task<bool> ValidateSingleTransactionAsync(StockTransaction transaction)
+
         {
-            return await _stockTransactionDetailService.ValidateSingleTransactionAsync(new StockItemsDetail
+
+
+            if (transaction.IsPlate == false) {
+
+                return await _stockTransactionDetailService.ValidateSingleTransactionAsync(new StockItemsDetail
+                {
+                    ItemId = transaction.ItemId,
+                    StoreId = transaction.StoreId,
+                    UserId = transaction.UserId,
+                    StoreKeeperId = transaction.StoreKeeperId,
+                    TransactionType = transaction.TransactionType,
+                    IsPlate = transaction.IsPlate,
+              
+
+                }, transaction.PadNumberStart);
+            }
+            else { 
+
+                return await _stockTransactionDetailService.ValidateSingleTransactionAsync(new StockItemsDetail
             {
                 ItemId = transaction.ItemId,
                 StoreId = transaction.StoreId,
@@ -159,6 +178,7 @@ namespace VehicleServer.Controllers
                 Prefix = transaction.Prefix
 
             }, transaction.PadNumberStart);
+            }
         }
 
         private async Task<IActionResult> HandleTransactionTypeAsync(StockTransaction transaction)

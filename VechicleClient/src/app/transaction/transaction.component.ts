@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Transaction } from '../models/Transaction';
+import { Transaction } from '../Models/Transaction';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TransactionViewComponent } from './transaction-view.component';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
 import { TranslateService } from '@ngx-translate/core';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 import { Item } from '../models/item';
 import { TransactionService } from '../services/transaction.service';
 import { MatMenuTrigger } from '@angular/material/menu';

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StoreService } from '../services/store.service';
 import { Observable, map, of } from 'rxjs';
@@ -44,7 +44,10 @@ export class EditStoreComponent implements OnInit {
   instantiateForm() {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required)
+      address: new FormControl('', Validators.required),
+
+      nameAm: new FormControl('', Validators.required),
+      addressAm: new FormControl('', Validators.required)
     } ,{
       asyncValidators: [this.isDupeStore()]
     });
@@ -64,16 +67,16 @@ export class EditStoreComponent implements OnInit {
   onSubmit() {
     const store = (this.id) ? this.stores : <Store>{};
     store.name = this.form.controls['name'].value;
+    store.nameAm = this.form.controls['nameAm'].value;
     store.address = this.form.controls['address'].value;
+    store.addressAm = this.form.controls['addressAm'].value;
 
     if (this.id) {
       this.storeService.put(store).subscribe({
         next: () => {
           this.toastr.info('Store Updated Successfully');
           this.dialogRef.close(true);
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
+          this.fetchData();
         },
         error: (error) => console.error(error)
       });
@@ -82,9 +85,7 @@ export class EditStoreComponent implements OnInit {
         next: (result) => {
           this.toastr.success('Store Added Successfully');
           this.dialogRef.close(true);
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
+       
         },
         error: (error) => console.error(error)
       });

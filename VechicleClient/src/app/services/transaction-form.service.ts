@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Item } from '../models/item';
 import { StoreKeeper } from '../models/Store-keeper';
 import { User } from '../models/User';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 import { ICategory } from '../models/Category';
 
 @Injectable({

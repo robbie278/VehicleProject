@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { StoreKeeper } from '../models/Store-keeper';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StoreKeeperService } from '../services/store-keeper.service';
 import { ActivatedRoute, Router } from '@angular/router';

@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { PlatePool } from '../models/PlatePool';
+// import { PlatePool } from '../models/PlatePool';
 
 
 @Component({
@@ -45,7 +45,9 @@ ngOnInit() {
  instantiateForm(){
   this.form = new FormGroup({
     name: new FormControl('', Validators.required),
+    nameAm: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
+    descriptionAm: new FormControl('', Validators.required),
     categoryId: new FormControl('', Validators.required),
     isPlate: new FormControl(false, Validators.required),
 
@@ -58,11 +60,11 @@ fetchData() {
     
         this.form.patchValue({
           name: this.item.name,
+          nameAm: this.item.name,
           description: this.item.description,
+          descriptionAm: this.item.description,
           categoryId: this.item.categoryId,
           isPlate: this.item.isPlate
-          
- 
           
     });
       console.log(result);

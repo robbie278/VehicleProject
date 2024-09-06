@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { StoreService } from '../services/store.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 import { EditStoreComponent } from './edit-store.component';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';

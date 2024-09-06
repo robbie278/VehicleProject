@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Issue } from '../models/Issue';
 import { Item } from '../models/item';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 import { StoreKeeper } from '../models/Store-keeper';
 import { User } from '../models/User';
 import { TransactionFormService } from '../services/transaction-form.service';

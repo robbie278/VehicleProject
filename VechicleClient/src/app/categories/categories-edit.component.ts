@@ -39,10 +39,17 @@ export class CategoriesEditComponent implements OnInit {
 
   instantiateForm() {
     this.form = new FormGroup({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)
-    },null,this.isDupeCategory());
+      name: new FormControl('', {
+        validators: Validators.required,
+        asyncValidators: this.isDupeCategory(),
+        updateOn: 'blur' // Run async validation after the user finishes typing
+      }),
+      nameAm: new FormControl('',Validators.required), // Add validation here if required
+      description: new FormControl('', Validators.required),
+      descriptionAm: new FormControl('',Validators.required) // Add validation here if required
+    });
   }
+  
 
   
   fetchData() {
@@ -50,6 +57,7 @@ export class CategoriesEditComponent implements OnInit {
       next: (result) => {
         this.category = result;
         this.form.patchValue(this.category);
+        console.log(this.category)
       },
       error: (error) => console.error(error)
     });
@@ -58,7 +66,9 @@ export class CategoriesEditComponent implements OnInit {
   onSubmit() {
     const category = this.id ? this.category : <ICategory>{};
     category.name = this.form.controls['name'].value;
+    category.nameAm = this.form.controls['nameAm'].value;
     category.description = this.form.controls['description'].value;
+    category.descriptionAm = this.form.controls['descriptionAm'].value;
 
     if (this.id) {
       this.categoryService.put(category).subscribe({
@@ -86,9 +96,14 @@ export class CategoriesEditComponent implements OnInit {
   getButtonLabel(): string {
     return this.id ? 'FORM.UPDATE' : 'FORM.CREATE';
   }
+ 
 
   isDupeCategory(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
+
+      if (!control.value || control.value.trim() === '') {
+        return new Observable(null); // No value to check for duplicates
+      }
   
       var category = <ICategory>{};
       category.categoryId = (this.id) ? this.id : 0;
