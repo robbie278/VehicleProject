@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { StoreKeeper } from '../models/Store-keeper';
+import { StoreKeeper } from '../Models/store-keeper';
 import { StoreKeeperService } from '../services/store-keeper.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';

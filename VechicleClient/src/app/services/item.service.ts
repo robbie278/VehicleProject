@@ -3,7 +3,7 @@ import { ApiResult, BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ICategory } from '../models/Category';
-import { Item } from '../models/item';
+import { Item } from '../Models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +58,7 @@ export class ItemService extends BaseService<Item> {
     var url = this.getUrl('api/Categories')
     return this.http.get<ICategory[]>(url)
   }
+
   isDupeItem(item:Item): Observable<boolean>{
     var url = this.getUrl("api/Items/isDupeItem")
     return this.http.post<boolean>(url, item)

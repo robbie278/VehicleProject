@@ -74,7 +74,8 @@ export class EditStoreComponent implements OnInit {
     if (this.id) {
       this.storeService.put(store).subscribe({
         next: () => {
-          this.toastr.info('Store Updated Successfully');
+          const message = this.translateService.instant("Alerts.Store_Edited")
+          this.toastr.info(message);
           this.dialogRef.close(true);
           this.fetchData();
         },
@@ -83,7 +84,8 @@ export class EditStoreComponent implements OnInit {
     } else {
       this.storeService.post(store).subscribe({
         next: (result) => {
-          this.toastr.success('Store Added Successfully');
+          const message = this.translateService.instant("Alerts.Store_Saved")
+          this.toastr.success(message);
           this.dialogRef.close(true);
        
         },

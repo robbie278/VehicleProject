@@ -73,7 +73,8 @@ export class CategoriesEditComponent implements OnInit {
     if (this.id) {
       this.categoryService.put(category).subscribe({
         next: () => {
-          this.toastr.info('Category Updated Successfully');
+          const message = this.translateService.instant("Category_Edited")
+          this.toastr.info(message);
           this.dialogRef.close(true);
         },
         error: (error) => console.error(error)
@@ -81,7 +82,8 @@ export class CategoriesEditComponent implements OnInit {
     } else {
       this.categoryService.post(category).subscribe({
         next: (result) => {
-          this.toastr.success('Category Added Successfully');
+          const message = this.translateService.instant("Category_Saved")
+          this.toastr.success(message);
           this.dialogRef.close(true);
         },
         error: (error) => console.error(error)

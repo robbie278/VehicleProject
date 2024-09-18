@@ -11,7 +11,7 @@ import { TransactionViewComponent } from './transaction-view.component';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '../Models/store';
-import { Item } from '../models/item';
+import { Item } from '../Models/item';
 import { TransactionService } from '../services/transaction.service';
 import { MatMenuTrigger } from '@angular/material/menu';
 

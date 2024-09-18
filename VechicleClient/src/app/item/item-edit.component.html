@@ -8,21 +8,51 @@
               {{ "others.already_exist" | translate }}
       </mat-error>
   </p>
-    <mat-form-field>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+    <td> 
+      <mat-form-field>
         <mat-label>{{ 'FORM.NAME' | translate }}:</mat-label>
         <input matInput formControlName="name" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
         <mat-error *ngIf=" form.controls['name'].errors?.['required']">
           {{ 'FORM.NAME_REQUIRED' | translate }}
         </mat-error>
     </mat-form-field>
-
+    </td>
     <mat-form-field>
-            <mat-label>{{ 'FORM.DESCRIPTION' | translate }}:</mat-label>
-            <input matInput formControlName="description" required placeholder="{{ 'FORM.DESCRIPTION_PLACEHOLDER' | translate }}">
-            <mat-error *ngIf=" form.controls['description'].errors?.['required']">
-              {{ 'FORM.DESCRIPTION_REQUIRED' | translate }}
-            </mat-error>
-     </mat-form-field>
+      <mat-label>{{ 'FORM.NAME' | translate }}(amharic):</mat-label>
+      <input matInput formControlName="nameAm" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
+      <mat-error *ngIf=" form.controls['nameAm'].errors?.['required']">
+        {{ 'FORM.NAME_REQUIRED' | translate }}
+      </mat-error>
+  </mat-form-field>
+   
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>{{ 'FORM.DESCRIPTION' | translate }}:</mat-label>
+          <input matInput formControlName="description" required placeholder="{{ 'FORM.DESCRIPTION_PLACEHOLDER' | translate }}">
+          <mat-error *ngIf=" form.controls['description'].errors?.['required']">
+            {{ 'FORM.DESCRIPTION_REQUIRED' | translate }}
+          </mat-error>
+   </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label>{{ 'FORM.DESCRIPTION' | translate }}(amharic):</mat-label>
+          <input matInput formControlName="descriptionAm" required placeholder="{{ 'FORM.DESCRIPTION_PLACEHOLDER' | translate }}">
+          <mat-error *ngIf=" form.controls['descriptionAm'].errors?.['required']">
+            {{ 'FORM.DESCRIPTION_REQUIRED' | translate }}
+          </mat-error>
+   </mat-form-field>
+      </td>
+    </tr>
+
+
+<tr>
+  
 
      <mat-form-field *ngIf="categories">
         <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
@@ -40,7 +70,8 @@
       {{ "others.Plate" | translate }}
     </mat-checkbox>
      
-
+  </tr>
+  </table>
   </form>
 </div>
 <div mat-dialog-actions>

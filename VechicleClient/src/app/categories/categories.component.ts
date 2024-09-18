@@ -9,6 +9,7 @@ import { CategoriesEditComponent } from './categories-edit.component';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-categories',
@@ -34,7 +35,8 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private toastr: ToastrService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public translateService: TranslateService
   ) {}
 
   ngOnInit() {
@@ -72,7 +74,7 @@ export class CategoriesComponent implements OnInit {
         this.categories = new MatTableDataSource<ICategory>(result.data);
         
       },
-      error: (err) => console.log(err)
+      error: (err) => console.log(err) 
     });
   }
 
@@ -103,7 +105,8 @@ onDelete( id:number) {
     if (result) {
       this.categoryService.delete(id).subscribe({
         next: () => {
-          this.toastr.error('StoreKeeper Deleted Successfully');
+          const message = this.translateService.instant('Alerts.Category_Deleted');
+          this.toastr.error(message);
           this.loadData();
         },
         error: (err) => console.log(err),

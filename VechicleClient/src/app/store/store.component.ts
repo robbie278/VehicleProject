@@ -11,6 +11,7 @@ import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { Router } from '@angular/router';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -39,6 +40,7 @@ export class StoreComponent implements OnInit {
     private toastr: ToastrService,
     private storeService:StoreService,
     private router: Router,
+    private translateService: TranslateService
   ){}
 
   ngOnInit() {
@@ -75,10 +77,9 @@ export class StoreComponent implements OnInit {
           this.paginator.length = result.totalCount;
           this.paginator.pageIndex = result.pageIndex;
           this.paginator.pageSize = result.pageSize;
-          this.stores = new MatTableDataSource<Store>(result.data);
-          this.stores.paginator = this.paginator; // bind paginator
-          this.stores.sort = this.sort; // bind sort
-          
+          // this.stores.paginator = this.paginator; // bind paginator
+          // this.stores.sort = this.sort; // bind sort
+          this.stores = new MatTableDataSource<Store>(result.data);          
         },
         error: (error) => console.error(error)
       });
@@ -97,7 +98,7 @@ export class StoreComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.getData({} as PageEvent);
+        this.getData({} as PageEvent); 
       }
     });
   }
@@ -113,7 +114,8 @@ export class StoreComponent implements OnInit {
       if (result) {
         this.storeService.delete(id).subscribe({
           next: () => {
-            this.toastr.error('Store Deleted Successfully');
+            const message = this.translateService.instant('Alerts.Store_Deleted')
+            this.toastr.error(message);
             this.loadData();
           },
           error: (err) => console.log(err),

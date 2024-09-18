@@ -9,6 +9,11 @@
                     {{ "others.already_exist" | translate }}
             </mat-error>
         </p>
+
+        
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+    <td> 
         <mat-form-field>
             <mat-label>{{ "FORM.NAME" | translate }}:</mat-label>
             <input matInput formControlName="name" required placeholder="{{ 'FORM.NAME' | translate }}">
@@ -18,6 +23,21 @@
             </mat-error>
 
         </mat-form-field>
+    </td>
+    <td>
+        <mat-form-field>
+            <mat-label>{{ "FORM.NAME" | translate }}(amharic):</mat-label>
+            <input matInput formControlName="nameAm" required placeholder="{{ 'FORM.NAME' | translate }}">
+
+            <mat-error *ngIf=" form.controls['nameAm'].errors?.['required']">
+                {{ 'FORM.NAME_REQUIRED' | translate }}
+            </mat-error>
+
+        </mat-form-field>
+    </td>
+    </tr>
+  </table>
+       
 
         <mat-form-field>
             <mat-label>{{ 'StoreKeeper.Email' | translate }}:</mat-label>

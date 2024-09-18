@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { StoreKeeper } from '../models/Store-keeper';
+import { StoreKeeper } from '../Models/store-keeper';
 import { Store } from '../Models/store';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StoreKeeperService } from '../services/store-keeper.service';
@@ -46,6 +46,7 @@ constructor(
    instantiateForm(){
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
+      nameAm: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       storeId: new FormControl('', Validators.required)
     },null, this.isDupeStoreKeeper())
@@ -76,13 +77,15 @@ constructor(
   onSubmit() {
     const storeKepper = this.id? this.storeKeeper : <StoreKeeper>{}
     storeKepper.name = this.form.controls['name'].value
+    storeKepper.nameAm = this.form.controls['nameAm'].value
     storeKepper.email = this.form.controls['email'].value
     storeKepper.storeId = this.form.controls['storeId'].value
 
     if (this.id) {
       this.storeKeeperService.put(storeKepper).subscribe({
         next: () => {
-          this.toastr.info('StoreKepper Updated Successfully');
+          const message = this.translateService.instant("Alerts.Store_Keeper_Edited")
+          this.toastr.info(message);
           this.dialogRef.close(true);
         },
         error: (error) => console.error(error)
@@ -90,7 +93,9 @@ constructor(
     } else {
       this.storeKeeperService.post(storeKepper).subscribe({
         next: () => {
-          this.toastr.success('StoreKepper Added Successfully');
+          
+          const message = this.translateService.instant("Alerts.Store_Keeper_Saved")
+          this.toastr.success(message);
           this.dialogRef.close(true);
         },
         error: (error) => console.error(error)
@@ -112,6 +117,7 @@ constructor(
       var storeKeeper = <StoreKeeper>{};
       storeKeeper.storeKeeperId = (this.id) ? this.id : 0;
       storeKeeper.name = this.form.controls['name'].value; 
+      storeKeeper.nameAm = this.form.controls['nameAm'].value; 
       storeKeeper.email = this.form.controls['email'].value;
       storeKeeper.storeId = +this.form.controls['storeId'].value;
   

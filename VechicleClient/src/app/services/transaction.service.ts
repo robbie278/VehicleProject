@@ -3,7 +3,7 @@ import { ApiResult, BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Transaction } from '../Models/Transaction';
-import { Item } from '../models/item';
+import { Item } from '../Models/item';
 import { Store } from '../Models/store';
 
 @Injectable({

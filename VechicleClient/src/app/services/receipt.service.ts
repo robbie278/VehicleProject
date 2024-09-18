@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Item } from '../models/item';
+import { Item } from '../Models/item';
 import { Receipt } from '../models/Receipt';
 import { Store } from '../Models/store';
-import { StoreKeeper } from '../models/Store-keeper';
+import { StoreKeeper } from '../Models/store-keeper';
 import { User } from '../models/User';
 
 @Injectable({
