@@ -11,6 +11,10 @@ namespace VehicleServer.Entities
         public int StoreId { get; set; }
         public string? Name { get; set; }
         public string? Address { get; set; }
+        public string? NameAm { get; set; }
+        public string? AddressAm { get; set; }
+
+
         public bool? IsDeleted { get; set; }
 
         public ICollection<StoreKeeper>? StoreKeepers { get; set; }

@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ItemService } from '../services/item.service';
-import { Item } from '../models/item';
+import { Item } from '../Models/item';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ItemEditComponent } from './item-edit.component';
@@ -9,7 +9,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ConfirmDialogComponent } from '../confirm-dialog-component/confirm-dialog-component.component';
-import { PlatePool } from '../models/PlatePool';
+import { TranslateService } from '@ngx-translate/core';
+// import { PlatePool } from '../models/PlatePool';
 
 @Component({
   selector: 'app-item',
@@ -35,7 +36,8 @@ export class ItemComponent implements OnInit {
  filterTextChanged: Subject<string> = new Subject<string>()
   constructor(private itemService:ItemService,
               private toastr: ToastrService,
-              private dialog: MatDialog
+              private dialog: MatDialog,
+              private translateService:TranslateService
  
   ) 
   {}
@@ -110,7 +112,8 @@ ngOnInit() {
       if (result) {
         this.itemService.delete(id).subscribe({
           next: () => {
-            this.toastr.error('StoreKeeper Deleted Successfully');
+            const message = this.translateService.instant('Alerts.Item_Deleted');
+            this.toastr.error(message);
             this.loadData();
           },
           error: (err) => console.log(err),

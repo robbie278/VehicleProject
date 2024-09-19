@@ -9,11 +9,11 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Issue } from '../models/Issue';
-import { Item } from '../models/item';
-import { Store } from '../models/Store';
-import { StoreKeeper } from '../models/Store-keeper';
-import { User } from '../models/User';
+import { Issue } from '../Models/Issue';
+import { Item } from '../Models/item';
+import { Store } from '../Models/store';
+import { StoreKeeper } from '../Models/store-keeper';
+import { User } from '../Models/User';
 import { TransactionFormService } from '../services/transaction-form.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TransactionType } from '../enums/transaction-type.enum';
@@ -264,11 +264,14 @@ export class TransactionFormComponent implements OnInit {
         next: (response) => {
           console.log(issue);
           this.toastr.info(response);
+          // const message = this.translate.instant("Alerts.Success")
+          // this.toastr.error(message);
           this.dialogRef.close(true);
         },
         error: (err) => {
           console.log(err);
-          this.toastr.error(err.error);
+          const message = this.translate.instant("Alerts.Couldnt_Process")
+          this.toastr.error(message);
         },
       });
     if (this.isChecked)

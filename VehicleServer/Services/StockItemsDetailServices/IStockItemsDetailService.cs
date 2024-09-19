@@ -30,6 +30,6 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         Task<IEnumerable<StockItemsDetail>> GetAllStockItemsDetailsAsync();
         Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByStoreIdAsync(int storeId);
         Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByTransactionTypeAsync(string transactionType);
-
+       
     }
 }

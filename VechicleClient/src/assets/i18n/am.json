@@ -23,6 +23,7 @@
     "Category_Name_Placeholder": "የምድብ ስም ያስገቡ",
     "EditCategory": "ምድብ አስተካክል",
     "CreateCategory": "ምድብ ፍጠር"
+    
   },
   "StoreKeeper": {
     "Address": "አድራሻ",
@@ -44,6 +45,8 @@
     "transaction_type": "የዝውውር አይነት",
     "pad_number_start": "ፓድ ቁጥር ይጀምራል",
     "pad_number_end": "የፓድ ቁጥር መጨረሻ",
+    "pad_number_start_plate": "ታርጋ ቁጥር ይጀምራል",
+    "pad_number_end_plate": "ታርጋ ቁጥር መጨረሻ",
     "pad_number": "የፓድ ቁጥር",
     "quantity": "ብዛት",
     "transaction_date": "የዝውውር ቀን"
@@ -114,6 +117,28 @@
 
   "Company": {
     "CompanyName": "በአዲስ አበባ ከተማ አስተዳደር የአሽከርካሪና ተሽከርካሪ ፍቃድና ቁጥጥር ባለስልጣን"
+  },
+  "Alerts":{
+    "Store_Keeper_Deleted": "የጣቢያ አስተዳዳሪ ተሰርዟል",
+    "Store_Keeper_Edited": "የጣቢያ አስተዳዳሪ ተሻሽሏል",
+    "Store_Keeper_Saved": "የጣቢያ አስተዳዳሪ ተቀመጣል",
+
+    "Store_Deleted": "የጣቢያ ተሰርዟል",
+    "Store_Edited": "የጣቢያ ተሻሽሏል",
+    "Store_Saved": "የጣቢያ ተቀመጣል",
+
+    "Item_Deleted": "የእቃ ተሰርዟል",
+    "Item_Edited": "የእቃ ተሻሽሏል",
+    "Item_Saved": "የእቃ ተቀመጣል",
+
+    "Category_Deleted": "የምድብ ተሰርዟል",
+    "Category_Edited": "የምድብ ተሻሽሏል",
+    "Category_Saved": "የምድብ ተቀመጣል",
+
+    "Couldnt_Process":"ሂደቱ ሊከናወን አይችልም",
+    "Success":"በተሳካ ሁኔታ የተከናወነ"
+    
+
   },
 
   "items_per_page": "ብዛት በግጽ",

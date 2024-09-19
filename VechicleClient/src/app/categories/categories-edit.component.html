@@ -7,17 +7,46 @@
             {{ "others.already_exist" | translate }}
       </mat-error>
   </p>
-    <mat-form-field>
+
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td>    
+      <mat-form-field>
       <mat-label>{{ 'Category.Category_Name' | translate }}</mat-label>
       <input matInput formControlName="name" required placeholder="{{ 'Category.Category_Name' | translate }}" />
       <mat-error *ngIf="form.controls['name'].errors?.['required']">{{ 'FORM.NAME_REQUIRED' | translate }}</mat-error>
     </mat-form-field>
+  </td>
 
-    <mat-form-field>
-      <mat-label>{{ 'FORM.DESCRIPTION' | translate }}</mat-label>
-      <input matInput formControlName="description" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}" />
-      <mat-error *ngIf="form.controls['description'].errors?.['required']">{{ 'FORM.DESCRIPTION_REQUIRED' | translate }}</mat-error>
-    </mat-form-field>
+    <td>
+      <mat-form-field>
+        <mat-label>{{ 'Category.Category_Name' | translate }}(Amharic)</mat-label>
+        <input matInput formControlName="nameAm" required placeholder="{{ 'Category.Category_Name' | translate }}" />
+        <mat-error *ngIf="form.controls['nameAm'].errors?.['required']">{{ 'FORM.NAME_REQUIRED' | translate }}</mat-error>
+      </mat-form-field>
+    </td>
+  </tr></table>
+
+
+  <table cellspacing="8"><tr>
+    <td>
+      <mat-form-field>
+        <mat-label>{{ 'FORM.DESCRIPTION' | translate }}</mat-label>
+        <input matInput formControlName="description" placeholder="{{ 'FORM.DESCRIPTION' | translate }}" />
+        <mat-error *ngIf="form.controls['description'].errors?.['required']">{{ 'FORM.DESCRIPTION_REQUIRED' | translate }}</mat-error>
+      </mat-form-field>
+    </td>
+
+    <td>
+      <mat-form-field>
+        <mat-label>{{ 'FORM.DESCRIPTION' | translate }}(Amharic)</mat-label>
+        <input matInput formControlName="descriptionAm" placeholder="{{ 'FORM.DESCRIPTION' | translate }}" />
+        <mat-error *ngIf="form.controls['descriptionAm'].errors?.['required']">{{ 'FORM.DESCRIPTION_REQUIRED' | translate }}</mat-error>
+      </mat-form-field>
+    </td>
+  </tr></table>
+
+
   </form>
 </div>
 <div mat-dialog-actions>

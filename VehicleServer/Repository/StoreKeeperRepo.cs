@@ -62,7 +62,7 @@ namespace VehicleServer.Repository
 
         public async Task<ActionResult<IEnumerable<StoreKeeper>>> GetStoreKeeperByStore(int id)
         {
-            var storeKepper = await _context.StoreKeepers.Where(c => c.StoreId == id).ToListAsync();
+            var storeKepper = await _context.StoreKeepers.Where(c => c.StoreId == id && c.IsDeleted != true ).ToListAsync();
 
             return storeKepper;
         }

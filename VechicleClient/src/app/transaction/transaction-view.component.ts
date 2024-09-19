@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Transaction } from '../models/Transaction';
+import { Transaction } from '../Models/Transaction';
 import { ActivatedRoute } from '@angular/router';
 import { TransactionService } from '../services/transaction.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';

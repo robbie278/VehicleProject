@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { Issue } from '../models/Issue';
+import { Issue } from '../Models/Issue';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Item } from '../models/item';
-import { StoreKeeper } from '../models/Store-keeper';
-import { User } from '../models/User';
-import { Store } from '../models/Store';
+import { Item } from '../Models/item';
+import { StoreKeeper } from '../Models/store-keeper';
+import { User } from '../Models/User';
+import { Store } from '../Models/store';
 import { ICategory } from '../models/Category';
 
 @Injectable({
