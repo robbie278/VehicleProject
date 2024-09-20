@@ -7,17 +7,44 @@
               {{ "others.already_exist" | translate }}
       </mat-error>
   </p>
-    <mat-form-field>
-      <mat-label>{{ 'FORM.NAME' | translate }}</mat-label>
-      <input matInput formControlName="name" required placeholder="{{ 'FORM.NAME_PLACEHOLDER' | translate }}" />
-      <mat-error *ngIf="form.controls['name'].errors?.['required']">{{ 'FORM.DESCRIPTION_REQUIRED' | translate }}</mat-error>
-    </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>{{ 'Store.Address' | translate }}</mat-label>
-      <input matInput formControlName="address" required placeholder="{{ 'Store.Address_Placeholder_REQUIRED' | translate }}" />
-      <mat-error *ngIf="form.controls['address'].errors?.['required']">{{ 'Store.Address_Placeholder_REQUIRED' | translate }}</mat-error>
-    </mat-form-field>
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td> 
+      <mat-form-field>
+        <mat-label>{{ 'FORM.NAME' | translate }}</mat-label>
+        <input matInput formControlName="name" required placeholder="{{ 'FORM.NAME_PLACEHOLDER' | translate }}" />
+        <mat-error *ngIf="form.controls['name'].errors?.['required']">{{ 'FORM.DESCRIPTION_REQUIRED' | translate }}</mat-error>
+      </mat-form-field>
+    </td>
+
+    <td>
+      <mat-form-field>
+        <mat-label>{{ 'FORM.NAME' | translate }}(amharic)</mat-label>
+        <input matInput formControlName="nameAm" required placeholder="{{ 'FORM.NAME_PLACEHOLDER' | translate }}" />
+        <mat-error *ngIf="form.controls['nameAm'].errors?.['required']">{{ 'FORM.DESCRIPTION_REQUIRED' | translate }}</mat-error>
+      </mat-form-field>
+    </td>
+</tr>
+    <tr>
+    <td>
+      <mat-form-field>
+        <mat-label>{{ 'Store.Address' | translate }}</mat-label>
+        <input matInput formControlName="address" required placeholder="{{ 'Store.Address_Placeholder_REQUIRED' | translate }}" />
+        <mat-error *ngIf="form.controls['address'].errors?.['required']">{{ 'Store.Address_Placeholder_REQUIRED' | translate }}</mat-error>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field>
+        <mat-label>{{ 'Store.Address' | translate }}(amharic)</mat-label>
+        <input matInput formControlName="addressAm" required placeholder="{{ 'Store.Address_Placeholder_REQUIRED' | translate }}" />
+        <mat-error *ngIf="form.controls['addressAm'].errors?.['required']">{{ 'Store.Address_Placeholder_REQUIRED' | translate }}</mat-error>
+      </mat-form-field>
+    </td>
+    </tr>
+    </table>
+  
+
+  
   </form>
 </div>
 <div mat-dialog-actions>

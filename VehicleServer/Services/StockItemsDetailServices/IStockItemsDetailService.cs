@@ -1,5 +1,6 @@
 ﻿using VehicleServer.DTOs;
 using VehicleServer.Entities;
+using VehicleServer.Enums;
 using VehicleServer.Repository;
 
 namespace VehicleServer.Services.StockTransactionDetailServices
@@ -30,6 +31,11 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         Task<IEnumerable<StockItemsDetail>> GetAllStockItemsDetailsAsync();
         Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByStoreIdAsync(int storeId);
         Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByTransactionTypeAsync(string transactionType);
+        Task<string> GetLeastPadNumberWithPrefixAsync(ItemTypeEnum itemCode, int userId);
+        Task<string> GetLeastPlateNumberWithPrefixAsync(ItemTypeEnum itemCode, int userId, int plateRegionId,
+            int? majorId, int? minorId, int? plateSizeId, int? vehicleCategoryId);
+        Task<bool> UpdateTransactionTypeAsync(ItemTypeEnum itemCode, int userId, string newTransactionType);
+        Task<bool> CheckAndUpdateByPrefixAndPadNumberAsync(ItemTypeEnum itemCode, string prefixAndPadNumber, string newTransactionType);
 
     }
 }

@@ -1,13 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ICategory } from '../models/Category';
-import { Item } from '../models/item';
+import { Item } from '../Models/item';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemService } from '../services/item.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { PlatePool } from '../models/PlatePool';
+import { ItemTypeCodeEnum } from '../enums/item-type-code.enum';
+// import { PlatePool } from '../models/PlatePool';
 
 
 @Component({
@@ -21,6 +22,7 @@ item!: Item
 id: number
 categories!: ICategory[]
 form!: FormGroup
+itemTypeCode = ItemTypeCodeEnum; 
 
 constructor(
   public dialogRef: MatDialogRef<ItemEditComponent>,
@@ -45,8 +47,11 @@ ngOnInit() {
  instantiateForm(){
   this.form = new FormGroup({
     name: new FormControl('', Validators.required),
+    nameAm: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
+    descriptionAm: new FormControl('', Validators.required),
     categoryId: new FormControl('', Validators.required),
+    itemTypeCode: new FormControl('', Validators.required),
     isPlate: new FormControl(false, Validators.required),
 
   },null, this.isDupeItem())}
@@ -58,11 +63,12 @@ fetchData() {
     
         this.form.patchValue({
           name: this.item.name,
+          nameAm: this.item.nameAm,
           description: this.item.description,
+          descriptionAm: this.item.descriptionAm,
           categoryId: this.item.categoryId,
-          isPlate: this.item.isPlate
-          
- 
+          isPlate: this.item.isPlate,
+          itemTypeCode: this.item.itemTypeCode
           
     });
       console.log(result);
@@ -87,14 +93,17 @@ fetchData() {
         const item = this.id ? this.item : <Item>{}
         item.name = this.form.controls['name'].value
         item.description = this.form.controls['description'].value
+        item.nameAm = this.form.controls['nameAm'].value
+        item.descriptionAm = this.form.controls['descriptionAm'].value
         item.categoryId = this.form.controls['categoryId'].value
-        item.isPlate = this.form.controls['isPlate'].value
-
+        item.isPlate = this.form.controls['itemTypeCode'].value == this.itemTypeCode.Plate ? true : false;  
+        item.itemTypeCode = this.form.controls['itemTypeCode'].value
 
         if (this.id) {
           this.itemService.put(item).subscribe({
             next: () => {
-              this.toastr.info('Item Updated Successfully');
+              const message = this.translateService.instant("Alerts.Item_Edited")
+              this.toastr.info(message);
               this.dialogRef.close(true);
             },
             error: (error) => console.error(error)
@@ -102,7 +111,8 @@ fetchData() {
         } else {
           this.itemService.post(item).subscribe({
             next: () => {
-              this.toastr.success('Item Added Successfully');
+              const message = this.translateService.instant("Alerts.Item_Saved")
+              this.toastr.success(message);
               this.dialogRef.close(true);
             },
             error: (error) => console.error(error)

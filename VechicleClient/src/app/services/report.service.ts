@@ -3,14 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Report } from '../Models/Report';
 import { Stock } from '../Models/Stock';
+import { BaseService } from './base.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ReportService {
-  private apiUrl = 'https://localhost:40443/api/Report'; // Adjust the URL as necessary
+export class ReportService  {
+  // private apiUrl = 'https://localhost:40443/api/Report'; // Adjust the URL as necessary
+  private apiUrl = environment.baseUrl + 'api/Report'
+  
+ 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    
+   }
 
   getTotalQuantityByItem(): Observable<Report[]> {
     return this.http.get<Report[]>(`${this.apiUrl}/total-quantity-by-item`);

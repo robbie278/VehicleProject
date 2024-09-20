@@ -122,6 +122,27 @@
   "Company": {
     "CompanyName": "City Government of Addis Ababa Driver, Vehicle, Permit, and Control Authority"
   },
+  "Alerts":{
+      "Store_Keeper_Deleted":"Store Keeper Deleted",
+      "Store_Keeper_Edited":"Store Keeper Edited",
+      "Store_Keeper_Saved":"Store Keeper Saved",
+
+      "Store_Deleted":"Store Deleted",
+      "Store_Edited":"Store Edited",
+      "Store_Saved":"Store Saved",
+
+      "Item_Deleted":"Item Deleted",
+      "Item_Edited":"Item Edited",
+      "Item_Saved":"Item Saved",
+
+      "Category_Deleted":"Category Deleted",
+      "Category_Edited":"Category Edited",
+      "Category_Saved":"Category Saved",
+
+      "Couldnt_Process":"Process Not Feasible",
+      "Success":"Successfully Processed"
+
+  },
 
   "items_per_page": "Items per page",
   "All": "All",

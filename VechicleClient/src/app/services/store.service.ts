@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiResult, BaseService } from './base.service';
-import { Store } from '../models/Store';
+import { Store } from '../Models/store';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 

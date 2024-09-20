@@ -206,7 +206,8 @@
     </div>
 
     <mat-form-field>
-      <mat-label>{{ "Transaction.pad_number_start" | translate }}:</mat-label>
+      <mat-label *ngIf="!itIsPlate">{{ "Transaction.pad_number_start" | translate }}:</mat-label>
+      <mat-label *ngIf="itIsPlate">{{ "Transaction.pad_number_start_plate" | translate }}:</mat-label>
       <input
         matInput
         formControlName="padNumberStart"
@@ -222,7 +223,8 @@
     </mat-form-field>
 
     <mat-form-field *ngIf="!form.controls['singleItem'].value">
-      <mat-label>{{ "Transaction.pad_number_end" | translate }}:</mat-label>
+      <mat-label *ngIf="!itIsPlate">{{ "Transaction.pad_number_end" | translate }}:</mat-label>
+      <mat-label *ngIf="itIsPlate">{{ "Transaction.pad_number_end_plate" | translate }}:</mat-label>
       <input
         matInput
         formControlName="padNumberEnd"
