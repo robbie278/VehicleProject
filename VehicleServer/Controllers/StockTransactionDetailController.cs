@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VehicleServer.Entities;
 using VehicleServer.Services.StockTransactionDetailServices;
-using VehicleServer.Repository;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using VehicleServer.DTOs;
-    using VehicleServer.Entities;
+using VehicleServer.DTOs;
+using VehicleServer.Enums;
 
 namespace VehicleServer.Controllers
 {
@@ -103,6 +100,83 @@ namespace VehicleServer.Controllers
         {
             var stockItemsDetails = await _stockTransactionDetailService.GetStockItemsDetailsByTransactionTypeAsync(transactionType);
             return Ok(stockItemsDetails);
+        }
+
+        // GET: api/StockItems/least-padnumber?itemId=1&userId=1
+        [HttpGet("least-padnumber")]
+        public async Task<IActionResult> GetLeastPadNumberWithPrefix(ItemTypeEnum itemId, int userId)
+        {
+            try
+            {
+                var result = await _stockTransactionDetailService.GetLeastPadNumberWithPrefixAsync(itemId, userId);
+                return Ok(result); // Return the concatenated prefix and pad number
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
+        [HttpGet("least-plate-number")]
+        public async Task<IActionResult> GetLeastPlateNumberWithPrefix(
+        [FromQuery] ItemTypeEnum itemCode,
+        [FromQuery] int userId,
+        [FromQuery] int plateRegionId,
+        [FromQuery] int? majorId,
+        [FromQuery] int? minorId,
+        [FromQuery] int? plateSizeId,
+        [FromQuery] int? vehicleCategoryId)
+        {
+            try
+            {
+                var result = await _stockTransactionDetailService.GetLeastPlateNumberWithPrefixAsync(
+                    itemCode, userId, plateRegionId, majorId, minorId, plateSizeId, vehicleCategoryId);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
+
+        // PUT: api/StockItems/update-transactiontype
+        [HttpPut("update-transactiontype")]
+        public async Task<IActionResult> UpdateTransactionType(ItemTypeEnum itemCode, int userId, string newTransactionType)
+        {
+            try
+            {
+                var isUpdated = await _stockTransactionDetailService.UpdateTransactionTypeAsync(itemCode, userId, newTransactionType);
+
+                if (isUpdated)
+                    return Ok(new { message = "Transaction type updated successfully." });
+                else
+                    return BadRequest(new { message = "Failed to update the transaction type." });
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
+
+        // PUT: api/StockItems/check-update-prefixpadnumber
+        [HttpPut("check-update-prefixpadnumber")]
+        public async Task<IActionResult> CheckAndUpdateByPrefixAndPadNumber([FromQuery] ItemTypeEnum itemType, [FromQuery] string prefixAndPadNumber, [FromQuery] string newTransactionType)
+        {
+            try
+            {
+                var isUpdated = await _stockTransactionDetailService.CheckAndUpdateByPrefixAndPadNumberAsync(itemType,prefixAndPadNumber, newTransactionType);
+
+                if (isUpdated)
+                    return Ok(new { message = "Transaction type updated successfully." });
+                else
+                    return NotFound(new { message = "No matching entry found." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
     }

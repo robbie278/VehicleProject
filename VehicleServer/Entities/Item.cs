@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using VehicleServer.DTOs;
+using VehicleServer.Enums;
 
 namespace VehicleServer.Entities
 {
@@ -15,7 +16,8 @@ namespace VehicleServer.Entities
         public bool? IsDeleted { get; set; }
 
         public bool? IsPlate { get; set; }
-        
+
+        public ItemTypeEnum ItemTypeCode { get; set; }
 
         // New navigation properties
         public ICollection<Stock>? Stock { get; set; }

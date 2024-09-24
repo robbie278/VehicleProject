@@ -1,3 +1,5 @@
+import { ItemTypeCodeEnum } from "../enums/item-type-code.enum";
+
 export interface Issue {
   transactionId: number;
   itemId: number;
@@ -12,4 +14,5 @@ export interface Issue {
   storKeeperName: string;
   itemName: string;
   userName: string;
+  itemTypeCode: ItemTypeCodeEnum;
 }

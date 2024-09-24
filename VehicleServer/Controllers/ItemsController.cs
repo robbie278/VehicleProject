@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Metrics;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using VehicleServer.DTOs;
 using VehicleServer.Entities;
 using VehicleServer.Repository;
@@ -23,17 +18,17 @@ namespace VehicleServer.Controllers
             this.itemRepo = itemRepo;
         }      
         
-            [HttpGet]
-            public async Task<ActionResult<ApiResult<ItemDto>>> GetItems(
+        [HttpGet]
+        public async Task<ActionResult<ApiResult<ItemDto>>> GetItems(
                   int pageIndex = 0,
                   int pageSize = 10,
                   string? sortColumn = null,
                   string? sortOrder = null,
                   string? filterColumn = null,
                   string? filterQuery = null)
-            {
-                  return await itemRepo.GetItems(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
-            }
+        {
+          return await itemRepo.GetItems(pageIndex, pageSize, sortColumn, sortOrder, filterColumn, filterQuery);
+        }
 
         [HttpGet("Category/{id}")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItemsByCategory(int id)

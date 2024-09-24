@@ -80,7 +80,7 @@ export class CategoriesComponent implements OnInit {
 
   openDialog(id?: number): void {
     const dialogRef = this.dialog.open(CategoriesEditComponent, {
-      width: '45%',
+      
       disableClose: true,
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',

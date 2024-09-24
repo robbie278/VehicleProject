@@ -100,6 +100,8 @@ export class TransactionFormComponent implements OnInit {
       this.itIsPlate = false;
       console.log(selectedItem?.isPlate);
     }
+
+    this.form.get('itemTypeCode').setValue(selectedItem?.itemTypeCode);
   }
 
   ngOnInit() {
@@ -138,6 +140,7 @@ export class TransactionFormComponent implements OnInit {
         plateRegionId: new FormControl(),
         prefix: new FormControl(),
         vehicleCategoryId: new FormControl(),
+        itemTypeCode: new FormControl()
       },
       { validators: this.padNumberValidator() }
     );
@@ -254,6 +257,7 @@ export class TransactionFormComponent implements OnInit {
       minorId: this.form.controls['minorId'].value,
       plateRegionId: this.form.controls['plateRegionId'].value,
       vehicleCategoryId: this.form.controls['vehicleCategoryId'].value,
+      itemTypeCode: this.form.controls['itemTypeCode'].value
       // plateSizeId: this.form.controls['plateSizeId'].value,
       // if (!item.platePool) {
       //   item.platePool = <PlatePool>{};

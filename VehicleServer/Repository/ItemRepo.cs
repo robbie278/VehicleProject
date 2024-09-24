@@ -39,7 +39,7 @@ namespace VehicleServer.Repository
                         Description = c.Description,
                         CategoryId = c.Category!.CategoryId,
                         CategoryName = c.Category.Name,
-                        
+                        ItemTypeCode = c.ItemTypeCode
                         
 
                     }),

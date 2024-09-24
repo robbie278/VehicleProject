@@ -1,4 +1,6 @@
 ﻿
+using VehicleServer.Enums;
+
 namespace VehicleServer.DTOs
 {
     public class ItemDto
@@ -9,8 +11,8 @@ namespace VehicleServer.DTOs
         public string? Description { get; set; }
         public int CategoryId { get; set; }
         public string? CategoryName { get; set; }
-
         public bool? IsPlate { get; set; }
+        public ItemTypeEnum ItemTypeCode { get; set; }
 
 
     }

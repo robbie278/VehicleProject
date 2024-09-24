@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using VehicleServer.Enums;
 
 namespace VehicleServer.Entities
 {
@@ -10,6 +11,7 @@ namespace VehicleServer.Entities
         [Key]
         public int StockItemsDetailId { get; set; }
         public int ItemId { get; set; }
+        public ItemTypeEnum ItemTypeCode { get; set; }
         public int StoreId { get; set; }
         public int? UserId { get; set; }
         public int StoreKeeperId { get; set; }

@@ -197,7 +197,8 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                     PlateSizeId = transaction.PlateSizeId,
                     VehicleCategoryId = transaction.VehicleCategoryId,
                     PlateRegionId = transaction.PlateRegionId,
-                    Prefix = transaction.Prefix
+                    Prefix = transaction.Prefix,
+                    ItemTypeCode = transaction.ItemTypeCode,
                 });
 
                 if ((bool)transaction.IsPlate)
@@ -238,7 +239,8 @@ namespace VehicleServer.Services.StockTransactionDetailServices
                 TransactionType = transaction.TransactionType,
                 PadNumber = transaction.PadNumberStart,
                 TransactionDate = transaction.TransactionDate,
-                Prefix = transaction.Prefix
+                Prefix = transaction.Prefix,
+                ItemTypeCode = transaction.ItemTypeCode
             };
 
 
@@ -386,6 +388,90 @@ namespace VehicleServer.Services.StockTransactionDetailServices
         public async Task<IEnumerable<StockItemsDetail>> GetStockItemsDetailsByTransactionTypeAsync(string transactionType)
         {
             return await _repository.GetByTransactionTypeAsync(transactionType);
+        }
+
+        public async Task<string> GetLeastPadNumberWithPrefixAsync(ItemTypeEnum itemCode, int userId)
+        {
+            
+            var stockItemDetail = await _context.StockItemsDetail
+                .Where(s => s.ItemTypeCode == itemCode && s.UserId == userId && s.TransactionType == TransactionType.Receipt)
+                .OrderBy(s => s.PadNumber)
+                .FirstOrDefaultAsync();
+
+            if (stockItemDetail == null)
+                throw new Exception("No stock item found for the provided criteria.");
+
+            // Concatenate Prefix and PadNumber
+            return ($"{(stockItemDetail.Prefix).Trim()}{stockItemDetail.PadNumber}").Trim();
+        }
+
+        public async Task<string> GetLeastPlateNumberWithPrefixAsync(ItemTypeEnum itemCode, int userId, int plateRegionId,
+            int? majorId, int? minorId, int? plateSizeId, int? vehicleCategoryId)
+        {
+            var stockItemDetail = await _context.StockItemsDetail
+                .Where(s => s.ItemTypeCode == itemCode &&
+                            s.UserId == userId &&
+                            s.TransactionType == TransactionType.Receipt &&
+                            s.PlateRegionId == plateRegionId &&
+                            (!majorId.HasValue || s.MajorId == majorId) &&
+                            (!minorId.HasValue || s.MinorId == minorId) &&
+                            (!plateSizeId.HasValue || s.PlateSizeId == plateSizeId) &&
+                            (!vehicleCategoryId.HasValue || s.VehicleCategoryId == vehicleCategoryId))
+                .OrderBy(s => s.PadNumber)
+                .FirstOrDefaultAsync();
+
+            if (stockItemDetail == null)
+                throw new Exception("No matching plate number found with the provided criteria.");
+
+            return $"{(stockItemDetail.Prefix).Trim()}{stockItemDetail.PadNumber}";
+        }
+
+
+        public async Task<bool> UpdateTransactionTypeAsync(ItemTypeEnum itemCode, int userId, string newTransactionType)
+        {
+            // Find the record to update
+            var stockItemDetail = await _context.StockItemsDetail
+                .FirstOrDefaultAsync(s => s.ItemTypeCode == itemCode && s.UserId == userId);
+
+            if (stockItemDetail == null)
+                throw new Exception("Stock item not found for the provided ItemId and UserId.");
+
+            // Update the transaction type
+            stockItemDetail.TransactionType = newTransactionType;
+
+            // Save changes to the database
+            _context.StockItemsDetail.Update(stockItemDetail);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> CheckAndUpdateByPrefixAndPadNumberAsync(ItemTypeEnum itemcCode, string prefixAndPadNumber, string newTransactionType)
+        {
+            // Split the string to get Prefix and PadNumber
+            var prefix = new string(prefixAndPadNumber.TakeWhile(char.IsLetter).ToArray());
+            var padNumberPart = new string(prefixAndPadNumber.SkipWhile(char.IsLetter).ToArray());
+
+            if (!int.TryParse(padNumberPart, out int padNumber))
+            {
+                throw new ArgumentException("Invalid PadNumber part in the input.");
+            }
+
+            // Find the record based on Prefix and PadNumber
+            var stockItemDetail = await _context.StockItemsDetail
+                .FirstOrDefaultAsync(s => s.Prefix == prefix && s.PadNumber == padNumber && s.ItemTypeCode == itemcCode);
+
+            if (stockItemDetail == null)
+            {
+                return false; // Entry doesn't exist
+            }
+
+            // Update the transaction type
+            stockItemDetail.TransactionType = newTransactionType;
+            _context.StockItemsDetail.Update(stockItemDetail);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
 

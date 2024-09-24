@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { ItemTypeCodeEnum } from '../enums/item-type-code.enum';
 // import { PlatePool } from '../models/PlatePool';
 
 
@@ -21,6 +22,7 @@ item!: Item
 id: number
 categories!: ICategory[]
 form!: FormGroup
+itemTypeCode = ItemTypeCodeEnum; 
 
 constructor(
   public dialogRef: MatDialogRef<ItemEditComponent>,
@@ -49,6 +51,7 @@ ngOnInit() {
     description: new FormControl('', Validators.required),
     descriptionAm: new FormControl('', Validators.required),
     categoryId: new FormControl('', Validators.required),
+    itemTypeCode: new FormControl('', Validators.required),
     isPlate: new FormControl(false, Validators.required),
 
   },null, this.isDupeItem())}
@@ -64,7 +67,8 @@ fetchData() {
           description: this.item.description,
           descriptionAm: this.item.descriptionAm,
           categoryId: this.item.categoryId,
-          isPlate: this.item.isPlate
+          isPlate: this.item.isPlate,
+          itemTypeCode: this.item.itemTypeCode
           
     });
       console.log(result);
@@ -92,8 +96,8 @@ fetchData() {
         item.nameAm = this.form.controls['nameAm'].value
         item.descriptionAm = this.form.controls['descriptionAm'].value
         item.categoryId = this.form.controls['categoryId'].value
-        item.isPlate = this.form.controls['isPlate'].value
-
+        item.isPlate = this.form.controls['itemTypeCode'].value == this.itemTypeCode.Plate ? true : false;  
+        item.itemTypeCode = this.form.controls['itemTypeCode'].value
 
         if (this.id) {
           this.itemService.put(item).subscribe({

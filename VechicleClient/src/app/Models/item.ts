@@ -1,5 +1,7 @@
 // import { PlatePool } from "./PlatePool";
 
+import { ItemTypeCodeEnum } from "../enums/item-type-code.enum";
+
 export interface Item {
     itemId: number;
     name: string;
@@ -7,5 +9,6 @@ export interface Item {
     nameAm: string;
     descriptionAm: string;
     categoryId: number;
-    isPlate: boolean 
+    isPlate: boolean;
+    itemTypeCode: ItemTypeCodeEnum;
   }

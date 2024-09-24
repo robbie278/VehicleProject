@@ -1,80 +1,139 @@
-
 <h1 mat-dialog-title>{{ title }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <p>
-      <mat-error *ngIf=" form.invalid && form.hasError('isDupeItem')">
-              <strong> ERROR </strong>:
-              {{ "others.already_exist" | translate }}
+      <mat-error *ngIf="form.invalid && form.hasError('isDupeItem')">
+        <strong> ERROR </strong>:
+        {{ "others.already_exist" | translate }}
       </mat-error>
-  </p>
+    </p>
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-    <td> 
-      <mat-form-field>
-        <mat-label>{{ 'FORM.NAME' | translate }}:</mat-label>
-        <input matInput formControlName="name" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
-        <mat-error *ngIf=" form.controls['name'].errors?.['required']">
-          {{ 'FORM.NAME_REQUIRED' | translate }}
-        </mat-error>
-    </mat-form-field>
-    </td>
-    <mat-form-field>
-      <mat-label>{{ 'FORM.NAME' | translate }}(amharic):</mat-label>
-      <input matInput formControlName="nameAm" required placeholder="{{ 'FORM.DESCRIPTION' | translate }}">
-      <mat-error *ngIf=" form.controls['nameAm'].errors?.['required']">
-        {{ 'FORM.NAME_REQUIRED' | translate }}
-      </mat-error>
-  </mat-form-field>
-   
-    </tr>
-    <tr>
-      <td>
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>{{ "FORM.NAME" | translate }}:</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              required
+              placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
+            />
+            <mat-error *ngIf=" form.controls['name'].errors?.['required']">
+              {{ "FORM.NAME_REQUIRED" | translate }}
+            </mat-error>
+          </mat-form-field>
+        </td>
         <mat-form-field>
-          <mat-label>{{ 'FORM.DESCRIPTION' | translate }}:</mat-label>
-          <input matInput formControlName="description" required placeholder="{{ 'FORM.DESCRIPTION_PLACEHOLDER' | translate }}">
-          <mat-error *ngIf=" form.controls['description'].errors?.['required']">
-            {{ 'FORM.DESCRIPTION_REQUIRED' | translate }}
+          <mat-label>{{ "FORM.NAME" | translate }}(amharic):</mat-label>
+          <input
+            matInput
+            formControlName="nameAm"
+            required
+            placeholder="{{ 'FORM.DESCRIPTION' | translate }}"
+          />
+          <mat-error *ngIf=" form.controls['nameAm'].errors?.['required']">
+            {{ "FORM.NAME_REQUIRED" | translate }}
           </mat-error>
-   </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <mat-label>{{ 'FORM.DESCRIPTION' | translate }}(amharic):</mat-label>
-          <input matInput formControlName="descriptionAm" required placeholder="{{ 'FORM.DESCRIPTION_PLACEHOLDER' | translate }}">
-          <mat-error *ngIf=" form.controls['descriptionAm'].errors?.['required']">
-            {{ 'FORM.DESCRIPTION_REQUIRED' | translate }}
-          </mat-error>
-   </mat-form-field>
-      </td>
-    </tr>
-
-
-<tr>
-  
-
-     <mat-form-field *ngIf="categories">
-        <mat-label>{{ 'Transaction.select_a_category' | translate }} :</mat-label>
-        <mat-select id="categoryId" formControlName="categoryId">
-            <mat-option *ngFor="let category of categories" [value]="category.categoryId">
-                {{category.name}}
-            </mat-option>
-        </mat-select>
-        <mat-error *ngIf=" form.controls['categoryId'].errors?.['required']">
-          {{ 'Category.Category_Name_Placeholder' | translate }}
-        </mat-error>
-    </mat-form-field>
-
-    <mat-checkbox formControlName="isPlate">
-      {{ "others.Plate" | translate }}
-    </mat-checkbox>
-     
-  </tr>
-  </table>
+        </mat-form-field>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>{{ "FORM.DESCRIPTION" | translate }}:</mat-label>
+            <input
+              matInput
+              formControlName="description"
+              required
+              placeholder="{{ 'FORM.DESCRIPTION_PLACEHOLDER' | translate }}"
+            />
+            <mat-error
+              *ngIf=" form.controls['description'].errors?.['required']"
+            >
+              {{ "FORM.DESCRIPTION_REQUIRED" | translate }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-label
+              >{{ "FORM.DESCRIPTION" | translate }}(amharic):</mat-label
+            >
+            <input
+              matInput
+              formControlName="descriptionAm"
+              required
+              placeholder="{{ 'FORM.DESCRIPTION_PLACEHOLDER' | translate }}"
+            />
+            <mat-error
+              *ngIf=" form.controls['descriptionAm'].errors?.['required']"
+            >
+              {{ "FORM.DESCRIPTION_REQUIRED" | translate }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field *ngIf="categories">
+            <mat-label
+              >{{ "Transaction.select_a_category" | translate }} :</mat-label
+            >
+            <mat-select id="categoryId" formControlName="categoryId">
+              <mat-option
+                *ngFor="let category of categories"
+                [value]="category.categoryId"
+              >
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf=" form.controls['categoryId'].errors?.['required']"
+            >
+              {{ "Category.Category_Name_Placeholder" | translate }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-label
+              >{{ "Transaction.ItemTypeCode" | translate }} :</mat-label
+            >
+            <mat-select id="itememTypeCode" formControlName="itemTypeCode">
+              <mat-option [value]="itemTypeCode.Bolo">
+                {{ "Bolo" }}
+              </mat-option>
+              <mat-option [value]="itemTypeCode.Libre">
+                {{ "Libre" }}
+              </mat-option>
+              <mat-option [value]="itemTypeCode.Receipt">
+                {{ "Receipt" }}
+              </mat-option>
+              <mat-option [value]="itemTypeCode.Plate">
+                {{ "Plate" }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf=" form.controls['itemTypeCode'].errors?.['required']"
+            >
+              {{ "Category.Category_Name_Placeholder" | translate }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <!-- <tr>
+        <mat-checkbox formControlName="isPlate">
+          {{ "others.Plate" | translate }}
+        </mat-checkbox>
+      </tr> -->
+    </table>
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="primary" (click)="onSubmit()">{{ getButtonLabel() | translate }}</button>
-  <button mat-button class="btn" (click)="onCancel()">{{ 'FORM.CANCEL' | translate }}</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()">
+    {{ getButtonLabel() | translate }}
+  </button>
+  <button mat-button class="btn" (click)="onCancel()">
+    {{ "FORM.CANCEL" | translate }}
+  </button>
 </div>
